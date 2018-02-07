@@ -1,0 +1,503 @@
+Story :
+Once upon a time there lived a lion in a forest. One day after a heavy meal. It was sleeping under a tree. After a while, there came a mouse and it started to play on the lion. Suddenly the lion got up with anger and looked for those who disturbed its nice sleep. Then it saw a small mouse standing trembling with fear. The lion jumped on it and started to kill it. The mouse requested the lion to forgive it. The lion felt pity and left it. The mouse ran away. On another day, the lion was caught in a net by a hunter. The mouse came there and cut the net. Thus it escaped. There after, the mouse and the lion became friends. They lived happily in the forest afterwards.
+
+Tagging : 
+Once/RB upon/IN a/DT time/NN there/EX lived/VBD a/DT lion/NN in/IN a/DT forest/NN ./.
+One/CD day/NN after/IN a/DT heavy/JJ meal/NN ,/, It/PRP was/VBD sleeping/VBG under/IN a/DT tree/NN ./.
+After/IN a/DT while/NN ,/, there/EX came/VBD a/DT mouse/NN and/CC it/PRP started/VBD to/TO play/VB on/IN the/DT lion/NN ./.
+Suddenly/RB the/DT lion/NN got/VBD up/RP with/IN anger/NN and/CC looked/VBD for/IN those/DT who/WP disturbed/VBN its/PRP$ nice/JJ sleep/NN ./.
+Then/RB it/PRP saw/VBD a/DT small/JJ mouse/NN standing/NN trembling/VBG with/IN fear/NN ./.
+The/DT lion/NN jumped/VBD on/IN it/PRP and/CC started/VBD to/TO kill/VB it/PRP ./.
+The/DT mouse/NN requested/VBD the/DT lion/NN to/TO forgive/VB it/PRP ./.
+The/DT lion/NN felt/VBD pity/NN and/CC left/VBD it/PRP ./.
+The/DT mouse/NN ran/VBD away/RP ./.
+On/IN another/DT day/NN ,/, the/DT lion/NN was/VBD caught/VBN in/IN a/DT net/NN by/IN a/DT hunter/NN ./.
+The/DT mouse/NN came/VBD there/RB and/CC cut/VBD the/DT net/NN ./.
+Thus/RB it/PRP escaped/VBD ./.
+There/EX after/RB ,/, the/DT mouse/NN and/CC the/DT lion/NN became/VBD friends/NNS ./.
+They/PRP lived/VBD happily/RB in/IN the/DT forest/NN afterwards/RB ./.
+
+Parse
+(ROOT
+  (S
+    (ADVP (RB Once)
+      (PP (IN upon)
+        (NP (DT a) (NN time))))
+    (NP (EX there))
+    (VP (VBD lived)
+      (NP (DT a) (NN lion))
+      (PP (IN in)
+        (NP (DT a) (NN forest))))
+    (. .)))
+
+(ROOT
+  (S
+    (PP
+      (NP (CD One) (NN day))
+      (IN after)
+      (NP (DT a) (JJ heavy) (NN meal)))
+    (, ,)
+    (NP (PRP It))
+    (VP (VBD was)
+      (VP (VBG sleeping)
+        (PP (IN under)
+          (NP (DT a) (NN tree)))))
+    (. .)))
+
+(ROOT
+  (S
+    (PP (IN After)
+      (NP (DT a) (NN while)))
+    (, ,)
+    (S
+      (NP (EX there))
+      (VP (VBD came)
+        (NP (DT a) (NN mouse))))
+    (CC and)
+    (S
+      (NP (PRP it))
+      (VP (VBD started)
+        (S
+          (VP (TO to)
+            (VP (VB play)
+              (PP (IN on)
+                (NP (DT the) (NN lion))))))))
+    (. .)))
+
+(ROOT
+  (S
+    (ADVP (RB Suddenly))
+    (NP (DT the) (NN lion))
+    (VP
+      (VP (VBD got)
+        (PRT (RP up))
+        (PP (IN with)
+          (NP (NN anger))))
+      (CC and)
+      (VP (VBD looked)
+        (PP (IN for)
+          (NP
+            (NP (DT those))
+            (SBAR
+              (WHNP (WP who))
+              (S
+                (VP (VBN disturbed)
+                  (NP (PRP$ its) (JJ nice) (NN sleep)))))))))
+    (. .)))
+
+(ROOT
+  (S (RB Then)
+    (NP (PRP it))
+    (VP (VBD saw)
+      (NP
+        (NP (DT a) (JJ small) (NN mouse) (NN standing))
+        (VP (VBG trembling)
+          (PP (IN with)
+            (NP (NN fear))))))
+    (. .)))
+
+(ROOT
+  (S
+    (NP (DT The) (NN lion))
+    (VP
+      (VP (VBD jumped)
+        (PP (IN on)
+          (NP (PRP it))))
+      (CC and)
+      (VP (VBD started)
+        (S
+          (VP (TO to)
+            (VP (VB kill)
+              (NP (PRP it)))))))
+    (. .)))
+
+(ROOT
+  (S
+    (NP (DT The) (NN mouse))
+    (VP (VBD requested)
+      (NP (DT the) (NN lion)
+        (S
+          (VP (TO to)
+            (VP (VB forgive)
+              (NP (PRP it)))))))
+    (. .)))
+
+(ROOT
+  (S
+    (NP (DT The) (NN lion))
+    (VP
+      (VP (VBD felt)
+        (NP (NN pity)))
+      (CC and)
+      (VP (VBD left)
+        (NP (PRP it))))
+    (. .)))
+
+(ROOT
+  (S
+    (NP (DT The) (NN mouse))
+    (VP (VBD ran)
+      (PRT (RP away)))
+    (. .)))
+
+(ROOT
+  (S
+    (PP (IN On)
+      (NP (DT another) (NN day)))
+    (, ,)
+    (NP (DT the) (NN lion))
+    (VP (VBD was)
+      (VP (VBN caught)
+        (PP (IN in)
+          (NP (DT a) (NN net)))
+        (PP (IN by)
+          (NP (DT a) (NN hunter)))))
+    (. .)))
+
+(ROOT
+  (S
+    (NP (DT The) (NN mouse))
+    (VP
+      (VP (VBD came)
+        (ADVP (RB there)))
+      (CC and)
+      (VP (VBD cut)
+        (NP (DT the) (NN net))))
+    (. .)))
+
+(ROOT
+  (S
+    (ADVP (RB Thus))
+    (NP (PRP it))
+    (VP (VBD escaped))
+    (. .)))
+
+(ROOT
+  (S
+    (S
+      (NP (EX There))
+      (ADVP (RB after)))
+    (, ,)
+    (NP
+      (NP (DT the) (NN mouse))
+      (CC and)
+      (NP (DT the) (NN lion)))
+    (VP (VBD became)
+      (NP (NNS friends)))
+    (. .)))
+
+(ROOT
+  (S
+    (NP (PRP They))
+    (VP (VBD lived)
+      (ADVP (RB happily))
+      (PP (IN in)
+        (NP
+          (NP (DT the) (NN forest))
+          (ADVP (RB afterwards)))))
+    (. .)))
+	
+Universal dependencies
+	
+advmod(lived-6, Once-1)
+case(time-4, upon-2)
+det(time-4, a-3)
+nmod(Once-1, time-4)
+expl(lived-6, there-5)
+root(ROOT-0, lived-6)
+det(lion-8, a-7)
+dobj(lived-6, lion-8)
+case(forest-11, in-9)
+det(forest-11, a-10)
+nmod(lived-6, forest-11)
+
+nummod(day-2, One-1)
+nmod(sleeping-10, day-2)
+case(day-2, after-3)
+det(meal-6, a-4)
+amod(meal-6, heavy-5)
+dep(day-2, meal-6)
+nsubj(sleeping-10, It-8)
+aux(sleeping-10, was-9)
+root(ROOT-0, sleeping-10)
+case(tree-13, under-11)
+det(tree-13, a-12)
+nmod(sleeping-10, tree-13)
+
+case(while-3, After-1)
+det(while-3, a-2)
+nmod(came-6, while-3)
+expl(came-6, there-5)
+root(ROOT-0, came-6)
+det(mouse-8, a-7)
+dobj(came-6, mouse-8)
+cc(came-6, and-9)
+nsubj(started-11, it-10)
+conj(came-6, started-11)
+mark(play-13, to-12)
+xcomp(started-11, play-13)
+case(lion-16, on-14)
+det(lion-16, the-15)
+nmod(play-13, lion-16)
+
+advmod(got-4, Suddenly-1)
+det(lion-3, the-2)
+nsubj(got-4, lion-3)
+root(ROOT-0, got-4)
+compound:prt(got-4, up-5)
+case(anger-7, with-6)
+nmod(got-4, anger-7)
+cc(got-4, and-8)
+conj(got-4, looked-9)
+case(those-11, for-10)
+nmod(looked-9, those-11)
+nsubj(disturbed-13, who-12)
+acl:relcl(those-11, disturbed-13)
+nmod:poss(sleep-16, its-14)
+amod(sleep-16, nice-15)
+dobj(disturbed-13, sleep-16)
+
+advmod(saw-3, Then-1)
+nsubj(saw-3, it-2)
+root(ROOT-0, saw-3)
+det(standing-7, a-4)
+amod(standing-7, small-5)
+compound(standing-7, mouse-6)
+dobj(saw-3, standing-7)
+acl(standing-7, trembling-8)
+case(fear-10, with-9)
+nmod(trembling-8, fear-10)
+
+det(lion-2, The-1)
+nsubj(jumped-3, lion-2)
+root(ROOT-0, jumped-3)
+case(it-5, on-4)
+nmod(jumped-3, it-5)
+cc(jumped-3, and-6)
+conj(jumped-3, started-7)
+mark(kill-9, to-8)
+xcomp(started-7, kill-9)
+dobj(kill-9, it-10)
+
+det(mouse-2, The-1)
+nsubj(requested-3, mouse-2)
+root(ROOT-0, requested-3)
+det(lion-5, the-4)
+dobj(requested-3, lion-5)
+mark(forgive-7, to-6)
+acl(lion-5, forgive-7)
+dobj(forgive-7, it-8)
+
+det(lion-2, The-1)
+nsubj(felt-3, lion-2)
+root(ROOT-0, felt-3)
+dobj(felt-3, pity-4)
+cc(felt-3, and-5)
+conj(felt-3, left-6)
+dobj(left-6, it-7)
+
+det(mouse-2, The-1)
+nsubj(ran-3, mouse-2)
+root(ROOT-0, ran-3)
+compound:prt(ran-3, away-4)
+
+case(day-3, On-1)
+det(day-3, another-2)
+nmod(caught-8, day-3)
+det(lion-6, the-5)
+nsubjpass(caught-8, lion-6)
+auxpass(caught-8, was-7)
+root(ROOT-0, caught-8)
+case(net-11, in-9)
+det(net-11, a-10)
+nmod(caught-8, net-11)
+case(hunter-14, by-12)
+det(hunter-14, a-13)
+nmod(caught-8, hunter-14)
+
+det(mouse-2, The-1)
+nsubj(came-3, mouse-2)
+root(ROOT-0, came-3)
+advmod(came-3, there-4)
+cc(came-3, and-5)
+conj(came-3, cut-6)
+det(net-8, the-7)
+dobj(cut-6, net-8)
+
+advmod(escaped-3, Thus-1)
+nsubj(escaped-3, it-2)
+root(ROOT-0, escaped-3)
+
+ccomp(became-9, There-1)
+advmod(There-1, after-2)
+det(mouse-5, the-4)
+nsubj(became-9, mouse-5)
+cc(mouse-5, and-6)
+det(lion-8, the-7)
+conj(mouse-5, lion-8)
+root(ROOT-0, became-9)
+xcomp(became-9, friends-10)
+
+nsubj(lived-2, They-1)
+root(ROOT-0, lived-2)
+advmod(lived-2, happily-3)
+case(forest-6, in-4)
+det(forest-6, the-5)
+nmod(lived-2, forest-6)
+advmod(forest-6, afterwards-7)
+Universal dependencies, enhanced
+advmod(lived-6, Once-1)
+case(time-4, upon-2)
+det(time-4, a-3)
+nmod:upon(Once-1, time-4)
+expl(lived-6, there-5)
+root(ROOT-0, lived-6)
+det(lion-8, a-7)
+dobj(lived-6, lion-8)
+case(forest-11, in-9)
+det(forest-11, a-10)
+nmod:in(lived-6, forest-11)
+
+nummod(day-2, One-1)
+nmod:after(sleeping-10, day-2)
+case(day-2, after-3)
+det(meal-6, a-4)
+amod(meal-6, heavy-5)
+dep(day-2, meal-6)
+nsubj(sleeping-10, It-8)
+aux(sleeping-10, was-9)
+root(ROOT-0, sleeping-10)
+case(tree-13, under-11)
+det(tree-13, a-12)
+nmod:under(sleeping-10, tree-13)
+
+case(while-3, After-1)
+det(while-3, a-2)
+nmod:after(came-6, while-3)
+expl(came-6, there-5)
+root(ROOT-0, came-6)
+det(mouse-8, a-7)
+dobj(came-6, mouse-8)
+cc(came-6, and-9)
+nsubj(started-11, it-10)
+nsubj:xsubj(play-13, it-10)
+conj:and(came-6, started-11)
+mark(play-13, to-12)
+xcomp(started-11, play-13)
+case(lion-16, on-14)
+det(lion-16, the-15)
+nmod:on(play-13, lion-16)
+
+advmod(got-4, Suddenly-1)
+det(lion-3, the-2)
+nsubj(got-4, lion-3)
+nsubj(looked-9, lion-3)
+root(ROOT-0, got-4)
+compound:prt(got-4, up-5)
+case(anger-7, with-6)
+nmod:with(got-4, anger-7)
+cc(got-4, and-8)
+conj:and(got-4, looked-9)
+case(those-11, for-10)
+nmod:for(looked-9, those-11)
+nsubj(disturbed-13, those-11)
+ref(those-11, who-12)
+acl:relcl(those-11, disturbed-13)
+nmod:poss(sleep-16, its-14)
+amod(sleep-16, nice-15)
+dobj(disturbed-13, sleep-16)
+
+advmod(saw-3, Then-1)
+nsubj(saw-3, it-2)
+root(ROOT-0, saw-3)
+det(standing-7, a-4)
+amod(standing-7, small-5)
+compound(standing-7, mouse-6)
+dobj(saw-3, standing-7)
+acl(standing-7, trembling-8)
+case(fear-10, with-9)
+nmod:with(trembling-8, fear-10)
+
+det(lion-2, The-1)
+nsubj(jumped-3, lion-2)
+nsubj(started-7, lion-2)
+nsubj:xsubj(kill-9, lion-2)
+root(ROOT-0, jumped-3)
+case(it-5, on-4)
+nmod:on(jumped-3, it-5)
+cc(jumped-3, and-6)
+conj:and(jumped-3, started-7)
+mark(kill-9, to-8)
+xcomp(started-7, kill-9)
+dobj(kill-9, it-10)
+
+det(mouse-2, The-1)
+nsubj(requested-3, mouse-2)
+root(ROOT-0, requested-3)
+det(lion-5, the-4)
+dobj(requested-3, lion-5)
+mark(forgive-7, to-6)
+acl(lion-5, forgive-7)
+dobj(forgive-7, it-8)
+
+det(lion-2, The-1)
+nsubj(felt-3, lion-2)
+nsubj(left-6, lion-2)
+root(ROOT-0, felt-3)
+dobj(felt-3, pity-4)
+cc(felt-3, and-5)
+conj:and(felt-3, left-6)
+dobj(left-6, it-7)
+
+det(mouse-2, The-1)
+nsubj(ran-3, mouse-2)
+root(ROOT-0, ran-3)
+compound:prt(ran-3, away-4)
+
+case(day-3, On-1)
+det(day-3, another-2)
+nmod:on(caught-8, day-3)
+det(lion-6, the-5)
+nsubjpass(caught-8, lion-6)
+auxpass(caught-8, was-7)
+root(ROOT-0, caught-8)
+case(net-11, in-9)
+det(net-11, a-10)
+nmod:in(caught-8, net-11)
+case(hunter-14, by-12)
+det(hunter-14, a-13)
+nmod:by(caught-8, hunter-14)
+
+det(mouse-2, The-1)
+nsubj(came-3, mouse-2)
+nsubj(cut-6, mouse-2)
+root(ROOT-0, came-3)
+advmod(came-3, there-4)
+cc(came-3, and-5)
+conj:and(came-3, cut-6)
+det(net-8, the-7)
+dobj(cut-6, net-8)
+
+advmod(escaped-3, Thus-1)
+nsubj(escaped-3, it-2)
+root(ROOT-0, escaped-3)
+
+ccomp(became-9, There-1)
+advmod(There-1, after-2)
+det(mouse-5, the-4)
+nsubj(became-9, mouse-5)
+cc(mouse-5, and-6)
+det(lion-8, the-7)
+conj:and(mouse-5, lion-8)
+nsubj(became-9, lion-8)
+root(ROOT-0, became-9)
+xcomp(became-9, friends-10)
+
+nsubj(lived-2, They-1)
+root(ROOT-0, lived-2)
+advmod(lived-2, happily-3)
+case(forest-6, in-4)
+det(forest-6, the-5)
+nmod:in(lived-2, forest-6)
+advmod(forest-6, afterwards-7)
+ 
