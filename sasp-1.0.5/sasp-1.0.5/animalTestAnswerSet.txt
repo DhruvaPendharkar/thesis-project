@@ -1,0 +1,31 @@
+{ 
+	-live(rat,forest), 
+	-live(snake,forest), 
+	animal(lion), 
+	animal(monkey), 
+	animal(rat), 
+	animal(snake), 
+	
+	live(lion,forest), 
+	live(monkey,forest), 
+	live(rat,apartment), 
+	live(snake,zoo), 
+	
+	not -live(Var122,forest) ( Var122 \= lion, Var122 \= monkey, Var122 \= rat, Var122 \= snake ), 
+	not -live(Var28,Var29) ( Var29 \= forest ), 
+	not -live(lion,Var144) ( Var144 \= forest ), 
+	not -live(lion,forest), 
+	not -live(monkey,Var203) ( Var203 \= forest ), 
+	not -live(monkey,forest), 
+	not -live(rat,Var260) ( Var260 \= forest ), 
+	not -live(snake,Var297) ( Var297 \= forest ), 
+	not animal(Var115) ( Var115 \= lion, Var115 \= monkey, Var115 \= rat, Var115 \= snake ), 
+	not live(Var117,forest) ( Var117 \= lion, Var117 \= monkey, Var117 \= rat, Var117 \= snake ), 
+	not live(Var380,Var381) ( Var380 \= lion, Var380 \= monkey, Var380 \= rat, Var380 \= snake, Var381 \= forest ), 
+	not live(Var75,Var76) ( Var75 \= monkey, Var75 \= rat, Var75 \= snake, Var76 \= forest ), 
+	not live(lion,Var176) ( Var176 \= forest ), not live(monkey,Var235) ( Var235 \= forest ), 
+	not live(rat,Var501) ( Var501 \= apartment, Var501 \= forest ), 
+	not live(rat,forest), 
+	not live(snake,Var555) ( Var555 \= forest, Var555 \= zoo ), 
+	not live(snake,forest) 
+}

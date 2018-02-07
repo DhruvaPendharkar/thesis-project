@@ -1,0 +1,26 @@
+Q1. When did Nintendo tell about the termination of its smartphone app "Miitomo"?
+- ?
+
+Q2. What is nintendos smartphone app called?
+- company(nintendo),_is(smartphone_app, X).
+
+Q3. Who would terminate "Miitomo"?
+- event(I1, terminate, X, miitomo).
+
+Q4. What gained attention in the smartphone business?
+- event(I1, gain, X, business),event(I1, gain, X, attention),_adj(business, smartphone).
+
+Q5. What failed to attract players?
+- event(I1, fail, X, null),_relation(I1, I2, _clcomplement),event(I2, attract, X, player).
+
+Q6. Why did nintendo terminate "Miitomo"?
+- ?
+
+Q7. Where did miitomo gain attention?
+- ?
+
+Q8. What is miitomo?
+- ?
+
+Q9. What did miitomo fail to do?
+- event(I2, fail, miitomo, null),_relation(I2, I3, _clcomplement),event(I3, DI3, miitomo, X).

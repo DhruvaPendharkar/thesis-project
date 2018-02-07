@@ -1,0 +1,3 @@
+#Sample program
+p(abc) :- not q(abc).
+q(abc) :- not p(abc).
