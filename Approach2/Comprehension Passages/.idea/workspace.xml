@@ -39,8 +39,6 @@
               <folding>
                 <element signature="method#BodyToString#0;class#Rule#0" expanded="false" />
                 <element signature="method#equals#0;class#Rule#0" expanded="false" />
-                <element signature="e#1671#1672#0" expanded="false" />
-                <element signature="e#1695#1696#0" expanded="false" />
                 <element signature="method#compareTo#0;class#Rule#0" expanded="false" />
                 <element signature="method#IsFact#0;class#Rule#0" expanded="false" />
               </folding>
@@ -48,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NintendoStoryTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="NintendoStoryTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/NintendoStoryTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="79">
-              <caret line="68" column="81" lean-forward="false" selection-start-line="68" selection-start-column="81" selection-end-line="68" selection-end-column="81" />
+            <state relative-caret-position="94">
+              <caret line="29" column="9" lean-forward="false" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#TestSentenceOneQuestion3#0;class#NintendoStoryTest#0" expanded="false" />
@@ -80,9 +78,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="969">
               <caret line="60" column="1" lean-forward="false" selection-start-line="60" selection-start-column="1" selection-end-line="60" selection-end-column="1" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -90,7 +86,7 @@
       <file leaf-file-name="QuestionTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/QuestionTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
+            <state relative-caret-position="408">
               <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding />
             </state>
@@ -102,9 +98,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="969">
               <caret line="63" column="41" lean-forward="false" selection-start-line="63" selection-start-column="41" selection-end-line="63" selection-end-column="41" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -114,9 +108,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1156">
               <caret line="74" column="31" lean-forward="false" selection-start-line="74" selection-start-column="31" selection-end-line="74" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -124,7 +116,7 @@
       <file leaf-file-name="Word.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Word.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
+            <state relative-caret-position="3179">
               <caret line="212" column="0" lean-forward="false" selection-start-line="212" selection-start-column="0" selection-end-line="212" selection-end-column="0" />
               <folding>
                 <element signature="method#AddDependency#0;class#Word#0" expanded="false" />
@@ -155,13 +147,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Sentence.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Sentence.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Sentence.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+            <state relative-caret-position="94">
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding>
-                <element signature="method#SetupLexicalizedParser#0;class#Sentence#0" expanded="false" />
                 <element signature="method#SanitizeString#0;class#Sentence#0" expanded="false" />
                 <element signature="method#GetDependencies#0;class#Sentence#0" expanded="false" />
                 <element signature="method#GenerateSemanticTree#0;class#Sentence#0" expanded="false" />
@@ -224,10 +215,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="-7" />
+    <option name="y" value="2" />
+    <option name="width" value="1378" />
+    <option name="height" value="733" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -286,14 +277,14 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../NLP/NLP Project/ProjectImplementation" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Stanford Dependencies/stanford-english-corenlp-2017-06-09-models.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -663,13 +654,13 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_Comprehension_Passages - 2018.02.06 at 20h 16m 04s.xml">
-      <configuration name="All in Comprehension Passages" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_Comprehension_Passages - 2018.02.06 at 20h 17m 32s.xml">
-      <configuration name="All in Comprehension Passages" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="All_in_Comprehension_Passages - 2018.02.06 at 20h 18m 12s.xml">
+      <configuration name="All in Comprehension Passages" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_Comprehension_Passages - 2018.02.09 at 02h 04m 29s.xml">
+      <configuration name="All in Comprehension Passages" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_Comprehension_Passages - 2018.02.09 at 02h 06m 53s.xml">
       <configuration name="All in Comprehension Passages" configurationId="JUnit" />
     </history-entry>
     <history-entry file="NintendoStoryTest_TestSentenceEleven - 2018.02.06 at 20h 02m 02s.xml">
@@ -695,25 +686,24 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
+    <frame x="-7" y="2" width="1378" height="733" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32242227" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32166666" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44026187" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15355521" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28517398" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28983307" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -725,6 +715,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15355521" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32833335" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -807,7 +798,6 @@
         <state relative-caret-position="238">
           <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
           <folding>
-            <element signature="method#SetupLexicalizedParser#0;class#Sentence#0" expanded="false" />
             <element signature="method#SanitizeString#0;class#Sentence#0" expanded="false" />
             <element signature="method#GetDependencies#0;class#Sentence#0" expanded="false" />
             <element signature="method#GenerateSemanticTree#0;class#Sentence#0" expanded="false" />
@@ -873,8 +863,6 @@
           <folding>
             <element signature="method#BodyToString#0;class#Rule#0" expanded="false" />
             <element signature="method#equals#0;class#Rule#0" expanded="false" />
-            <element signature="e#1671#1672#0" expanded="false" />
-            <element signature="e#1695#1696#0" expanded="false" />
             <element signature="method#compareTo#0;class#Rule#0" expanded="false" />
             <element signature="method#IsFact#0;class#Rule#0" expanded="false" />
           </folding>
@@ -894,7 +882,6 @@
         <state relative-caret-position="425">
           <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
           <folding>
-            <element signature="method#SetupLexicalizedParser#0;class#Sentence#0" expanded="false" />
             <element signature="method#SanitizeString#0;class#Sentence#0" expanded="false" />
             <element signature="method#GetDependencies#0;class#Sentence#0" expanded="false" />
             <element signature="method#GenerateSemanticTree#0;class#Sentence#0" expanded="false" />
@@ -960,8 +947,6 @@
           <folding>
             <element signature="method#BodyToString#0;class#Rule#0" expanded="false" />
             <element signature="method#equals#0;class#Rule#0" expanded="false" />
-            <element signature="e#1671#1672#0" expanded="false" />
-            <element signature="e#1695#1696#0" expanded="false" />
             <element signature="method#compareTo#0;class#Rule#0" expanded="false" />
             <element signature="method#IsFact#0;class#Rule#0" expanded="false" />
           </folding>
@@ -981,7 +966,6 @@
         <state relative-caret-position="1632">
           <caret line="107" column="22" lean-forward="false" selection-start-line="107" selection-start-column="22" selection-end-line="107" selection-end-column="22" />
           <folding>
-            <element signature="method#SetupLexicalizedParser#0;class#Sentence#0" expanded="false" />
             <element signature="method#SanitizeString#0;class#Sentence#0" expanded="false" />
             <element signature="method#GetDependencies#0;class#Sentence#0" expanded="false" />
             <element signature="method#GenerateSemanticTree#0;class#Sentence#0" expanded="false" />
@@ -1017,8 +1001,6 @@
           <folding>
             <element signature="method#BodyToString#0;class#Rule#0" expanded="false" />
             <element signature="method#equals#0;class#Rule#0" expanded="false" />
-            <element signature="e#1671#1672#0" expanded="false" />
-            <element signature="e#1695#1696#0" expanded="false" />
             <element signature="method#compareTo#0;class#Rule#0" expanded="false" />
             <element signature="method#IsFact#0;class#Rule#0" expanded="false" />
           </folding>
@@ -1049,7 +1031,6 @@
         <state relative-caret-position="2040">
           <caret line="120" column="64" lean-forward="false" selection-start-line="120" selection-start-column="64" selection-end-line="120" selection-end-column="64" />
           <folding>
-            <element signature="method#SetupLexicalizedParser#0;class#Sentence#0" expanded="false" />
             <element signature="method#SanitizeString#0;class#Sentence#0" expanded="false" />
             <element signature="method#GetDependencies#0;class#Sentence#0" expanded="false" />
             <element signature="method#GenerateSemanticTree#0;class#Sentence#0" expanded="false" />
@@ -1214,9 +1195,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="969">
           <caret line="63" column="41" lean-forward="false" selection-start-line="63" selection-start-column="41" selection-end-line="63" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1224,9 +1203,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="969">
           <caret line="60" column="1" lean-forward="false" selection-start-line="60" selection-start-column="1" selection-end-line="60" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1234,9 +1211,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1156">
           <caret line="74" column="31" lean-forward="false" selection-start-line="74" selection-start-column="31" selection-end-line="74" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1247,8 +1222,6 @@
           <folding>
             <element signature="method#BodyToString#0;class#Rule#0" expanded="false" />
             <element signature="method#equals#0;class#Rule#0" expanded="false" />
-            <element signature="e#1671#1672#0" expanded="false" />
-            <element signature="e#1695#1696#0" expanded="false" />
             <element signature="method#compareTo#0;class#Rule#0" expanded="false" />
             <element signature="method#IsFact#0;class#Rule#0" expanded="false" />
           </folding>
@@ -1267,7 +1240,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/QuestionTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
+        <state relative-caret-position="408">
           <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding />
         </state>
@@ -1275,7 +1248,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Word.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
+        <state relative-caret-position="3179">
           <caret line="212" column="0" lean-forward="false" selection-start-line="212" selection-start-column="0" selection-end-line="212" selection-end-column="0" />
           <folding>
             <element signature="method#AddDependency#0;class#Word#0" expanded="false" />
@@ -1284,30 +1257,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sentence.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding>
-            <element signature="method#SetupLexicalizedParser#0;class#Sentence#0" expanded="false" />
-            <element signature="method#SanitizeString#0;class#Sentence#0" expanded="false" />
-            <element signature="method#GetDependencies#0;class#Sentence#0" expanded="false" />
-            <element signature="method#GenerateSemanticTree#0;class#Sentence#0" expanded="false" />
-            <element signature="method#DependenciesToString#0;class#Sentence#0" expanded="false" />
-            <element signature="method#IsQuestion#0;class#Sentence#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/NintendoStoryTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="68" column="81" lean-forward="false" selection-start-line="68" selection-start-column="81" selection-end-line="68" selection-end-column="81" />
+        <state relative-caret-position="94">
+          <caret line="29" column="9" lean-forward="false" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#TestSentenceOneQuestion3#0;class#NintendoStoryTest#0" expanded="false" />
             <element signature="method#TestSentenceOneQuestion4#0;class#NintendoStoryTest#0" expanded="false" />
             <element signature="method#TestSentenceOneQuestion9#0;class#NintendoStoryTest#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sentence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="94">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <element signature="method#SanitizeString#0;class#Sentence#0" expanded="false" />
+            <element signature="method#GetDependencies#0;class#Sentence#0" expanded="false" />
+            <element signature="method#GenerateSemanticTree#0;class#Sentence#0" expanded="false" />
+            <element signature="method#DependenciesToString#0;class#Sentence#0" expanded="false" />
+            <element signature="method#IsQuestion#0;class#Sentence#0" expanded="false" />
           </folding>
         </state>
       </provider>
