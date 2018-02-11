@@ -142,35 +142,56 @@ public class NintendoStoryTest {
 
     @Test
     void TestSentenceTwoQuestion1() {
-        String content = "What decision was made?";
+        String content = "Who told about the decision?";
         String[] queries = new String[]{"?"};
         Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
     }
 
     @Test
     void TestSentenceTwoQuestion2() {
-        String content = "What decision was made by Nintendo?";
+        String content = "What was the decision?";
         String[] queries = new String[]{"?"};
         Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
     }
 
     @Test
     void TestSentenceTwoQuestion3() {
-        String content = "Nintendo made what decision?";
+        String content = "What decision was made?";
         String[] queries = new String[]{"?"};
         Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
     }
 
     @Test
     void TestSentenceTwoQuestion4() {
-        String content = "What is Nintendo streamlining?";
+        String content = "What decision was made by Nintendo?";
         String[] queries = new String[]{""};
         Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
     }
 
     @Test
     void TestSentenceTwoQuestion5() {
-        String content = "Who told about the decision?";
+        String content = "What decision did Nintendo make?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceTwoQuestion6() {
+        String content = "Where are Nintendo resources being streamlined?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceTwoQuestion7() {
+        String content = "What did the spokesman say?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceTwoQuestion8() {
+        String content = "What did the nintendo_spokesman say?";
         String[] queries = new String[]{"event(I1, tell, X, decision)"};
         Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
     }
@@ -189,6 +210,20 @@ public class NintendoStoryTest {
         Assert.assertEquals(2, ruleString.size());
         Assert.assertTrue(ruleString.contains("event(3, decline, number, null)"));
         Assert.assertTrue(ruleString.contains("_adj(user, active)"));
+    }
+
+    @Test
+    void TestSentenceThreeQuestion1() {
+        String content = "What has been declining?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceThreeQuestion2() {
+        String content = "Whose users have been declining?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
     }
 
     @Test
@@ -220,6 +255,76 @@ public class NintendoStoryTest {
     }
 
     @Test
+    void TestSentenceFourQuestion1() {
+        String content = "What did Nintendo introduce in March 2016?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceFourQuestion2() {
+        String content = "When did Nintendo introduce Miitomo?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceFourQuestion3() {
+        String content = "What did Nintendo do in March 2016?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceFourQuestion4() {
+        String content = "What does Miitomo feature?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceFourQuestion5() {
+        String content = "What is Mii?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceFourQuestion6() {
+        String content = "What is the avatar_system called?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceFourQuestion7() {
+        String content = "What does Mittomo do?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceFourQuestion8() {
+        String content = "How does Miitomo help users communicate?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceFourQuestion9() {
+        String content = "What information does Miitomo let users exchange?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceFourQuestion10() {
+        String content = "How do users communicate?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
         // Sentence : Though the company described it as a game app, analysts and players viewed it more as a
         // social-networking service and it failed to gain users from larger rivals such as Facebook Inc
     void TestSentenceFive() {
@@ -245,6 +350,55 @@ public class NintendoStoryTest {
     }
 
     @Test
+    void TestSentenceFiveQuestion1() {
+        String content = "What did the company describe Miitomo as?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceFiveQuestion2() {
+        String content = "What did the company describe a game_app as?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceFiveQuestion3() {
+        String content = "Who viewed Miitomo as a service?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceFiveQuestion4() {
+        String content = "Who viewed Miitomo as a social-networking service?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceFiveQuestion5() {
+        String content = "What failed to gain users from larger rivals?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceFiveQuestion6() {
+        String content = "What did Miitomo fail to do?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceFiveQuestion7() {
+        String content = "Who are Miitomos rivals?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
         // Sentence : Kyoto-based Nintendo said the free-to-play app’s service would end on May 9.
     void TestSentenceSix() {
         String content = "Kyoto-based Nintendo said the free-to-play app_service would end on May 9.";
@@ -263,6 +417,41 @@ public class NintendoStoryTest {
         Assert.assertTrue(ruleString.contains("_adj(app_service, free-to-play)"));
         Assert.assertTrue(ruleString.contains("company(nintendo)"));
         Assert.assertTrue(ruleString.contains("event(1, say, nintendo, null)"));
+    }
+
+    @Test
+    void TestSentenceSixQuestion1() {
+        String content = "What did Nintendo say?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceSixQuestion2() {
+        String content = "Where is nintendo based?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceSixQuestion3() {
+        String content = "When would the free-to-play app_service end?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceSixQuestion4() {
+        String content = "What would end on May 9?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceSixQuestion5() {
+        String content = "What would end in May?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
     }
 
     @Test
@@ -289,6 +478,55 @@ public class NintendoStoryTest {
     }
 
     @Test
+    void TestSentenceSevenQuestion1() {
+        String content = "What was a failure?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceSevenQuestion2() {
+        String content = "What was a failure since its early stage?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceSevenQuestion3() {
+        String content = "What did Hideki Yasuda say?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceSevenQuestion4() {
+        String content = "What should Nintendo shut down?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceSevenQuestion5() {
+        String content = "Who is an analyst?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceSevenQuestion6() {
+        String content = "Who is an analyst at Ace Research Institute?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceSevenQuestion7() {
+        String content = "What is Ace Research Institute?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
         // Sentence : Hideki Yasuda said, “Without a large number of active users who would use the app daily,
         // this kind of service is not attractive.”.
     void TestSentenceEight() {
@@ -307,6 +545,13 @@ public class NintendoStoryTest {
         Assert.assertTrue(ruleString.contains("_adj(number, large)"));
         Assert.assertTrue(ruleString.contains("event(2, use, number, app)"));
         Assert.assertTrue(ruleString.contains("_adj(user, active)"));
+    }
+
+    @Test
+    void TestSentenceEightQuestion1() {
+        String content = "What did Hideki Yasuda say?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
     }
 
     @Test
@@ -334,9 +579,44 @@ public class NintendoStoryTest {
     }
 
     @Test
+    void TestSentenceNineQuestion1() {
+        String content = "What has Nintendo introduced?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceNineQuestion2() {
+        String content = "Who introduced Super_Mario_Run?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceNineQuestion3() {
+        String content = "Who introduced Fire_Emblem_Heroes?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceNineQuestion4() {
+        String content = "Who introduced Animal_Crossing_Pocket_Camp?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceNineQuestion5() {
+        String content = "What are the game_apps?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
         // Sentence : Those games have had more success than “Miitomo” but the smartphone business has yet
         // to become a major revenue generator for Nintendo.
-    void TestSentenceEleven() {
+    void TestSentenceTen() {
         String content = "Super_Mario_Run, Fire_Emblem_Heroes and Animal_Crossing_Pocket_Camp have had more success than Miitomo, " +
                 "but the smartphone business has yet to become a major revenue_generator for Nintendo.";
         Sentence sentence = Sentence.ParseSentence(content);
@@ -363,9 +643,30 @@ public class NintendoStoryTest {
     }
 
     @Test
+    void TestSentenceTenQuestion1() {
+        String content = "Who has had more success than Miitomo?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceTenQuestion2() {
+        String content = "Super_Mario_Run has had more success than what?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceTenQuestion3() {
+        String content = "What has yet to become a revenue_generator?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
         // Sentence : Company executives say they view smartphone games as a way of attracting customers
         // who may later try out Nintendo machines such as the Switch.
-    void TestSentenceTwelve() {
+    void TestSentenceEleven() {
         String content = "Company executives say that, the executives view smartphone games as a way of attracting customers, " +
                 "who may later try out Nintendo machines such as the Switch.";
         Sentence sentence = Sentence.ParseSentence(content);
@@ -385,5 +686,33 @@ public class NintendoStoryTest {
         Assert.assertTrue(ruleString.contains("event(4, try, customer, machine)"));
         Assert.assertTrue(ruleString.contains("event(2, view, executive, game)"));
         Assert.assertTrue(ruleString.contains("company(nintendo)"));
+    }
+
+    @Test
+    void TestSentenceElevenQuestion1() {
+        String content = "What do the company executives say?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceElevenQuestion2() {
+        String content = "What do the executives view as a way of attracting customers?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceElevenQuestion3() {
+        String content = "Who may later try out Nintendo machines?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
+    }
+
+    @Test
+    void TestSentenceElevenQuestion4() {
+        String content = "What is Switch?";
+        String[] queries = new String[]{"event(I1, tell, X, decision)"};
+        Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
     }
 }

@@ -8,8 +8,6 @@ import java.util.List;
  */
 public class Word {
 
-    public static final Word DESCRIPTION_PROPERTY = new Word(0, "_description", "_description", "FW", "", false);
-
     private String word;
     private int wordIndex;
     private String POSTag;
@@ -145,66 +143,6 @@ public class Word {
 
     private boolean IsNoun() {
         return this.POSTag.startsWith("NN");
-    }
-
-    private List<Rule> GenerateQuestionRulesForVerb() {
-        List<Rule> rules = new ArrayList<>();
-        Word eventWord = new Word("event");
-        List<Word> subjects = this.GetSubjects();
-        List<Word> modifiers = this.GetModifiers();
-
-        for (Word subject : subjects) {
-            for (Word modifier : modifiers) {
-                List<Literal> bodyList = new ArrayList<>();
-                bodyList.add(new Literal(new Word(String.valueOf(this.id))));
-                bodyList.add(new Literal(new Word(this.lemma)));
-                bodyList.add(new Literal(new Word(subject.lemma)));
-                bodyList.add(new Literal(new Word(modifier.lemma)));
-
-                Literal head = new Literal(eventWord, bodyList);
-                rules.add(new Rule(head, null, false));
-            }
-        }
-
-        if (subjects.size() == 0) {
-            for (Word modifier : modifiers) {
-                List<Literal> bodyList = new ArrayList<>();
-                bodyList.add(new Literal(new Word(String.valueOf(this.id))));
-                bodyList.add(new Literal(new Word(this.lemma)));
-                bodyList.add(new Literal(new Word("null")));
-                bodyList.add(new Literal(new Word(modifier.lemma)));
-
-                Literal head = new Literal(eventWord, bodyList);
-                rules.add(new Rule(head, null, false));
-            }
-        }
-
-        if (modifiers.size() == 0) {
-            for (Word subject : subjects) {
-                List<Literal> bodyList = new ArrayList<>();
-                bodyList.add(new Literal(new Word(String.valueOf(this.id))));
-                bodyList.add(new Literal(new Word(this.lemma)));
-                bodyList.add(new Literal(new Word(subject.lemma)));
-                bodyList.add(new Literal(new Word("null")));
-
-                Literal head = new Literal(eventWord, bodyList);
-                rules.add(new Rule(head, null, false));
-            }
-        }
-
-        List<Word> clausalComplements = this.GetClausalComplements();
-        Word relationWord = new Word("_relation");
-        for (Word clause : clausalComplements) {
-            List<Literal> bodyList = new ArrayList<>();
-            bodyList.add(new Literal(new Word(String.valueOf(this.id))));
-            bodyList.add(new Literal(new Word(String.valueOf(clause.id))));
-            bodyList.add(new Literal(new Word("_clcomplement")));
-
-            Literal head = new Literal(relationWord, bodyList);
-            rules.add(new Rule(head, null, false));
-        }
-
-        return rules;
     }
 
     private List<Rule> GenerateRulesForVerb(boolean isQuestion) {

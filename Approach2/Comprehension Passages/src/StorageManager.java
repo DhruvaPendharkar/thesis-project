@@ -10,6 +10,12 @@ public class StorageManager {
     private String outputFilePath;
     private String storyFilePath;
 
+    public StorageManager(){
+        this.ontologyBasePath = "";
+        this.storyFilePath = "";
+        this.outputFilePath = "";
+    }
+
     public StorageManager(String outputFilePath, String ontologyBasePath, String storyFilePath){
         this.outputFilePath = outputFilePath;
         this.ontologyBasePath = ontologyBasePath + "\\" + ONTOLOGY_FOLDER;

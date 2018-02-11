@@ -17,9 +17,6 @@ public class Literal {
         this.predicate = predicateString;
         this.terms = terms;
         this.isAtom = false;
-        if(this.predicate.equals("be")){
-            this.predicate = Word.DESCRIPTION_PROPERTY.getLemma();
-        }
     }
 
     public Literal(Word atom){

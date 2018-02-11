@@ -9,32 +9,35 @@ import java.util.*;
 import java.util.List;
 
 public class WordNet {
-
-    public static final String RULES_FILE = "__rules";
     public static final String CONCEPT_SENSE_FORMAT = "%s@%s";
     private static IDictionary dictionary;
     private static HashMap<String, Concept> conceptMap = new HashMap<>();
     private static HashMap<String, List<Concept>> baseConceptMap = new HashMap<>();
 
     public static void BuildOntology(Set<String> nouns) throws IOException {
-        WordNet.dictionary = TestDictionary();
-        for(String noun : nouns) {
-            GenerateHypernymOntology(noun);
-        }
-
+        InitializeDictionary();
+        GenerateHypernymOntology(nouns);
         System.out.print(String.format("Ontology Built Successfully : %d words", conceptMap.size()));
     }
 
-    private static IDictionary TestDictionary() throws IOException {
+    public static void GenerateHypernymOntology(Set<String> nouns) {
+        for(String noun : nouns) {
+            GenerateHypernymOntology(noun);
+        }
+    }
+
+    public static void InitializeDictionary() throws IOException {
+        conceptMap = new HashMap<>();
+        baseConceptMap = new HashMap<>();
         String wnhome = System.getenv("WNHOME");
         String path = wnhome + File.separator + "dict";
         URL url = new URL("file", null, path);
         IDictionary dictionary = new Dictionary(url);
         dictionary.open();
-        return dictionary;
+        WordNet.dictionary = dictionary;
     }
 
-    private static void GenerateHypernymOntology(String word){
+    public static void GenerateHypernymOntology(String word){
         IIndexWord idxWord = dictionary.getIndexWord(word, POS.NOUN);
         HashMap<String, List<IWordID>> senseMap = GetSenses(dictionary, idxWord);
         for(String sense : senseMap.keySet()){
@@ -138,81 +141,31 @@ public class WordNet {
 
     public static String GenerateConceptToASPCode(List<Concept> concepts) {
         List<Rule> rules = new ArrayList<>();
-        rules.addAll(ConvertToClassFacts(concepts));
-        rules.addAll(ConvertToSuperClassFacts(concepts));
+        rules.addAll(ConvertToHypernymRules(concepts));
         return GenerateASPCode(rules);
     }
 
-    private static HashSet<Rule> CreateInheritanceRules() {
-        HashSet<Rule> rules = new HashSet<>();
-        Word superclassWord = new Word("superclass");
-        Word isSuperclassWord = new Word("is_superclass");
-        Word xWord = new Word("X");
-        Word kWord = new Word("K");
-        Word yWord = new Word("Y");
-
-        List<Literal> terms = new ArrayList<>();
-        terms.add(new Literal(xWord));
-        terms.add(new Literal(yWord));
-        Literal head = new Literal(superclassWord, terms);
-
-        List<Literal> body = new ArrayList<>();
-        Literal isSuperclass = new Literal(isSuperclassWord, terms);
-        body.add(isSuperclass);
-
-        rules.add(new Rule(head, body, false));
-        body = new ArrayList<>();
-
-        terms = new ArrayList<>();
-        terms.add(new Literal(kWord));
-        terms.add(new Literal(yWord));
-        isSuperclass = new Literal(isSuperclassWord, terms);
-
-        terms = new ArrayList<>();
-        terms.add(new Literal(xWord));
-        terms.add(new Literal(kWord));
-        Literal superclass = new Literal(superclassWord, terms);
-
-        body.add(isSuperclass);
-        body.add(superclass);
-        rules.add(new Rule(head, body, false));
-        return rules;
-    }
-
-    private static HashSet<Rule> ConvertToClassFacts(List<Concept> concepts) {
-        HashSet<Rule> conceptRules = new HashSet<>();
-        Word classWord = new Word("class");
-        for(Concept concept : concepts){
-            List<Literal> terms = new ArrayList<>();
-            Word conceptWord = new Word(1, concept.baseConcept, concept.baseConcept, "NN", "", false);
-            Word senseWord = new Word(1, concept.sense, concept.sense, "NN", "", false);
-            terms.add(new Literal(conceptWord));
-            terms.add(new Literal(senseWord));
-            Literal head = new Literal(classWord, terms);
-            Rule conceptRule = new Rule(head, false);
-            conceptRules.add(conceptRule);
-        }
-
-        return conceptRules;
-    }
-
-    private static HashSet<Rule> ConvertToSuperClassFacts(List<Concept> concepts) {
+    private static HashSet<Rule> ConvertToHypernymRules(List<Concept> concepts) {
         HashSet<Rule> rules = new HashSet<>();
         for(Concept concept : concepts) {
-            Word predicateWord = new Word("is_superclass");
-            Word subclassWord = new Word(1, concept.baseConcept, concept.baseConcept, "NN", "", false);
-            Word senseWord = new Word(1, concept.sense, concept.sense, "NN", "", false);
-
+            Word predicateWord = new Word(concept.baseConcept);
+            Literal objectLiteral = new Literal(new Word("X"));
+            Literal senseLiteral = new Literal(new Word(concept.sense));
+            List<Literal> bodyList = new ArrayList<>();
+            bodyList.add(objectLiteral);
+            bodyList.add(senseLiteral);
+            Literal body = new Literal(predicateWord, bodyList);
+            bodyList = new ArrayList<>();
+            bodyList.add(body);
             for (String sense : concept.hypernymMap.keySet()) {
                 List<Concept> hypernyms = concept.hypernymMap.get(sense);
                 for (Concept hypernym : hypernyms) {
                     List<Literal> terms = new ArrayList<>();
-                    Word superclassWord = new Word(1, hypernym.baseConcept, hypernym.baseConcept, "NN", "", false);
-                    terms.add(new Literal(superclassWord));
-                    terms.add(new Literal(subclassWord));
-                    terms.add(new Literal(senseWord));
-                    Literal head = new Literal(predicateWord, terms);
-                    Rule rule = new Rule(head, false);
+                    Word superclassWord = new Word(hypernym.baseConcept);
+                    terms.add(objectLiteral);
+                    terms.add(new Literal(new Word(sense)));
+                    Literal head = new Literal(superclassWord, terms);
+                    Rule rule = new Rule(head, bodyList, false);
                     rules.add(rule);
                 }
             }
@@ -231,7 +184,7 @@ public class WordNet {
         return builder.toString();
     }
 
-    public static void WriteOntology(StorageManager manager, boolean shouldWriteToFile) throws IOException {
+    public static List<Rule> WriteOntology(StorageManager manager, boolean shouldWriteToFile) throws IOException {
         for(Concept concept: conceptMap.values()){
             List<Concept> conceptList = new ArrayList<>();
             if(baseConceptMap.containsKey(concept.baseConcept)){
@@ -242,23 +195,22 @@ public class WordNet {
             baseConceptMap.put(concept.baseConcept, conceptList);
         }
 
+        List<Rule> rules = new ArrayList<>();
         for(String baseConcept : baseConceptMap.keySet()){
             List<Concept> concepts = baseConceptMap.get(baseConcept);
-            String aspCode = GenerateConceptToASPCode(concepts);
-            manager.WriteConceptToFile(aspCode, baseConcept, null, shouldWriteToFile);
+            if(shouldWriteToFile) {
+                String aspCode = GenerateConceptToASPCode(concepts);
+                manager.WriteConceptToFile(aspCode, baseConcept, null, shouldWriteToFile);
+            }
+            else {
+                rules.addAll(ConvertToHypernymRules(concepts));
+            }
         }
 
-        List<Rule> rules = new ArrayList<>();
-        rules.addAll(CreateInheritanceRules());
-        //rules.addAll(CreateMeronymPartRules(true));
-        //rules.addAll(CreateMeronymSubstanceRules(true));
-        //rules.addAll(CreateMeronymMemberRules(true));
-        //rules.addAll(CreateMeronymBaseRules());
-        String aspCode = GenerateASPCode(rules);
-        manager.WriteConceptToFile(aspCode, RULES_FILE, null, shouldWriteToFile);
+        return rules;
     }
 
-    public static void WriteStoryFacts(StorageManager manager, String aspCode, boolean shouldWriteToFile) throws IOException {
+    public static String WriteStoryFacts(StorageManager manager, String aspCode, boolean shouldWriteToFile) throws IOException {
         ArrayList<String> headers = new ArrayList<>();
         for(String header : baseConceptMap.keySet()){
             header = Concept.GetSanitizedString(header);
@@ -266,7 +218,16 @@ public class WordNet {
             headers.add(relativeHeaderPath);
         }
 
-        headers.add(String.format("%s\\\\%s", StorageManager.ONTOLOGY_FOLDER, RULES_FILE));
-        manager.WriteStoryToFile(aspCode, headers, shouldWriteToFile);
+        if(shouldWriteToFile) {
+            manager.WriteStoryToFile(aspCode, headers, shouldWriteToFile);
+        }
+
+        StringBuilder builder = new StringBuilder();
+        for(String header : headers){
+            builder.append(header + "\n");
+        }
+
+        builder.append(aspCode);
+        return builder.toString();
     }
 }

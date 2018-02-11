@@ -15,12 +15,6 @@ public class Rule implements Comparable<Rule> {
         this.isQuestion = isQuestion;
     }
 
-    public Rule(Literal head, boolean isQuestion){
-        this.head = head;
-        this.body = null;
-        this.isQuestion = isQuestion;
-    }
-
     @Override
     public String toString() {
         if(head == null && body == null) return "";

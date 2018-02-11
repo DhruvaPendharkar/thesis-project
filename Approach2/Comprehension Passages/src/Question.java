@@ -19,14 +19,4 @@ public class Question extends Sentence {
         rules = Rule.AggregateAllRules(rules);
         return rules;
     }
-
-    private List<Word> GetAllVerbs() {
-        List<Word> verbs = new ArrayList<>();
-        for(Word word : this.wordList){
-            if(word.getPOSTag().startsWith("VB")){
-                verbs.add(word);
-            }
-        }
-        return verbs;
-    }
 }
