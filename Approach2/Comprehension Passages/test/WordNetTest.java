@@ -12,19 +12,39 @@ import java.util.List;
  */
 class WordNetTest {
     @Test
-    void TestHypernymOntology() throws IOException {
+    void TestWordSenseDisambiguation() throws IOException {
         HashSet<String> nouns = new HashSet<>();
-        nouns.add("lion");
+        nouns.add("animal");
         StorageManager manager = new StorageManager();
-        WordNet.InitializeDictionary();
-        WordNet.GenerateHypernymOntology(nouns);
+        WordNet.BuildOntology(nouns);
         List<Rule> rules = WordNet.WriteOntology(manager, false);
         HashSet<String> ruleString = new HashSet<>();
         for(Rule rule : rules){
             ruleString.add(rule.toString());
         }
 
-        Assert.assertEquals(19, ruleString.size());
+        Assert.assertEquals(11, ruleString.size());
+        Assert.assertTrue(ruleString.contains("animal(X, noun_Tops) :- animal(X),not abnormal_d_tops(X),not -animal(X, noun_Tops)"));
+        Assert.assertTrue(ruleString.contains("organism(X, noun_Tops) :- organism(X),not abnormal_d_tops(X),not -organism(X, noun_Tops)"));
+        Assert.assertTrue(ruleString.contains("physical_entity(X, noun_Tops) :- physical_entity(X),not abnormal_d_tops(X),not -physical_entity(X, noun_Tops)"));
+        Assert.assertTrue(ruleString.contains("living_thing(X, noun_Tops) :- living_thing(X),not abnormal_d_tops(X),not -living_thing(X, noun_Tops)"));
+        Assert.assertTrue(ruleString.contains("entity(X, noun_Tops) :- entity(X),not abnormal_d_tops(X),not -entity(X, noun_Tops)"));
+
+    }
+
+    @Test
+    void TestHypernymOntology() throws IOException {
+        HashSet<String> nouns = new HashSet<>();
+        nouns.add("lion");
+        StorageManager manager = new StorageManager();
+        WordNet.BuildOntology(nouns);
+        List<Rule> rules = WordNet.WriteOntology(manager, false);
+        HashSet<String> ruleString = new HashSet<>();
+        for(Rule rule : rules){
+            ruleString.add(rule.toString());
+        }
+
+        Assert.assertEquals(39, ruleString.size());
         Assert.assertTrue(ruleString.contains("celebrity(X, noun.person) :- lion(X, noun_person)"));
         Assert.assertTrue(ruleString.contains("big_cat(X, noun.animal) :- lion(X, noun_animal)"));
         Assert.assertTrue(ruleString.contains("person(X, noun.Tops) :- lion(X, noun_person)"));
@@ -60,7 +80,7 @@ class WordNetTest {
             ruleString.add(rule.toString());
         }
 
-        Assert.assertEquals(31, ruleString.size());
+        Assert.assertEquals(63, ruleString.size());
     }
 
     @Test

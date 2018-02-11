@@ -17,7 +17,19 @@ public class WordNet {
     public static void BuildOntology(Set<String> nouns) throws IOException {
         InitializeDictionary();
         GenerateHypernymOntology(nouns);
-        System.out.print(String.format("Ontology Built Successfully : %d words", conceptMap.size()));
+        AggregateConcepts();
+    }
+
+    private static void AggregateConcepts() {
+        for(Concept concept: conceptMap.values()){
+            List<Concept> conceptList = new ArrayList<>();
+            if(baseConceptMap.containsKey(concept.baseConcept)){
+                conceptList = baseConceptMap.get(concept.baseConcept);
+            }
+
+            conceptList.add(concept);
+            baseConceptMap.put(concept.baseConcept, conceptList);
+        }
     }
 
     public static void GenerateHypernymOntology(Set<String> nouns) {
@@ -185,16 +197,6 @@ public class WordNet {
     }
 
     public static List<Rule> WriteOntology(StorageManager manager, boolean shouldWriteToFile) throws IOException {
-        for(Concept concept: conceptMap.values()){
-            List<Concept> conceptList = new ArrayList<>();
-            if(baseConceptMap.containsKey(concept.baseConcept)){
-                conceptList = baseConceptMap.get(concept.baseConcept);
-            }
-
-            conceptList.add(concept);
-            baseConceptMap.put(concept.baseConcept, conceptList);
-        }
-
         List<Rule> rules = new ArrayList<>();
         for(String baseConcept : baseConceptMap.keySet()){
             List<Concept> concepts = baseConceptMap.get(baseConcept);
@@ -204,10 +206,49 @@ public class WordNet {
             }
             else {
                 rules.addAll(ConvertToHypernymRules(concepts));
+                rules.addAll(ConvertToWordSenseDisambiguationRules(concepts));
             }
         }
 
         return rules;
+    }
+
+    public static List<Rule> ConvertToWordSenseDisambiguationRules(List<Concept> concepts) {
+        List<Rule> rules = new ArrayList<>();
+        for(Concept concept : concepts){
+            Rule rule = GenerateDefaultRule(concept);
+            rules.add(rule);
+        }
+
+        return rules;
+    }
+
+    public static Rule GenerateDefaultRule(Concept concept) {
+        String senseType = concept.sense.split("_")[1];
+        Word baseWordPredicate = new Word(concept.baseConcept);
+        Literal variable = new Literal(new Word("X"));
+        Literal senseLiteral = new Literal(new Word(concept.sense));
+        List<Literal> terms = new ArrayList<>();
+        terms.add(variable);
+        terms.add(senseLiteral);
+        Literal head = new Literal(baseWordPredicate, terms);
+        Literal strongException = new Literal(baseWordPredicate, terms);
+        strongException.isNAF = true;
+        strongException.isClassicalNegation = true;
+
+        List<Literal> bodyList = new ArrayList<>();
+        terms = new ArrayList<>();
+        terms.add(variable);
+        bodyList.add(new Literal(baseWordPredicate, terms));
+
+        Word abnormalPredicateWord = new Word("abnormal_d_" + senseType);
+        Literal weakException = new Literal(abnormalPredicateWord, terms);
+        weakException.isNAF = true;
+        bodyList.add(weakException);
+        bodyList.add(strongException);
+
+        Rule rule = new Rule(head, bodyList, false);
+        return rule;
     }
 
     public static String WriteStoryFacts(StorageManager manager, String aspCode, boolean shouldWriteToFile) throws IOException {

@@ -58,7 +58,7 @@ class LiteralTest {
         body.add(modifier);
         Literal literal = new Literal(predicate, body);
         literal.isClassicalNegation = true;
-        Assert.assertEquals("- live(lion, forest)", literal.toString());
+        Assert.assertEquals("-live(lion, forest)", literal.toString());
     }
 
     @Test

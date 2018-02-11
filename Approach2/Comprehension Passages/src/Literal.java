@@ -37,11 +37,14 @@ public class Literal {
             return "Error : No terms found in body";
         }
         String format = "%s(%s)";
-        if(this.isNAF){
+        if(this.isNAF && this.isClassicalNegation){
+            format = "not -%s(%s)";
+        }
+        else if(this.isNAF){
             format = "not %s(%s)";
         }
         else if(this.isClassicalNegation){
-            format = "- %s(%s)";
+            format = "-%s(%s)";
         }
 
         StringBuilder builder = new StringBuilder();
