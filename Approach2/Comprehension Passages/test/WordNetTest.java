@@ -12,7 +12,7 @@ import java.util.List;
  */
 class WordNetTest {
     @Test
-    void TestWordSenseDisambiguation() throws IOException {
+    void TestWSDDefaultRules() throws IOException {
         HashSet<String> nouns = new HashSet<>();
         nouns.add("animal");
         StorageManager manager = new StorageManager();
@@ -33,6 +33,23 @@ class WordNetTest {
     }
 
     @Test
+    void TestWSDPreferenceRules() throws IOException {
+        HashSet<String> nouns = new HashSet<>();
+        nouns.add("lion");
+        StorageManager manager = new StorageManager();
+        WordNet.BuildOntology(nouns);
+        List<Rule> rules = WordNet.WriteOntology(manager, false);
+        HashSet<String> ruleString = new HashSet<>();
+        for(Rule rule : rules){
+            ruleString.add(rule.toString());
+        }
+
+        Assert.assertEquals(41, ruleString.size());
+        Assert.assertTrue(ruleString.contains("lion(X, noun_person) :- lion(X),not -lion(X, noun_person),-lion(X, noun_animal),not lion(X, noun_location)"));
+        Assert.assertTrue(ruleString.contains("lion(X, noun_location) :- lion(X),not -lion(X, noun_location),-lion(X, noun_animal),-lion(X, noun_person)"));
+    }
+
+    @Test
     void TestHypernymOntology() throws IOException {
         HashSet<String> nouns = new HashSet<>();
         nouns.add("lion");
@@ -44,7 +61,7 @@ class WordNetTest {
             ruleString.add(rule.toString());
         }
 
-        Assert.assertEquals(39, ruleString.size());
+        Assert.assertEquals(41, ruleString.size());
         Assert.assertTrue(ruleString.contains("celebrity(X, noun.person) :- lion(X, noun_person)"));
         Assert.assertTrue(ruleString.contains("big_cat(X, noun.animal) :- lion(X, noun_animal)"));
         Assert.assertTrue(ruleString.contains("person(X, noun.Tops) :- lion(X, noun_person)"));
@@ -80,7 +97,7 @@ class WordNetTest {
             ruleString.add(rule.toString());
         }
 
-        Assert.assertEquals(63, ruleString.size());
+        Assert.assertEquals(67, ruleString.size());
     }
 
     @Test

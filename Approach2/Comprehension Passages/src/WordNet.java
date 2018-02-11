@@ -1,6 +1,7 @@
 import edu.mit.jwi.Dictionary;
 import edu.mit.jwi.IDictionary;
 import edu.mit.jwi.item.*;
+import javafx.util.Pair;
 
 import java.io.File;
 import java.io.IOException;
@@ -51,8 +52,9 @@ public class WordNet {
 
     public static void GenerateHypernymOntology(String word){
         IIndexWord idxWord = dictionary.getIndexWord(word, POS.NOUN);
-        HashMap<String, List<IWordID>> senseMap = GetSenses(dictionary, idxWord);
-        for(String sense : senseMap.keySet()){
+        HashMap<Pair<Integer, String>, List<IWordID>> senseMap = GetSenses(dictionary, idxWord);
+        for(Pair<Integer, String> senseRank : senseMap.keySet()){
+            String sense = senseRank.getValue();
             Concept concept = new Concept(word, sense);
             String wordSense = String.format(CONCEPT_SENSE_FORMAT, word, sense);
 
@@ -60,7 +62,7 @@ public class WordNet {
                 concept = conceptMap.get(wordSense);
             }
 
-            List<IWordID> wordIDList = senseMap.get(sense);
+            List<IWordID> wordIDList = senseMap.get(senseRank);
             for(IWordID id : wordIDList) {
                 GetHypernyms(id, sense, concept);
             }
@@ -133,9 +135,10 @@ public class WordNet {
         return hypernymMap;
     }
 
-    private static HashMap<String, List<IWordID>> GetSenses(IDictionary dictionary, IIndexWord idxWord) {
+    private static HashMap<Pair<Integer, String>, List<IWordID>> GetSenses(IDictionary dictionary, IIndexWord idxWord) {
         List<IWordID> wordIDs = idxWord.getWordIDs();
-        HashMap<String, List<IWordID>> senseMap = new HashMap<>();
+        HashMap<Pair<Integer, String>, List<IWordID>> senseMap = new HashMap<>();
+        int id = 1;
         for(IWordID wordID : wordIDs){
             IWord word = dictionary.getWord(wordID);
             String sense = word.getSenseKey().getLexicalFile().getName();
@@ -145,7 +148,8 @@ public class WordNet {
             }
 
             wordIDList.add(wordID);
-            senseMap.put(sense, wordIDList);
+            Pair<Integer, String> pair = new Pair<>(id++, sense);
+            senseMap.put(pair, wordIDList);
         }
 
         return senseMap;
@@ -206,21 +210,96 @@ public class WordNet {
             }
             else {
                 rules.addAll(ConvertToHypernymRules(concepts));
-                rules.addAll(ConvertToWordSenseDisambiguationRules(concepts));
+                rules.addAll(ConvertToWordSenseDisambiguationRules(baseConcept, concepts));
             }
         }
 
         return rules;
     }
 
-    public static List<Rule> ConvertToWordSenseDisambiguationRules(List<Concept> concepts) {
+    public static List<Rule> ConvertToWordSenseDisambiguationRules(String baseConcept, List<Concept> concepts) {
         List<Rule> rules = new ArrayList<>();
         for(Concept concept : concepts){
             Rule rule = GenerateDefaultRule(concept);
             rules.add(rule);
         }
 
+        if(concepts.size() <= 1) return rules;
+        rules.addAll(GeneratePreferenceRules(baseConcept, concepts));
         return rules;
+    }
+
+    private static List<Rule> GeneratePreferenceRules(String baseConcept, List<Concept> concepts) {
+        if(concepts.size() <= 1) return new ArrayList<>();
+        List<Rule> rules = new ArrayList<>();
+        concepts = GetSenseRanks(baseConcept, concepts);
+
+        Word baseWord = new Word(baseConcept);
+        Literal variable = new Literal(new Word("X"));
+        for(int i=1;i<concepts.size();i++){
+            Concept senseConcept = concepts.get(i);
+            Literal sense = new Literal(new Word(senseConcept.sense));
+            List<Literal> terms = new ArrayList<>();
+            terms.add(variable);
+            terms.add(sense);
+            Literal head = new Literal(baseWord, terms);
+            Literal strongException = new Literal(baseWord, terms);
+            strongException.isNAF = true;
+            strongException.isClassicalNegation = true;
+
+            terms = new ArrayList<>();
+            terms.add(variable);
+            Literal baseCheck = new Literal(baseWord, terms);
+
+            List<Literal> bodyList = new ArrayList<>();
+            bodyList.add(baseCheck);
+            bodyList.add(strongException);
+
+            for(int j=0;j<concepts.size();j++){
+                senseConcept = concepts.get(j);
+                sense = new Literal(new Word(senseConcept.sense));
+                terms = new ArrayList<>();
+                terms.add(variable);
+                terms.add(sense);
+                Literal otherSense = new Literal(baseWord, terms);
+                if(j < i){
+                    otherSense.isClassicalNegation = true;
+                }
+                else if(j > i){
+                    otherSense.isNAF = true;
+                }
+                else continue;
+                bodyList.add(otherSense);
+            }
+
+            Rule rule = new Rule(head, bodyList, false);
+            rules.add(rule);
+        }
+        return rules;
+    }
+
+    private static List<Concept> GetSenseRanks(String baseConcept, List<Concept> concepts) {
+        IIndexWord idxWord = dictionary.getIndexWord(baseConcept, POS.NOUN);
+        HashMap<Pair<Integer, String>, List<IWordID>> senseMap = GetSenses(dictionary, idxWord);
+        HashMap<String, Integer> senseRankMap = GetRankMap(senseMap.keySet());
+        for(Concept concept : concepts){
+            if(senseRankMap.containsKey(concept.sense)) {
+                int rank = senseRankMap.get(concept.sense);
+                concept.SetRank(rank);
+            }
+        }
+        Collections.sort(concepts);
+        return concepts;
+    }
+
+    private static HashMap<String, Integer> GetRankMap(Set<Pair<Integer, String>> senseRanks) {
+        HashMap<String, Integer> senseRankMap = new HashMap<>();
+        for(Pair<Integer, String> senseRank : senseRanks){
+            String sense = senseRank.getValue().replaceAll("\\.", "_");
+            senseRankMap.put(sense, senseRank.getKey());
+        }
+
+        return senseRankMap;
     }
 
     public static Rule GenerateDefaultRule(Concept concept) {

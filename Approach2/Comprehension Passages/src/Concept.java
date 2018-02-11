@@ -1,14 +1,18 @@
+import javafx.util.Pair;
+
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
 /**
  * Created by dhruv on 10/15/2017.
  */
-public class Concept {
+public class Concept implements Comparable<Concept> {
     public String baseConcept;
     public String sense;
     public HashMap<String, List<Concept>> hypernymMap;
+    private int rank = 0;
 
     public Concept(String word, String sense){
         String baseConcept = word.toLowerCase();
@@ -47,5 +51,14 @@ public class Concept {
 
         hypernymList.add(childConcept);
         this.hypernymMap.put(sense, hypernymList);
+    }
+
+    public void SetRank(int rank){
+        this.rank = rank;
+    }
+
+    @Override
+    public int compareTo(Concept otherConcept) {
+        return Integer.compare(this.rank, otherConcept.rank);
     }
 }
