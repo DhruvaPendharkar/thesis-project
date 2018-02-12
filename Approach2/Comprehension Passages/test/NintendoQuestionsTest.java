@@ -10,7 +10,7 @@ import java.util.List;
  * Created by dhruv on 2/3/2018.
  */
 public class NintendoQuestionsTest {
-    @BeforeAll
+    /*@BeforeAll
     static void TestSetupParser() {
         Sentence.SetupLexicalizedParser();
         Assert.assertNotNull(Sentence.parser);
@@ -22,13 +22,13 @@ public class NintendoQuestionsTest {
         Word.eventId = 1;
     }
 
-    /*@Test
+    @Test
     void TestSentenceOneQuestion1() {
         String[] queries = new String[]{"?- event(I, say, nintendo, Y), _relation(I, R), " +
                 "event(R, terminate, nintendo, miitomo), time(Y)"};
         String content = "When did Nintendo tell about the termination of Nintendo smartphone_app Miitomo?";
         Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
-    }*/
+    }
 
     /*@Test
     void TestSentenceOneQuestion2() {
@@ -36,7 +36,7 @@ public class NintendoQuestionsTest {
         //TODO : Add _owns predicate as well
         String[] queries = new String[]{""};
         Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
-    }*/
+    }
 
     @Test
     void TestSentenceOneQuestion3() {
@@ -72,14 +72,14 @@ public class NintendoQuestionsTest {
         String content = "Where did Miitomo gain attention?";
         String[] queries = new String[]{""};
         Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
-    }*/
+    }
 
-    /*@Test
+    @Test
     void TestSentenceOneQuestion8() {
         String content = "What is Miitomo?";
         String[] queries = new String[]{"-"};
         Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
-    }*/
+    }
 
     @Test
     void TestSentenceOneQuestion9() {
@@ -450,5 +450,5 @@ public class NintendoQuestionsTest {
         String content = "What is Switch?";
         String[] queries = new String[]{"event(I1, tell, X, decision)"};
         Assert.assertTrue(QuestionTest.TestQuestion(content, queries));
-    }
+    }*/
 }
