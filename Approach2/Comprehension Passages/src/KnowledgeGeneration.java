@@ -33,15 +33,4 @@ public class KnowledgeGeneration {
         //WordNet.WriteOntology(manager, SHOULD_WRITE_TO_FILE);
         //WordNet.WriteStoryFacts(manager, aspCode, SHOULD_WRITE_TO_FILE);
     }
-
-    /*private static String GenerateASPCode(TreeSet<Rule> knowledgeRules) {
-        StringBuilder builder = new StringBuilder();
-
-        for(Rule rule : knowledgeRules){
-            builder.append(rule.toString() + ".");
-            builder.append("\n");
-        }
-
-        return builder.toString();
-    }*/
 }

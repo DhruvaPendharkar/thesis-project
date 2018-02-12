@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by dhruv on 11/8/2017.
@@ -45,16 +46,16 @@ public class StorageManager {
         return builder.toString();
     }
 
-    public void WriteConceptToFile(String aspCode, String concept, ArrayList<String> headers, boolean shouldWriteToFile) throws IOException {
+    public void WriteConceptToFile(String aspCode, String concept, List<String> headers, boolean shouldWriteToFile) throws IOException {
         String conceptBasePath = String.format("%s\\%s.lp", ontologyBasePath, concept);
         WriteASPCode(conceptBasePath, aspCode, headers, shouldWriteToFile);
     }
 
-    public void WriteStoryToFile(String aspCode, ArrayList<String> headers, boolean shouldWriteToFile) throws IOException {
+    public void WriteStoryToFile(String aspCode, List<String> headers, boolean shouldWriteToFile) throws IOException {
         WriteASPCode(outputFilePath, aspCode, headers, shouldWriteToFile);
     }
 
-    public static void WriteASPCode(String outputFilePath, String aspCode, ArrayList<String> headerFiles, boolean shouldWriteToFile) throws IOException {
+    public static void WriteASPCode(String outputFilePath, String aspCode, List<String> headerFiles, boolean shouldWriteToFile) throws IOException {
         if(!shouldWriteToFile){
             System.out.print(aspCode);
             return;
