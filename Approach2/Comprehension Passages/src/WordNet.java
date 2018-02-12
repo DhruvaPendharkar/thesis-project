@@ -183,7 +183,8 @@ public class WordNet {
                     List<Literal> terms = new ArrayList<>();
                     Word superclassWord = new Word(hypernym.baseConcept);
                     terms.add(objectLiteral);
-                    terms.add(new Literal(new Word(sense)));
+                    String senseString = sense.replace("noun.", "noun_");
+                    terms.add(new Literal(new Word(senseString)));
                     Literal head = new Literal(superclassWord, terms);
                     Rule rule = new Rule(head, bodyList, false);
                     rules.add(rule);
