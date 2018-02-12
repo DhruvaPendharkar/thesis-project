@@ -149,4 +149,15 @@ public class Sentence {
     public String toString() {
         return sentenceString;
     }
+
+    public List<String> GetAllNouns() {
+        List<String> nouns = new ArrayList<>();
+        for(Word word : this.wordList){
+            if(word.getPOSTag().equals("NN") ||
+                word.getPOSTag().equals("NNS")){
+                nouns.add(word.getLemma());
+            }
+        }
+        return nouns;
+    }
 }

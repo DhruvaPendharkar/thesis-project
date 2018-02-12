@@ -52,6 +52,10 @@ public class WordNet {
 
     public static void GenerateHypernymOntology(String word){
         IIndexWord idxWord = dictionary.getIndexWord(word, POS.NOUN);
+        if(idxWord == null){
+            return;
+        }
+
         HashMap<Pair<Integer, String>, List<IWordID>> senseMap = GetSenses(dictionary, idxWord);
         for(Pair<Integer, String> senseRank : senseMap.keySet()){
             String sense = senseRank.getValue();
