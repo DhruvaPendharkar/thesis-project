@@ -21,9 +21,7 @@ _relation(15, 16, _clcomplement).
 _relation(20, 21, _clcomplement).
 _relation(22, 23, _clcomplement).
 _relation(27, 28, _clcomplement).
-_relation(30, 12, _clcomplement).
 _relation(37, 38, _clcomplement).
-_relation(38, 32, _clcomplement).
 _relation(39, 40, _clcomplement).
 _relation(4, 5, _clcomplement).
 _relation(6, 8, _clcomplement).

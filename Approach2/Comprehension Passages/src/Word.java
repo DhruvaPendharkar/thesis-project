@@ -227,6 +227,7 @@ public class Word {
             List<Word> clausalComplements = this.GetClausalComplements();
             Word relationWord = new Word("_relation");
             for (Word clause : clausalComplements) {
+                if(!clause.IsVerb()) continue;
                 List<Literal> bodyList = new ArrayList<>();
                 bodyList.add(new Literal(new Word(String.valueOf(this.id))));
                 bodyList.add(new Literal(new Word(String.valueOf(clause.id))));
