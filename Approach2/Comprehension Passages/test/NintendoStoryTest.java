@@ -138,7 +138,7 @@ public class NintendoStoryTest {
         Assert.assertTrue(ruleString.contains("event(4, gain, null, rival)"));
         Assert.assertTrue(ruleString.contains("event(1, describe, company, miitomo)"));
         Assert.assertTrue(ruleString.contains("event(2, view, null, miitomo)"));
-        Assert.assertTrue(ruleString.contains("_adj(service, social-networking)"));
+        Assert.assertTrue(ruleString.contains("_adj(service, social_networking)"));
         Assert.assertTrue(ruleString.contains("event(4, gain, null, user)"));
         Assert.assertTrue(ruleString.contains("_relation(3, 4, _clcomplement)"));
     }
@@ -159,7 +159,7 @@ public class NintendoStoryTest {
         Assert.assertTrue(ruleString.contains("event(2, end, app_service, may)"));
         Assert.assertTrue(ruleString.contains("_relation(1, 2, _clcomplement)"));
         Assert.assertTrue(ruleString.contains("time(may)"));
-        Assert.assertTrue(ruleString.contains("_adj(app_service, free-to-play)"));
+        Assert.assertTrue(ruleString.contains("_adj(app_service, free_to_play)"));
         Assert.assertTrue(ruleString.contains("company(nintendo)"));
         Assert.assertTrue(ruleString.contains("event(1, say, nintendo, null)"));
     }

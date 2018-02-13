@@ -30,7 +30,8 @@ class KnowledgeGenerationTest {
                 "Super_Mario_Run, Fire_Emblem_Heroes and Animal_Crossing_Pocket_Camp have had more success than Miitomo, but the smartphone " +
                 "business has yet to become a major revenue_generator for Nintendo. Company executives say that, the executives view " +
                 "smartphone games as a way of attracting customers, who may later try out Nintendo machines such as the Switch.";
-        Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(content);
+        StorageManager manager = new StorageManager();
+        Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
 
         TreeSet<String> ruleString = new TreeSet<>();
         System.out.println("%%-------------------------------------------------------%%");

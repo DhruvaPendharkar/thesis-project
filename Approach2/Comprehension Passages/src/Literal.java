@@ -30,6 +30,7 @@ public class Literal {
     @Override
     public String toString() {
         if(this.isAtom) {
+            this.predicate = this.predicate.replaceAll("-", "_");
             return this.predicate;
         }
 

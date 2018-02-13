@@ -8,8 +8,7 @@ public class KnowledgeGeneration {
     public static final String END_OF_SENTENCE = "\\.";
     public static final boolean SHOULD_WRITE_TO_FILE = false;
 
-    public static Pair<List<Rule>, List<Rule>> RepresentKnowledge(String content) throws IOException {
-        StorageManager manager = new StorageManager();
+    public static Pair<List<Rule>, List<Rule>> RepresentKnowledge(StorageManager manager, String content) throws IOException {
         List<Rule> storyRules = new ArrayList<>();
         Sentence.SetupLexicalizedParser();
         List<Sentence> sentenceList = new ArrayList<>();
