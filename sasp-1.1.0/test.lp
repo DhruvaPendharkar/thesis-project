@@ -26,8 +26,14 @@ _relation(39, 40, _clcomplement).
 _relation(4, 5, _clcomplement).
 _relation(6, 8, _clcomplement).
 _relation(8, 9, _clcomplement).
+analyst(analyst).
+attention(attention).
+business(business).
+company(company).
 company(miitomo).
 company(nintendo).
+customer(customer).
+decision(decision).
 event(1, say, nintendo, thursday).
 event(12, decline, number, null).
 event(13, introduce, nintendo, march).
@@ -73,9 +79,25 @@ event(6, say, nintendo_spokesman, null).
 event(8, make, decision, null).
 event(9, streamline, decision, resource).
 event(9, streamline, decision, smartphone_apps).
+executive(executive).
+failure(failure).
+game(game).
+information(information).
+kind(kind).
+machine(machine).
+movie(movie).
+number(number).
+player(player).
+resource(resource).
+rival(rival).
+service(service).
+stage(stage).
+success(success).
 time(march).
 time(may).
 time(thursday).
+user(user).
+way(way).
 %%-------------------------------------------------------%%
 %%Ontology%%
 %%-------------------------------------------------------%%

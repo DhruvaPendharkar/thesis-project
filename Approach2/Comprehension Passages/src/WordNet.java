@@ -355,4 +355,19 @@ public class WordNet {
         builder.append(aspCode);
         return builder.toString();
     }
+
+    public static List<Rule> GenerateBaseRulesForNouns(Set<String> nouns) {
+        List<Rule> rules = new ArrayList<>();
+        for (String noun : nouns) {
+            IIndexWord idxWord = dictionary.getIndexWord(noun, POS.NOUN);
+            if (idxWord == null) continue;
+            Word baseWord = new Word(noun);
+            List<Literal> terms = new ArrayList<>();
+            terms.add(new Literal(baseWord));
+            Literal head = new Literal(baseWord, terms);
+            Rule rule = new Rule(head, null, false);
+            rules.add(rule);
+        }
+        return rules;
+    }
 }

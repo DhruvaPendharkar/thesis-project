@@ -1,3 +1,5 @@
+import edu.mit.jwi.item.IIndexWord;
+import edu.mit.jwi.item.POS;
 import javafx.util.Pair;
 
 import java.io.*;
@@ -23,6 +25,8 @@ public class KnowledgeGeneration {
 
         WordNet.BuildOntology(nouns);
         List<Rule> ontologyRules = WordNet.WriteOntology(manager, SHOULD_WRITE_TO_FILE);
+        List<Rule> baseRules = WordNet.GenerateBaseRulesForNouns(nouns);
+        storyRules.addAll(baseRules);
         return new Pair<>(storyRules, ontologyRules);
     }
 }
