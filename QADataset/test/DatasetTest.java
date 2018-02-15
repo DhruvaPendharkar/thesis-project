@@ -14,7 +14,7 @@ class DatasetTest {
         List<Article> articles = Dataset.ReadDataset(jsonDataPath);
 
         for(Article article : articles) {
-            System.out.println(article);
+            System.out.println(Article.GenerateTest(article));
         }
     }
 }

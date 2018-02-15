@@ -11,13 +11,16 @@ import java.util.List;
 public class Article {
 
     private String title;
+    private int id;
     private List<Passage> passages = new ArrayList<>();
-    private Article(String title, List<Passage> passages) {
+
+    private Article(int id, String title, List<Passage> passages) {
+        this.id = id;
         this.title = title;
         this.passages = passages;
     }
 
-    public static Article CreateArticle(JSONObject object) throws JSONException {
+    public static Article CreateArticle(int id, JSONObject object) throws JSONException {
         if(object == null) return null;
         String title = object.getString("title");
         JSONArray paragraphArrays = object.getJSONArray("paragraphs");
@@ -28,7 +31,7 @@ public class Article {
             if(i == 0) passages.add(passage);
         }
 
-        Article article = new Article(title, passages);
+        Article article = new Article(id, title, passages);
         return article;
     }
 
@@ -38,6 +41,15 @@ public class Article {
         builder.append(String.format("Article : %s\n", this.title));
         for(Passage passage : passages) {
             builder.append(passage);
+        }
+
+        return builder.toString();
+    }
+
+    public static String GenerateTest(Article article) {
+        StringBuilder builder = new StringBuilder();
+        for(Passage passage : article.passages){
+            builder.append(Passage.GenerateTest(article.id, passage) + "\n");
         }
 
         return builder.toString();

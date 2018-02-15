@@ -46,4 +46,24 @@ public class Passage {
         Passage passage = new Passage(id, context, questions);
         return passage;
     }
+
+    public static String GenerateTest(int id, Passage passage) {
+        String format = "@Test\n" +
+                "    void Test%s_%sStory() throws IOException {\n" +
+                "        String content = \"%s\";\n" +
+                "        StorageManager manager = new StorageManager();\n" +
+                "        Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);\n" +
+                "\n" +
+                "        TreeSet<String> ruleString = new TreeSet<>();\n" +
+                "        System.out.println(\"%%-------------------------------------------------------%%\");\n" +
+                "        System.out.println(\"%%Story%%\");\n" +
+                "        System.out.println(\"%%-------------------------------------------------------%%\");\n" +
+                "        for(Rule rule : rulesPair.getKey()){\n" +
+                "            ruleString.add(rule.toString());\n" +
+                "        }\n" +
+                "        PrintRules(ruleString);\n" +
+                "        Assert.assertEquals(97, ruleString.size());\n" +
+                "    }";
+        return String.format(format, id,passage.id,passage.context);
+    }
 }

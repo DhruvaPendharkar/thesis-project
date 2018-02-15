@@ -16,7 +16,7 @@ public class Dataset {
         JSONArray dataArray = obj.getJSONArray("data");
         for(int i=0; i<dataArray.length(); i++){
             JSONObject object = (JSONObject) dataArray.get(i);
-            Article article = Article.CreateArticle(object);
+            Article article = Article.CreateArticle(i+1, object);
             if(article == null) continue;
             articles.add(article);
         }
