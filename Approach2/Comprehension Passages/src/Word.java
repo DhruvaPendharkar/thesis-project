@@ -115,6 +115,11 @@ public class Word {
         return new ArrayList<>();
     }
 
+    private List<Word> GetNominalModifiers() {
+        if(this.relationMap.containsKey("nmod")) return this.relationMap.get("nmod");
+        return new ArrayList<>();
+    }
+
     private List<Rule> GenerateNERRules() {
         List<Rule> rules = new ArrayList<>();
         if(!this.IsNoun()) return rules;
@@ -141,7 +146,7 @@ public class Word {
         return null;
     }
 
-    private boolean IsNoun() {
+    public boolean IsNoun() {
         return this.POSTag.startsWith("NN");
     }
 
@@ -276,19 +281,64 @@ public class Word {
 
     private List<Word> GetModifiers() {
         List<Word> modifiers = new ArrayList<>();
-        if(this.relationMap.containsKey("nmod")) modifiers.addAll(this.relationMap.get("nmod"));
-        if(this.relationMap.containsKey("dobj")) modifiers.addAll(this.relationMap.get("dobj"));
+        modifiers.addAll(GetNominalModifiers());
+        modifiers.addAll(GetDirectObjects());
         return modifiers;
     }
 
-    private List<Word> GetSubjects() {
-        if(this.relationMap.containsKey("nsubj")) return this.relationMap.get("nsubj");
-        if(this.relationMap.containsKey("nsubjpass")) return this.relationMap.get("nsubjpass");
-        if(this.relationMap.containsKey("nsubj:xsubj")) return this.relationMap.get("nsubj:xsubj");
-        return new ArrayList<>();
+    private List<Word> GetDirectObjects() {
+        List<Word> directObjects = new ArrayList<>();
+        if(this.relationMap.containsKey("dobj")) {
+            directObjects.addAll(this.relationMap.get("dobj"));
+            List<Word> supplimentaryDirectObjects = new ArrayList<>();
+            for(Word directObject : directObjects){
+                List<Word> nmods = directObject.GetNominalModifiers();
+                if(nmods.size() == 0) continue;
+                for(Word nmod : nmods){
+                    Word preposition = nmod.GetPreposition();
+                    if(preposition == null) continue;
+                    List<Word> wordCollection = new ArrayList<>();
+                    wordCollection.add(directObject);
+                    wordCollection.add(preposition);
+                    wordCollection.add(nmod);
+                    Word compound = CreateCompoundWord(wordCollection);
+                    supplimentaryDirectObjects.add(compound);
+                }
+            }
+
+            directObjects.addAll(supplimentaryDirectObjects);
+        }
+
+        return directObjects;
     }
 
-    private boolean IsVerb() {
+    private Word GetPreposition() {
+        if(this.relationMap.containsKey("case")) return this.relationMap.get("case").get(0);
+        return null;
+    }
+
+    private List<Word> GetSubjects() {
+        List<Word> subjects = new ArrayList<>();
+        if(this.relationMap.containsKey("nsubj")) subjects.addAll(this.relationMap.get("nsubj"));
+        if(this.relationMap.containsKey("nsubjpass")) subjects.addAll(this.relationMap.get("nsubjpass"));
+        if(this.relationMap.containsKey("nsubj:xsubj")) subjects.addAll(this.relationMap.get("nsubj:xsubj"));
+
+        List<Word> supplimentarySubjects = new ArrayList<>();
+        for(Word subject : subjects){
+            List<Word> adjectives = subject.GetAdjectives();
+            if(adjectives.size() == 0) continue;
+            List<Word> wordCollection = new ArrayList<>();
+            wordCollection.addAll(adjectives);
+            wordCollection.add(subject);
+            Word compound = CreateCompoundWord(wordCollection);
+            supplimentarySubjects.add(compound);
+        }
+
+        subjects.addAll(supplimentarySubjects);
+        return subjects;
+    }
+
+    public boolean IsVerb() {
         return this.POSTag.startsWith("VB");
     }
 
@@ -302,5 +352,68 @@ public class Word {
             }
         }
         return false;
+    }
+
+    public List<Rule> GenerateNonVerbRootRules() {
+        if(!this.IsNoun()) return new ArrayList<>();
+        List<Rule> rules = new ArrayList<>();
+        Word bePredicate = new Word("_is");
+
+        Word copula = GetToBeCopula();
+        if(copula == null) return new ArrayList<>();
+        List<Word> subjects = this.GetSubjects();
+        List<Word> adjectives = this.GetAdjectives();
+        for(Word subject : subjects) {
+            List<Literal> terms = new ArrayList<>();
+            terms.add(new Literal(subject));
+            terms.add(new Literal(this));
+            Literal head = new Literal(bePredicate, terms);
+            Rule rule = new Rule(head, null, false);
+            rules.add(rule);
+
+            if(adjectives.size() != 0){
+                terms = new ArrayList<>();
+                terms.add(new Literal(subject));
+                List<Word> wordCollection = new ArrayList<>();
+                wordCollection.addAll(adjectives);
+                wordCollection.add(this);
+                Word compundWord = CreateCompoundWord(wordCollection);
+                terms.add(new Literal(compundWord));
+                head = new Literal(bePredicate, terms);
+                rule = new Rule(head, null, false);
+                rules.add(rule);
+            }
+        }
+
+        return rules;
+    }
+
+    private Word AttachAdjective(Word word, Word adjective) {
+        String wordString = word.getWord();
+        String adjectiveString = adjective.getWord();
+        return new Word(String.format("%s_%s", adjectiveString, wordString));
+    }
+
+    private Word GetToBeCopula() {
+        if(this.relationMap.containsKey("nsubj")) {
+            List<Word> copulas = this.relationMap.get("cop");
+            for(Word copula : copulas){
+                if(copula.lemma.equals("be")) return copula;
+            }
+        };
+
+        return null;
+    }
+
+    public static Word CreateCompoundWord(List<Word> wordCollection) {
+        StringBuilder builder = new StringBuilder();
+        for(Word word : wordCollection){
+            builder.append(word.getWord());
+            builder.append(" ");
+        }
+
+        String compoundWord = builder.toString().trim().toLowerCase();
+        compoundWord = compoundWord.replaceAll(" ", "_");
+        return new Word(compoundWord);
     }
 }

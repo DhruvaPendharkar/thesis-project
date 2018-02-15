@@ -7,6 +7,8 @@ import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.trees.*;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by dhruv on 9/24/2017.
@@ -21,6 +23,7 @@ public class Sentence {
     private List<TypedDependency> dependencies = null;
     protected Word semanticRoot = null;
     protected List<Word> wordList = new ArrayList<>();
+    protected List<Rule> preProcessRules = new ArrayList<>();
 
     public static void SetupLexicalizedParser() {
         parser = LexicalizedParser.loadModel("edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz");
@@ -31,12 +34,70 @@ public class Sentence {
 
     protected Sentence(String sentence) {
         sentence = Sentence.SanitizeString(sentence);
+        boolean isQuestion = this.getClass() == Question.class;
+        List<Word> wordList = ProcessSentence(sentence, isQuestion);
+        sentence = PreprocessSentence(wordList);
+        this.wordList = ProcessSentence(sentence, isQuestion);
         List<TypedDependency> dependencies = GetDependencies(sentence);
         this.sentenceString = sentence;
         this.dependencies = dependencies;
-        boolean isQuestion = this.getClass() == Question.class;
-        this.wordList = ProcessSentence(sentence, isQuestion);
-        this.semanticRoot = GenerateSemanticTree(dependencies, wordList);
+        this.semanticRoot = GenerateSemanticTree(dependencies, this.wordList);
+    }
+
+    private String PreprocessSentence(List<Word> inputList) {
+        StringBuilder builder = new StringBuilder();
+        this.preProcessRules = GeneratePreProcessRules(inputList);
+        boolean hasFoundBracket = false;
+        for(Word word : inputList){
+            if(word.getWord().equals("-LRB-")) hasFoundBracket = true;
+            else if(word.getWord().equals("-RRB-")) {
+                hasFoundBracket = false;
+                continue;
+            }
+            if(hasFoundBracket) continue;
+            builder.append(word.getWord() + " ");
+        }
+
+        return builder.toString().trim();
+    }
+
+    private List<Rule> GeneratePreProcessRules(List<Word> inputList) {
+        List<Rule> rules = new ArrayList<>();
+        rules.addAll(GenerateAbbreviationRules(inputList));
+        return rules;
+    }
+
+    private List<Rule> GenerateAbbreviationRules(List<Word> inputList) {
+        // This would only check if the abbreviation is ahead of the long form
+        // e.g. National_Football_League (NFL)
+        List<Rule> rules = new ArrayList<>();
+        List<Word> wordCollection = new ArrayList<>();
+        boolean hasFoundBracket = false;
+        Word previousWord = null;
+        for(int i=1; i<inputList.size(); i++){
+            Word currentWord = inputList.get(i);
+            if(currentWord.getWord().equals("-LRB-")) {
+                hasFoundBracket = true;
+                previousWord = inputList.get(i-1);
+                wordCollection = new ArrayList<>();
+                continue;
+            }
+            else if(currentWord.getWord().equals("-RRB-") && previousWord != null) {
+                hasFoundBracket = false;
+                Word predicateWord = new Word("_abbreviation");
+                List<Literal> terms = new ArrayList<>();
+                Word abbreviation = Word.CreateCompoundWord(wordCollection);
+                terms.add(new Literal(abbreviation));
+                terms.add(new Literal(new Word(previousWord.getWord().toLowerCase())));
+                Literal head = new Literal(predicateWord, terms);
+                Rule rule = new Rule(head, null, false);
+                rules.add(rule);
+                continue;
+            }
+            if(hasFoundBracket) wordCollection.add(currentWord);
+        }
+
+        return rules;
     }
 
     private static String SanitizeString(String sentence) {
@@ -122,11 +183,12 @@ public class Sentence {
     }
 
     public List<Rule> GenerateRules() {
-        List<Rule> rules = new ArrayList<>();
+        List<Rule> rules = this.preProcessRules;
 
         for(Word word : this.wordList){
             rules.addAll(word.GenerateRules(false));
         }
+        rules.addAll(this.semanticRoot.GenerateNonVerbRootRules());
 
         return rules;
     }

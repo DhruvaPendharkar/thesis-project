@@ -17,10 +17,14 @@ public class KnowledgeGeneration {
         String[] sentencesString = content.split(END_OF_SENTENCE);
         Set<String> nouns = new HashSet<>();
         for(String sentenceString : sentencesString){
+            /*******************/System.out.println(sentenceString);
             Sentence sentence = Sentence.ParseSentence(sentenceString.trim());
+            /*******************/ System.out.println(Sentence.DependenciesToString(sentence));
             sentenceList.add(sentence);
             nouns.addAll(sentence.GetAllNouns());
-            storyRules.addAll(sentence.GenerateRules());
+            List<Rule> sentenceRules = sentence.GenerateRules();
+            /*******************/ PrintRules(sentenceRules);
+            storyRules.addAll(sentenceRules);
         }
 
         WordNet.BuildOntology(nouns);
@@ -28,5 +32,11 @@ public class KnowledgeGeneration {
         List<Rule> baseRules = WordNet.GenerateBaseRulesForNouns(nouns);
         storyRules.addAll(baseRules);
         return new Pair<>(storyRules, ontologyRules);
+    }
+
+    private static void PrintRules(List<Rule> rules) {
+        for(Rule rule : rules){
+            System.out.println(rule);
+        }
     }
 }
