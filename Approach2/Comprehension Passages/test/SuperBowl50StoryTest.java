@@ -62,4 +62,29 @@ public class SuperBowl50StoryTest {
         Assert.assertTrue(ruleString.contains("event(4, determine, super_bowl_50, champion_of_national_football_league)"));
         Assert.assertTrue(ruleString.contains("event(4, determine, super_bowl_50, season)"));
     }
+
+    @Test
+        // Sentence : "Super_Bowl_50 was to determine the champion of the National_Football_League (NFL) for the 2015 season.
+    void TestSentenceThree() {
+        String content = "The American_Football_Conference (AFC) champion Denver_Broncos " +
+        "defeated the National_Football_Conference (NFC) champion Carolina_Panthers by 24–10 " +
+        "to earn AFC third Super_Bowl title";
+        Sentence sentence = Sentence.ParseSentence(content);
+        System.out.println(Sentence.DependenciesToString(sentence));
+        List<Rule> rules = sentence.GenerateRules();
+        HashSet<String> ruleString = new HashSet<>();
+        for(Rule rule : rules){
+            ruleString.add(rule.toString());
+            System.out.println(rule);
+        }
+
+        Assert.assertEquals(7, ruleString.size());
+        Assert.assertTrue(ruleString.contains("_abbreviation(afc, american_football_conference)"));
+        Assert.assertTrue(ruleString.contains("_abbreviation(nfc, national_football_conference)"));
+        Assert.assertTrue(ruleString.contains("event(3, defeat, denver_broncos, carolina_panthers)"));
+        Assert.assertTrue(ruleString.contains("event(4, earn, afc, title)"));
+        Assert.assertTrue(ruleString.contains("event(4, earn, afc, third_super_bowl_title)"));
+        Assert.assertTrue(ruleString.contains("_adj(title, third)"));
+        Assert.assertTrue(ruleString.contains("_adj(title, super_bowl)"));
+    }
 }

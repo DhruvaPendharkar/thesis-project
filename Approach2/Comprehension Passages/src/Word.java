@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -283,7 +282,18 @@ public class Word {
         List<Word> modifiers = new ArrayList<>();
         modifiers.addAll(GetNominalModifiers());
         modifiers.addAll(GetDirectObjects());
+
+        modifiers = FilterCardinalNumbers(modifiers);
         return modifiers;
+    }
+
+    private List<Word> FilterCardinalNumbers(List<Word> modifiers) {
+        List<Word> filtered = new ArrayList<>();
+        for(Word modifier : modifiers){
+            if(modifier.getPOSTag().equals("CD")) continue;
+            filtered.add(modifier);
+        }
+        return filtered;
     }
 
     private List<Word> GetDirectObjects() {
@@ -291,6 +301,8 @@ public class Word {
         if(this.relationMap.containsKey("dobj")) {
             directObjects.addAll(this.relationMap.get("dobj"));
             List<Word> supplimentaryDirectObjects = new ArrayList<>();
+            List<Word> adjectiveDirectObjects = GetSupplimentaryFromAdjectives(directObjects);
+            directObjects.addAll(adjectiveDirectObjects);
             for(Word directObject : directObjects){
                 List<Word> nmods = directObject.GetNominalModifiers();
                 if(nmods.size() == 0) continue;
@@ -322,8 +334,20 @@ public class Word {
         if(this.relationMap.containsKey("nsubj")) subjects.addAll(this.relationMap.get("nsubj"));
         if(this.relationMap.containsKey("nsubjpass")) subjects.addAll(this.relationMap.get("nsubjpass"));
         if(this.relationMap.containsKey("nsubj:xsubj")) subjects.addAll(this.relationMap.get("nsubj:xsubj"));
+        subjects.addAll(GetIndirectObjects());
 
-        List<Word> supplimentarySubjects = new ArrayList<>();
+        List<Word> adjectiveSubjects = GetSupplimentaryFromAdjectives(subjects);
+        subjects.addAll(adjectiveSubjects);
+        return subjects;
+    }
+
+    private List<Word> GetIndirectObjects() {
+        if(this.relationMap.containsKey("iobj")) return this.relationMap.get("iobj");
+        return new ArrayList<>();
+    }
+
+    private List<Word> GetSupplimentaryFromAdjectives(List<Word> subjects) {
+        List<Word> compounds = new ArrayList<>();
         for(Word subject : subjects){
             List<Word> adjectives = subject.GetAdjectives();
             if(adjectives.size() == 0) continue;
@@ -331,11 +355,10 @@ public class Word {
             wordCollection.addAll(adjectives);
             wordCollection.add(subject);
             Word compound = CreateCompoundWord(wordCollection);
-            supplimentarySubjects.add(compound);
+            compounds.add(compound);
         }
 
-        subjects.addAll(supplimentarySubjects);
-        return subjects;
+        return compounds;
     }
 
     public boolean IsVerb() {
@@ -386,12 +409,6 @@ public class Word {
         }
 
         return rules;
-    }
-
-    private Word AttachAdjective(Word word, Word adjective) {
-        String wordString = word.getWord();
-        String adjectiveString = adjective.getWord();
-        return new Word(String.format("%s_%s", adjectiveString, wordString));
     }
 
     private Word GetToBeCopula() {
