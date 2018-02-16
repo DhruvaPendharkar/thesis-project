@@ -107,12 +107,21 @@ public class SuperBowl50StoryTest {
             System.out.println(rule);
         }
 
-        Assert.assertEquals(5, ruleString.size());
-        Assert.assertTrue(ruleString.contains("time(february_7_2016)"));
-        Assert.assertTrue(ruleString.contains("event(2, play, null, game)"));
-        Assert.assertTrue(ruleString.contains("event(2, play, null, february_7_2016)"));
-        Assert.assertTrue(ruleString.contains("event(2, play, null, san_francisco_bay_area)"));
-        Assert.assertTrue(ruleString.contains("event(2, play, null, santa_clara)"));
+        Assert.assertEquals(14, ruleString.size());
+        Assert.assertTrue(ruleString.contains("_adj(super_bowl, 50th)"));
+        Assert.assertTrue(ruleString.contains("_adj(anniversary, golden)"));
+        Assert.assertTrue(ruleString.contains("_adj(initiative, various)"));
+        Assert.assertTrue(ruleString.contains("_adj(initiative, gold_themed)"));
+        Assert.assertTrue(ruleString.contains("event(2, emphasize, league, initiative)"));
+        Assert.assertTrue(ruleString.contains("event(2, emphasize, league, anniversary)"));
+        Assert.assertTrue(ruleString.contains("event(2, emphasize, league, golden_anniversary)"));
+        Assert.assertTrue(ruleString.contains("event(3, suspend, league, tradition)"));
+        Assert.assertTrue(ruleString.contains("event(4, name, null, numeral)"));
+        Assert.assertTrue(ruleString.contains("event(4, name, null, game)"));
+        Assert.assertTrue(ruleString.contains("event(7, know, null, game)"));
+        Assert.assertTrue(ruleString.contains("event(7, know, null, numeral)"));
+        Assert.assertTrue(ruleString.contains("event(7, know, null, super_bowl_l)"));
+        Assert.assertTrue(ruleString.contains("event(8, feature, logo, arabic_50)"));
     }
 
     @Test
