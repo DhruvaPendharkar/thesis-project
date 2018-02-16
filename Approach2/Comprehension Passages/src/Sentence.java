@@ -35,8 +35,10 @@ public class Sentence {
     protected Sentence(String sentence) {
         sentence = Sentence.SanitizeString(sentence);
         boolean isQuestion = this.getClass() == Question.class;
+        int currentEventId = Word.eventId;
         List<Word> wordList = ProcessSentence(sentence, isQuestion);
         sentence = PreprocessSentence(wordList);
+        Word.eventId = currentEventId;
         this.wordList = ProcessSentence(sentence, isQuestion);
         List<TypedDependency> dependencies = GetDependencies(sentence);
         this.sentenceString = sentence;

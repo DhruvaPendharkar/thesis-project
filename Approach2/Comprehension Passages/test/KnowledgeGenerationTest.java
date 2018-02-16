@@ -52,7 +52,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(97, ruleString.size());
+        Assert.assertEquals(109, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -86,7 +86,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(97, ruleString.size());
+        Assert.assertEquals(42, ruleString.size());
     }
 /*
     @Test

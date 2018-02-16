@@ -24,12 +24,11 @@ class SentenceTest {
         Sentence sentence = new Sentence("I live in Dallas.");
         String dependenciesString = Sentence.DependenciesToString(sentence);
         String[] dependencies = dependenciesString.split("\n");
-        List<String> dependencyList = new ArrayList<>();
-        dependencyList = Arrays.asList(dependencies);
+        List<String> dependencyList = Arrays.asList(dependencies);
         Assert.assertTrue(dependencyList.contains("nsubj(live-2, I-1)"));
         Assert.assertTrue(dependencyList.contains("root(ROOT-0, live-2)"));
-        Assert.assertTrue(dependencyList.contains("case(Dallas.-4, in-3)"));
-        Assert.assertTrue(dependencyList.contains("nmod:in(live-2, Dallas.-4)"));
+        Assert.assertTrue(dependencyList.contains("case(Dallas-4, in-3)"));
+        Assert.assertTrue(dependencyList.contains("nmod:in(live-2, Dallas-4)"));
     }
 
     @Test
@@ -53,6 +52,6 @@ class SentenceTest {
     @Test
     void TestGetSentenceToString() {
         Sentence sentence = new Sentence("I live in Dallas.");
-        Assert.assertEquals("I live in Dallas.", sentence.toString());
+        Assert.assertEquals("I live in Dallas .", sentence.toString());
     }
 }

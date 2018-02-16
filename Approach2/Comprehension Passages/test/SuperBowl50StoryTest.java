@@ -56,11 +56,11 @@ public class SuperBowl50StoryTest {
 
         Assert.assertEquals(6, ruleString.size());
         Assert.assertTrue(ruleString.contains("_abbreviation(nfl, national_football_league)"));
-        Assert.assertTrue(ruleString.contains("event(3, be, super_bowl_50, null)"));
-        Assert.assertTrue(ruleString.contains("_relation(3, 4, _clcomplement)"));
-        Assert.assertTrue(ruleString.contains("event(4, determine, super_bowl_50, champion)"));
-        Assert.assertTrue(ruleString.contains("event(4, determine, super_bowl_50, champion_of_national_football_league)"));
-        Assert.assertTrue(ruleString.contains("event(4, determine, super_bowl_50, season)"));
+        Assert.assertTrue(ruleString.contains("event(1, be, super_bowl_50, null)"));
+        Assert.assertTrue(ruleString.contains("_relation(1, 2, _clcomplement)"));
+        Assert.assertTrue(ruleString.contains("event(2, determine, super_bowl_50, champion)"));
+        Assert.assertTrue(ruleString.contains("event(2, determine, super_bowl_50, champion_of_national_football_league)"));
+        Assert.assertTrue(ruleString.contains("event(2, determine, super_bowl_50, season)"));
     }
 
     @Test
@@ -81,9 +81,9 @@ public class SuperBowl50StoryTest {
         Assert.assertEquals(7, ruleString.size());
         Assert.assertTrue(ruleString.contains("_abbreviation(afc, american_football_conference)"));
         Assert.assertTrue(ruleString.contains("_abbreviation(nfc, national_football_conference)"));
-        Assert.assertTrue(ruleString.contains("event(3, defeat, denver_broncos, carolina_panthers)"));
-        Assert.assertTrue(ruleString.contains("event(4, earn, afc, title)"));
-        Assert.assertTrue(ruleString.contains("event(4, earn, afc, third_super_bowl_title)"));
+        Assert.assertTrue(ruleString.contains("event(1, defeat, denver_broncos, carolina_panthers)"));
+        Assert.assertTrue(ruleString.contains("event(2, earn, afc, title)"));
+        Assert.assertTrue(ruleString.contains("event(2, earn, afc, third_super_bowl_title)"));
         Assert.assertTrue(ruleString.contains("_adj(title, third)"));
         Assert.assertTrue(ruleString.contains("_adj(title, super_bowl)"));
     }
