@@ -44,7 +44,7 @@ public class SuperBowl50StoryTest {
     @Test
     // Sentence : "Super_Bowl_50 was to determine the champion of the National_Football_League (NFL) for the 2015 season.
     void TestSentenceTwo() {
-        String content = "Super_Bowl_50 was to determine the champion of the National_Football_League (NFL) for the 2015 season";
+        String content = "Super_Bowl_50 was to determine the champion of the National Football League (NFL) for the 2015 season";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
         List<Rule> rules = sentence.GenerateRules();
@@ -54,13 +54,15 @@ public class SuperBowl50StoryTest {
             System.out.println(rule);
         }
 
-        Assert.assertEquals(6, ruleString.size());
+        Assert.assertEquals(8, ruleString.size());
+        Assert.assertTrue(ruleString.contains("organization(nfl)"));
+        Assert.assertTrue(ruleString.contains("time(2015)"));
+        Assert.assertTrue(ruleString.contains("organization(national_football_league)"));
         Assert.assertTrue(ruleString.contains("_abbreviation(nfl, national_football_league)"));
         Assert.assertTrue(ruleString.contains("event(1, be, super_bowl_50, null)"));
         Assert.assertTrue(ruleString.contains("_relation(1, 2, _clcomplement)"));
         Assert.assertTrue(ruleString.contains("event(2, determine, super_bowl_50, champion)"));
         Assert.assertTrue(ruleString.contains("event(2, determine, super_bowl_50, champion_of_national_football_league)"));
-        Assert.assertTrue(ruleString.contains("event(2, determine, super_bowl_50, season)"));
     }
 
     @Test
@@ -86,5 +88,53 @@ public class SuperBowl50StoryTest {
         Assert.assertTrue(ruleString.contains("event(2, earn, afc, third_super_bowl_title)"));
         Assert.assertTrue(ruleString.contains("_adj(title, third)"));
         Assert.assertTrue(ruleString.contains("_adj(title, super_bowl)"));
+    }
+
+    @Test
+        // Sentence : "The game was played on February 7 2016, at Levis_Stadium, in the San_Francisco_Bay_Area,
+        // at Santa_Clara in California"
+    void TestSentenceFour() {
+        String content = "As Super_Bowl_50 was the 50th Super_Bowl, the league emphasized the 'golden " +
+        "anniversary' with various gold-themed initiatives, as well as temporarily suspending the tradition of naming " +
+        "each Super_Bowl game with Roman numerals, under which the game would have been known as Super_Bowl_L, so " +
+        "that the logo could prominently feature the Arabic numerals 50.";
+        Sentence sentence = Sentence.ParseSentence(content);
+        System.out.println(Sentence.DependenciesToString(sentence));
+        List<Rule> rules = sentence.GenerateRules();
+        HashSet<String> ruleString = new HashSet<>();
+        for(Rule rule : rules){
+            ruleString.add(rule.toString());
+            System.out.println(rule);
+        }
+
+        Assert.assertEquals(5, ruleString.size());
+        Assert.assertTrue(ruleString.contains("time(february_7_2016)"));
+        Assert.assertTrue(ruleString.contains("event(2, play, null, game)"));
+        Assert.assertTrue(ruleString.contains("event(2, play, null, february_7_2016)"));
+        Assert.assertTrue(ruleString.contains("event(2, play, null, san_francisco_bay_area)"));
+        Assert.assertTrue(ruleString.contains("event(2, play, null, santa_clara)"));
+    }
+
+    @Test
+        // Sentence : "The game was played on February 7 2016, at Levis_Stadium, in the San_Francisco_Bay_Area,
+        // at Santa_Clara in California"
+    void TestSentenceFive() {
+        String content = "The game was played on February 7 2016, at Levis_Stadium, in the San_Francisco_" +
+                "Bay_Area, at Santa_Clara in California";
+        Sentence sentence = Sentence.ParseSentence(content);
+        System.out.println(Sentence.DependenciesToString(sentence));
+        List<Rule> rules = sentence.GenerateRules();
+        HashSet<String> ruleString = new HashSet<>();
+        for(Rule rule : rules){
+            ruleString.add(rule.toString());
+            System.out.println(rule);
+        }
+
+        Assert.assertEquals(5, ruleString.size());
+        Assert.assertTrue(ruleString.contains("time(february_7_2016)"));
+        Assert.assertTrue(ruleString.contains("event(2, play, null, game)"));
+        Assert.assertTrue(ruleString.contains("event(2, play, null, february_7_2016)"));
+        Assert.assertTrue(ruleString.contains("event(2, play, null, san_francisco_bay_area)"));
+        Assert.assertTrue(ruleString.contains("event(2, play, null, santa_clara)"));
     }
 }

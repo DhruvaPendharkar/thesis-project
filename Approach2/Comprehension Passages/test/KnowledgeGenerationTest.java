@@ -88,7 +88,7 @@ class KnowledgeGenerationTest {
         PrintRules(ruleString);
         Assert.assertEquals(42, ruleString.size());
     }
-/*
+
     @Test
     void Test2_1Story() throws IOException {
         String content = "One of the most famous people born in Warsaw was Maria Skłodowska-Curie, who achieved " +
@@ -110,7 +110,7 @@ class KnowledgeGenerationTest {
         PrintRules(ruleString);
         Assert.assertEquals(97, ruleString.size());
     }
-
+/*
     @Test
     void Test3_1Story() throws IOException {
         String content = "The Normans (Norman: Nourmands; French: Normands; Latin: Normanni) were the people who in " +

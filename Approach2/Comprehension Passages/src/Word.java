@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class Word {
 
     Word(String word){
         this.wordIndex = 0;
-        this.word = word;
+        this.word = word.toLowerCase();
         this.POSTag = "NN";
         this.lemma = word.toLowerCase();
         this.relationMap = new HashMap<>();
@@ -59,6 +60,10 @@ public class Word {
 
     public String getPOSTag(){
         return this.POSTag;
+    }
+
+    public NamedEntityTagger.NamedEntityTags getNERTag(){
+        return this.NERTag;
     }
 
     public String getLemma() {
@@ -280,11 +285,17 @@ public class Word {
 
     private List<Word> GetModifiers() {
         List<Word> modifiers = new ArrayList<>();
+        modifiers.addAll(GetPassiveSubjects());
         modifiers.addAll(GetNominalModifiers());
         modifiers.addAll(GetDirectObjects());
 
         modifiers = FilterCardinalNumbers(modifiers);
         return modifiers;
+    }
+
+    private List<Word> GetPassiveSubjects() {
+        if(this.relationMap.containsKey("nsubjpass")) return this.relationMap.get("nsubjpass");
+        return new ArrayList<>();
     }
 
     private List<Word> FilterCardinalNumbers(List<Word> modifiers) {
@@ -332,7 +343,6 @@ public class Word {
     private List<Word> GetSubjects() {
         List<Word> subjects = new ArrayList<>();
         if(this.relationMap.containsKey("nsubj")) subjects.addAll(this.relationMap.get("nsubj"));
-        if(this.relationMap.containsKey("nsubjpass")) subjects.addAll(this.relationMap.get("nsubjpass"));
         if(this.relationMap.containsKey("nsubj:xsubj")) subjects.addAll(this.relationMap.get("nsubj:xsubj"));
         subjects.addAll(GetIndirectObjects());
 
@@ -412,7 +422,7 @@ public class Word {
     }
 
     private Word GetToBeCopula() {
-        if(this.relationMap.containsKey("nsubj")) {
+        if(this.relationMap.containsKey("cop")) {
             List<Word> copulas = this.relationMap.get("cop");
             for(Word copula : copulas){
                 if(copula.lemma.equals("be")) return copula;
@@ -429,8 +439,12 @@ public class Word {
             builder.append(" ");
         }
 
-        String compoundWord = builder.toString().trim().toLowerCase();
+        String compoundWord = builder.toString().trim();
         compoundWord = compoundWord.replaceAll(" ", "_");
         return new Word(compoundWord);
+    }
+
+    public void SetNERTag(NamedEntityTagger.NamedEntityTags tag) {
+        this.NERTag = NamedEntityTagger.NamedEntityTags.ORGANIZATION;
     }
 }

@@ -5,6 +5,7 @@ import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.trees.*;
+import javafx.util.Pair;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -48,7 +49,15 @@ public class Sentence {
 
     private String PreprocessSentence(List<Word> inputList) {
         StringBuilder builder = new StringBuilder();
-        this.preProcessRules = GeneratePreProcessRules(inputList);
+        Pair<List<Word>, List<Rule>> result = ProcessOrganizations(inputList);
+        inputList = result.getKey();
+        this.preProcessRules.addAll(result.getValue());
+
+        result = ProcessDates(inputList);
+        inputList = result.getKey();
+        this.preProcessRules.addAll(result.getValue());
+
+        this.preProcessRules.addAll(GeneratePreProcessRules(inputList));
         boolean hasFoundBracket = false;
         for(Word word : inputList){
             if(word.getWord().equals("-LRB-")) hasFoundBracket = true;
@@ -61,6 +70,62 @@ public class Sentence {
         }
 
         return builder.toString().trim();
+    }
+
+    private Pair<List<Word>, List<Rule>> ProcessOrganizations(List<Word> inputList) {
+        List<Rule> rules = new ArrayList<>();
+        List<Word> wordList = new ArrayList<>();
+        List<Word> organizationWords = new ArrayList<>();
+        Word orgWord = new Word("organization");
+        for(Word word : inputList){
+            if(word.getPOSTag().equals("NNP") && word.getNERTag() == NamedEntityTagger.NamedEntityTags.ORGANIZATION){
+                organizationWords.add(word);
+            }
+            else {
+                if(organizationWords.size() != 0){
+                    Word organization = Word.CreateCompoundWord(organizationWords);
+                    organization.SetNERTag(NamedEntityTagger.NamedEntityTags.ORGANIZATION);
+                    wordList.add(organization);
+                    organizationWords = new ArrayList<>();
+
+                    List<Literal> terms = new ArrayList<>();
+                    terms.add(new Literal(organization));
+                    Literal head = new Literal(orgWord, terms);
+                    rules.add(new Rule(head, null, false));
+                }
+                wordList.add(word);
+            }
+        }
+
+        return new Pair<>(wordList, rules);
+    }
+
+    private Pair<List<Word>, List<Rule>> ProcessDates(List<Word> inputList) {
+        List<Rule> rules = new ArrayList<>();
+        List<Word> wordList = new ArrayList<>();
+        List<Word> timeWords = new ArrayList<>();
+        Word orgWord = new Word("time");
+        for(Word word : inputList){
+            if(word.getNERTag() == NamedEntityTagger.NamedEntityTags.DATE){
+                timeWords.add(word);
+            }
+            else {
+                if(timeWords.size() != 0){
+                    Word date = Word.CreateCompoundWord(timeWords);
+                    date.SetNERTag(NamedEntityTagger.NamedEntityTags.DATE);
+                    wordList.add(date);
+                    timeWords = new ArrayList<>();
+
+                    List<Literal> terms = new ArrayList<>();
+                    terms.add(new Literal(date));
+                    Literal head = new Literal(orgWord, terms);
+                    rules.add(new Rule(head, null, false));
+                }
+                wordList.add(word);
+            }
+        }
+
+        return new Pair<>(wordList, rules);
     }
 
     private List<Rule> GeneratePreProcessRules(List<Word> inputList) {
