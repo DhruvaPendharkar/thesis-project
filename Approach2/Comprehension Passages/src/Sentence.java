@@ -97,6 +97,17 @@ public class Sentence {
             }
         }
 
+        if(organizationWords.size() != 0){
+            Word organization = Word.CreateCompoundWord(organizationWords);
+            organization.SetNERTag(NamedEntityTagger.NamedEntityTags.ORGANIZATION);
+            wordList.add(organization);
+
+            List<Literal> terms = new ArrayList<>();
+            terms.add(new Literal(organization));
+            Literal head = new Literal(orgWord, terms);
+            rules.add(new Rule(head, null, false));
+        }
+
         return new Pair<>(wordList, rules);
     }
 
@@ -123,6 +134,17 @@ public class Sentence {
                 }
                 wordList.add(word);
             }
+        }
+
+        if(timeWords.size() != 0){
+            Word date = Word.CreateCompoundWord(timeWords);
+            date.SetNERTag(NamedEntityTagger.NamedEntityTags.DATE);
+            wordList.add(date);
+
+            List<Literal> terms = new ArrayList<>();
+            terms.add(new Literal(date));
+            Literal head = new Literal(orgWord, terms);
+            rules.add(new Rule(head, null, false));
         }
 
         return new Pair<>(wordList, rules);
