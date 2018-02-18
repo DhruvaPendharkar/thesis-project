@@ -67,14 +67,14 @@ class KnowledgeGenerationTest {
 
     @Test
     void Test1_1Story() throws IOException {
-        String content = "Super_Bowl_50 was an american_football game. Super_Bowl_50 was to determine the champion of " +
-        "the National_Football_League (NFL) for the 2015 season. The American_Football_Conference (AFC) champion " +
-        "Denver_Broncos defeated the National_Football_Conference (NFC) champion Carolina_Panthers 24–10 to earn " +
-        "their third Super_Bowl title. The game was played on February 7, 2016, at Levis_Stadium in the San_Francisco_" +
-        "Bay_Area at Santa_Clara, California. As this was the 50th Super_Bowl, the league emphasized the 'golden " +
-        "anniversary' with various gold-themed initiatives, as well as temporarily suspending the tradition of naming " +
-        "each Super_Bowl game with Roman numerals, under which the game would have been known as Super_Bowl_L, so " +
-        "that the logo could prominently feature the Arabic numerals 50.";
+        String content = "Super_Bowl_50 was an american_football game. Super_Bowl_50 was to determine the champion " +
+        "of the National Football League (NFL) for the 2015 season. The American_Football_Conference (AFC) champion " +
+        "Denver_Broncos defeated the National_Football_Conference (NFC) champion Carolina_Panthers by 24_10 to earn " +
+        "AFC third Super_Bowl title. The game was played on February 7 2016 at Levis_Stadium, in the " +
+        "San_Francisco_Bay_Area, at Santa_Clara in California. As Super_Bowl_50 was the 50th Super_Bowl, the league " +
+        "emphasized the 'golden anniversary' with various gold_themed initiatives, as well as temporarily suspending " +
+        "the tradition of naming each Super_Bowl with roman_numerals, under which the game would have been known as " +
+        "Super_Bowl_L, so that the logo could prominently feature the Arabic_numerals_50.";
         StorageManager manager = new StorageManager();
         Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
 
@@ -86,7 +86,17 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(66, ruleString.size());
+        Assert.assertEquals(68, ruleString.size());
+
+        System.out.println("%%-------------------------------------------------------%%");
+        System.out.println("%%Ontology%%");
+        System.out.println("%%-------------------------------------------------------%%");
+        ruleString = new TreeSet<>();
+        for(Rule rule : rulesPair.getValue()){
+            ruleString.add(rule.toString());
+        }
+        PrintRules(ruleString);
+        Assert.assertEquals(254, ruleString.size());
     }
 
     @Test

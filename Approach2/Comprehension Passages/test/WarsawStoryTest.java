@@ -40,9 +40,9 @@ public class WarsawStoryTest {
         }
 
         Assert.assertEquals(8, ruleString.size());
-        Assert.assertTrue(ruleString.contains("_adj(people, famous)"));
-        Assert.assertTrue(ruleString.contains("_adj(recognition, international)"));
-        Assert.assertTrue(ruleString.contains("event(1, bear, null, warsaw)"));
+        Assert.assertTrue(ruleString.contains("_mod(people, famous)"));
+        Assert.assertTrue(ruleString.contains("_mod(recognition, international)"));
+        Assert.assertTrue(ruleString.contains("_property(1, bear, null, warsaw)"));
         Assert.assertTrue(ruleString.contains("event(3, achieve, maria_skłodowska_curie, research)"));
         Assert.assertTrue(ruleString.contains("event(3, achieve, maria_skłodowska_curie, radioactivity)"));
         Assert.assertTrue(ruleString.contains("event(3, achieve, maria_skłodowska_curie, recognition)"));
@@ -64,11 +64,11 @@ public class WarsawStoryTest {
         }
 
         Assert.assertEquals(5, ruleString.size());
-        Assert.assertTrue(ruleString.contains("_adj(musician, famous)"));
+        Assert.assertTrue(ruleString.contains("_mod(musician, famous)"));
         Assert.assertTrue(ruleString.contains("event(1, include, musician, władysław_szpilman)"));
         Assert.assertTrue(ruleString.contains("event(1, include, musician, frédéric_chopin)"));
-        Assert.assertTrue(ruleString.contains("event(1, include, famous_musicians, władysław_szpilman)"));
-        Assert.assertTrue(ruleString.contains("event(1, include, famous_musicians, frédéric_chopin)"));
+        Assert.assertTrue(ruleString.contains("event(1, include, famous_musician, władysław_szpilman)"));
+        Assert.assertTrue(ruleString.contains("event(1, include, famous_musician, frédéric_chopin)"));
     }
 
     @Test
@@ -76,7 +76,7 @@ public class WarsawStoryTest {
     // he moved to the city with his family when he was seven months old.
     void TestSentenceThree() {
         String content = "Though Chopin was born in the village of Żelazowa_Wola, about 60 km from Warsaw, " +
-        "Chopin moved to the city with Chopin family, when Chopin was seven months_old.";
+        "Chopin moved to the city with Chopin family, when Chopin was seven_months_old.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
         List<Rule> rules = sentence.GenerateRules();
@@ -109,13 +109,12 @@ public class WarsawStoryTest {
             System.out.println(rule);
         }
 
-        Assert.assertEquals(4, ruleString.size());
+        Assert.assertEquals(6, ruleString.size());
         Assert.assertTrue(ruleString.contains("time(1745)"));
-        Assert.assertTrue(ruleString.contains("_adj(general, polish)"));
-        Assert.assertTrue(ruleString.contains("_is(Casimir_Pulaski, general)"));
-        Assert.assertTrue(ruleString.contains("event(2, bear, null, casimir_pulaski)"));
+        Assert.assertTrue(ruleString.contains("_property(hero, of(american_revolutionary_war))"));
+        Assert.assertTrue(ruleString.contains("_property(bear, in(warsaw))"));
+        Assert.assertTrue(ruleString.contains("_property(warsaw, in(1745))"));
         Assert.assertTrue(ruleString.contains("event(2, bear, null, hero)"));
-        Assert.assertTrue(ruleString.contains("event(2, bear, null, hero_of_american_revolutionary_war)"));
-        Assert.assertTrue(ruleString.contains("event(2, bear, null, in(warsaw))"));
+        Assert.assertTrue(ruleString.contains("event(2, bear, null, casimir_pulaski)"));
     }
 }
