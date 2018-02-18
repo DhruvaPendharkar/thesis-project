@@ -12,10 +12,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class RuleTest {
     @Test
     void TestGetRuleString() {
-        Word predicate = new Word("live");
-        Word subjectWord = new Word("lion");
-        Word modifierWord = new Word("forest");
-        Word animal = new Word("animal");
+        Word predicate = new Word("live", false);
+        Word subjectWord = new Word("lion", false);
+        Word modifierWord = new Word("forest", false);
+        Word animal = new Word("animal", false);
 
         Literal subject = new Literal(subjectWord);
         Literal modifier = new Literal(modifierWord);
@@ -37,10 +37,10 @@ class RuleTest {
 
     @Test
     void TestAreRulesEqual() {
-        Word predicate = new Word("live");
-        Word subjectWord = new Word("lion");
-        Word modifierWord = new Word("forest");
-        Word animal = new Word("animal");
+        Word predicate = new Word("live", false);
+        Word subjectWord = new Word("lion", false);
+        Word modifierWord = new Word("forest", false);
+        Word animal = new Word("animal", false);
 
         Literal subject = new Literal(subjectWord);
         Literal modifier = new Literal(modifierWord);
@@ -58,10 +58,10 @@ class RuleTest {
 
     @Test
     void TestCompareRules() {
-        Word predicate = new Word("live");
-        Word subjectWord = new Word("lion");
-        Word modifierWord = new Word("forest");
-        Word animal = new Word("animal");
+        Word predicate = new Word("live", false);
+        Word subjectWord = new Word("lion", false);
+        Word modifierWord = new Word("forest", false);
+        Word animal = new Word("animal", false);
 
         Literal subject = new Literal(subjectWord);
         Literal modifier = new Literal(modifierWord);

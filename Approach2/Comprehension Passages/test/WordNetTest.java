@@ -24,11 +24,11 @@ class WordNetTest {
         }
 
         Assert.assertEquals(11, ruleString.size());
-        Assert.assertTrue(ruleString.contains("animal(X, noun_Tops) :- animal(X),not abnormal_d_tops(X),not -animal(X, noun_Tops)"));
-        Assert.assertTrue(ruleString.contains("organism(X, noun_Tops) :- organism(X),not abnormal_d_tops(X),not -organism(X, noun_Tops)"));
-        Assert.assertTrue(ruleString.contains("physical_entity(X, noun_Tops) :- physical_entity(X),not abnormal_d_tops(X),not -physical_entity(X, noun_Tops)"));
-        Assert.assertTrue(ruleString.contains("living_thing(X, noun_Tops) :- living_thing(X),not abnormal_d_tops(X),not -living_thing(X, noun_Tops)"));
-        Assert.assertTrue(ruleString.contains("entity(X, noun_Tops) :- entity(X),not abnormal_d_tops(X),not -entity(X, noun_Tops)"));
+        Assert.assertTrue(ruleString.contains("animal(X, noun_tops) :- animal(X),not abnormal_d_tops(X),not -animal(X, noun_tops)"));
+        Assert.assertTrue(ruleString.contains("organism(X, noun_tops) :- organism(X),not abnormal_d_tops(X),not -organism(X, noun_tops)"));
+        Assert.assertTrue(ruleString.contains("physical_entity(X, noun_tops) :- physical_entity(X),not abnormal_d_tops(X),not -physical_entity(X, noun_tops)"));
+        Assert.assertTrue(ruleString.contains("living_thing(X, noun_tops) :- living_thing(X),not abnormal_d_tops(X),not -living_thing(X, noun_tops)"));
+        Assert.assertTrue(ruleString.contains("entity(X, noun_tops) :- entity(X),not abnormal_d_tops(X),not -entity(X, noun_tops)"));
 
     }
 

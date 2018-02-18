@@ -18,9 +18,10 @@ public class Word {
 
     public static int eventId = 1;
 
-    Word(String word){
+    Word(String word, boolean isVariable){
         this.wordIndex = 0;
         this.word = word.toLowerCase();
+        if(isVariable) this.word = word;
         this.POSTag = "NN";
         this.lemma = word.toLowerCase();
         this.relationMap = new HashMap<>();
@@ -30,7 +31,7 @@ public class Word {
 
     Word(int wordIndex, String word, String lemma, String POSTag, String NERTag, boolean isQuestion){
         this.wordIndex = wordIndex;
-        this.word = word;
+        this.word = word.toLowerCase();
         this.POSTag = POSTag;
         this.lemma = lemma.toLowerCase();
         this.NERTag = NamedEntityTagger.GetEntityTag(NERTag);
@@ -89,6 +90,38 @@ public class Word {
         List<Rule> rules = new ArrayList<>();
         rules.addAll(this.GenerateAdjectiveRules());
         rules.addAll(this.GenerateNERRules());
+        rules.addAll(this.GenerateNominalModifierRules());
+        return rules;
+    }
+
+    private List<Rule> GenerateNominalModifierRules() {
+        List<Rule> rules = new ArrayList<>();
+        Word predicate = new Word("_property", false);
+        List<Word> modifiers = this.GetNominalModifiers();
+
+        for(Word modifier : modifiers) {
+            List<Literal> bodyList = new ArrayList<>();
+            Literal concept = new Literal(this);
+            List<Word> numModifiers = modifier.GetNumericalModifiers();
+            numModifiers.add(modifier);
+            Word modifiedWord = CreateCompoundWord(numModifiers);
+            Word preposition = modifier.GetPreposition();
+            Literal modifierLiteral = new Literal(modifiedWord);
+
+            if(preposition != null) {
+                List<Literal> literalList = new ArrayList<>();
+                literalList.add(new Literal(modifiedWord));
+                modifierLiteral = new Literal(preposition, literalList);
+            }
+
+            bodyList.add(concept);
+            bodyList.add(modifierLiteral);
+
+            Literal head = new Literal(predicate, bodyList);
+            Rule rule = new Rule(head, null, false);
+            rules.add(rule);
+        }
+
         return rules;
     }
 
@@ -96,13 +129,13 @@ public class Word {
         List<Rule> rules = new ArrayList<>();
         if(!this.IsNoun()) return rules;
 
-        Word predicate = new Word("_adj");
+        Word predicate = new Word("_mod", false);
         List<Word> adjectives = this.GetAdjectives();
-
+        adjectives.addAll(this.GetNumericalModifiers());
         for(Word adjective : adjectives) {
             List<Literal> bodyList = new ArrayList<>();
-            Literal concept = new Literal(new Word(this.lemma));
-            Literal adj = new Literal(new Word(adjective.lemma));
+            Literal concept = new Literal(new Word(this.lemma, false));
+            Literal adj = new Literal(new Word(adjective.lemma, false));
             bodyList.add(concept);
             bodyList.add(adj);
 
@@ -115,13 +148,21 @@ public class Word {
     }
 
     private List<Word> GetAdjectives() {
-        if(this.relationMap.containsKey("amod")) return this.relationMap.get("amod");
-        return new ArrayList<>();
+        List<Word> adjectives = new ArrayList<>();
+        if(this.relationMap.containsKey("amod")) adjectives.addAll(this.relationMap.get("amod"));
+        return adjectives;
+    }
+
+    private List<Word> GetNumericalModifiers() {
+        List<Word> numericalModifiers = new ArrayList<>();
+        if(this.relationMap.containsKey("nummod")) numericalModifiers.addAll(this.relationMap.get("nummod"));
+        return numericalModifiers;
     }
 
     private List<Word> GetNominalModifiers() {
-        if(this.relationMap.containsKey("nmod")) return this.relationMap.get("nmod");
-        return new ArrayList<>();
+        List<Word> nominalModifiers = new ArrayList<>();
+        if(this.relationMap.containsKey("nmod")) nominalModifiers.addAll(this.relationMap.get("nmod"));
+        return nominalModifiers;
     }
 
     private List<Rule> GenerateNERRules() {
@@ -132,7 +173,7 @@ public class Word {
         if(predicate == null) return rules;
 
         List<Literal> bodyList = new ArrayList<>();
-        Literal concept = new Literal(new Word(this.lemma));
+        Literal concept = new Literal(new Word(this.lemma, false));
         bodyList.add(concept);
 
         Literal head = new Literal(predicate, bodyList);
@@ -143,8 +184,8 @@ public class Word {
 
     private Word GenerateNERPredicate() {
         switch (this.NERTag){
-            case DATE: return new Word("time");
-            case ORGANIZATION: return new Word("company");
+            case DATE: return new Word("time", false);
+            case ORGANIZATION: return new Word("company", false);
         }
 
         return null;
@@ -156,7 +197,7 @@ public class Word {
 
     private List<Rule> GenerateRulesForVerb(boolean isQuestion) {
         List<Rule> rules = new ArrayList<>();
-        Word eventWord = new Word("event");
+        Word eventWord = new Word("event", false);
         List<Word> subjects = this.GetSubjects();
         List<Word> modifiers = this.GetModifiers();
 
@@ -167,22 +208,22 @@ public class Word {
             for (Word subject : subjects) {
                 for (Word modifier : modifiers) {
                     List<Literal> bodyList = new ArrayList<>();
-                    bodyList.add(new Literal(new Word(this.id)));
+                    bodyList.add(new Literal(new Word(this.id, true)));
                     if(isQuestion && this.lemma.equals("do")){
-                        bodyList.add(new Literal(new Word("D" + this.id)));
+                        bodyList.add(new Literal(new Word("D" + this.id, true)));
                     }
                     else {
-                        bodyList.add(new Literal(new Word(this.lemma)));
+                        bodyList.add(new Literal(new Word(this.lemma, false)));
                     }
 
                     if(subject.IsW_Word()){
                         subject.lemma = "X";
                     }
-                    bodyList.add(new Literal(new Word(subject.lemma)));
+                    bodyList.add(new Literal(new Word(subject.lemma, false)));
                     if(modifier.IsW_Word()){
                         modifier.lemma = "X";
                     }
-                    bodyList.add(new Literal(new Word(modifier.lemma)));
+                    bodyList.add(new Literal(new Word(modifier.lemma, false)));
 
                     Literal head = new Literal(eventWord, bodyList);
                     rules.add(new Rule(head, null, false));
@@ -192,19 +233,19 @@ public class Word {
             if (subjects.size() == 0) {
                 for (Word modifier : modifiers) {
                     List<Literal> bodyList = new ArrayList<>();
-                    bodyList.add(new Literal(new Word(String.valueOf(this.id))));
+                    bodyList.add(new Literal(new Word(String.valueOf(this.id), false)));
                     if(isQuestion && this.lemma.equals("do")){
-                        bodyList.add(new Literal(new Word("D" + this.id)));
+                        bodyList.add(new Literal(new Word("D" + this.id, true)));
                     }
                     else {
-                        bodyList.add(new Literal(new Word(this.lemma)));
+                        bodyList.add(new Literal(new Word(this.lemma, false)));
                     }
 
-                    bodyList.add(new Literal(new Word("null")));
+                    bodyList.add(new Literal(new Word("null", false)));
                     if(modifier.IsW_Word()){
                         modifier.lemma = "X";
                     }
-                    bodyList.add(new Literal(new Word(modifier.lemma)));
+                    bodyList.add(new Literal(new Word(modifier.lemma, false)));
 
                     Literal head = new Literal(eventWord, bodyList);
                     rules.add(new Rule(head, null, false));
@@ -214,57 +255,117 @@ public class Word {
             if (modifiers.size() == 0) {
                 for (Word subject : subjects) {
                     List<Literal> bodyList = new ArrayList<>();
-                    bodyList.add(new Literal(new Word(String.valueOf(this.id))));
+                    bodyList.add(new Literal(new Word(String.valueOf(this.id), false)));
                     if(isQuestion && this.lemma.equals("do")){
-                        bodyList.add(new Literal(new Word("D" + this.id)));
+                        bodyList.add(new Literal(new Word("D" + this.id, true)));
                     }
                     else {
-                        bodyList.add(new Literal(new Word(this.lemma)));
+                        bodyList.add(new Literal(new Word(this.lemma, false)));
                     }
 
                     if(subject.IsW_Word()){
                         subject.lemma = "X";
                     }
-                    bodyList.add(new Literal(new Word(subject.lemma)));
-                    bodyList.add(new Literal(new Word("null")));
+                    bodyList.add(new Literal(new Word(subject.lemma, false)));
+                    bodyList.add(new Literal(new Word("null", false)));
 
                     Literal head = new Literal(eventWord, bodyList);
                     rules.add(new Rule(head, null, false));
                 }
             }
 
-            List<Word> clausalComplements = this.GetClausalComplements();
-            Word relationWord = new Word("_relation");
-            for (Word clause : clausalComplements) {
-                if(!clause.IsVerb()) continue;
-                List<Literal> bodyList = new ArrayList<>();
-                bodyList.add(new Literal(new Word(String.valueOf(this.id))));
-                bodyList.add(new Literal(new Word(String.valueOf(clause.id))));
-                bodyList.add(new Literal(new Word("_clcomplement")));
-
-                Literal head = new Literal(relationWord, bodyList);
-                rules.add(new Rule(head, null, false));
-            }
+            rules.addAll(GenerateClausalComplementRules());
+            rules.addAll(GenerateClausalRules());
+            rules.addAll(GenerateAdverbRules());
+            rules.addAll(GenerateNominalModifierRules());
         }
 
         return rules;
     }
 
+    private List<Rule> GenerateClausalRules() {
+        List<Rule> rules = new ArrayList<>();
+        List<Word> clauses = this.GetAdverbClause();
+        Word relationWord = new Word("_relation", false);
+        for (Word clause : clauses) {
+            if(!clause.IsVerb()) continue;
+            List<Literal> bodyList = new ArrayList<>();
+            bodyList.add(new Literal(new Word(String.valueOf(this.id), false)));
+            bodyList.add(new Literal(new Word(String.valueOf(clause.id), false)));
+            bodyList.add(new Literal(new Word("_clause", false)));
+
+            Literal head = new Literal(relationWord, bodyList);
+            rules.add(new Rule(head, null, false));
+        }
+
+        return rules;
+    }
+
+    private List<Word> GetAdverbClause() {
+        List<Word> clauses = new ArrayList<>();
+        if(this.relationMap.containsKey("advcl")) clauses.addAll(this.relationMap.get("advcl"));
+        return clauses;
+    }
+
+    private List<Rule> GenerateClausalComplementRules() {
+        List<Rule> rules = new ArrayList<>();
+        List<Word> clausalComplements = this.GetClausalComplements();
+        Word relationWord = new Word("_relation", false);
+        for (Word clause : clausalComplements) {
+            if(!clause.IsVerb()) continue;
+            List<Literal> bodyList = new ArrayList<>();
+            bodyList.add(new Literal(new Word(String.valueOf(this.id), false)));
+            bodyList.add(new Literal(new Word(String.valueOf(clause.id), false)));
+            bodyList.add(new Literal(new Word("_clcomplement", false)));
+
+            Literal head = new Literal(relationWord, bodyList);
+            rules.add(new Rule(head, null, false));
+        }
+
+        return rules;
+    }
+
+    private List<Rule> GenerateAdverbRules() {
+        List<Rule> rules = new ArrayList<>();
+        List<Word> adverbs = GetAdverbs();
+        for(Word adverb : adverbs){
+            Word predicate = new Word("_mod", false);
+            List<Literal> terms = new ArrayList<>();
+            terms.add(new Literal(this));
+            terms.add(new Literal(adverb));
+            Literal head = new Literal(predicate, terms);
+            Rule rule = new Rule(head, null, false);
+            rules.add(rule);
+        }
+
+        return rules;
+    }
+
+    private List<Word> GetAdverbs() {
+        List<Word> adverbs = new ArrayList<>();
+        if(this.relationMap.containsKey("advmod")) adverbs.addAll(this.relationMap.get("advmod"));
+        return adverbs;
+    }
+
     private List<Rule> GenerateIsRule(List<Word> subjects, List<Word> modifiers) {
         List<Rule> rules = new ArrayList<>();
-        Word isWord = new Word("_is");
+        Word isWord = new Word("_is", false);
         for (Word subject : subjects) {
             for (Word modifier : modifiers) {
                 List<Literal> bodyList = new ArrayList<>();
+                boolean isVariable = false;
                 if(subject.IsW_Word()){
                     subject.lemma = "X";
+                    isVariable = true;
                 }
-                bodyList.add(new Literal(new Word(subject.lemma)));
+
+                bodyList.add(new Literal(new Word(subject.lemma, isVariable)));
+                isVariable = false;
                 if(modifier.IsW_Word()){
                     modifier.lemma = "X";
+                    isVariable = true;
                 }
-                bodyList.add(new Literal(new Word(modifier.lemma)));
-
+                bodyList.add(new Literal(new Word(modifier.lemma, isVariable)));
                 Literal head = new Literal(isWord, bodyList);
                 rules.add(new Rule(head, null, false));
             }
@@ -286,7 +387,6 @@ public class Word {
     private List<Word> GetModifiers() {
         List<Word> modifiers = new ArrayList<>();
         modifiers.addAll(GetPassiveSubjects());
-        modifiers.addAll(GetNominalModifiers());
         modifiers.addAll(GetDirectObjects());
 
         modifiers = FilterCardinalNumbers(modifiers);
@@ -294,8 +394,9 @@ public class Word {
     }
 
     private List<Word> GetPassiveSubjects() {
-        if(this.relationMap.containsKey("nsubjpass")) return this.relationMap.get("nsubjpass");
-        return new ArrayList<>();
+        List<Word> passiveSubjects = new ArrayList<>();
+        if(this.relationMap.containsKey("nsubjpass")) passiveSubjects.addAll(this.relationMap.get("nsubjpass"));
+        return passiveSubjects;
     }
 
     private List<Word> FilterCardinalNumbers(List<Word> modifiers) {
@@ -352,8 +453,9 @@ public class Word {
     }
 
     private List<Word> GetIndirectObjects() {
-        if(this.relationMap.containsKey("iobj")) return this.relationMap.get("iobj");
-        return new ArrayList<>();
+        List<Word> indirectObjects = new ArrayList<>();
+        if(this.relationMap.containsKey("iobj")) indirectObjects.addAll(this.relationMap.get("iobj"));
+        return indirectObjects;
     }
 
     private List<Word> GetSupplimentaryFromAdjectives(List<Word> subjects) {
@@ -390,7 +492,7 @@ public class Word {
     public List<Rule> GenerateNonVerbRootRules() {
         if(!this.IsNoun()) return new ArrayList<>();
         List<Rule> rules = new ArrayList<>();
-        Word bePredicate = new Word("_is");
+        Word bePredicate = new Word("_is", false);
 
         Word copula = GetToBeCopula();
         if(copula == null) return new ArrayList<>();
@@ -423,7 +525,8 @@ public class Word {
 
     private Word GetToBeCopula() {
         if(this.relationMap.containsKey("cop")) {
-            List<Word> copulas = this.relationMap.get("cop");
+            List<Word> copulas = new ArrayList<>();
+            copulas .addAll(this.relationMap.get("cop"));
             for(Word copula : copulas){
                 if(copula.lemma.equals("be")) return copula;
             }
@@ -441,10 +544,10 @@ public class Word {
 
         String compoundWord = builder.toString().trim();
         compoundWord = compoundWord.replaceAll(" ", "_");
-        return new Word(compoundWord);
+        return new Word(compoundWord, false);
     }
 
     public void SetNERTag(NamedEntityTagger.NamedEntityTags tag) {
-        this.NERTag = NamedEntityTagger.NamedEntityTags.ORGANIZATION;
+        this.NERTag = tag;
     }
 }

@@ -20,7 +20,7 @@ public class Literal {
     }
 
     public Literal(Word atom){
-        this.predicate = atom.getWord();
+        this.predicate = atom.getLemma();
         this.isAtom = true;
         if(atom.getPOSTag().startsWith("W")){
             this.predicate = "X";

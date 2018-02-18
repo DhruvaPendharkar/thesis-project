@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class LiteralTest {
     @Test
     void TestAtomLiteralToString() {
-        Word atom = new Word("test");
+        Word atom = new Word("test", false);
         Literal literal = new Literal(atom);
         Assert.assertEquals("test", literal.toString());
     }
@@ -26,16 +26,16 @@ class LiteralTest {
 
     @Test
     void TestNoBodyLiteralToString() {
-        Word predicate = new Word("do");
+        Word predicate = new Word("do", false);
         Literal literal = new Literal(predicate, new ArrayList<>());
         Assert.assertEquals("Error : No terms found in body", literal.toString());
     }
 
     @Test
     void TestPredicateNAFToString() {
-        Word predicate = new Word("live");
-        Word subjectWord = new Word("lion");
-        Word modifierWord = new Word("forest");
+        Word predicate = new Word("live", false);
+        Word subjectWord = new Word("lion", false);
+        Word modifierWord = new Word("forest", false);
         Literal subject = new Literal(subjectWord);
         Literal modifier = new Literal(modifierWord);
         List<Literal> body = new ArrayList<>();
@@ -48,9 +48,9 @@ class LiteralTest {
 
     @Test
     void TestPredicateClassicalNegationToString() {
-        Word predicate = new Word("live");
-        Word subjectWord = new Word("lion");
-        Word modifierWord = new Word("forest");
+        Word predicate = new Word("live", false);
+        Word subjectWord = new Word("lion", false);
+        Word modifierWord = new Word("forest", false);
         Literal subject = new Literal(subjectWord);
         Literal modifier = new Literal(modifierWord);
         List<Literal> body = new ArrayList<>();
@@ -63,9 +63,9 @@ class LiteralTest {
 
     @Test
     void TestPredicateToString() {
-        Word predicate = new Word("is");
-        Word subjectWord = new Word("lion");
-        Word modifierWord = new Word("scary");
+        Word predicate = new Word("is", false);
+        Word subjectWord = new Word("lion", false);
+        Word modifierWord = new Word("scary", false);
         Literal subject = new Literal(subjectWord);
         Literal modifier = new Literal(modifierWord);
         List<Literal> body = new ArrayList<>();

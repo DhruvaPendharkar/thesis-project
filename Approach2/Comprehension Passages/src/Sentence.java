@@ -60,8 +60,8 @@ public class Sentence {
         this.preProcessRules.addAll(GeneratePreProcessRules(inputList));
         boolean hasFoundBracket = false;
         for(Word word : inputList){
-            if(word.getWord().equals("-LRB-")) hasFoundBracket = true;
-            else if(word.getWord().equals("-RRB-")) {
+            if(word.getWord().equalsIgnoreCase("-LRB-")) hasFoundBracket = true;
+            else if(word.getWord().equalsIgnoreCase("-RRB-")) {
                 hasFoundBracket = false;
                 continue;
             }
@@ -76,7 +76,7 @@ public class Sentence {
         List<Rule> rules = new ArrayList<>();
         List<Word> wordList = new ArrayList<>();
         List<Word> organizationWords = new ArrayList<>();
-        Word orgWord = new Word("organization");
+        Word orgWord = new Word("organization", false);
         for(Word word : inputList){
             if(word.getPOSTag().equals("NNP") && word.getNERTag() == NamedEntityTagger.NamedEntityTags.ORGANIZATION){
                 organizationWords.add(word);
@@ -115,7 +115,7 @@ public class Sentence {
         List<Rule> rules = new ArrayList<>();
         List<Word> wordList = new ArrayList<>();
         List<Word> timeWords = new ArrayList<>();
-        Word orgWord = new Word("time");
+        Word orgWord = new Word("time", false);
         for(Word word : inputList){
             if(word.getNERTag() == NamedEntityTagger.NamedEntityTags.DATE){
                 timeWords.add(word);
@@ -165,19 +165,19 @@ public class Sentence {
         Word previousWord = null;
         for(int i=1; i<inputList.size(); i++){
             Word currentWord = inputList.get(i);
-            if(currentWord.getWord().equals("-LRB-")) {
+            if(currentWord.getWord().equalsIgnoreCase("-LRB-")) {
                 hasFoundBracket = true;
                 previousWord = inputList.get(i-1);
                 wordCollection = new ArrayList<>();
                 continue;
             }
-            else if(currentWord.getWord().equals("-RRB-") && previousWord != null) {
+            else if(currentWord.getWord().equalsIgnoreCase("-RRB-") && previousWord != null) {
                 hasFoundBracket = false;
-                Word predicateWord = new Word("_abbreviation");
+                Word predicateWord = new Word("_abbreviation", false);
                 List<Literal> terms = new ArrayList<>();
                 Word abbreviation = Word.CreateCompoundWord(wordCollection);
                 terms.add(new Literal(abbreviation));
-                terms.add(new Literal(new Word(previousWord.getWord().toLowerCase())));
+                terms.add(new Literal(new Word(previousWord.getWord().toLowerCase(), false)));
                 Literal head = new Literal(predicateWord, terms);
                 Rule rule = new Rule(head, null, false);
                 rules.add(rule);

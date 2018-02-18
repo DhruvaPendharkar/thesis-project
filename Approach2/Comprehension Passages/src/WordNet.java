@@ -168,9 +168,9 @@ public class WordNet {
     private static HashSet<Rule> ConvertToHypernymRules(List<Concept> concepts) {
         HashSet<Rule> rules = new HashSet<>();
         for(Concept concept : concepts) {
-            Word predicateWord = new Word(concept.baseConcept);
-            Literal objectLiteral = new Literal(new Word("X"));
-            Literal senseLiteral = new Literal(new Word(concept.sense));
+            Word predicateWord = new Word(concept.baseConcept, false);
+            Literal objectLiteral = new Literal(new Word("X", true));
+            Literal senseLiteral = new Literal(new Word(concept.sense, false));
             List<Literal> bodyList = new ArrayList<>();
             bodyList.add(objectLiteral);
             bodyList.add(senseLiteral);
@@ -181,10 +181,10 @@ public class WordNet {
                 List<Concept> hypernyms = concept.hypernymMap.get(sense);
                 for (Concept hypernym : hypernyms) {
                     List<Literal> terms = new ArrayList<>();
-                    Word superclassWord = new Word(hypernym.baseConcept);
+                    Word superclassWord = new Word(hypernym.baseConcept, false);
                     terms.add(objectLiteral);
                     String senseString = sense.replace("noun.", "noun_");
-                    terms.add(new Literal(new Word(senseString)));
+                    terms.add(new Literal(new Word(senseString, false)));
                     Literal head = new Literal(superclassWord, terms);
                     Rule rule = new Rule(head, bodyList, false);
                     rules.add(rule);
@@ -239,11 +239,11 @@ public class WordNet {
         List<Rule> rules = new ArrayList<>();
         concepts = GetSenseRanks(baseConcept, concepts);
 
-        Word baseWord = new Word(baseConcept);
-        Literal variable = new Literal(new Word("X"));
+        Word baseWord = new Word(baseConcept, false);
+        Literal variable = new Literal(new Word("X", true));
         for(int i=1;i<concepts.size();i++){
             Concept senseConcept = concepts.get(i);
-            Literal sense = new Literal(new Word(senseConcept.sense));
+            Literal sense = new Literal(new Word(senseConcept.sense, false));
             List<Literal> terms = new ArrayList<>();
             terms.add(variable);
             terms.add(sense);
@@ -262,7 +262,7 @@ public class WordNet {
 
             for(int j=0;j<concepts.size();j++){
                 senseConcept = concepts.get(j);
-                sense = new Literal(new Word(senseConcept.sense));
+                sense = new Literal(new Word(senseConcept.sense, false));
                 terms = new ArrayList<>();
                 terms.add(variable);
                 terms.add(sense);
@@ -309,9 +309,9 @@ public class WordNet {
 
     public static Rule GenerateDefaultRule(Concept concept) {
         String senseType = concept.sense.split("_")[1];
-        Word baseWordPredicate = new Word(concept.baseConcept);
-        Literal variable = new Literal(new Word("X"));
-        Literal senseLiteral = new Literal(new Word(concept.sense));
+        Word baseWordPredicate = new Word(concept.baseConcept, false);
+        Literal variable = new Literal(new Word("X", true));
+        Literal senseLiteral = new Literal(new Word(concept.sense, false));
         List<Literal> terms = new ArrayList<>();
         terms.add(variable);
         terms.add(senseLiteral);
@@ -325,7 +325,7 @@ public class WordNet {
         terms.add(variable);
         bodyList.add(new Literal(baseWordPredicate, terms));
 
-        Word abnormalPredicateWord = new Word("abnormal_d_" + senseType);
+        Word abnormalPredicateWord = new Word("abnormal_d_" + senseType, false);
         Literal weakException = new Literal(abnormalPredicateWord, terms);
         weakException.isNAF = true;
         bodyList.add(weakException);
@@ -361,7 +361,7 @@ public class WordNet {
         for (String noun : nouns) {
             IIndexWord idxWord = dictionary.getIndexWord(noun, POS.NOUN);
             if (idxWord == null) continue;
-            Word baseWord = new Word(noun);
+            Word baseWord = new Word(noun, false);
             List<Literal> terms = new ArrayList<>();
             terms.add(new Literal(baseWord));
             Literal head = new Literal(baseWord, terms);
