@@ -8,8 +8,6 @@ import edu.stanford.nlp.trees.*;
 import javafx.util.Pair;
 
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by dhruv on 9/24/2017.
@@ -277,7 +275,6 @@ public class Sentence {
         for(Word word : this.wordList){
             rules.addAll(word.GenerateRules(false));
         }
-        rules.addAll(this.semanticRoot.GenerateNonVerbRootRules());
 
         return rules;
     }

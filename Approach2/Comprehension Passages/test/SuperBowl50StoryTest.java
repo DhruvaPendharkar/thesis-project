@@ -116,19 +116,20 @@ public class SuperBowl50StoryTest {
             System.out.println(rule);
         }
 
-        Assert.assertEquals(20, ruleString.size());
+        Assert.assertEquals(19, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(super_bowl, 50th)"));
         Assert.assertTrue(ruleString.contains("_mod(anniversary, golden)"));
         Assert.assertTrue(ruleString.contains("_mod(initiative, various)"));
         Assert.assertTrue(ruleString.contains("_mod(initiative, gold_themed)"));
         Assert.assertTrue(ruleString.contains("_mod(suspend, temporarily)"));
         Assert.assertTrue(ruleString.contains("_mod(feature, prominently)"));
-        Assert.assertTrue(ruleString.contains("_relation(tradition, 4, _clause)"));
-        Assert.assertTrue(ruleString.contains("_relation(7, 8, _conj)"));
+        Assert.assertTrue(ruleString.contains("_relation(tradition, 5, _clause)"));
+        Assert.assertTrue(ruleString.contains("_relation(2, 4, _conj)"));
         Assert.assertTrue(ruleString.contains("_property(emphasize, with(initiative))"));
         Assert.assertTrue(ruleString.contains("_property(name, with(roman_numerals))"));
-        Assert.assertTrue(ruleString.contains("_property(know, as(super_bowl_l))"));
+        Assert.assertTrue(ruleString.contains("_property(know, with(roman_numerals))"));
         Assert.assertTrue(ruleString.contains("_is(super_bowl_50, super_bowl)"));
+        Assert.assertTrue(ruleString.contains("_is(super_bowl_50, 50th_super_bowl)"));
         Assert.assertTrue(ruleString.contains("event(2, emphasize, league, anniversary)"));
         Assert.assertTrue(ruleString.contains("event(2, emphasize, league, golden_anniversary)"));
         Assert.assertTrue(ruleString.contains("event(4, suspend, league, tradition)"));
@@ -152,7 +153,7 @@ public class SuperBowl50StoryTest {
             System.out.println(rule);
         }
 
-        Assert.assertEquals(6, ruleString.size());
+        Assert.assertEquals(7, ruleString.size());
         Assert.assertTrue(ruleString.contains("time(february_7_2016)"));
         Assert.assertTrue(ruleString.contains("event(2, play, null, game)"));
         Assert.assertTrue(ruleString.contains("_property(play, on(february_7_2016))"));

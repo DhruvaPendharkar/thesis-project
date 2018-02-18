@@ -91,7 +91,33 @@ public class Word {
         rules.addAll(this.GenerateAdjectiveRules());
         rules.addAll(this.GenerateNERRules());
         rules.addAll(this.GenerateNominalModifierRules());
+        rules.addAll(this.GenerateAdjectiveClauseRules());
+        rules.addAll(this.GenerateCopulaRules());
         return rules;
+    }
+
+    private List<Rule> GenerateAdjectiveClauseRules() {
+        List<Rule> rules = new ArrayList<>();
+        List<Word> clauses = this.GetAdjectiveClause();
+        Word relationWord = new Word("_relation", false);
+        for (Word clause : clauses) {
+            if(!clause.IsVerb()) continue;
+            List<Literal> bodyList = new ArrayList<>();
+            bodyList.add(new Literal(this));
+            bodyList.add(new Literal(new Word(String.valueOf(clause.id), false)));
+            bodyList.add(new Literal(new Word("_clause", false)));
+
+            Literal head = new Literal(relationWord, bodyList);
+            rules.add(new Rule(head, null, false));
+        }
+
+        return rules;
+    }
+
+    private List<Word> GetAdjectiveClause() {
+        List<Word> adjectiveClaussRoot = new ArrayList<>();
+        if(this.relationMap.containsKey("acl")) adjectiveClaussRoot.addAll(this.relationMap.get("acl"));
+        return adjectiveClaussRoot;
     }
 
     private List<Rule> GenerateNominalModifierRules() {
@@ -278,9 +304,33 @@ public class Word {
             rules.addAll(GenerateClausalRules());
             rules.addAll(GenerateAdverbRules());
             rules.addAll(GenerateNominalModifierRules());
+            rules.addAll(GenerateConjunctionRules());
         }
 
         return rules;
+    }
+
+    private List<Rule> GenerateConjunctionRules() {
+        List<Rule> rules = new ArrayList<>();
+        List<Word> conjunctions = this.GetConjunctionRelations();
+        Word relationWord = new Word("_relation", false);
+        for (Word conjunction : conjunctions) {
+            if(!conjunction.IsVerb()) continue;
+            List<Literal> bodyList = new ArrayList<>();
+            bodyList.add(new Literal(new Word(String.valueOf(this.id), false)));
+            bodyList.add(new Literal(new Word(String.valueOf(conjunction.id), false)));
+            bodyList.add(new Literal(new Word("_conj", false)));
+
+            Literal head = new Literal(relationWord, bodyList);
+            rules.add(new Rule(head, null, false));
+        }
+        return rules;
+    }
+
+    private List<Word> GetConjunctionRelations() {
+        List<Word> conjunctions = new ArrayList<>();
+        if(this.relationMap.containsKey("conj")) conjunctions.addAll(this.relationMap.get("conj"));
+        return conjunctions;
     }
 
     private List<Rule> GenerateClausalRules() {
@@ -489,7 +539,7 @@ public class Word {
         return false;
     }
 
-    public List<Rule> GenerateNonVerbRootRules() {
+    public List<Rule> GenerateCopulaRules() {
         if(!this.IsNoun()) return new ArrayList<>();
         List<Rule> rules = new ArrayList<>();
         Word bePredicate = new Word("_is", false);
@@ -538,7 +588,7 @@ public class Word {
     public static Word CreateCompoundWord(List<Word> wordCollection) {
         StringBuilder builder = new StringBuilder();
         for(Word word : wordCollection){
-            builder.append(word.getWord());
+            builder.append(word.getLemma());
             builder.append(" ");
         }
 

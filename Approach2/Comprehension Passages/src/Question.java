@@ -16,6 +16,7 @@ public class Question extends Sentence {
             rules.addAll(word.GenerateRules(true));
         }
 
+        rules.addAll(this.semanticRoot.GenerateCopulaRules());
         rules = Rule.AggregateAllRules(rules);
         return rules;
     }
