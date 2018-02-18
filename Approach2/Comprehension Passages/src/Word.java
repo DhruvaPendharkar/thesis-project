@@ -24,6 +24,7 @@ public class Word {
         if(isVariable) this.word = word;
         this.POSTag = "NN";
         this.lemma = word.toLowerCase();
+        if(isVariable) this.lemma = word;
         this.relationMap = new HashMap<>();
         this.NERTag = NamedEntityTagger.GetEntityTag("O");
         this.id = "";

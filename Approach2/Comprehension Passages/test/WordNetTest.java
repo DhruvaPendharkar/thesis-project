@@ -64,23 +64,23 @@ class WordNetTest {
         Assert.assertEquals(41, ruleString.size());
         Assert.assertTrue(ruleString.contains("celebrity(X, noun_person) :- lion(X, noun_person)"));
         Assert.assertTrue(ruleString.contains("big_cat(X, noun_animal) :- lion(X, noun_animal)"));
-        Assert.assertTrue(ruleString.contains("person(X, noun_Tops) :- lion(X, noun_person)"));
+        Assert.assertTrue(ruleString.contains("person(X, noun_tops) :- lion(X, noun_person)"));
         Assert.assertTrue(ruleString.contains("important_person(X, noun_person) :- celebrity(X, noun_person)"));
         Assert.assertTrue(ruleString.contains("feline(X, noun_animal) :- big_cat(X, noun_animal)"));
-        Assert.assertTrue(ruleString.contains("organism(X, noun_Tops) :- person(X, noun_Tops)"));
+        Assert.assertTrue(ruleString.contains("organism(X, noun_tops) :- person(X, noun_tops)"));
         Assert.assertTrue(ruleString.contains("adult(X, noun_person) :- important_person(X, noun_person)"));
         Assert.assertTrue(ruleString.contains("carnivore(X, noun_animal) :- feline(X, noun_animal)"));
-        Assert.assertTrue(ruleString.contains("living_thing(X, noun_Tops) :- organism(X, noun_Tops)"));
-        Assert.assertTrue(ruleString.contains("person(X, noun_Tops) :- adult(X, noun_person)"));
+        Assert.assertTrue(ruleString.contains("living_thing(X, noun_tops) :- organism(X, noun_tops)"));
+        Assert.assertTrue(ruleString.contains("person(X, noun_tops) :- adult(X, noun_person)"));
         Assert.assertTrue(ruleString.contains("placental(X, noun_animal) :- carnivore(X, noun_animal)"));
-        Assert.assertTrue(ruleString.contains("object(X, noun_Tops) :- living_thing(X, noun_Tops)"));
+        Assert.assertTrue(ruleString.contains("object(X, noun_tops) :- living_thing(X, noun_tops)"));
         Assert.assertTrue(ruleString.contains("mammal(X, noun_animal) :- placental(X, noun_animal)"));
         Assert.assertTrue(ruleString.contains("vertebrate(X, noun_animal) :- mammal(X, noun_animal)"));
         Assert.assertTrue(ruleString.contains("chordate(X, noun_animal) :- vertebrate(X, noun_animal)"));
-        Assert.assertTrue(ruleString.contains("animal(X, noun_Tops) :- chordate(X, noun_animal)"));
-        Assert.assertTrue(ruleString.contains("organism(X, noun_Tops) :- animal(X, noun_Tops)"));
-        Assert.assertTrue(ruleString.contains("physical_entity(X, noun_Tops) :- object(X, noun_Tops)"));
-        Assert.assertTrue(ruleString.contains("entity(X, noun_Tops) :- physical_entity(X, noun_Tops)"));
+        Assert.assertTrue(ruleString.contains("animal(X, noun_tops) :- chordate(X, noun_animal)"));
+        Assert.assertTrue(ruleString.contains("organism(X, noun_tops) :- animal(X, noun_tops)"));
+        Assert.assertTrue(ruleString.contains("physical_entity(X, noun_tops) :- object(X, noun_tops)"));
+        Assert.assertTrue(ruleString.contains("entity(X, noun_tops) :- physical_entity(X, noun_tops)"));
     }
 
     @Test
