@@ -43,6 +43,21 @@ class SentenceTest {
     }
 
     @Test
+    void TestGenerateRulesClause() {
+        Word.eventId = 1;
+        Sentence sentence = Sentence.ParseSentence("Though Charlie was born in London, Charlie lived in Houston.");
+        List<Rule> rules = sentence.GenerateRules();
+        HashSet<String> ruleString = new HashSet<>();
+        for(Rule rule : rules) ruleString.add(rule.toString());
+        Assert.assertEquals(5, ruleString.size());
+        Assert.assertTrue(ruleString.contains("event(3, live, charlie, null)"));
+        Assert.assertTrue(ruleString.contains("event(2, bear, null, charlie)"));
+        Assert.assertTrue(ruleString.contains("_relation(3, 2, _clause)"));
+        Assert.assertTrue(ruleString.contains("_property(live, in(houston))"));
+        Assert.assertTrue(ruleString.contains("_property(bear, in(london))"));
+    }
+
+    @Test
     void TestParseSentence() {
         Sentence sentence = Sentence.ParseSentence("I live in Dallas.");
         Assert.assertNotNull(sentence);

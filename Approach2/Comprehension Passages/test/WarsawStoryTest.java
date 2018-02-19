@@ -95,7 +95,7 @@ public class WarsawStoryTest {
     // he moved to the city with his family when he was seven months old.
     void TestSentenceFour() {
         String content = "Though Chopin was born in the village of Żelazowa_Wola about 60_km from Warsaw, " +
-        "Chopin moved to the city with Chopin family, when Chopin was seven_months_old.";
+        "Chopin moved to the city with Chopin's family, when Chopin was seven_months_old.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
         List<Rule> rules = sentence.GenerateRules();
@@ -118,7 +118,8 @@ public class WarsawStoryTest {
     @Test
     // Sentence : "Casimir Pulaski, a Polish general and hero of the American Revolutionary War, was born here in 1745"
     void TestSentenceFive() {
-        String content = "Casimir_Pulaski, a Polish general and hero of the American_Revolutionary_War, was born in Warsaw in 1745";
+        String content = "Casimir_Pulaski, a Polish general and hero of the American_Revolutionary_War, " +
+        "was born in Warsaw in 1745";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
         List<Rule> rules = sentence.GenerateRules();

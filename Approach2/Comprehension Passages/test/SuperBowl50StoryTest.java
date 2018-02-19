@@ -70,8 +70,8 @@ public class SuperBowl50StoryTest {
     @Test
     // Sentence : "Super_Bowl_50 was to determine the champion of the National_Football_League (NFL) for the 2015 season.
     void TestSentenceThree() {
-        String content = "The American_Football_Conference (AFC) champion Denver_Broncos " +
-        "defeated the National_Football_Conference (NFC) champion Carolina_Panthers by 24_10 " +
+        String content = "The American_Football_Conference (AFC) champion, Denver_Broncos, " +
+        "defeated the National_Football_Conference (NFC) champion, Carolina_Panthers, by 24_10 " +
         "to earn AFC third Super_Bowl title";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
@@ -142,7 +142,7 @@ public class SuperBowl50StoryTest {
     // Sentence : "The game was played on February 7 2016, at Levis_Stadium, in the San_Francisco_Bay_Area,
     // at Santa_Clara in California"
     void TestSentenceFive() {
-        String content = "The game was played on February 7 2016 at Levis_Stadium, in the San_Francisco_" +
+        String content = "The game was played on February 7 2016, at Levis_Stadium, in the San_Francisco_" +
                 "Bay_Area, at Santa_Clara in California";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
@@ -157,9 +157,9 @@ public class SuperBowl50StoryTest {
         Assert.assertTrue(ruleString.contains("time(february_7_2016)"));
         Assert.assertTrue(ruleString.contains("event(2, play, null, game)"));
         Assert.assertTrue(ruleString.contains("_property(play, on(february_7_2016))"));
+        Assert.assertTrue(ruleString.contains("_property(play, at(levis_stadium))"));
         Assert.assertTrue(ruleString.contains("_property(play, in(san_francisco_bay_area))"));
-        Assert.assertTrue(ruleString.contains("_property(february_7_2016, at(levis_stadium))"));
-        Assert.assertTrue(ruleString.contains("_property(san_francisco_bay_area, at(santa_clara))"));
+        Assert.assertTrue(ruleString.contains("_property(play, at(santa_clara))"));
         Assert.assertTrue(ruleString.contains("_property(santa_clara, in(california))"));
     }
 }

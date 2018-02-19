@@ -32,7 +32,6 @@ public class Sentence {
     }
 
     protected Sentence(String sentence) {
-        sentence = Sentence.SanitizeString(sentence);
         boolean isQuestion = this.getClass() == Question.class;
         int currentEventId = Word.eventId;
         List<Word> wordList = ProcessSentence(sentence, isQuestion);
@@ -206,7 +205,6 @@ public class Sentence {
 
     private static List<Word> ProcessSentence(String sentenceString, boolean isQuestion) {
         List<Word> wordList = new ArrayList<>();
-        sentenceString = sentenceString.replaceAll(",", "");
         Annotation annotation = new Annotation(sentenceString);
         pipeline.annotate(annotation);
         // For multiple sentences
