@@ -44,7 +44,7 @@ public class WarsawStoryTest {
     // Sentence : "Maria_Curie achieved international recognition for Maria_Curie research on radioactivity
     // and was the first female recipient of the Nobel Prize
     void TestSentenceTwo() {
-        String content = "Maria_Curie achieved international recognition for Maria_Curie research on radioactivity " +
+        String content = "Maria_Curie achieved international recognition for Maria_Curie's research on radioactivity " +
         "and was the first female recipient of the Nobel Prize";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
@@ -57,13 +57,13 @@ public class WarsawStoryTest {
 
         Assert.assertEquals(11, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(recognition, international)"));
-        Assert.assertTrue(ruleString.contains("_mod(research, maria_curie)"));
         Assert.assertTrue(ruleString.contains("_mod(prize, nobel)"));
         Assert.assertTrue(ruleString.contains("_is(maria_curie, recipient)"));
         Assert.assertTrue(ruleString.contains("_is(maria_curie, first_female_recipient)"));
         Assert.assertTrue(ruleString.contains("_property(recipient, of(prize))"));
         Assert.assertTrue(ruleString.contains("_property(achieve, for(research))"));
         Assert.assertTrue(ruleString.contains("_property(achieve, on(radioactivity))"));
+        Assert.assertTrue(ruleString.contains("_possess(maria_curie, research)"));
         Assert.assertTrue(ruleString.contains("_relation(1, recipient, _conj)"));
         Assert.assertTrue(ruleString.contains("event(1, achieve, maria_curie, recognition)"));
         Assert.assertTrue(ruleString.contains("event(1, achieve, maria_curie, international_recognition)"));
@@ -105,20 +105,23 @@ public class WarsawStoryTest {
             System.out.println(rule);
         }
 
-        Assert.assertEquals(7, ruleString.size());
+        Assert.assertEquals(10, ruleString.size());
         Assert.assertTrue(ruleString.contains("event(2, bear, null, chopin)"));
         Assert.assertTrue(ruleString.contains("_property(bear, in(village))"));
         Assert.assertTrue(ruleString.contains("_property(bear, about(60_km))"));
         Assert.assertTrue(ruleString.contains("_property(village, of(żelazowa_wola))"));
-        Assert.assertTrue(ruleString.contains("_property(60_km, from(chopin))"));
+        Assert.assertTrue(ruleString.contains("_property(60_km, from(warsaw))"));
+        Assert.assertTrue(ruleString.contains("event(3, move, chopin, null)"));
+        Assert.assertTrue(ruleString.contains("_relation(3, 2, _clause)"));
         Assert.assertTrue(ruleString.contains("_property(move, to(city))"));
         Assert.assertTrue(ruleString.contains("_property(city, with(family))"));
+        Assert.assertTrue(ruleString.contains("_possess(chopin, family)"));
     }
 
     @Test
     // Sentence : "Casimir Pulaski, a Polish general and hero of the American Revolutionary War, was born here in 1745"
     void TestSentenceFive() {
-        String content = "Casimir_Pulaski, a Polish general and hero of the American_Revolutionary_War, " +
+        String content = "Casimir_Pulaski, a polish general and hero of the American Revolutionary War, " +
         "was born in Warsaw in 1745";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
@@ -129,12 +132,17 @@ public class WarsawStoryTest {
             System.out.println(rule);
         }
 
-        Assert.assertEquals(6, ruleString.size());
+        Assert.assertEquals(11, ruleString.size());
         Assert.assertTrue(ruleString.contains("time(1745)"));
-        Assert.assertTrue(ruleString.contains("_property(hero, of(american_revolutionary_war))"));
+        Assert.assertTrue(ruleString.contains("_mod(war, american)"));
+        Assert.assertTrue(ruleString.contains("_mod(war, revolutionary)"));
         Assert.assertTrue(ruleString.contains("_property(bear, in(warsaw))"));
         Assert.assertTrue(ruleString.contains("_property(warsaw, in(1745))"));
-        Assert.assertTrue(ruleString.contains("event(2, bear, null, hero)"));
+        Assert.assertTrue(ruleString.contains("_property(general, of(war))"));
+        Assert.assertTrue(ruleString.contains("_is(casimir_pulaski, general)"));
+        Assert.assertTrue(ruleString.contains("_is(casimir_pulaski, hero)"));
+        Assert.assertTrue(ruleString.contains("general(casimir_pulaski)"));
+        Assert.assertTrue(ruleString.contains("hero(casimir_pulaski)"));
         Assert.assertTrue(ruleString.contains("event(2, bear, null, casimir_pulaski)"));
     }
 }

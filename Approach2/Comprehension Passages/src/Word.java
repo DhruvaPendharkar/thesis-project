@@ -98,7 +98,61 @@ public class Word {
         rules.addAll(this.GenerateNominalModifierRules());
         rules.addAll(this.GenerateAdjectiveClauseRules());
         rules.addAll(this.GenerateCopulaRules());
+        rules.addAll(this.GenerateAppositionalModifierRules());
+        rules.addAll(this.GeneratePossessiveRules());
         return rules;
+    }
+
+    private List<Rule> GeneratePossessiveRules() {
+        List<Rule> rules = new ArrayList<>();
+        Word bePredicate = new Word("_possess", false);
+
+        List<Word> modifiers = GetPossessiveModifiers();
+        for (Word modifier : modifiers) {
+            List<Literal> terms = new ArrayList<>();
+            terms.add(new Literal(modifier));
+            terms.add(new Literal(this));
+            Literal head = new Literal(bePredicate, terms);
+            Rule rule = new Rule(head, null, false);
+            rules.add(rule);
+        }
+
+        return rules;
+    }
+
+    private List<Word> GetPossessiveModifiers() {
+        List<Word> modifiers = new ArrayList<>();
+        if(this.relationMap.containsKey("nmod:poss")) modifiers.addAll(this.relationMap.get("nmod:poss"));
+        return modifiers;
+    }
+
+    private List<Rule> GenerateAppositionalModifierRules() {
+        List<Rule> rules = new ArrayList<>();
+        Word bePredicate = new Word("_is", false);
+
+        List<Word> modifiers = GetAppositionalModifiers();
+        for (Word modifier : modifiers) {
+            List<Literal> terms = new ArrayList<>();
+            terms.add(new Literal(this));
+            terms.add(new Literal(modifier));
+            Literal head = new Literal(bePredicate, terms);
+            Rule rule = new Rule(head, null, false);
+            rules.add(rule);
+
+            terms = new ArrayList<>();
+            terms.add(new Literal(this));
+            head = new Literal(modifier, terms);
+            rule = new Rule(head, null, false);
+            rules.add(rule);
+        }
+
+        return rules;
+    }
+
+    private List<Word> GetAppositionalModifiers() {
+        List<Word> modifiers = new ArrayList<>();
+        if(this.relationMap.containsKey("appos")) modifiers.addAll(this.relationMap.get("appos"));
+        return modifiers;
     }
 
     private List<Rule> GenerateAdjectiveClauseRules() {

@@ -271,6 +271,7 @@ public class Sentence {
         List<Rule> rules = this.preProcessRules;
 
         for(Word word : this.wordList){
+            if(word.getPOSTag().equalsIgnoreCase(",")) continue;
             rules.addAll(word.GenerateRules(false));
         }
 
