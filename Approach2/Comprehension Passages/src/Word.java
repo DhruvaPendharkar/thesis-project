@@ -1,3 +1,7 @@
+import edu.mit.jwi.item.IIndexWord;
+import edu.mit.jwi.item.POS;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -115,6 +119,16 @@ public class Word {
             Literal head = new Literal(bePredicate, terms);
             Rule rule = new Rule(head, null, false);
             rules.add(rule);
+
+            List<Word> appositionalModifier = this.GetAppositionalModifiers();
+            for(Word appos : appositionalModifier){
+                terms = new ArrayList<>();
+                terms.add(new Literal(modifier));
+                terms.add(new Literal(appos));
+                head = new Literal(bePredicate, terms);
+                rule = new Rule(head, null, false);
+                rules.add(rule);
+            }
         }
 
         return rules;
@@ -140,10 +154,22 @@ public class Word {
             rules.add(rule);
 
             terms = new ArrayList<>();
-            terms.add(new Literal(this));
-            head = new Literal(modifier, terms);
-            rule = new Rule(head, null, false);
-            rules.add(rule);
+            try {
+                if (WordNet.IsDictionaryWord(modifier)) {
+                    terms.add(new Literal(this));
+                    head = new Literal(modifier, terms);
+                    rule = new Rule(head, null, false);
+                    rules.add(rule);
+                } else if (WordNet.IsDictionaryWord(this)) {
+                    terms.add(new Literal(modifier));
+                    head = new Literal(this, terms);
+                    rule = new Rule(head, null, false);
+                    rules.add(rule);
+                }
+            }
+            catch (IOException exception){
+                System.out.print("Unable to reach dictionary");
+            }
         }
 
         return rules;
@@ -312,6 +338,7 @@ public class Word {
 
                     Literal head = new Literal(eventWord, bodyList);
                     rules.add(new Rule(head, null, false));
+                    rules.addAll(GenerateAppositionalEventRules(this, subject, modifier));
                 }
             }
 
@@ -334,6 +361,7 @@ public class Word {
 
                     Literal head = new Literal(eventWord, bodyList);
                     rules.add(new Rule(head, null, false));
+                    rules.addAll(GenerateAppositionalEventRules(this, null, modifier));
                 }
             }
 
@@ -356,6 +384,7 @@ public class Word {
 
                     Literal head = new Literal(eventWord, bodyList);
                     rules.add(new Rule(head, null, false));
+                    rules.addAll(GenerateAppositionalEventRules(this, subject, null));
                 }
             }
 
@@ -364,6 +393,53 @@ public class Word {
             rules.addAll(GenerateAdverbRules());
             rules.addAll(GenerateNominalModifierRules());
             rules.addAll(GenerateConjunctionRules());
+        }
+
+        return rules;
+    }
+
+    private static List<Rule> GenerateAppositionalEventRules(Word actionWord, Word subject, Word object) {
+        List<Rule> rules = new ArrayList<>();
+        List<Word> subjectApposList = subject != null ? subject.GetAppositionalModifiers() : new ArrayList<>();
+        List<Word> objectApposList = object != null ? object.GetAppositionalModifiers() : new ArrayList<>();
+        Word eventWord = new Word("event", false);
+        for(Word subjectAppos : subjectApposList){
+            for(Word objectAppos : objectApposList){
+                List<Literal> bodyList = new ArrayList<>();
+                bodyList.add(new Literal(new Word(actionWord.id, false)));
+                bodyList.add(new Literal(new Word(actionWord.lemma, false)));
+                bodyList.add(new Literal(subjectAppos));
+                bodyList.add(new Literal(objectAppos));
+                Literal head = new Literal(eventWord, bodyList);
+                Rule rule = new Rule(head, null, false);
+                rules.add(rule);
+            }
+        }
+
+        if(subjectApposList.size() != 0 && objectApposList.size() != 0) return rules;
+
+        for(Word subjectAppos : subjectApposList){
+            List<Literal> bodyList = new ArrayList<>();
+            bodyList.add(new Literal(new Word(actionWord.id, false)));
+            bodyList.add(new Literal(new Word(actionWord.lemma, false)));
+            bodyList.add(new Literal(subjectAppos));
+            bodyList.add(new Literal(new Word("null", false)));
+            Literal head = new Literal(eventWord, bodyList);
+            Rule rule = new Rule(head, null, false);
+            rules.add(rule);
+        }
+
+        if(subjectApposList.size() != 0) return rules;
+
+        for(Word objectAppos : objectApposList){
+            List<Literal> bodyList = new ArrayList<>();
+            bodyList.add(new Literal(new Word(actionWord.id, false)));
+            bodyList.add(new Literal(new Word(actionWord.lemma, false)));
+            bodyList.add(new Literal(new Word("null", false)));
+            bodyList.add(new Literal(object));
+            Literal head = new Literal(eventWord, bodyList);
+            Rule rule = new Rule(head, null, false);
+            rules.add(rule);
         }
 
         return rules;

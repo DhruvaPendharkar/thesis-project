@@ -159,28 +159,28 @@ public class Sentence {
         List<Rule> rules = new ArrayList<>();
         List<Word> wordCollection = new ArrayList<>();
         boolean hasFoundBracket = false;
-        Word previousWord = null;
+        Word previousNounWord = null;
         for(int i=1; i<inputList.size(); i++){
             Word currentWord = inputList.get(i);
             if(currentWord.getWord().equalsIgnoreCase("-LRB-")) {
                 hasFoundBracket = true;
-                previousWord = inputList.get(i-1);
                 wordCollection = new ArrayList<>();
                 continue;
             }
-            else if(currentWord.getWord().equalsIgnoreCase("-RRB-") && previousWord != null) {
+            else if(currentWord.getWord().equalsIgnoreCase("-RRB-") && previousNounWord != null) {
                 hasFoundBracket = false;
                 Word predicateWord = new Word("_abbreviation", false);
                 List<Literal> terms = new ArrayList<>();
                 Word abbreviation = Word.CreateCompoundWord(wordCollection);
                 terms.add(new Literal(abbreviation));
-                terms.add(new Literal(new Word(previousWord.getWord().toLowerCase(), false)));
+                terms.add(new Literal(new Word(previousNounWord.getWord().toLowerCase(), false)));
                 Literal head = new Literal(predicateWord, terms);
                 Rule rule = new Rule(head, null, false);
                 rules.add(rule);
                 continue;
             }
             if(hasFoundBracket) wordCollection.add(currentWord);
+            if(currentWord.IsNoun() && !hasFoundBracket) previousNounWord = currentWord;
         }
 
         return rules;

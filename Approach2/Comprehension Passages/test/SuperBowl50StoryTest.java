@@ -70,8 +70,8 @@ public class SuperBowl50StoryTest {
     @Test
     // Sentence : "Super_Bowl_50 was to determine the champion of the National_Football_League (NFL) for the 2015 season.
     void TestSentenceThree() {
-        String content = "The American_Football_Conference (AFC) champion, Denver_Broncos, " +
-        "defeated the National_Football_Conference (NFC) champion, Carolina_Panthers, by 24_10 " +
+        String content = "The American_Football_Conference's (AFC) champion, Denver_Broncos, " +
+        "defeated the National_Football_Conference's (NFC) champion, Carolina_Panthers, by 24_10 " +
         "to earn AFC third Super_Bowl title";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
@@ -82,19 +82,23 @@ public class SuperBowl50StoryTest {
             System.out.println(rule);
         }
 
-        Assert.assertEquals(14, ruleString.size());
+        Assert.assertEquals(18, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(title, third)"));
         Assert.assertTrue(ruleString.contains("_mod(title, super_bowl)"));
-        Assert.assertTrue(ruleString.contains("_mod(carolina_panthers, national_football_conference)"));
-        Assert.assertTrue(ruleString.contains("_mod(denver_broncos, american_football_conference)"));
         Assert.assertTrue(ruleString.contains("_abbreviation(afc, american_football_conference)"));
         Assert.assertTrue(ruleString.contains("_abbreviation(nfc, national_football_conference)"));
+        Assert.assertTrue(ruleString.contains("_is(champion, denver_broncos)"));
+        Assert.assertTrue(ruleString.contains("_is(champion, carolina_panthers)"));
+        Assert.assertTrue(ruleString.contains("_possess(american_football_conference, champion)"));
+        Assert.assertTrue(ruleString.contains("_possess(american_football_conference, denver_broncos)"));
+        Assert.assertTrue(ruleString.contains("_possess(national_football_conference, champion)"));
+        Assert.assertTrue(ruleString.contains("_possess(national_football_conference, carolina_panthers)"));
         Assert.assertTrue(ruleString.contains("_relation(1, 2, _clause)"));
         Assert.assertTrue(ruleString.contains("_property(defeat, by(24_10))"));
+        Assert.assertTrue(ruleString.contains("champion(carolina_panthers)"));
+        Assert.assertTrue(ruleString.contains("champion(denver_broncos)"));
+        Assert.assertTrue(ruleString.contains("event(1, defeat, champion, champion)"));
         Assert.assertTrue(ruleString.contains("event(1, defeat, denver_broncos, carolina_panthers)"));
-        Assert.assertTrue(ruleString.contains("event(1, defeat, denver_broncos, national_football_conference_carolina_panthers)"));
-        Assert.assertTrue(ruleString.contains("event(1, defeat, american_football_conference_denver_broncos, carolina_panthers)"));
-        Assert.assertTrue(ruleString.contains("event(1, defeat, american_football_conference_denver_broncos, national_football_conference_carolina_panthers)"));
         Assert.assertTrue(ruleString.contains("event(2, earn, afc, title)"));
         Assert.assertTrue(ruleString.contains("event(2, earn, afc, third_super_bowl_title)"));
     }
@@ -105,7 +109,7 @@ public class SuperBowl50StoryTest {
     void TestSentenceFour() {
         String content = "As Super_Bowl_50 was the 50th Super_Bowl, the league emphasized the 'golden " +
         "anniversary' with various gold_themed initiatives, as well as temporarily suspending the tradition of naming " +
-        "each Super_Bowl with roman_numerals, under which the game would have been known as Super_Bowl_L, so " +
+        "each Super_Bowl with roman_numerals, under the tradition the game would have been known as Super_Bowl_L, so " +
         "that the logo could prominently feature the Arabic_numerals_50.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
@@ -116,23 +120,28 @@ public class SuperBowl50StoryTest {
             System.out.println(rule);
         }
 
-        Assert.assertEquals(19, ruleString.size());
+        Assert.assertEquals(24, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(super_bowl, 50th)"));
         Assert.assertTrue(ruleString.contains("_mod(anniversary, golden)"));
         Assert.assertTrue(ruleString.contains("_mod(initiative, various)"));
         Assert.assertTrue(ruleString.contains("_mod(initiative, gold_themed)"));
-        Assert.assertTrue(ruleString.contains("_mod(suspend, temporarily)"));
         Assert.assertTrue(ruleString.contains("_mod(feature, prominently)"));
-        Assert.assertTrue(ruleString.contains("_relation(tradition, 5, _clause)"));
-        Assert.assertTrue(ruleString.contains("_relation(2, 4, _conj)"));
-        Assert.assertTrue(ruleString.contains("_property(emphasize, with(initiative))"));
-        Assert.assertTrue(ruleString.contains("_property(name, with(roman_numerals))"));
-        Assert.assertTrue(ruleString.contains("_property(know, with(roman_numerals))"));
+        Assert.assertTrue(ruleString.contains("_mod(suspend, temporarily)"));
         Assert.assertTrue(ruleString.contains("_is(super_bowl_50, super_bowl)"));
         Assert.assertTrue(ruleString.contains("_is(super_bowl_50, 50th_super_bowl)"));
+        Assert.assertTrue(ruleString.contains("_property(emphasize, suspend)"));
+        Assert.assertTrue(ruleString.contains("_property(emphasize, under(tradition))"));
+        Assert.assertTrue(ruleString.contains("_property(emphasize, know)"));
+        Assert.assertTrue(ruleString.contains("_property(name, with(roman_numerals))"));
+        Assert.assertTrue(ruleString.contains("_property(know, with(initiative))"));
+        Assert.assertTrue(ruleString.contains("_property(know, as(super_bowl_l))"));
+        Assert.assertTrue(ruleString.contains("_relation(8, 4, _conj)"));
+        Assert.assertTrue(ruleString.contains("_relation(8, tradition, _conj)"));
+        Assert.assertTrue(ruleString.contains("_relation(tradition, 5, _clause)"));
         Assert.assertTrue(ruleString.contains("event(2, emphasize, league, anniversary)"));
         Assert.assertTrue(ruleString.contains("event(2, emphasize, league, golden_anniversary)"));
-        Assert.assertTrue(ruleString.contains("event(4, suspend, league, tradition)"));
+        Assert.assertTrue(ruleString.contains("event(4, suspend, null, game)"));
+        Assert.assertTrue(ruleString.contains("event(4, suspend, null, tradition)"));
         Assert.assertTrue(ruleString.contains("event(5, name, null, super_bowl)"));
         Assert.assertTrue(ruleString.contains("event(8, know, null, game)"));
         Assert.assertTrue(ruleString.contains("event(9, feature, logo, arabic_numerals_50)"));

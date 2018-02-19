@@ -370,4 +370,13 @@ public class WordNet {
         }
         return rules;
     }
+
+    public static boolean IsDictionaryWord(Word word) throws IOException {
+        if(WordNet.dictionary == null){
+            InitializeDictionary();
+        }
+
+        IIndexWord idxWord = dictionary.getIndexWord(word.getLemma(), POS.NOUN);
+        return idxWord != null;
+    }
 }
