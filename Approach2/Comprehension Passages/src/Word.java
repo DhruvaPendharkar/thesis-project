@@ -710,6 +710,33 @@ public class Word {
             }
         }
 
+        for(Word subject : subjects) {
+            List<Word> conjunctions = GetConjunctionRelations();
+            for(Word conjunction : conjunctions) {
+                if(!conjunction.IsNoun() && !conjunction.IsAdjective()) continue;
+                adjectives = conjunction.GetAdjectives();
+                List<Literal> terms = new ArrayList<>();
+                terms.add(new Literal(subject));
+                terms.add(new Literal(conjunction));
+                Literal head = new Literal(bePredicate, terms);
+                Rule rule = new Rule(head, null, false);
+                rules.add(rule);
+
+                if (adjectives.size() != 0) {
+                    terms = new ArrayList<>();
+                    terms.add(new Literal(subject));
+                    List<Word> wordCollection = new ArrayList<>();
+                    wordCollection.addAll(adjectives);
+                    wordCollection.add(conjunction);
+                    Word compundWord = CreateCompoundWord(wordCollection);
+                    terms.add(new Literal(compundWord));
+                    head = new Literal(bePredicate, terms);
+                    rule = new Rule(head, null, false);
+                    rules.add(rule);
+                }
+            }
+        }
+
         return rules;
     }
 

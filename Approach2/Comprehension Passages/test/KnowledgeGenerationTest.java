@@ -131,16 +131,12 @@ class KnowledgeGenerationTest {
         PrintRules(ruleString);
         Assert.assertEquals(338, ruleString.size());
     }
-/*
+
     @Test
     void Test3_1Story() throws IOException {
-        String content = "The Normans (Norman: Nourmands; French: Normands; Latin: Normanni) were the people who in " +
-        "the 10th and 11th centuries gave their name to Normandy, a region in France. They were descended from Norse " +
-        "('Norman' comes from 'Norseman') raiders and pirates from Denmark, Iceland and Norway who, under their leader " +
-        "Rollo, agreed to swear fealty to King Charles III of West Francia. Through generations of assimilation and " +
-        "mixing with the native Frankish and Roman-Gaulish populations, their descendants would gradually merge with the " +
-        "Carolingian-based cultures of West Francia. The distinct cultural and ethnic identity of the Normans emerged " +
-        "initially in the first half of the 10th century, and it continued to evolve over the succeeding centuries.";
+        String content = "Nikola_Tesla (10 July 1856 – 7 January 1943) was a serbian-american " +
+                "inventor, electrical engineer, mechanical engineer, physicist, and futurist best known for Nikola_Tesla's " +
+                "contributions to the design of the modern alternating_current (AC) electricity supply system.";
         StorageManager manager = new StorageManager();
         Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
 
@@ -152,14 +148,29 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(97, ruleString.size());
+        Assert.assertEquals(33, ruleString.size());
+
+        System.out.println("%%-------------------------------------------------------%%");
+        System.out.println("%%Ontology%%");
+        System.out.println("%%-------------------------------------------------------%%");
+        ruleString = new TreeSet<>();
+        for(Rule rule : rulesPair.getValue()){
+            ruleString.add(rule.toString());
+        }
+        PrintRules(ruleString);
+        Assert.assertEquals(229, ruleString.size());
     }
 
+/*
     @Test
     void Test4_1Story() throws IOException {
-        String content = "Nikola Tesla (Serbian Cyrillic: Никола Тесла; 10 July 1856 – 7 January 1943) was a Serbian " +
-        "American inventor, electrical engineer, mechanical engineer, physicist, and futurist best known for his " +
-        "contributions to the design of the modern alternating current (AC) electricity supply system.";
+        String content = "The Normans (Norman: Nourmands; French: Normands; Latin: Normanni) were the people who in " +
+        "the 10th and 11th centuries gave their name to Normandy, a region in France. They were descended from Norse " +
+        "('Norman' comes from 'Norseman') raiders and pirates from Denmark, Iceland and Norway who, under their leader " +
+        "Rollo, agreed to swear fealty to King Charles III of West Francia. Through generations of assimilation and " +
+        "mixing with the native Frankish and Roman-Gaulish populations, their descendants would gradually merge with the " +
+        "Carolingian-based cultures of West Francia. The distinct cultural and ethnic identity of the Normans emerged " +
+        "initially in the first half of the 10th century, and it continued to evolve over the succeeding centuries.";
         StorageManager manager = new StorageManager();
         Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
 

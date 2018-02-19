@@ -54,6 +54,10 @@ public class Sentence {
         inputList = result.getKey();
         this.preProcessRules.addAll(result.getValue());
 
+        result = ProcessBirthAndDeathDates(inputList);
+        inputList = result.getKey();
+        this.preProcessRules.addAll(result.getValue());
+
         this.preProcessRules.addAll(GeneratePreProcessRules(inputList));
         boolean hasFoundBracket = false;
         for(Word word : inputList){
@@ -67,6 +71,70 @@ public class Sentence {
         }
 
         return builder.toString().trim();
+    }
+
+    private Pair<List<Word>, List<Rule>> ProcessBirthAndDeathDates(List<Word> inputList) {
+        List<Rule> rules = new ArrayList<>();
+        List<Word> wordList = new ArrayList<>();
+        List<Word> wordCollection = new ArrayList<>();
+        boolean hasFoundBracket = false;
+        Word previousNounWord = inputList.size() > 0 ? inputList.get(0) : null;
+        if(previousNounWord != null) wordList.add(previousNounWord);
+        for(int i=1; i<inputList.size(); i++){
+            Word currentWord = inputList.get(i);
+            if(currentWord.getWord().equalsIgnoreCase("-LRB-")) {
+                hasFoundBracket = true;
+                wordCollection = new ArrayList<>();
+                wordCollection.add(currentWord);
+                continue;
+            }
+            else if(currentWord.getWord().equalsIgnoreCase("-RRB-")) {
+                hasFoundBracket = false;
+                wordCollection.add(currentWord);
+                if(!CheckForLifeSpanFormat(wordCollection) || previousNounWord == null) {
+                    wordList.addAll(wordCollection);
+                    continue;
+                }
+
+                Word birthDate = wordCollection.get(1);
+                Word deathDate = wordCollection.get(3);
+                Word birthDateWord = new Word("_birth_date", false);
+                Word deathDateWord = new Word("_death_date", false);
+
+                List<Literal> terms = new ArrayList<>();
+                terms.add(new Literal(previousNounWord));
+                terms.add(new Literal(birthDate));
+                Literal head = new Literal(birthDateWord, terms);
+                Rule rule = new Rule(head, null, false);
+                rules.add(rule);
+
+                terms = new ArrayList<>();
+                terms.add(new Literal(previousNounWord));
+                terms.add(new Literal(deathDate));
+                head = new Literal(deathDateWord, terms);
+                rule = new Rule(head, null, false);
+                rules.add(rule);
+                continue;
+            }
+            if(hasFoundBracket) {
+                wordCollection.add(currentWord);
+                continue;
+            }
+            if(currentWord.IsNoun() && !hasFoundBracket) previousNounWord = currentWord;
+            wordList.add(currentWord);
+        }
+
+        return new Pair<>(wordList, rules);
+    }
+
+    private boolean CheckForLifeSpanFormat(List<Word> wordCollection) {
+        if(wordCollection.size() != 5) return false;
+        if(!wordCollection.get(0).getWord().equalsIgnoreCase("-LRB-")) return false;
+        if(wordCollection.get(1).getNERTag() != NamedEntityTagger.NamedEntityTags.DATE) return false;
+        if(wordCollection.get(3).getNERTag() != NamedEntityTagger.NamedEntityTags.DATE) return false;
+        if(!wordCollection.get(2).getWord().equalsIgnoreCase("--")) return false;
+        if(!wordCollection.get(4).getWord().equalsIgnoreCase("-RRB-")) return false;
+        return true;
     }
 
     private Pair<List<Word>, List<Rule>> ProcessOrganizations(List<Word> inputList) {
@@ -112,7 +180,7 @@ public class Sentence {
         List<Rule> rules = new ArrayList<>();
         List<Word> wordList = new ArrayList<>();
         List<Word> timeWords = new ArrayList<>();
-        Word orgWord = new Word("time", false);
+        Word timeWord = new Word("time", false);
         for(Word word : inputList){
             if(word.getNERTag() == NamedEntityTagger.NamedEntityTags.DATE){
                 timeWords.add(word);
@@ -126,7 +194,7 @@ public class Sentence {
 
                     List<Literal> terms = new ArrayList<>();
                     terms.add(new Literal(date));
-                    Literal head = new Literal(orgWord, terms);
+                    Literal head = new Literal(timeWord, terms);
                     rules.add(new Rule(head, null, false));
                 }
                 wordList.add(word);
@@ -140,7 +208,7 @@ public class Sentence {
 
             List<Literal> terms = new ArrayList<>();
             terms.add(new Literal(date));
-            Literal head = new Literal(orgWord, terms);
+            Literal head = new Literal(timeWord, terms);
             rules.add(new Rule(head, null, false));
         }
 
@@ -167,8 +235,9 @@ public class Sentence {
                 wordCollection = new ArrayList<>();
                 continue;
             }
-            else if(currentWord.getWord().equalsIgnoreCase("-RRB-") && previousNounWord != null) {
+            else if(currentWord.getWord().equalsIgnoreCase("-RRB-")) {
                 hasFoundBracket = false;
+                if(previousNounWord == null) continue;
                 Word predicateWord = new Word("_abbreviation", false);
                 List<Literal> terms = new ArrayList<>();
                 Word abbreviation = Word.CreateCompoundWord(wordCollection);
@@ -184,12 +253,6 @@ public class Sentence {
         }
 
         return rules;
-    }
-
-    private static String SanitizeString(String sentence) {
-        sentence = sentence.replaceAll(",", "");
-        sentence = sentence.replaceAll("\\?", "");
-        return sentence.trim();
     }
 
     private static List<TypedDependency> GetDependencies(String sentence) {
