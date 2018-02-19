@@ -23,13 +23,9 @@ public class WarsawStoryTest {
     }
 
     @Test
-    // Sentence : One of the most famous people born in Warsaw was Maria Skłodowska-Curie,
-    // who achieved international recognition for her research on radioactivity and was the first
-    // female recipient of the Nobel Prize
+    // Sentence : Maria_Skłodowska_Curie was one_of_the_most_famous people born in Warsaw
     void TestSentenceOne() {
-        String content = "One of the most famous people born in Warsaw, was Maria_Skłodowska_Curie, " +
-        "who achieved international recognition for Maria_Curie research on radioactivity and was the first " +
-        "female recipient of the Nobel Prize";
+        String content = "Maria_Skłodowska_Curie was born in Warsaw";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
         List<Rule> rules = sentence.GenerateRules();
@@ -39,20 +35,43 @@ public class WarsawStoryTest {
             ruleString.add(rule.toString());
         }
 
-        Assert.assertEquals(8, ruleString.size());
-        Assert.assertTrue(ruleString.contains("_mod(people, famous)"));
+        Assert.assertEquals(2, ruleString.size());
+        Assert.assertTrue(ruleString.contains("event(2, bear, null, maria_skłodowska_curie)"));
+        Assert.assertTrue(ruleString.contains("_property(bear, in(warsaw))"));
+    }
+
+    @Test
+    // Sentence : "Maria_Curie achieved international recognition for Maria_Curie research on radioactivity
+    // and was the first female recipient of the Nobel Prize
+    void TestSentenceTwo() {
+        String content = "Maria_Curie achieved international recognition for Maria_Curie research on radioactivity " +
+        "and was the first female recipient of the Nobel Prize";
+        Sentence sentence = Sentence.ParseSentence(content);
+        System.out.println(Sentence.DependenciesToString(sentence));
+        List<Rule> rules = sentence.GenerateRules();
+        HashSet<String> ruleString = new HashSet<>();
+        for(Rule rule : rules){
+            ruleString.add(rule.toString());
+            System.out.println(rule);
+        }
+
+        Assert.assertEquals(11, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(recognition, international)"));
-        Assert.assertTrue(ruleString.contains("_property(1, bear, null, warsaw)"));
-        Assert.assertTrue(ruleString.contains("event(3, achieve, maria_skłodowska_curie, research)"));
-        Assert.assertTrue(ruleString.contains("event(3, achieve, maria_skłodowska_curie, radioactivity)"));
-        Assert.assertTrue(ruleString.contains("event(3, achieve, maria_skłodowska_curie, recognition)"));
-        Assert.assertTrue(ruleString.contains("event(3, achieve, maria_skłodowska_curie, international_recognition)"));
-        Assert.assertTrue(ruleString.contains("_is(One, Maria_Skłodowska_Curie)"));
+        Assert.assertTrue(ruleString.contains("_mod(research, maria_curie)"));
+        Assert.assertTrue(ruleString.contains("_mod(prize, nobel)"));
+        Assert.assertTrue(ruleString.contains("_is(maria_curie, recipient)"));
+        Assert.assertTrue(ruleString.contains("_is(maria_curie, first_female_recipient)"));
+        Assert.assertTrue(ruleString.contains("_property(recipient, of(prize))"));
+        Assert.assertTrue(ruleString.contains("_property(achieve, for(research))"));
+        Assert.assertTrue(ruleString.contains("_property(achieve, on(radioactivity))"));
+        Assert.assertTrue(ruleString.contains("_relation(1, recipient, _conj)"));
+        Assert.assertTrue(ruleString.contains("event(1, achieve, maria_curie, recognition)"));
+        Assert.assertTrue(ruleString.contains("event(1, achieve, maria_curie, international_recognition)"));
     }
 
     @Test
     // Sentence : "Famous musicians include Władysław Szpilman and Frédéric Chopin.
-    void TestSentenceTwo() {
+    void TestSentenceThree() {
         String content = "The famous musicians include Władysław_Szpilman and Frédéric_Chopin";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
@@ -74,8 +93,8 @@ public class WarsawStoryTest {
     @Test
     // Sentence : "Though Chopin was born in the village of Żelazowa Wola, about 60 km (37 mi) from Warsaw,
     // he moved to the city with his family when he was seven months old.
-    void TestSentenceThree() {
-        String content = "Though Chopin was born in the village of Żelazowa_Wola, about 60 km from Warsaw, " +
+    void TestSentenceFour() {
+        String content = "Though Chopin was born in the village of Żelazowa_Wola about 60_km from Warsaw, " +
         "Chopin moved to the city with Chopin family, when Chopin was seven_months_old.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
@@ -86,19 +105,19 @@ public class WarsawStoryTest {
             System.out.println(rule);
         }
 
-        Assert.assertEquals(0, ruleString.size());
-        Assert.assertTrue(ruleString.contains("_abbreviation(afc, american_football_conference)"));
-        Assert.assertTrue(ruleString.contains("_abbreviation(nfc, national_football_conference)"));
-        Assert.assertTrue(ruleString.contains("event(1, defeat, denver_broncos, carolina_panthers)"));
-        Assert.assertTrue(ruleString.contains("event(2, earn, afc, title)"));
-        Assert.assertTrue(ruleString.contains("event(2, earn, afc, third_super_bowl_title)"));
-        Assert.assertTrue(ruleString.contains("_adj(title, third)"));
-        Assert.assertTrue(ruleString.contains("_adj(title, super_bowl)"));
+        Assert.assertEquals(7, ruleString.size());
+        Assert.assertTrue(ruleString.contains("event(2, bear, null, chopin)"));
+        Assert.assertTrue(ruleString.contains("_property(bear, in(village))"));
+        Assert.assertTrue(ruleString.contains("_property(bear, about(60_km))"));
+        Assert.assertTrue(ruleString.contains("_property(village, of(żelazowa_wola))"));
+        Assert.assertTrue(ruleString.contains("_property(60_km, from(chopin))"));
+        Assert.assertTrue(ruleString.contains("_property(move, to(city))"));
+        Assert.assertTrue(ruleString.contains("_property(city, with(family))"));
     }
 
     @Test
     // Sentence : "Casimir Pulaski, a Polish general and hero of the American Revolutionary War, was born here in 1745"
-    void TestSentenceFour() {
+    void TestSentenceFive() {
         String content = "Casimir_Pulaski, a Polish general and hero of the American_Revolutionary_War, was born in Warsaw in 1745";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));

@@ -241,8 +241,16 @@ public class NintendoStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(8, ruleString.size());
-
+        Assert.assertEquals(9, ruleString.size());
+        Assert.assertTrue(ruleString.contains("event(1, say, hideki_yasuda, that)"));
+        Assert.assertTrue(ruleString.contains("_property(say, without(number))"));
+        Assert.assertTrue(ruleString.contains("_mod(number, large)"));
+        Assert.assertTrue(ruleString.contains("_property(number, of(user))"));
+        Assert.assertTrue(ruleString.contains("_mod(user, active)"));
+        Assert.assertTrue(ruleString.contains("event(2, use, number, app)"));
+        Assert.assertTrue(ruleString.contains("event(2, use, large_number, app)"));
+        Assert.assertTrue(ruleString.contains("_property(kind, of(service))"));
+        Assert.assertTrue(ruleString.contains("_is(kind, attractive)"));
     }
 
     @Test

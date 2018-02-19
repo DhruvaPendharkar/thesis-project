@@ -276,6 +276,18 @@ public class Sentence {
             rules.addAll(word.GenerateRules(false));
         }
 
+        rules.addAll(GenerateAlternateCopulaRules());
+        return rules;
+    }
+
+    private List<Rule> GenerateAlternateCopulaRules() {
+        List<Rule> rules = new ArrayList<>();
+        for(Word word : this.wordList){
+            if(word.IsNoun() || word.IsAdjective()){
+                rules.addAll(word.GenerateAlternateCopulaRules(this.wordList));
+            }
+        }
+
         return rules;
     }
 

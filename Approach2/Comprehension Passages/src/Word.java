@@ -80,11 +80,15 @@ public class Word {
         if(this.IsVerb()){
             return GenerateRulesForVerb(isQuestion);
         }
-        else if(this.IsNoun()){
+        else if(this.IsNoun() || this.IsAdjective()){
             return GenerateRulesForNouns();
         }
 
         return new ArrayList<>();
+    }
+
+    public boolean IsAdjective() {
+        return this.getPOSTag().startsWith("JJ");
     }
 
     private List<Rule> GenerateRulesForNouns() {
@@ -316,12 +320,17 @@ public class Word {
         List<Word> conjunctions = this.GetConjunctionRelations();
         Word relationWord = new Word("_relation", false);
         for (Word conjunction : conjunctions) {
-            if(!conjunction.IsVerb()) continue;
             List<Literal> bodyList = new ArrayList<>();
             bodyList.add(new Literal(new Word(String.valueOf(this.id), false)));
-            bodyList.add(new Literal(new Word(String.valueOf(conjunction.id), false)));
-            bodyList.add(new Literal(new Word("_conj", false)));
+            if(conjunction.IsVerb()) {
+                bodyList.add(new Literal(new Word(String.valueOf(conjunction.id), false)));
+            }
+            else if(conjunction.IsNoun() || conjunction.IsAdjective()){
+                bodyList.add(new Literal(conjunction));
+            }
+            else continue;
 
+            bodyList.add(new Literal(new Word("_conj", false)));
             Literal head = new Literal(relationWord, bodyList);
             rules.add(new Rule(head, null, false));
         }
@@ -541,7 +550,7 @@ public class Word {
     }
 
     public List<Rule> GenerateCopulaRules() {
-        if(!this.IsNoun()) return new ArrayList<>();
+        if(!this.IsNoun() && !this.IsAdjective()) return new ArrayList<>();
         List<Rule> rules = new ArrayList<>();
         Word bePredicate = new Word("_is", false);
 
@@ -600,5 +609,45 @@ public class Word {
 
     public void SetNERTag(NamedEntityTagger.NamedEntityTags tag) {
         this.NERTag = tag;
+    }
+
+    public List<Rule> GenerateAlternateCopulaRules(List<Word> wordList) {
+        List<Rule> rules = new ArrayList<>();
+        Word copula = GetToBeCopula();
+        if(copula == null) return rules;
+        List<Word> subjects = this.GetSubjects();
+        if(subjects.size() != 0) return rules;
+        Word bePredicate = new Word("_is", false);
+        for(Word word : wordList){
+            List<Word> conjunctions = word.GetConjunctionRelations();
+            for(Word conjunction : conjunctions){
+                if(conjunction != this) continue;
+                subjects = word.GetSubjects();
+
+                List<Word> adjectives = this.GetAdjectives();
+                for(Word subject : subjects) {
+                    List<Literal> terms = new ArrayList<>();
+                    terms.add(new Literal(subject));
+                    terms.add(new Literal(this));
+                    Literal head = new Literal(bePredicate, terms);
+                    Rule rule = new Rule(head, null, false);
+                    rules.add(rule);
+
+                    if (adjectives.size() != 0) {
+                        terms = new ArrayList<>();
+                        terms.add(new Literal(subject));
+                        List<Word> wordCollection = new ArrayList<>();
+                        wordCollection.addAll(adjectives);
+                        wordCollection.add(this);
+                        Word compundWord = CreateCompoundWord(wordCollection);
+                        terms.add(new Literal(compundWord));
+                        head = new Literal(bePredicate, terms);
+                        rule = new Rule(head, null, false);
+                        rules.add(rule);
+                    }
+                }
+            }
+        }
+        return rules;
     }
 }
