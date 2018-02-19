@@ -23,9 +23,13 @@ public class WarsawStoryTest {
     }
 
     @Test
-    // Sentence : Maria_Skłodowska_Curie was one_of_the_most_famous people born in Warsaw
+    // Sentence : One_of_the_most_famous people born in Warsaw was Maria_Skłodowska_Curie,
+    // Maria_Curie achieved international recognition for Maria_Curie's research on radioactivity and
+    // was the first female recipient of the Nobel Prize
     void TestSentenceOne() {
-        String content = "Maria_Skłodowska_Curie was born in Warsaw";
+        String content = "One_of_the_most_famous people born in Warsaw was Maria_Skłodowska_Curie, " +
+        "Maria_Curie achieved international recognition for Maria_Curie's research on radioactivity and " +
+        "was the first female recipient of the Nobel Prize";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
         List<Rule> rules = sentence.GenerateRules();
@@ -35,43 +39,28 @@ public class WarsawStoryTest {
             ruleString.add(rule.toString());
         }
 
-        Assert.assertEquals(2, ruleString.size());
-        Assert.assertTrue(ruleString.contains("event(2, bear, null, maria_skłodowska_curie)"));
-        Assert.assertTrue(ruleString.contains("_property(bear, in(warsaw))"));
-    }
-
-    @Test
-    // Sentence : "Maria_Curie achieved international recognition for Maria_Curie research on radioactivity
-    // and was the first female recipient of the Nobel Prize
-    void TestSentenceTwo() {
-        String content = "Maria_Curie achieved international recognition for Maria_Curie's research on radioactivity " +
-        "and was the first female recipient of the Nobel Prize";
-        Sentence sentence = Sentence.ParseSentence(content);
-        System.out.println(Sentence.DependenciesToString(sentence));
-        List<Rule> rules = sentence.GenerateRules();
-        HashSet<String> ruleString = new HashSet<>();
-        for(Rule rule : rules){
-            ruleString.add(rule.toString());
-            System.out.println(rule);
-        }
-
-        Assert.assertEquals(11, ruleString.size());
+        Assert.assertEquals(16, ruleString.size());
+        Assert.assertTrue(ruleString.contains("_mod(people, one_of_the_most_famous)"));
         Assert.assertTrue(ruleString.contains("_mod(recognition, international)"));
         Assert.assertTrue(ruleString.contains("_mod(prize, nobel)"));
-        Assert.assertTrue(ruleString.contains("_is(maria_curie, recipient)"));
-        Assert.assertTrue(ruleString.contains("_is(maria_curie, first_female_recipient)"));
-        Assert.assertTrue(ruleString.contains("_property(recipient, of(prize))"));
+        Assert.assertTrue(ruleString.contains("_property(bear, in(warsaw))"));
         Assert.assertTrue(ruleString.contains("_property(achieve, for(research))"));
         Assert.assertTrue(ruleString.contains("_property(achieve, on(radioactivity))"));
+        Assert.assertTrue(ruleString.contains("_property(recipient, of(prize))"));
         Assert.assertTrue(ruleString.contains("_possess(maria_curie, research)"));
-        Assert.assertTrue(ruleString.contains("_relation(1, recipient, _conj)"));
-        Assert.assertTrue(ruleString.contains("event(1, achieve, maria_curie, recognition)"));
-        Assert.assertTrue(ruleString.contains("event(1, achieve, maria_curie, international_recognition)"));
+        Assert.assertTrue(ruleString.contains("_is(people, maria_skłodowska_curie)"));
+        Assert.assertTrue(ruleString.contains("_is(one_of_the_most_famous_people, maria_skłodowska_curie)"));
+        Assert.assertTrue(ruleString.contains("_is(maria_curie, recipient)"));
+        Assert.assertTrue(ruleString.contains("_is(maria_curie, first_female_recipient)"));
+        Assert.assertTrue(ruleString.contains("_relation(3, recipient, _conj)"));
+        Assert.assertTrue(ruleString.contains("_relation(people, 1, _clause)"));
+        Assert.assertTrue(ruleString.contains("event(3, achieve, maria_curie, recognition)"));
+        Assert.assertTrue(ruleString.contains("event(3, achieve, maria_curie, international_recognition)"));
     }
 
     @Test
     // Sentence : "Famous musicians include Władysław Szpilman and Frédéric Chopin.
-    void TestSentenceThree() {
+    void TestSentenceTwo() {
         String content = "The famous musicians include Władysław_Szpilman and Frédéric_Chopin";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
@@ -93,7 +82,7 @@ public class WarsawStoryTest {
     @Test
     // Sentence : "Though Chopin was born in the village of Żelazowa Wola, about 60 km (37 mi) from Warsaw,
     // he moved to the city with his family when he was seven months old.
-    void TestSentenceFour() {
+    void TestSentenceThree() {
         String content = "Though Chopin was born in the village of Żelazowa_Wola about 60_km from Warsaw, " +
         "Chopin moved to the city with Chopin's family, when Chopin was seven_months_old.";
         Sentence sentence = Sentence.ParseSentence(content);
@@ -120,7 +109,7 @@ public class WarsawStoryTest {
 
     @Test
     // Sentence : "Casimir Pulaski, a Polish general and hero of the American Revolutionary War, was born here in 1745"
-    void TestSentenceFive() {
+    void TestSentenceFour() {
         String content = "Casimir_Pulaski, a polish general and hero of the American Revolutionary War, " +
         "was born in Warsaw in 1745";
         Sentence sentence = Sentence.ParseSentence(content);
