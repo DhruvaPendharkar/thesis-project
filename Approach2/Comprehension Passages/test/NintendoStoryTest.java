@@ -29,7 +29,7 @@ public class NintendoStoryTest {
     // as the game makers initial foray into the smartphone business, because it failed to attract enough players.
     void TestSentenceOne() {
         String content = "Nintendo said on Thursday that Nintendo would soon terminate Nintendo smartphone_app Miitomo, " +
-                "which gained attention as the game_makers_initial_foray into the smartphone business, " +
+                "Miitomo gained attention as the game_makers_initial_foray into the smartphone business, " +
                 "because Miitomo failed to attract enough players";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
@@ -40,9 +40,11 @@ public class NintendoStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(18, ruleString.size());
+        Assert.assertEquals(21, ruleString.size());
         Assert.assertTrue(ruleString.contains("organization(nintendo)"));
+        Assert.assertTrue(ruleString.contains("organization(miitomo)"));
         Assert.assertTrue(ruleString.contains("time(thursday)"));
+        Assert.assertTrue(ruleString.contains("_mod(miitomo, nintendo)"));
         Assert.assertTrue(ruleString.contains("_mod(terminate, soon)"));
         Assert.assertTrue(ruleString.contains("_mod(player, enough)"));
         Assert.assertTrue(ruleString.contains("_mod(business, smartphone)"));
@@ -122,18 +124,18 @@ public class NintendoStoryTest {
         Assert.assertEquals(17, ruleString.size());
         Assert.assertTrue(ruleString.contains("organization(nintendo)"));
         Assert.assertTrue(ruleString.contains("time(march_2016)"));
-        Assert.assertTrue(ruleString.contains("event(1, introduce, nintendo, miitomo)"));
+        Assert.assertTrue(ruleString.contains("event(2, introduce, nintendo, miitomo)"));
         Assert.assertTrue(ruleString.contains("_mod(introduce, globally)"));
         Assert.assertTrue(ruleString.contains("_property(introduce, in(march_2016))"));
-        Assert.assertTrue(ruleString.contains("event(2, feature, miitomo, avatar_system)"));
-        Assert.assertTrue(ruleString.contains("_relation(2, 3, _conj)"));
-        Assert.assertTrue(ruleString.contains("event(3, let, miitomo, null)"));
-        Assert.assertTrue(ruleString.contains("_relation(3, 4, _clcomplement)"));
-        Assert.assertTrue(ruleString.contains("event(4, communicate, user, null)"));
-        Assert.assertTrue(ruleString.contains("_relation(4, 5, _clause)"));
-        Assert.assertTrue(ruleString.contains("event(5, exchange, null, information)"));
-        Assert.assertTrue(ruleString.contains("event(5, exchange, null, personal_information)"));
-        Assert.assertTrue(ruleString.contains("event(5, exchange, null, information_such_movie)"));
+        Assert.assertTrue(ruleString.contains("event(3, feature, miitomo, avatar_system)"));
+        Assert.assertTrue(ruleString.contains("_relation(3, 4, _conj)"));
+        Assert.assertTrue(ruleString.contains("event(4, let, miitomo, null)"));
+        Assert.assertTrue(ruleString.contains("_relation(4, 5, _clcomplement)"));
+        Assert.assertTrue(ruleString.contains("event(5, communicate, user, null)"));
+        Assert.assertTrue(ruleString.contains("_relation(5, 6, _clause)"));
+        Assert.assertTrue(ruleString.contains("event(6, exchange, null, information)"));
+        Assert.assertTrue(ruleString.contains("event(6, exchange, null, personal_information)"));
+        Assert.assertTrue(ruleString.contains("event(6, exchange, null, information_such_movie)"));
         Assert.assertTrue(ruleString.contains("_mod(information, personal)"));
         Assert.assertTrue(ruleString.contains("_property(information, such(movie))"));
         Assert.assertTrue(ruleString.contains("_mod(movie, favorite)"));
@@ -201,7 +203,7 @@ public class NintendoStoryTest {
     // Sentence : “The app was a failure since its early stage and I had been saying Nintendo should shut down
     // the service as soon as possible,” said Hideki Yasuda, an analyst at Ace Research Institute.
     void TestSentenceSeven() {
-        String content = "The app was a failure since its early stage and Hideki_Yasuda had been saying that, Nintendo should " +
+        String content = "The app was a failure since Mittomo's early stage and Hideki_Yasuda had been saying that, Nintendo should " +
                 "shut down the service as soon as possible, said Hideki_Yasuda, an analyst at Ace_Research_Institute.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
@@ -212,26 +214,30 @@ public class NintendoStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(11, ruleString.size());
-        Assert.assertTrue(ruleString.contains("organization(nintendo)"));
-        Assert.assertTrue(ruleString.contains("_is(app, failure)"));
+        Assert.assertEquals(15, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(stage, early)"));
-        Assert.assertTrue(ruleString.contains("event(4, say, stage, null)"));
-        Assert.assertTrue(ruleString.contains("event(4, say, hideki_yasuda, null)"));
-        Assert.assertTrue(ruleString.contains("event(4, say, early_stage, null)"));
+        Assert.assertTrue(ruleString.contains("_is(app, failure)"));
+        Assert.assertTrue(ruleString.contains("_is(hideki_yasuda, analyst)"));
+        Assert.assertTrue(ruleString.contains("_possess(mittomo, stage)"));
         Assert.assertTrue(ruleString.contains("_relation(4, 5, _clcomplement)"));
-        Assert.assertTrue(ruleString.contains("event(5, shut, nintendo, service)"));
-        Assert.assertTrue(ruleString.contains("_mod(shut, soon)"));
-        Assert.assertTrue(ruleString.contains("event(6, say, analyst, hideki_yasuda)"));
+        Assert.assertTrue(ruleString.contains("_relation(6, 4, _clcomplement)"));
         Assert.assertTrue(ruleString.contains("_property(analyst, at(ace_research_institute))"));
+        Assert.assertTrue(ruleString.contains("_property(failure, since(stage))"));
+        Assert.assertTrue(ruleString.contains("organization(mittomo)"));
+        Assert.assertTrue(ruleString.contains("organization(nintendo)"));
+        Assert.assertTrue(ruleString.contains("analyst(hideki_yasuda)"));
+        Assert.assertTrue(ruleString.contains("event(4, say, hideki_yasuda, null)"));
+        Assert.assertTrue(ruleString.contains("event(5, shut, nintendo, service)"));
+        Assert.assertTrue(ruleString.contains("event(6, say, hideki_yasuda, null)"));
+        Assert.assertTrue(ruleString.contains("event(6, say, analyst, null)"));
     }
 
     @Test
     // Sentence : Hideki Yasuda said, “Without a large number of active users who would use the app daily,
     // this kind of service is not attractive.”.
     void TestSentenceEight() {
-        String content = "Hideki_Yasuda said that, without a large number of active users, who would use the app daily, " +
-                "this kind of service is not attractive.";
+        String content = "Hideki_Yasuda said that, without a large number of active users, " +
+                "users would use the app daily, this kind of service is not attractive.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
         HashSet<String> ruleString = new HashSet<>();
@@ -241,14 +247,13 @@ public class NintendoStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(9, ruleString.size());
-        Assert.assertTrue(ruleString.contains("event(1, say, hideki_yasuda, that)"));
-        Assert.assertTrue(ruleString.contains("_property(say, without(number))"));
-        Assert.assertTrue(ruleString.contains("_mod(number, large)"));
+        Assert.assertEquals(8, ruleString.size());
         Assert.assertTrue(ruleString.contains("_property(number, of(user))"));
+        Assert.assertTrue(ruleString.contains("_mod(number, large)"));
         Assert.assertTrue(ruleString.contains("_mod(user, active)"));
-        Assert.assertTrue(ruleString.contains("event(2, use, number, app)"));
-        Assert.assertTrue(ruleString.contains("event(2, use, large_number, app)"));
+        Assert.assertTrue(ruleString.contains("event(2, use, user, app)"));
+        Assert.assertTrue(ruleString.contains("_mod(use, daily)"));
+        Assert.assertTrue(ruleString.contains("_property(use, without(number))"));
         Assert.assertTrue(ruleString.contains("_property(kind, of(service))"));
         Assert.assertTrue(ruleString.contains("_is(kind, attractive)"));
     }
@@ -269,12 +274,12 @@ public class NintendoStoryTest {
         }
 
         Assert.assertEquals(8, ruleString.size());
-        Assert.assertTrue(ruleString.contains("organization(miitomo_nintendo)"));
-        Assert.assertTrue(ruleString.contains("event(2, introduce, miitomo_nintendo, fire_emblem_heroes)"));
-        Assert.assertTrue(ruleString.contains("event(2, introduce, miitomo_nintendo, animal_crossing_pocket_camp)"));
-        Assert.assertTrue(ruleString.contains("event(2, introduce, miitomo_nintendo, super_mario_run_fire_emblem_heroes)"));
+        Assert.assertTrue(ruleString.contains("organization(nintendo)"));
+        Assert.assertTrue(ruleString.contains("event(2, introduce, nintendo, super_mario_run)"));
+        Assert.assertTrue(ruleString.contains("event(2, introduce, nintendo, fire_emblem_heroes)"));
+        Assert.assertTrue(ruleString.contains("event(2, introduce, nintendo, animal_crossing_pocket_camp)"));
+        Assert.assertTrue(ruleString.contains("_property(introduce, besides(miitomo))"));
         Assert.assertTrue(ruleString.contains("_property(introduce, as(game_apps))"));
-        Assert.assertTrue(ruleString.contains("_mod(fire_emblem_heroes, super_mario_run)"));
         Assert.assertTrue(ruleString.contains("_property(game_apps, for(user))"));
         Assert.assertTrue(ruleString.contains("_mod(user, smartphone)"));
 
@@ -295,8 +300,10 @@ public class NintendoStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(17, ruleString.size());
+        Assert.assertEquals(19, ruleString.size());
         Assert.assertTrue(ruleString.contains("organization(nintendo)"));
+        Assert.assertTrue(ruleString.contains("event(2, have, super_mario_run, success)"));
+        Assert.assertTrue(ruleString.contains("event(2, have, super_mario_run, more_success)"));
         Assert.assertTrue(ruleString.contains("event(2, have, fire_emblem_heroes, success)"));
         Assert.assertTrue(ruleString.contains("event(2, have, fire_emblem_heroes, more_success)"));
         Assert.assertTrue(ruleString.contains("event(2, have, animal_crossing_pocket_camp, success)"));
@@ -320,7 +327,7 @@ public class NintendoStoryTest {
     // who may later try out Nintendo machines such as the Switch.
     void TestSentenceEleven() {
         String content = "Company executives say that, the executives view smartphone games as a way of attracting customers, " +
-                "who may later try out Nintendo machines such as the Switch.";
+                "customers may later try out Nintendo machines such as the Switch.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
         HashSet<String> ruleString = new HashSet<>();
@@ -333,7 +340,7 @@ public class NintendoStoryTest {
         Assert.assertEquals(13, ruleString.size());
         Assert.assertTrue(ruleString.contains("organization(nintendo)"));
         Assert.assertTrue(ruleString.contains("event(1, say, executive, null)"));
-        Assert.assertTrue(ruleString.contains("_relation(1, 2, _clcomplement)"));
+        Assert.assertTrue(ruleString.contains("_relation(1, 4, _clcomplement)"));
         Assert.assertTrue(ruleString.contains("event(2, view, executive, game)"));
         Assert.assertTrue(ruleString.contains("event(2, view, executive, smartphone_game)"));
         Assert.assertTrue(ruleString.contains("_property(view, as(way))"));

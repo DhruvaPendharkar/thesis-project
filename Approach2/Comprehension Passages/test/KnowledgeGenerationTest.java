@@ -26,21 +26,22 @@ class KnowledgeGenerationTest {
 
     @Test
     void TestNintendoStory() throws IOException {
-        String content = "Nintendo said on Thursday that Nintendo would soon terminate Nintendo smartphone_app Miitomo, " +
-        "which gained attention as the game_makers_initial_foray into the smartphone business, because Miitomo failed " +
-        "to attract enough players. A nintendo_spokesman said that, the decision was made to streamline Nintendo resources " +
-        "to other smartphone_apps. The number of active users of the game has been declining. Miitomo, which Nintendo " +
-        "introduced globally in March 2016, features the company Mii avatar_system and lets users communicate by exchanging " +
-        "personal information such as favorite movies. Though the company described Miitomo as a game_app, analysts and " +
-        "players viewed Miitomo more as a social-networking service and Miitomo failed to gain users from larger rivals " +
-        "such as Facebook_Inc. Kyoto-based Nintendo said the free-to-play app_service would end on May 9. The app was a " +
-        "failure since its early stage and Hideki_Yasuda had been saying that, Nintendo should shut down the service " +
-        "as soon as possible, said Hideki_Yasuda, an analyst at Ace_Research_Institute. Hideki_Yasuda said that, without " +
-        "a large number of active users, who would use the app daily, this kind of service is not attractive. Besides Miitomo, " +
-        "Nintendo has introduced Super_Mario_Run, Fire_Emblem_Heroes and Animal_Crossing_Pocket_Camp as game_apps for smartphone users. " +
-        "Super_Mario_Run, Fire_Emblem_Heroes and Animal_Crossing_Pocket_Camp have had more success than Miitomo, but the smartphone " +
-        "business has yet to become a major revenue_generator for Nintendo. Company executives say that, the executives view " +
-        "smartphone games as a way of attracting customers, who may later try out Nintendo machines such as the Switch.";
+        String content = "Nintendo said on Thursday that Nintendo would soon terminate Nintendo smartphone_app Miitomo," +
+        " which gained attention as the game_makers_initial_foray into the smartphone business, because Miitomo failed " +
+        "to attract enough players. A nintendo_spokesman said that, the decision was made to streamline Nintendo " +
+        "resources to other smartphone_apps. The number of active users of the game has been declining. Miitomo, which " +
+        "Nintendo introduced globally in March 2016, features the company Mii avatar_system and lets users communicate " +
+        "by exchanging personal information such as favorite movies. Though the company described Miitomo as a game_app," +
+        " analysts and players viewed Miitomo more as a social-networking service and Miitomo failed to gain users from " +
+        "larger rivals such as Facebook_Inc. Kyoto-based Nintendo said the free-to-play app_service would end on May 9. " +
+        "The app was a failure since Mittomo's early stage and Hideki_Yasuda had been saying that, Nintendo should shut " +
+        "down the service as soon as possible, said Hideki_Yasuda, an analyst at Ace_Research_Institute. Hideki_Yasuda " +
+        "said that, without a large number of active users, users would use the app daily, this kind of service is not " +
+        "attractive. Besides Miitomo, Nintendo has introduced Super_Mario_Run, Fire_Emblem_Heroes and " +
+        "Animal_Crossing_Pocket_Camp as game_apps for smartphone users. Super_Mario_Run, Fire_Emblem_Heroes and " +
+        "Animal_Crossing_Pocket_Camp have had more success than Miitomo, but the smartphone business has yet to become " +
+        "a major revenue_generator for Nintendo. Company executives say that, the executives view smartphone games as a " +
+        "way of attracting customers, customers may later try out Nintendo machines such as the Switch.";
         StorageManager manager = new StorageManager();
         Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
 
@@ -52,7 +53,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(141, ruleString.size());
+        Assert.assertEquals(148, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -67,14 +68,14 @@ class KnowledgeGenerationTest {
 
     @Test
     void Test1_1Story() throws IOException {
-        String content = "Super_Bowl_50 was an american_football game. Super_Bowl_50 was to determine the champion " +
-        "of the National Football League (NFL) for the 2015 season. The American_Football_Conference (AFC) champion " +
-        "Denver_Broncos defeated the National_Football_Conference (NFC) champion Carolina_Panthers by 24_10 to earn " +
-        "AFC third Super_Bowl title. The game was played on February 7 2016 at Levis_Stadium, in the " +
-        "San_Francisco_Bay_Area, at Santa_Clara in California. As Super_Bowl_50 was the 50th Super_Bowl, the league " +
-        "emphasized the 'golden anniversary' with various gold_themed initiatives, as well as temporarily suspending " +
-        "the tradition of naming each Super_Bowl with roman_numerals, under which the game would have been known as " +
-        "Super_Bowl_L, so that the logo could prominently feature the Arabic_numerals_50.";
+        String content = "Super_Bowl_50 was an american_football game. Super_Bowl_50 was to determine the champion of " +
+        "the National Football League (NFL) for the 2015 season. The American_Football_Conference's (AFC) champion, " +
+        "Denver_Broncos, defeated the National_Football_Conference's (NFC) champion, Carolina_Panthers, by 24_10 to " +
+        "earn AFC third Super_Bowl title. As Super_Bowl_50 was the 50th Super_Bowl, the league emphasized the " +
+        "'golden anniversary' with various gold_themed initiatives, as well as temporarily suspending the tradition of " +
+        "naming each Super_Bowl with roman_numerals, under the tradition the game would have been known as Super_Bowl_L," +
+        " so that the logo could prominently feature the Arabic_numerals_50. The game was played on February 7 2016, " +
+        "at Levis_Stadium, in the San_Francisco_Bay_Area, at Santa_Clara in California.";
         StorageManager manager = new StorageManager();
         Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
 
@@ -86,7 +87,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(68, ruleString.size());
+        Assert.assertEquals(76, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -101,12 +102,12 @@ class KnowledgeGenerationTest {
 
     @Test
     void Test2_1Story() throws IOException {
-        String content = "One of the most famous people born in Warsaw was Maria Skłodowska-Curie, who achieved " +
-        "international recognition for her research on radioactivity and was the first female recipient of the Nobel " +
-        "Prize. Famous musicians include Władysław Szpilman and Frédéric Chopin. Though Chopin was born in the village " +
-        "of Żelazowa Wola, about 60 km (37 mi) from Warsaw, he moved to the city with his family when he was seven " +
-        "months old. Casimir Pulaski, a Polish general and hero of the American Revolutionary War, was born here in " +
-        "1745.";
+        String content = "One_of_the_most_famous people born in Warsaw was Maria_Skłodowska_Curie, Maria_Curie " +
+        "achieved international recognition for Maria_Curie's research on radioactivity and was the first " +
+        "female recipient of the Nobel Prize. The famous musicians include Władysław_Szpilman and Frédéric_Chopin. " +
+        "Though Chopin was born in the village of Żelazowa_Wola about 60_km from Warsaw, Chopin moved to the city " +
+        "with Chopin's family, when Chopin was seven_months_old. Casimir_Pulaski, a polish general and hero of the " +
+        "American Revolutionary War, was born in Warsaw in 1745.";
         StorageManager manager = new StorageManager();
         Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
 
@@ -118,7 +119,17 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(59, ruleString.size());
+        Assert.assertEquals(55, ruleString.size());
+
+        System.out.println("%%-------------------------------------------------------%%");
+        System.out.println("%%Ontology%%");
+        System.out.println("%%-------------------------------------------------------%%");
+        ruleString = new TreeSet<>();
+        for(Rule rule : rulesPair.getValue()){
+            ruleString.add(rule.toString());
+        }
+        PrintRules(ruleString);
+        Assert.assertEquals(338, ruleString.size());
     }
 /*
     @Test
