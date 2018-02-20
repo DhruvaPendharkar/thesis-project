@@ -1,0 +1,45 @@
+Nikola_Tesla (10 July 1856 – 7 January 1943) was a serbian-american inventor, electrical engineer, mechanical engineer, physicist, and futurist best known for Nikola_Tesla's contributions to the design of the modern alternating_current (AC) electricity supply system.
+
+Q1. In what year was Nikola Tesla born? 
+year(1856).
+?- event(E, bear, S, nikola_tesla), _property(bear, in(X)), year(X).
+?- _birth_date(nikola_tesla, X).
+A. [1856, 1856, 1856]
+--> 10_july_1856
+---------------
+Q2. What was Nikola Tesla's ethnicity?
+ethnicity(serbian_american).
+ethnicity(P, X) :- _mod(P, X), ethnicity(X).
+ethnicity(P, X) :- _is(P, Y), _mod(Y, X), ethnicity(X).
+?- ethnicity(nikola_tesla, X).
+A. [Serbian, Serbian, Serbian]
+--> X = serbian_american
+---------------
+Q3. In what year did Tesla die? 
+?- event(E, die, S, nikola_tesla), _property(die, in(X)), year(X).
+?- _death_date(nikola_tesla, X).
+A. [1943, 1943, 1943]
+--> X = 7_january_1943
+---------------
+Q4. When was Nikola Tesla born?
+?- _birth_date(nikola_tesla, X).
+A. [1856, 10 July 1856, 1856]
+--> 10_july_1856
+---------------
+Q5. When did Tesla die?
+?- _death_date(nikola_tesla, X).
+A. [1943, 1943, 1943]
+--> X = 7_january_1943
+---------------
+Q6. What is Tesla's home country?
+A. [Serbian, Serbian, Serbian]
+xxxxxxxxxxxxxxxxxxxxxxxxxx
+---------------
+Q7. What does AC stand for?
+?- _abbreviation(ac, X).
+A.[alternating current, alternating current, alternating current]
+--> X = alternating_current
+
+******************
+Results : (6/7)
+******************
