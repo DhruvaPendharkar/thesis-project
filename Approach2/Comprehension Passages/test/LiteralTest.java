@@ -74,4 +74,32 @@ class LiteralTest {
         Literal literal = new Literal(predicate, body);
         Assert.assertEquals("is(lion, scary)", literal.toString());
     }
+
+    @Test
+    void TestMixedCaseToString() {
+        Word predicate = new Word("is", false);
+        Word subjectWord = new Word("super_bowl_50", false);
+        Word modifierWord = new Word("game", false);
+        Literal subject = new Literal(subjectWord);
+        Literal modifier = new Literal(modifierWord);
+        List<Literal> body = new ArrayList<>();
+        body.add(subject);
+        body.add(modifier);
+        Literal literal = new Literal(predicate, body);
+        Assert.assertEquals("is('super_bowl_50', game)", literal.toString());
+    }
+
+    @Test
+    void TestMixedCaseOnlyNumbersToString() {
+        Word predicate = new Word("is", false);
+        Word subjectWord = new Word("score", false);
+        Word modifierWord = new Word("24_10", false);
+        Literal subject = new Literal(subjectWord);
+        Literal modifier = new Literal(modifierWord);
+        List<Literal> body = new ArrayList<>();
+        body.add(subject);
+        body.add(modifier);
+        Literal literal = new Literal(predicate, body);
+        Assert.assertEquals("is(score, '24_10')", literal.toString());
+    }
 }

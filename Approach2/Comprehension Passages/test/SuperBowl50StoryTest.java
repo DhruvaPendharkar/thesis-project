@@ -36,9 +36,9 @@ public class SuperBowl50StoryTest {
 
         Assert.assertEquals(4, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(game, american_football)"));
-        Assert.assertTrue(ruleString.contains("game(super_bowl_50)"));
-        Assert.assertTrue(ruleString.contains("_is(super_bowl_50, game)"));
-        Assert.assertTrue(ruleString.contains("_is(super_bowl_50, american_football_game)"));
+        Assert.assertTrue(ruleString.contains("game('super_bowl_50')"));
+        Assert.assertTrue(ruleString.contains("_is('super_bowl_50', game)"));
+        Assert.assertTrue(ruleString.contains("_is('super_bowl_50', american_football_game)"));
     }
 
     @Test
@@ -62,10 +62,10 @@ public class SuperBowl50StoryTest {
         Assert.assertTrue(ruleString.contains("_mod(season, 2015)"));
         Assert.assertTrue(ruleString.contains("_relation(1, 2, _clcomplement)"));
         Assert.assertTrue(ruleString.contains("_property(champion, of(national_football_league))"));
-        Assert.assertTrue(ruleString.contains("_property(national_football_league, for(2015_season))"));
-        Assert.assertTrue(ruleString.contains("event(1, be, super_bowl_50, null)"));
-        Assert.assertTrue(ruleString.contains("event(2, determine, super_bowl_50, champion)"));
-        Assert.assertTrue(ruleString.contains("event(2, determine, super_bowl_50, champion_of_national_football_league)"));
+        Assert.assertTrue(ruleString.contains("_property(national_football_league, for('2015_season'))"));
+        Assert.assertTrue(ruleString.contains("event(1, be, 'super_bowl_50', null)"));
+        Assert.assertTrue(ruleString.contains("event(2, determine, 'super_bowl_50', champion)"));
+        Assert.assertTrue(ruleString.contains("event(2, determine, 'super_bowl_50', champion_of_national_football_league)"));
     }
 
     @Test
@@ -95,7 +95,7 @@ public class SuperBowl50StoryTest {
         Assert.assertTrue(ruleString.contains("_possess(national_football_conference, team)"));
         Assert.assertTrue(ruleString.contains("_possess(national_football_conference, carolina_panthers)"));
         Assert.assertTrue(ruleString.contains("_relation(1, 2, _clause)"));
-        Assert.assertTrue(ruleString.contains("_property(defeat, by(24_10))"));
+        Assert.assertTrue(ruleString.contains("_property(defeat, by('24_10'))"));
         Assert.assertTrue(ruleString.contains("team(carolina_panthers)"));
         Assert.assertTrue(ruleString.contains("team(denver_broncos)"));
         Assert.assertTrue(ruleString.contains("event(1, defeat, team, team)"));
@@ -122,14 +122,14 @@ public class SuperBowl50StoryTest {
         }
 
         Assert.assertEquals(24, ruleString.size());
-        Assert.assertTrue(ruleString.contains("_mod(super_bowl, 50th)"));
+        Assert.assertTrue(ruleString.contains("_mod(super_bowl, '50th')"));
         Assert.assertTrue(ruleString.contains("_mod(anniversary, golden)"));
         Assert.assertTrue(ruleString.contains("_mod(initiative, various)"));
         Assert.assertTrue(ruleString.contains("_mod(initiative, gold_themed)"));
         Assert.assertTrue(ruleString.contains("_mod(feature, prominently)"));
         Assert.assertTrue(ruleString.contains("_mod(suspend, temporarily)"));
-        Assert.assertTrue(ruleString.contains("_is(super_bowl_50, super_bowl)"));
-        Assert.assertTrue(ruleString.contains("_is(super_bowl_50, 50th_super_bowl)"));
+        Assert.assertTrue(ruleString.contains("_is('super_bowl_50', super_bowl)"));
+        Assert.assertTrue(ruleString.contains("_is('super_bowl_50', '50th_super_bowl')"));
         Assert.assertTrue(ruleString.contains("_property(emphasize, suspend)"));
         Assert.assertTrue(ruleString.contains("_property(emphasize, under(tradition))"));
         Assert.assertTrue(ruleString.contains("_property(emphasize, know)"));
@@ -145,7 +145,7 @@ public class SuperBowl50StoryTest {
         Assert.assertTrue(ruleString.contains("event(4, suspend, null, tradition)"));
         Assert.assertTrue(ruleString.contains("event(5, name, null, super_bowl)"));
         Assert.assertTrue(ruleString.contains("event(8, know, null, game)"));
-        Assert.assertTrue(ruleString.contains("event(9, feature, logo, arabic_numerals_50)"));
+        Assert.assertTrue(ruleString.contains("event(9, feature, logo, 'arabic_numerals_50')"));
     }
 
     @Test
@@ -164,9 +164,9 @@ public class SuperBowl50StoryTest {
         }
 
         Assert.assertEquals(7, ruleString.size());
-        Assert.assertTrue(ruleString.contains("time(february_7_2016)"));
+        Assert.assertTrue(ruleString.contains("time('february_7_2016')"));
         Assert.assertTrue(ruleString.contains("event(2, play, null, game)"));
-        Assert.assertTrue(ruleString.contains("_property(play, on(february_7_2016))"));
+        Assert.assertTrue(ruleString.contains("_property(play, on('february_7_2016'))"));
         Assert.assertTrue(ruleString.contains("_property(play, at(levis_stadium))"));
         Assert.assertTrue(ruleString.contains("_property(play, in(san_francisco_bay_area))"));
         Assert.assertTrue(ruleString.contains("_property(play, at(santa_clara))"));

@@ -97,9 +97,9 @@ public class WarsawStoryTest {
         Assert.assertEquals(10, ruleString.size());
         Assert.assertTrue(ruleString.contains("event(2, bear, null, chopin)"));
         Assert.assertTrue(ruleString.contains("_property(bear, in(village))"));
-        Assert.assertTrue(ruleString.contains("_property(bear, about(60_km))"));
+        Assert.assertTrue(ruleString.contains("_property(bear, about('60_km'))"));
         Assert.assertTrue(ruleString.contains("_property(village, of(żelazowa_wola))"));
-        Assert.assertTrue(ruleString.contains("_property(60_km, from(warsaw))"));
+        Assert.assertTrue(ruleString.contains("_property('60_km', from(warsaw))"));
         Assert.assertTrue(ruleString.contains("event(3, move, chopin, null)"));
         Assert.assertTrue(ruleString.contains("_relation(3, 2, _clause)"));
         Assert.assertTrue(ruleString.contains("_property(move, to(city))"));

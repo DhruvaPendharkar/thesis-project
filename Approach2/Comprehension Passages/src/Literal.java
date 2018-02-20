@@ -21,6 +21,9 @@ public class Literal {
 
     public Literal(Word atom){
         this.predicate = atom.getLemma();
+        if(IsMixedCase(this.predicate)){
+            this.predicate = String.format("'%s'", this.predicate);
+        }
         this.isAtom = true;
         if(atom.getPOSTag().startsWith("W")){
             this.predicate = "X";
@@ -55,5 +58,11 @@ public class Literal {
 
         String literalString = builder.substring(0, builder.length()-2);
         return String.format(format, this.predicate, literalString);
+    }
+
+    private static boolean IsMixedCase(String content) {
+        boolean containsNumbers = content.matches(".*[0-9].*");
+        boolean containsLetters = content.matches(".*[A-Za-z_].*");
+        return containsNumbers && containsLetters;
     }
 }
