@@ -36,7 +36,7 @@ _property(national_football_league, for('2015_season')).
 _property(play, at(levis_stadium)).
 _property(play, at(santa_clara)).
 _property(play, in(san_francisco_bay_area)).
-_property(play, on(february_7_2016)).
+_property(play, on('february_7_2016')).
 _property(santa_clara, in(california)).
 _relation(13, 9, _conj).
 _relation(13, tradition, _conj).
@@ -50,11 +50,11 @@ california(california).
 champion(champion).
 event(10, name, null, super_bowl).
 event(13, know, null, game).
-event(14, feature, logo, arabic_numerals_50).
+event(14, feature, logo, 'arabic_numerals_50').
 event(16, play, null, game).
 event(2, be, super_bowl_50, null).
-event(3, determine, super_bowl_50, champion).
-event(3, determine, super_bowl_50, champion_of_national_football_league).
+event(3, determine, 'super_bowl_50', champion).
+event(3, determine, 'super_bowl_50', champion_of_national_football_league).
 event(4, defeat, denver_broncos, carolina_panthers).
 event(4, defeat, team, team).
 event(5, earn, afc, third_super_bowl_title).
@@ -64,6 +64,7 @@ event(7, emphasize, league, golden_anniversary).
 event(9, suspend, null, game).
 event(9, suspend, null, tradition).
 game(game).
+game('super_bowl_50').
 initiative(initiative).
 league(league).
 logo(logo).
@@ -75,10 +76,9 @@ team(carolina_panthers).
 team(denver_broncos).
 team(team).
 time(2015).
-time(february_7_2016).
+time('february_7_2016').
 title(title).
 tradition(tradition).
-
 %%-------------------------------------------------------%%
 %%Rules%%
 %%-------------------------------------------------------%%

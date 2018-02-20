@@ -26,9 +26,13 @@ contribution(contribution).
 design(design).
 electricity(electricity).
 engineer(engineer).
+engineer(nikola_tesla).
 futurist(futurist).
+futurist(nikola_tesla).
 inventor(inventor).
+inventor(nikola_tesla).
 nikola_tesla(nikola_tesla).
+physicist(nikola_tesla).
 physicist(physicist).
 supply(supply).
 system(system).

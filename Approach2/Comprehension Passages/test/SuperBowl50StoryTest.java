@@ -34,8 +34,9 @@ public class SuperBowl50StoryTest {
             ruleString.add(rule.toString());
         }
 
-        Assert.assertEquals(3, ruleString.size());
+        Assert.assertEquals(4, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(game, american_football)"));
+        Assert.assertTrue(ruleString.contains("game(super_bowl_50)"));
         Assert.assertTrue(ruleString.contains("_is(super_bowl_50, game)"));
         Assert.assertTrue(ruleString.contains("_is(super_bowl_50, american_football_game)"));
     }

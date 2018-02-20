@@ -33,7 +33,7 @@ public class NikolaTeslaStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(22, ruleString.size());
+        Assert.assertEquals(26, ruleString.size());
         Assert.assertTrue(ruleString.contains("time(10_july_1856)"));
         Assert.assertTrue(ruleString.contains("time(7_january_1943)"));
         Assert.assertTrue(ruleString.contains("_birth_date(nikola_tesla, 10_july_1856)"));
@@ -48,6 +48,10 @@ public class NikolaTeslaStoryTest {
         Assert.assertTrue(ruleString.contains("_is(nikola_tesla, mechanical_engineer)"));
         Assert.assertTrue(ruleString.contains("_is(nikola_tesla, physicist)"));
         Assert.assertTrue(ruleString.contains("_is(nikola_tesla, futurist)"));
+        Assert.assertTrue(ruleString.contains("inventor(nikola_tesla)"));
+        Assert.assertTrue(ruleString.contains("engineer(nikola_tesla)"));
+        Assert.assertTrue(ruleString.contains("physicist(nikola_tesla)"));
+        Assert.assertTrue(ruleString.contains("futurist(nikola_tesla)"));
         Assert.assertTrue(ruleString.contains("_mod(engineer, electrical)"));
         Assert.assertTrue(ruleString.contains("_mod(engineer, mechanical)"));
         Assert.assertTrue(ruleString.contains("_mod(know, best)"));

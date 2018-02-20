@@ -214,22 +214,22 @@ public class NintendoStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(15, ruleString.size());
-        Assert.assertTrue(ruleString.contains("_mod(stage, early)"));
-        Assert.assertTrue(ruleString.contains("_is(app, failure)"));
-        Assert.assertTrue(ruleString.contains("_is(hideki_yasuda, analyst)"));
-        Assert.assertTrue(ruleString.contains("_possess(mittomo, stage)"));
-        Assert.assertTrue(ruleString.contains("_relation(4, 5, _clcomplement)"));
-        Assert.assertTrue(ruleString.contains("_relation(6, 4, _clcomplement)"));
-        Assert.assertTrue(ruleString.contains("_property(analyst, at(ace_research_institute))"));
-        Assert.assertTrue(ruleString.contains("_property(failure, since(stage))"));
-        Assert.assertTrue(ruleString.contains("organization(mittomo)"));
+        Assert.assertEquals(16, ruleString.size());
         Assert.assertTrue(ruleString.contains("organization(nintendo)"));
-        Assert.assertTrue(ruleString.contains("analyst(hideki_yasuda)"));
+        Assert.assertTrue(ruleString.contains("_property(failure, since(stage))"));
+        Assert.assertTrue(ruleString.contains("_is(app, failure)"));
+        Assert.assertTrue(ruleString.contains("failure(app)"));
+        Assert.assertTrue(ruleString.contains("_mod(stage, early)"));
+        Assert.assertTrue(ruleString.contains("_possess(mittomo, stage)"));
         Assert.assertTrue(ruleString.contains("event(4, say, hideki_yasuda, null)"));
+        Assert.assertTrue(ruleString.contains("_relation(4, 5, _clcomplement)"));
         Assert.assertTrue(ruleString.contains("event(5, shut, nintendo, service)"));
         Assert.assertTrue(ruleString.contains("event(6, say, hideki_yasuda, null)"));
         Assert.assertTrue(ruleString.contains("event(6, say, analyst, null)"));
+        Assert.assertTrue(ruleString.contains("_relation(6, 4, _clcomplement)"));
+        Assert.assertTrue(ruleString.contains("_is(hideki_yasuda, analyst)"));
+        Assert.assertTrue(ruleString.contains("analyst(hideki_yasuda)"));
+        Assert.assertTrue(ruleString.contains("_property(analyst, at(ace_research_institute))"));
     }
 
     @Test

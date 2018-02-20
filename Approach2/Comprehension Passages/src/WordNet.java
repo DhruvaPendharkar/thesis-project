@@ -371,9 +371,15 @@ public class WordNet {
         return rules;
     }
 
-    public static boolean IsDictionaryWord(Word word) throws IOException {
-        if(WordNet.dictionary == null){
-            InitializeDictionary();
+    public static boolean IsDictionaryWord(Word word) {
+        try {
+            if(WordNet.dictionary == null){
+                InitializeDictionary();
+            }
+        }
+        catch (IOException exception){
+            System.out.print("Unable to reach dictionary");
+            return false;
         }
 
         IIndexWord idxWord = dictionary.getIndexWord(word.getLemma(), POS.NOUN);

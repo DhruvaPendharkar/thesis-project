@@ -154,21 +154,17 @@ public class Word {
             rules.add(rule);
 
             terms = new ArrayList<>();
-            try {
-                if (WordNet.IsDictionaryWord(modifier)) {
-                    terms.add(new Literal(this));
-                    head = new Literal(modifier, terms);
-                    rule = new Rule(head, null, false);
-                    rules.add(rule);
-                } else if (WordNet.IsDictionaryWord(this)) {
-                    terms.add(new Literal(modifier));
-                    head = new Literal(this, terms);
-                    rule = new Rule(head, null, false);
-                    rules.add(rule);
-                }
-            }
-            catch (IOException exception){
-                System.out.print("Unable to reach dictionary");
+
+            if (WordNet.IsDictionaryWord(modifier)) {
+                terms.add(new Literal(this));
+                head = new Literal(modifier, terms);
+                rule = new Rule(head, null, false);
+                rules.add(rule);
+            } else if (WordNet.IsDictionaryWord(this)) {
+                terms.add(new Literal(modifier));
+                head = new Literal(this, terms);
+                rule = new Rule(head, null, false);
+                rules.add(rule);
             }
         }
 
@@ -696,6 +692,14 @@ public class Word {
             Rule rule = new Rule(head, null, false);
             rules.add(rule);
 
+            if(WordNet.IsDictionaryWord(this)){
+                terms = new ArrayList<>();
+                terms.add(new Literal(subject));
+                head = new Literal(this, terms);
+                rule = new Rule(head, null, false);
+                rules.add(rule);
+            }
+
             if(adjectives.size() != 0){
                 terms = new ArrayList<>();
                 terms.add(new Literal(subject));
@@ -722,14 +726,22 @@ public class Word {
                 Rule rule = new Rule(head, null, false);
                 rules.add(rule);
 
+                if(WordNet.IsDictionaryWord(conjunction)){
+                    terms = new ArrayList<>();
+                    terms.add(new Literal(subject));
+                    head = new Literal(conjunction, terms);
+                    rule = new Rule(head, null, false);
+                    rules.add(rule);
+                }
+
                 if (adjectives.size() != 0) {
                     terms = new ArrayList<>();
                     terms.add(new Literal(subject));
                     List<Word> wordCollection = new ArrayList<>();
                     wordCollection.addAll(adjectives);
                     wordCollection.add(conjunction);
-                    Word compundWord = CreateCompoundWord(wordCollection);
-                    terms.add(new Literal(compundWord));
+                    Word compoundWord = CreateCompoundWord(wordCollection);
+                    terms.add(new Literal(compoundWord));
                     head = new Literal(bePredicate, terms);
                     rule = new Rule(head, null, false);
                     rules.add(rule);
