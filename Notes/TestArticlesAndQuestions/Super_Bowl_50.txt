@@ -1,0 +1,164 @@
+Super_Bowl_50 was an american_football game. Super_Bowl_50 was to determine the champion of the National Football League (NFL) for the 2015 season. The American_Football_Conference's (AFC) champion, Denver_Broncos, defeated the National_Football_Conference's (NFC) champion, Carolina_Panthers, by 24_10 to earn AFC third Super_Bowl title. As Super_Bowl_50 was the 50th Super_Bowl, the league emphasized the 'golden anniversary' with various gold_themed initiatives, as well as temporarily suspending the tradition of naming each Super_Bowl with roman_numerals, under the tradition the game would have been known as Super_Bowl_L, so that the logo could prominently feature the Arabic_numerals_50. The game was played on February 7 2016, at Levis_Stadium, in the San_Francisco_Bay_Area, at Santa_Clara in California.
+
+Q1. Which NFL team represented the AFC at Super Bowl 50?
+event(E, X, represent, Y) :- _possess(Y, X).
+event(E, X, represent, Y) :- _possess(A, X), _abbreviation(Y, A).
+?- event(E, X, represent, afc), team(X).
+A. [Denver Broncos, Denver Broncos, Denver Broncos]
+--> X = denver_broncos
+---------------
+Q2. Which NFL team represented the NFC at Super Bowl 50?
+event(E, X, represent, Y) :- _possess(Y, X).
+event(E, X, represent, Y) :- _possess(A, X), _abbreviation(Y, A).
+?- event(E, X, represent, nfc), team(X).
+A. [Carolina Panthers, Carolina Panthers, Carolina Panthers]
+--> X = carolina_panthers
+---------------
+Q3. Where did Super Bowl 50 take place?
+place(X, P, at) :- _property(X, at(P)).
+place(X, P, in) :- _property(X, in(P)).
+where(event(E, S, X, O), P) :- S = null, _is(O1, O), event(E1, _, X, O1), place(X, P, Prep). 
+where(event(E, _, X, O), P, Prep) :- place(X, P, Prep).
+?- where(event(X, S, play, 'super_bowl_50'), P, Prep).
+A. [Santa Clara, California, Levi's Stadium, Levi's Stadium in the San Francisco Bay Area at Santa Clara, California.]
+--> P = levis_stadium; P = santa_clara; P = san_francisco_bay_area.
+---------------
+Q4. Which NFL team won Super Bowl 50?
+title(title, noun_state).
+event(E, won, X, O) :- event(E1, earn, X, title), title(title, S), S = noun_state, team(X).
+event(E, won, X, O) :- event(E1, earn, X1, title), _abbreviation(X, X1), title(title, S), S = noun_state, team(X).
+event(E, won, X, O) :- event(E1, earn, X1, title), _possess(X1, X), title(title, S), S = noun_state, team(X).
+event(E, won, X, O) :- event(E1, earn, X1, title), _abbreviation(X2, X1), _possess(X2, X), title(title, S), S = noun_state, team(X).
+?- event(E, win, X, 'super_bowl_50'), team(X).
+A. [Denver Broncos, Denver Broncos, Denver Broncos]
+--> X = denver_broncos
+---------------
+Q5. What color was used to emphasize the 50th anniversary of the Super Bowl?
+?-_mod(anniversary, Y)
+A. [gold, gold, gold]
+--> Y = golden
+---------------
+Q6. What was the theme of Super Bowl 50?
+A. ["golden anniversary", gold-themed, "golden anniversary]
+xxxxxxxxxxxxxxxxxxxxxxxxxxx
+---------------
+Q7. What day was the game played on?
+?- when(event(E, _, play, game), T).
+A. [February 7, 2016, February 7, February 7, 2016]
+--> T = february_7_2016
+---------------
+Q8. What is the AFC short for?
+?- _abbreviation(afc, X).
+A. [American Football Conference, American Football Conference, American Football Conference]
+--> X = american_football_conference
+---------------
+Q9. What was the theme of Super Bowl 50?
+["golden anniversary", gold-themed, gold]
+xxxxxxxxxxxxxxxxxxxxxxxxxxx
+---------------
+Q10. What does AFC stand for?
+?- _abbreviation(afc, X).
+A. [American Football Conference, American Football Conference, American Football Conference]
+--> X = american_football_conference
+---------------
+Q11. What day was the Super Bowl played on?
+?- when(event(E, _, play, 'super_bowl'), T).
+A. [February 7, 2016, February 7, February 7, 2016]
+--> T = february_7_2016
+---------------
+Q12. Who won Super Bowl 50?
+?- event(E, win, X, 'super_bowl_50').
+A. [Denver Broncos, Denver Broncos, Denver Broncos]
+--> X = denver_broncos X = afc X = american_football_conference X = team
+---------------
+Q13. What venue did Super Bowl 50 take place in?
+%% What venue can be converted to Where??
+?- where(event(X, S, play, 'super_bowl_50'), P, in).
+A. [Levi's Stadium, Levi's Stadium, Levi's Stadium in the San Francisco Bay Area at Santa Clara]
+--> P = levis_stadium; P = santa_clara; P = san_francisco_bay_area.
+---------------
+Q14. What city did Super Bowl 50 take place in?
+?- where(event(X, S, play, 'super_bowl_50'), P, in).
+A. [Santa Clara, Santa Clara, Santa Clara]
+--> P = san_francisco_bay_area
+---------------
+Q15. If Roman numerals were used, what would Super Bowl 50 have been called?
+[Super Bowl L, L, Super Bowl L]
+xxxxxxxxxxxxxxxxxxxxxxxxxxx
+---------------
+Q16. Super Bowl 50 decided the NFL champion for what season?
+?- _mod(season, X).
+A. [2015, the 2015 season, 2015]
+--> X = 2015
+---------------
+Q17. What year did the Denver Broncos secure a Super Bowl title for the third time?
+[2015, 2016, 2015]
+xxxxxxxxxxxxxxxxxxxxxxxxxxx
+---------------
+Q18. What city did Super Bowl 50 take place in?
+?- where(event(X, S, play, 'super_bowl_50'), P, in), city(X).
+A. [Santa Clara, Santa Clara, Santa Clara]
+--> P = san_francisco_bay_area; P = santa_clara
+---------------
+Q19. What stadium did Super Bowl 50 take place in?
+[Levi's Stadium, Levi's Stadium, Levi's Stadium]
+---------------
+Q20. What was the final score of Super Bowl 50? 
+_score('24_10').
+?- _score(X).
+A. [24–10, 24–10, 24–10]
+--> X = '24–10'
+---------------
+Q21. What month, day and year did Super Bowl 50 take place? 
+?- when(event(E, _, play, 'super_bowl'), T).
+A. [February 7, 2016, February 7, 2016, February 7, 2016]
+--> T = february_7_2016
+---------------
+Q22. What year was Super Bowl 50?
+_property(play, on(2016)).
+year(2016).
+time(T) :- year(T).
+?- when(event(E, _, X, 'super_bowl_50'), T), year(T).
+A. [2015, 2016, 2016]
+--> X = play, T = 2016;
+---------------
+Q23. What team was the AFC champion?
+?- _possess(afc, X), team(X).
+?- _abbreviation(afc, A), _possess(A, X), team(X).
+A. [Denver Broncos, Denver Broncos, Denver Broncos]
+--> X = denver_broncos
+---------------
+Q24. What team was the NFC champion?
+?- _possess(nfc, X), team(X).
+?- _abbreviation(nfc, A), _possess(A, X), team(X).
+A. [Carolina Panthers, Carolina Panthers, Carolina Panthers]
+--> X = carolina_panthers
+---------------
+Q25. Who won Super Bowl 50?
+?- event(E, win, X, 'super_bowl_50').
+A. [Denver Broncos, Denver Broncos, Denver Broncos]
+--> X = afc X = american_football_conference X = denver_broncos
+---------------
+Q26. Super Bowl 50 determined the NFL champion for what season?
+?- _mod(season, X).
+A. [2015, the 2015 season, 2015]
+--> X = 2015
+---------------
+Q27. Which team won Super Bowl 50.
+?- event(E1, win, X, 'super_bowl_50'), team(X).
+A. [Denver Broncos, Denver Broncos, Denver Broncos]
+--> X = denver_broncos
+---------------
+Q28. Where was Super Bowl 50 held?
+?- where(event(E, X, _, 'super_bowl_50'), P, Prep).
+A. [Santa Clara, California., Levi's Stadium, Levi's Stadium]
+--> P = levis_stadium P = santa_clara P = san_francisco_bay_area P = california
+---------------
+Q29. The name of the NFL championship game is?
+?- _is(X, game).
+A. [Super Bowl, Super Bowl, Super Bowl]
+--> X = super_bowl_50
+
+********************************************************************************
+Results : (25/29)
+********************************************************************************

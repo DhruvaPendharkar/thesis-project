@@ -70,8 +70,8 @@ public class SuperBowl50StoryTest {
     @Test
     // Sentence : "Super_Bowl_50 was to determine the champion of the National_Football_League (NFL) for the 2015 season.
     void TestSentenceThree() {
-        String content = "The American_Football_Conference's (AFC) champion, Denver_Broncos, " +
-        "defeated the National_Football_Conference's (NFC) champion, Carolina_Panthers, by 24_10 " +
+        String content = "The American_Football_Conference's (AFC) champion team, Denver_Broncos, " +
+        "defeated the National_Football_Conference's (NFC) champion team, Carolina_Panthers, by 24_10 " +
         "to earn AFC third Super_Bowl title";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
@@ -87,17 +87,17 @@ public class SuperBowl50StoryTest {
         Assert.assertTrue(ruleString.contains("_mod(title, super_bowl)"));
         Assert.assertTrue(ruleString.contains("_abbreviation(afc, american_football_conference)"));
         Assert.assertTrue(ruleString.contains("_abbreviation(nfc, national_football_conference)"));
-        Assert.assertTrue(ruleString.contains("_is(champion, denver_broncos)"));
-        Assert.assertTrue(ruleString.contains("_is(champion, carolina_panthers)"));
-        Assert.assertTrue(ruleString.contains("_possess(american_football_conference, champion)"));
+        Assert.assertTrue(ruleString.contains("_is(team, denver_broncos)"));
+        Assert.assertTrue(ruleString.contains("_is(team, carolina_panthers)"));
+        Assert.assertTrue(ruleString.contains("_possess(american_football_conference, team)"));
         Assert.assertTrue(ruleString.contains("_possess(american_football_conference, denver_broncos)"));
-        Assert.assertTrue(ruleString.contains("_possess(national_football_conference, champion)"));
+        Assert.assertTrue(ruleString.contains("_possess(national_football_conference, team)"));
         Assert.assertTrue(ruleString.contains("_possess(national_football_conference, carolina_panthers)"));
         Assert.assertTrue(ruleString.contains("_relation(1, 2, _clause)"));
         Assert.assertTrue(ruleString.contains("_property(defeat, by(24_10))"));
-        Assert.assertTrue(ruleString.contains("champion(carolina_panthers)"));
-        Assert.assertTrue(ruleString.contains("champion(denver_broncos)"));
-        Assert.assertTrue(ruleString.contains("event(1, defeat, champion, champion)"));
+        Assert.assertTrue(ruleString.contains("team(carolina_panthers)"));
+        Assert.assertTrue(ruleString.contains("team(denver_broncos)"));
+        Assert.assertTrue(ruleString.contains("event(1, defeat, team, team)"));
         Assert.assertTrue(ruleString.contains("event(1, defeat, denver_broncos, carolina_panthers)"));
         Assert.assertTrue(ruleString.contains("event(2, earn, afc, title)"));
         Assert.assertTrue(ruleString.contains("event(2, earn, afc, third_super_bowl_title)"));

@@ -69,8 +69,8 @@ class KnowledgeGenerationTest {
     @Test
     void Test1_1Story() throws IOException {
         String content = "Super_Bowl_50 was an american_football game. Super_Bowl_50 was to determine the champion of " +
-        "the National Football League (NFL) for the 2015 season. The American_Football_Conference's (AFC) champion, " +
-        "Denver_Broncos, defeated the National_Football_Conference's (NFC) champion, Carolina_Panthers, by 24_10 to " +
+        "the National Football League (NFL) for the 2015 season. The American_Football_Conference's (AFC) champion team, " +
+        "Denver_Broncos, defeated the National_Football_Conference's (NFC) champion team, Carolina_Panthers, by 24_10 to " +
         "earn AFC third Super_Bowl title. As Super_Bowl_50 was the 50th Super_Bowl, the league emphasized the " +
         "'golden anniversary' with various gold_themed initiatives, as well as temporarily suspending the tradition of " +
         "naming each Super_Bowl with roman_numerals, under the tradition the game would have been known as Super_Bowl_L," +
@@ -87,7 +87,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(76, ruleString.size());
+        Assert.assertEquals(77, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -97,7 +97,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(254, ruleString.size());
+        Assert.assertEquals(261, ruleString.size());
     }
 
     @Test
