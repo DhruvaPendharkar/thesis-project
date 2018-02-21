@@ -34,3 +34,7 @@ when(event(E, X, S, O), T) :- S = null, cause(event(E, X, S, O), C), time(C, T).
 ?- when(event(E, gain, S, identity), T)
 A. [10th century, the first half of the 10th century, 10th, 10th]
 --> T = the_first_half_of_the_10th_century
+
+******************
+Results : (4/5)
+******************
