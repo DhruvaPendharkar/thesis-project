@@ -158,14 +158,15 @@ public class Word {
 
             terms = new ArrayList<>();
 
-            if (WordNet.IsDictionaryWord(modifier)) {
-                terms.add(new Literal(this));
-                head = new Literal(modifier, terms);
-                rule = new Rule(head, null, false);
-                rules.add(rule);
-            } else if (WordNet.IsDictionaryWord(this)) {
+            if (WordNet.IsDictionaryWord(this)) {
                 terms.add(new Literal(modifier));
                 head = new Literal(this, terms);
+                rule = new Rule(head, null, false);
+                rules.add(rule);
+            }
+            else if (WordNet.IsDictionaryWord(modifier)) {
+                terms.add(new Literal(this));
+                head = new Literal(modifier, terms);
                 rule = new Rule(head, null, false);
                 rules.add(rule);
             }

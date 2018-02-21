@@ -70,6 +70,25 @@ public class NormansStoryTest {
         }
 
         Assert.assertEquals(0, ruleString.size());
+        Assert.assertTrue(ruleString.contains("_is(leader, rollo)"));
+        Assert.assertTrue(ruleString.contains("_mod(raider, norse)"));
+        Assert.assertTrue(ruleString.contains("_mod(swear, fealty)"));
+        Assert.assertTrue(ruleString.contains("_possess(norman, leader)"));
+        Assert.assertTrue(ruleString.contains("_possess(norman, rollo)"));
+        Assert.assertTrue(ruleString.contains("_property(denmark, in(iceland))"));
+        Assert.assertTrue(ruleString.contains("_property(denmark, norway)"));
+        Assert.assertTrue(ruleString.contains("_property(descend, from(denmark))"));
+        Assert.assertTrue(ruleString.contains("_property(descend, from(raider))"));
+        Assert.assertTrue(ruleString.contains("_property(descend, pirate)"));
+        Assert.assertTrue(ruleString.contains("_property(descend, under(leader))"));
+        Assert.assertTrue(ruleString.contains("_property(king_charles_iii, of(west_francia))"));
+        Assert.assertTrue(ruleString.contains("_property(swear, to(king_charles_iii))"));
+        Assert.assertTrue(ruleString.contains("_relation(2, 3, _clcomplement)"));
+        Assert.assertTrue(ruleString.contains("_relation(leader, 2, _clause)"));
+        Assert.assertTrue(ruleString.contains("event(1, descend, norman, null)"));
+        Assert.assertTrue(ruleString.contains("event(2, agree, null, null)"));
+        Assert.assertTrue(ruleString.contains("event(3, swear, null, null)"));
+        Assert.assertTrue(ruleString.contains("leader(rollo)"));
     }
 
     @Test
@@ -90,6 +109,21 @@ public class NormansStoryTest {
         }
 
         Assert.assertEquals(0, ruleString.size());
+        Assert.assertTrue(ruleString.contains("_mod(culture, carolingian_based)"));
+        Assert.assertTrue(ruleString.contains("_mod(merge, gradually)"));
+        Assert.assertTrue(ruleString.contains("_mod(population, frankish_and_roman_gaulish)"));
+        Assert.assertTrue(ruleString.contains("_mod(population, native)"));
+        Assert.assertTrue(ruleString.contains("_possess(norman, descendant)"));
+        Assert.assertTrue(ruleString.contains("_property(assimilate, with(population))"));
+        Assert.assertTrue(ruleString.contains("_property(culture, of(west_francia))"));
+        Assert.assertTrue(ruleString.contains("_property(descendant, through(generation))"));
+        Assert.assertTrue(ruleString.contains("_property(merge, with(culture))"));
+        Assert.assertTrue(ruleString.contains("_relation(1, 2, _conj)"));
+        Assert.assertTrue(ruleString.contains("_relation(generation, 1, _clause)"));
+        Assert.assertTrue(ruleString.contains("_relation(generation, 2, _clause)"));
+        Assert.assertTrue(ruleString.contains("event(1, assimilate, null, null)"));
+        Assert.assertTrue(ruleString.contains("event(2, mix, null, null)"));
+        Assert.assertTrue(ruleString.contains("event(3, merge, descendant, null)"));
     }
 
     @Test
