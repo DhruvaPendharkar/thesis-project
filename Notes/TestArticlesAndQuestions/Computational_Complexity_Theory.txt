@@ -1,0 +1,10 @@
+Computational complexity theory is a branch of the theory of computation in theoretical computer science that focuses on classifying computational problems according to their inherent difficulty, and relating those classes to each other. A computational problem is understood to be a task that is in principle amenable to being solved by a computer, which is equivalent to stating that the problem may be solved by mechanical application of mathematical steps, such as an algorithm.
+
+Q1. What branch of theoretical computer science deals with broadly classifying computational problems by difficulty and class of relationship?
+A. [Computational complexity theory, Computational complexity theory, Computational complexity theory]
+
+Q2. By what main attribute are computational problems classified utilizing computational complexity theory? 
+A. [inherent difficulty, their inherent difficulty, inherent difficulty]
+
+Q3. What is the term for a task that generally lends itself to being solved by a computer?
+A. [computational problems, A computational problem, computational problem]

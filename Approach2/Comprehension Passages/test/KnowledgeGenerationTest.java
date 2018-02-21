@@ -195,7 +195,6 @@ class KnowledgeGenerationTest {
         Assert.assertEquals(347, ruleString.size());
     }
 
-/*
     @Test
     void Test5_1Story() throws IOException {
         String content = "Computational complexity theory is a branch of the theory of computation in theoretical " +
@@ -215,8 +214,19 @@ class KnowledgeGenerationTest {
         }
         PrintRules(ruleString);
         Assert.assertEquals(97, ruleString.size());
+
+        System.out.println("%%-------------------------------------------------------%%");
+        System.out.println("%%Ontology%%");
+        System.out.println("%%-------------------------------------------------------%%");
+        ruleString = new TreeSet<>();
+        for(Rule rule : rulesPair.getValue()){
+            ruleString.add(rule.toString());
+        }
+        PrintRules(ruleString);
+        Assert.assertEquals(347, ruleString.size());
     }
 
+/*
     @Test
     void Test6_1Story() throws IOException {
         String content = "The role of teacher is often formal and ongoing, carried out at a school or other place of " +
