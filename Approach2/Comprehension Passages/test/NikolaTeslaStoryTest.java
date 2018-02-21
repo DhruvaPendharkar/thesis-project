@@ -1,5 +1,6 @@
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
@@ -14,6 +15,11 @@ public class NikolaTeslaStoryTest {
         Sentence.SetupLexicalizedParser();
         Assert.assertNotNull(Sentence.parser);
         Assert.assertNotNull(Sentence.pipeline);
+    }
+
+    @BeforeEach
+    void InitializeTest(){
+        Word.eventId = 1;
     }
 
     @Test

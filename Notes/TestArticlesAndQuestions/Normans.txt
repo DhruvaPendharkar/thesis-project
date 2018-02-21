@@ -1,0 +1,16 @@
+The Normans were the people, who in the 10th and 11th centuries gave their name to Normandy, a region in France. Normans were descended from the Norse raiders and pirates from Denmark, Iceland and Norway who, under Normans leader Rollo, agreed to swear fealty to King_Charles_III of West_Francia. Through generations of assimilation and mixing with the native Frankish and Roman-Gaulish populations, Normans's descendants would gradually merge with the Carolingian_based cultures of West_Francia. The distinct cultural and ethnic identity of the Normans emerged initially in the first half of the 10th century, and the cultural and ethnic identity continued to evolve over the succeeding centuries.
+
+Q1. In what country is Normandy located?
+A. [France, France, France, France]
+---------------
+Q2. When were the Normans in Normandy?
+A. [10th and 11th centuries, in the 10th and 11th centuries, 10th and 11th centuries, 10th and 11th centuries]
+---------------
+Q3. From which countries did the Norse originate?
+A. [Denmark, Iceland and Norway, Denmark, Iceland and Norway, Denmark, Iceland and Norway, Denmark, Iceland and Norway]
+---------------
+Q4. Who was the Norse leader?
+A. [Rollo, Rollo, Rollo, Rollo]
+---------------
+Q5. What century did the Normans first gain their separate identity?
+A. [10th century, the first half of the 10th century, 10th, 10th]
