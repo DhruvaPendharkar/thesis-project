@@ -357,6 +357,17 @@ public class Word {
                 }
             }
 
+            if(subjects.size() == 0 && modifiers.size() == 0 && !this.getLemma().equals("be")){
+                List<Literal> bodyList = new ArrayList<>();
+                bodyList.add(new Literal(new Word(String.valueOf(this.id), false)));
+                bodyList.add(new Literal(new Word(this.lemma, false)));
+                bodyList.add(new Literal(new Word("null", false)));
+                bodyList.add(new Literal(new Word("null", false)));
+
+                Literal head = new Literal(eventWord, bodyList);
+                rules.add(new Rule(head, null, false));
+            }
+
             rules.addAll(GenerateClausalComplementRules());
             rules.addAll(GenerateClausalRules());
             rules.addAll(GenerateAdverbRules());

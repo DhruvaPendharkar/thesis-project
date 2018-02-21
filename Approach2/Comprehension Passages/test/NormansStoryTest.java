@@ -76,8 +76,8 @@ public class NormansStoryTest {
     // Through generations of assimilation and mixing with the native Frankish and Roman-Gaulish populations,
     // Normans's descendants would gradually merge with the Carolingian_based cultures of West_Francia.
     void TestSentenceThree() {
-        String content = "Through generations of assimilation and mixing with the native Frankish and Roman-Gaulish " +
-        "populations, Normans's descendants would gradually merge with the Carolingian_based cultures of " +
+        String content = "Normans's descendants, through generations of assimilating and mixing with the native " +
+        "Frankish_and_Roman-Gaulish populations, would gradually merge with the Carolingian_based cultures of " +
         "West_Francia.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
@@ -109,6 +109,24 @@ public class NormansStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(18, ruleString.size());
+        Assert.assertTrue(ruleString.contains("_mod(century, succeeding)"));
+        Assert.assertTrue(ruleString.contains("_mod(emerge, initially)"));
+        Assert.assertTrue(ruleString.contains("_mod(identity, cultural)"));
+        Assert.assertTrue(ruleString.contains("_mod(identity, distinct)"));
+        Assert.assertTrue(ruleString.contains("_mod(identity, ethnic)"));
+        Assert.assertTrue(ruleString.contains("_property(emerge, in('the_first_half_of_the_10th_century'))"));
+        Assert.assertTrue(ruleString.contains("_property(identity, of(norman))"));
+        Assert.assertTrue(ruleString.contains("_relation(1, 2, _conj)"));
+        Assert.assertTrue(ruleString.contains("_relation(2, 3, _clcomplement)"));
+        Assert.assertTrue(ruleString.contains("event(1, emerge, distinct_cultural_ethnic_identity, null)"));
+        Assert.assertTrue(ruleString.contains("event(1, emerge, identity, null)"));
+        Assert.assertTrue(ruleString.contains("event(2, continue, cultural_ethnic_identity, null)"));
+        Assert.assertTrue(ruleString.contains("event(2, continue, identity, null)"));
+        Assert.assertTrue(ruleString.contains("event(3, evolve, cultural_ethnic_identity, century)"));
+        Assert.assertTrue(ruleString.contains("event(3, evolve, cultural_ethnic_identity, succeeding_century)"));
+        Assert.assertTrue(ruleString.contains("event(3, evolve, identity, century)"));
+        Assert.assertTrue(ruleString.contains("event(3, evolve, identity, succeeding_century)"));
+        Assert.assertTrue(ruleString.contains("time('the_first_half_of_the_10th_century')"));
     }
 }

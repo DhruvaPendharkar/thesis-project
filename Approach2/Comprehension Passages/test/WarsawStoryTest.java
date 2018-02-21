@@ -39,7 +39,7 @@ public class WarsawStoryTest {
             ruleString.add(rule.toString());
         }
 
-        Assert.assertEquals(16, ruleString.size());
+        Assert.assertEquals(17, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(people, one_of_the_most_famous)"));
         Assert.assertTrue(ruleString.contains("_mod(recognition, international)"));
         Assert.assertTrue(ruleString.contains("_mod(prize, nobel)"));
@@ -54,6 +54,7 @@ public class WarsawStoryTest {
         Assert.assertTrue(ruleString.contains("_is(maria_curie, first_female_recipient)"));
         Assert.assertTrue(ruleString.contains("_relation(3, recipient, _conj)"));
         Assert.assertTrue(ruleString.contains("_relation(people, 1, _clause)"));
+        Assert.assertTrue(ruleString.contains("event(1, bear, null, null)"));
         Assert.assertTrue(ruleString.contains("event(3, achieve, maria_curie, recognition)"));
         Assert.assertTrue(ruleString.contains("event(3, achieve, maria_curie, international_recognition)"));
     }

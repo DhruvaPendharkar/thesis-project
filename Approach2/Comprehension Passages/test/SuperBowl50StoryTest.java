@@ -121,7 +121,7 @@ public class SuperBowl50StoryTest {
             System.out.println(rule);
         }
 
-        Assert.assertEquals(24, ruleString.size());
+        Assert.assertEquals(25, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(super_bowl, '50th')"));
         Assert.assertTrue(ruleString.contains("_mod(anniversary, golden)"));
         Assert.assertTrue(ruleString.contains("_mod(initiative, various)"));
@@ -144,6 +144,7 @@ public class SuperBowl50StoryTest {
         Assert.assertTrue(ruleString.contains("event(4, suspend, null, game)"));
         Assert.assertTrue(ruleString.contains("event(4, suspend, null, tradition)"));
         Assert.assertTrue(ruleString.contains("event(5, name, null, super_bowl)"));
+        Assert.assertTrue(ruleString.contains("event(6, have, null, null)"));
         Assert.assertTrue(ruleString.contains("event(8, know, null, game)"));
         Assert.assertTrue(ruleString.contains("event(9, feature, logo, 'arabic_numerals_50')"));
     }
