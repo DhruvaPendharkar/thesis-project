@@ -34,7 +34,7 @@ public class Word {
         this.id = "";
     }
 
-    Word(int wordIndex, String word, String lemma, String POSTag, String NERTag, boolean isQuestion){
+    Word(int wordIndex, String word, String lemma, String POSTag, String NERTag){
         this.wordIndex = wordIndex;
         this.word = word.toLowerCase();
         this.POSTag = POSTag;
@@ -42,7 +42,6 @@ public class Word {
         this.NERTag = NamedEntityTagger.GetEntityTag(NERTag);
         this.relationMap = new HashMap<>();
         this.id = this.IsVerb() ? String.valueOf(this.eventId++) : "";
-        if(isQuestion) this.id = "I" + this.id;
     }
 
     @Override
@@ -80,9 +79,9 @@ public class Word {
         return word;
     }
 
-    public List<Rule> GenerateRules(boolean isQuestion) {
+    public List<Rule> GenerateRules() {
         if(this.IsVerb()){
-            return GenerateRulesForVerb(isQuestion);
+            return GenerateRulesForVerb();
         }
         else if(this.IsNoun() || this.IsAdjective()){
             return GenerateRulesForNouns();
@@ -302,7 +301,7 @@ public class Word {
         return this.POSTag.startsWith("NN");
     }
 
-    private List<Rule> GenerateRulesForVerb(boolean isQuestion) {
+    private List<Rule> GenerateRulesForVerb() {
         List<Rule> rules = new ArrayList<>();
         Word eventWord = new Word("event", false);
         List<Word> subjects = this.GetSubjects();
@@ -316,20 +315,8 @@ public class Word {
                 for (Word modifier : modifiers) {
                     List<Literal> bodyList = new ArrayList<>();
                     bodyList.add(new Literal(new Word(this.id, true)));
-                    if(isQuestion && this.lemma.equals("do")){
-                        bodyList.add(new Literal(new Word("D" + this.id, true)));
-                    }
-                    else {
-                        bodyList.add(new Literal(new Word(this.lemma, false)));
-                    }
-
-                    if(subject.IsW_Word()){
-                        subject.lemma = "X";
-                    }
+                    bodyList.add(new Literal(new Word(this.lemma, false)));
                     bodyList.add(new Literal(new Word(subject.lemma, false)));
-                    if(modifier.IsW_Word()){
-                        modifier.lemma = "X";
-                    }
                     bodyList.add(new Literal(new Word(modifier.lemma, false)));
 
                     Literal head = new Literal(eventWord, bodyList);
@@ -342,17 +329,8 @@ public class Word {
                 for (Word modifier : modifiers) {
                     List<Literal> bodyList = new ArrayList<>();
                     bodyList.add(new Literal(new Word(String.valueOf(this.id), false)));
-                    if(isQuestion && this.lemma.equals("do")){
-                        bodyList.add(new Literal(new Word("D" + this.id, true)));
-                    }
-                    else {
-                        bodyList.add(new Literal(new Word(this.lemma, false)));
-                    }
-
+                    bodyList.add(new Literal(new Word(this.lemma, false)));
                     bodyList.add(new Literal(new Word("null", false)));
-                    if(modifier.IsW_Word()){
-                        modifier.lemma = "X";
-                    }
                     bodyList.add(new Literal(new Word(modifier.lemma, false)));
 
                     Literal head = new Literal(eventWord, bodyList);
@@ -365,16 +343,7 @@ public class Word {
                 for (Word subject : subjects) {
                     List<Literal> bodyList = new ArrayList<>();
                     bodyList.add(new Literal(new Word(String.valueOf(this.id), false)));
-                    if(isQuestion && this.lemma.equals("do")){
-                        bodyList.add(new Literal(new Word("D" + this.id, true)));
-                    }
-                    else {
-                        bodyList.add(new Literal(new Word(this.lemma, false)));
-                    }
-
-                    if(subject.IsW_Word()){
-                        subject.lemma = "X";
-                    }
+                    bodyList.add(new Literal(new Word(this.lemma, false)));
                     bodyList.add(new Literal(new Word(subject.lemma, false)));
                     bodyList.add(new Literal(new Word("null", false)));
 

@@ -32,12 +32,11 @@ public class Sentence {
     }
 
     protected Sentence(String sentence) {
-        boolean isQuestion = this.getClass() == Question.class;
         int currentEventId = Word.eventId;
-        List<Word> wordList = ProcessSentence(sentence, isQuestion);
+        List<Word> wordList = ProcessSentence(sentence);
         sentence = PreprocessSentence(wordList);
         Word.eventId = currentEventId;
-        this.wordList = ProcessSentence(sentence, isQuestion);
+        this.wordList = ProcessSentence(sentence);
         List<TypedDependency> dependencies = GetDependencies(sentence);
         this.sentenceString = sentence;
         this.dependencies = dependencies;
@@ -266,7 +265,7 @@ public class Sentence {
         return dependencies;
     }
 
-    private static List<Word> ProcessSentence(String sentenceString, boolean isQuestion) {
+    private static List<Word> ProcessSentence(String sentenceString) {
         List<Word> wordList = new ArrayList<>();
         Annotation annotation = new Annotation(sentenceString);
         pipeline.annotate(annotation);
@@ -278,7 +277,7 @@ public class Sentence {
                 String lemmaString = token.getString(CoreAnnotations.LemmaAnnotation.class);
                 String posTag = token.get(CoreAnnotations.PartOfSpeechAnnotation.class);
                 String NERTag = token.get(CoreAnnotations.NamedEntityTagAnnotation.class);
-                Word word = new Word(index, wordString, lemmaString, posTag, NERTag, isQuestion);
+                Word word = new Word(index, wordString, lemmaString, posTag, NERTag);
                 wordList.add(word);
                 index++;
         }
@@ -335,7 +334,7 @@ public class Sentence {
 
         for(Word word : this.wordList){
             if(word.getPOSTag().equalsIgnoreCase(",")) continue;
-            rules.addAll(word.GenerateRules(false));
+            rules.addAll(word.GenerateRules());
         }
 
         rules.addAll(GenerateAlternateCopulaRules());

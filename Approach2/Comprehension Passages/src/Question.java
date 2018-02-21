@@ -13,7 +13,7 @@ public class Question extends Sentence {
     public List<Rule> GenerateRules() {
         List<Rule> rules = new ArrayList<>();
         for(Word word : this.wordList){
-            rules.addAll(word.GenerateRules(true));
+            rules.addAll(word.GenerateRules());
         }
 
         rules.addAll(this.semanticRoot.GenerateCopulaRules());

@@ -19,7 +19,7 @@ class LiteralTest {
 
     @Test
     void TestQuestionAtomLiteralToString() {
-        Word atom = new Word(1, "test", "test", "WH", "", false);
+        Word atom = new Word(1, "test", "test", "WH", "");
         Literal literal = new Literal(atom);
         Assert.assertEquals("X", literal.toString());
     }
