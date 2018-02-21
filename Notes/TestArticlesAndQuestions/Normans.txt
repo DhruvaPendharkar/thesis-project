@@ -1,16 +1,36 @@
 The Normans were the people, who in the 10th and 11th centuries gave their name to Normandy, a region in France. Normans were descended from the Norse raiders and pirates from Denmark, Iceland and Norway who, under Normans leader Rollo, agreed to swear fealty to King_Charles_III of West_Francia. Through generations of assimilation and mixing with the native Frankish and Roman-Gaulish populations, Normans's descendants would gradually merge with the Carolingian_based cultures of West_Francia. The distinct cultural and ethnic identity of the Normans emerged initially in the first half of the 10th century, and the cultural and ethnic identity continued to evolve over the succeeding centuries.
 
 Q1. In what country is Normandy located?
+country(france).
+?- place(normandy, P), country(P).
 A. [France, France, France, France]
+--> P = france
 ---------------
 Q2. When were the Normans in Normandy?
 A. [10th and 11th centuries, in the 10th and 11th centuries, 10th and 11th centuries, 10th and 11th centuries]
+****************(Answer not in paragraph)****************
 ---------------
 Q3. From which countries did the Norse originate?
+country(france).
+country(norway).
+country(iceland).
+country(denmark_iceland).
+place(X, P, from) :- _property(X, from(P)).
+place(X, P, from) :- _is(X, A), _property(A, from(P)).
+effect(event(_, originate, S, O), descend) :- event(_, descend, O, S).
+where(event(E, X, S, O), P, Prep) :- effect(event(_, X, S, O), Y), place(Y, P, Prep).
+?- where(event(_, originate, S, O), P, from), country(P).
 A. [Denmark, Iceland and Norway, Denmark, Iceland and Norway, Denmark, Iceland and Norway, Denmark, Iceland and Norway]
+--> P = denmark_iceland; P = norway
 ---------------
 Q4. Who was the Norse leader?
+?- _possess(norman, X), leader(X).
 A. [Rollo, Rollo, Rollo, Rollo]
+--> X = rollo
 ---------------
 Q5. What century did the Normans first gain their separate identity?
+cause(event(E, gain, S, O), emerge) :- event(E1, emerge, O, O1).
+when(event(E, X, S, O), T) :- S = null, cause(event(E, X, S, O), C), time(C, T).
+?- when(event(E, gain, S, identity), T)
 A. [10th century, the first half of the 10th century, 10th, 10th]
+--> T = the_first_half_of_the_10th_century

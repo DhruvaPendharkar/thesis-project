@@ -57,7 +57,7 @@ public class NormansStoryTest {
     // Normans were descended from the Norse raiders and pirates from Denmark, Iceland and Norway who,
     // under Normans leader Rollo, agreed to swear fealty to King_Charles_III of West_Francia.
     void TestSentenceTwo() {
-        String content = "Normans descended from the Norse raiders and pirates from Denmark in Iceland " +
+        String content = "Normans descended from the Norse raiders and pirates from Denmark_Iceland " +
         "and Norway, Normans, under Normans's leader, Rollo, agreed to swear fealty to King_Charles_III of West_Francia.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
@@ -69,16 +69,15 @@ public class NormansStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(18, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(leader, rollo)"));
         Assert.assertTrue(ruleString.contains("_mod(raider, norse)"));
         Assert.assertTrue(ruleString.contains("_mod(swear, fealty)"));
         Assert.assertTrue(ruleString.contains("_possess(norman, leader)"));
         Assert.assertTrue(ruleString.contains("_possess(norman, rollo)"));
-        Assert.assertTrue(ruleString.contains("_property(denmark, in(iceland))"));
-        Assert.assertTrue(ruleString.contains("_property(denmark, norway)"));
-        Assert.assertTrue(ruleString.contains("_property(descend, from(denmark))"));
+        Assert.assertTrue(ruleString.contains("_property(descend, from(denmark_iceland))"));
         Assert.assertTrue(ruleString.contains("_property(descend, from(raider))"));
+        Assert.assertTrue(ruleString.contains("_property(descend, norway)"));
         Assert.assertTrue(ruleString.contains("_property(descend, pirate)"));
         Assert.assertTrue(ruleString.contains("_property(descend, under(leader))"));
         Assert.assertTrue(ruleString.contains("_property(king_charles_iii, of(west_francia))"));
@@ -108,7 +107,7 @@ public class NormansStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(15, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(culture, carolingian_based)"));
         Assert.assertTrue(ruleString.contains("_mod(merge, gradually)"));
         Assert.assertTrue(ruleString.contains("_mod(population, frankish_and_roman_gaulish)"));

@@ -161,16 +161,16 @@ class KnowledgeGenerationTest {
         Assert.assertEquals(229, ruleString.size());
     }
 
-/*
     @Test
     void Test4_1Story() throws IOException {
-        String content = "The Normans (Norman: Nourmands; French: Normands; Latin: Normanni) were the people who in " +
-        "the 10th and 11th centuries gave their name to Normandy, a region in France. They were descended from Norse " +
-        "('Norman' comes from 'Norseman') raiders and pirates from Denmark, Iceland and Norway who, under their leader " +
-        "Rollo, agreed to swear fealty to King Charles III of West Francia. Through generations of assimilation and " +
-        "mixing with the native Frankish and Roman-Gaulish populations, their descendants would gradually merge with the " +
-        "Carolingian-based cultures of West Francia. The distinct cultural and ethnic identity of the Normans emerged " +
-        "initially in the first half of the 10th century, and it continued to evolve over the succeeding centuries.";
+        String content = "The Normans were the people who, in the 10th and 11th centuries, gave Norman's name " +
+        "to Normandy, which is a region in France. Normans descended from the Norse raiders and pirates from " +
+        "Denmark_Iceland and Norway, Normans, under Normans's leader, Rollo, agreed to swear fealty to " +
+        "King_Charles_III of West_Francia. Normans's descendants, through generations of assimilating and mixing " +
+        "with the native Frankish_and_Roman-Gaulish populations, would gradually merge with the Carolingian_based " +
+        "cultures of West_Francia. The distinct cultural and ethnic identity of the Normans emerged initially in " +
+        "the first half of the 10th century, and the cultural and ethnic identity continued to evolve over the " +
+        "succeeding centuries.";
         StorageManager manager = new StorageManager();
         Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
 
@@ -182,9 +182,20 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(97, ruleString.size());
+        Assert.assertEquals(80, ruleString.size());
+
+        System.out.println("%%-------------------------------------------------------%%");
+        System.out.println("%%Ontology%%");
+        System.out.println("%%-------------------------------------------------------%%");
+        ruleString = new TreeSet<>();
+        for(Rule rule : rulesPair.getValue()){
+            ruleString.add(rule.toString());
+        }
+        PrintRules(ruleString);
+        Assert.assertEquals(347, ruleString.size());
     }
 
+/*
     @Test
     void Test5_1Story() throws IOException {
         String content = "Computational complexity theory is a branch of the theory of computation in theoretical " +
