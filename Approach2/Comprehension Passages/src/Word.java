@@ -54,6 +54,10 @@ public class Word {
             return;
         }
 
+        if(relationLong.equalsIgnoreCase("amod") && !dependentWord.getPOSTag().equals("JJ")){
+            dependentWord.POSTag = String.format("JJ-%s", dependentWord.POSTag);
+        }
+
         if(!this.relationMap.containsKey(relationLong)){
             this.relationMap.put(relationLong, new ArrayList<>());
         }
@@ -241,7 +245,7 @@ public class Word {
         for(Word adjective : adjectives) {
             List<Literal> bodyList = new ArrayList<>();
             Literal concept = new Literal(new Word(this.lemma, false));
-            Literal adj = new Literal(new Word(adjective.lemma, false));
+            Literal adj = new Literal(new Word(adjective.word, false));
             bodyList.add(concept);
             bodyList.add(adj);
 
@@ -736,7 +740,8 @@ public class Word {
     public static Word CreateCompoundWord(List<Word> wordCollection) {
         StringBuilder builder = new StringBuilder();
         for(Word word : wordCollection){
-            builder.append(word.getLemma());
+            String wordString = word.IsAdjective() ? word.getWord() : word.getLemma();
+            builder.append(wordString);
             builder.append(" ");
         }
 
