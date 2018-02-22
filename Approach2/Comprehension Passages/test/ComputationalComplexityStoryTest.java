@@ -28,9 +28,9 @@ public class ComputationalComplexityStoryTest {
     // that focuses on classifying computational problems according to their inherent difficulty, and relating
     // those classes to each other.
     void TestSentenceOne() {
-        String content = "The distinct cultural and ethnic identity of the Normans emerged initially in the first " +
-        "half of the 10th century, and the cultural and ethnic identity continued to evolve over the succeeding " +
-        "centuries.";
+        String content = "Computational_complexity_theory is a branch of the theory_of_computation in theoretical " +
+        "computer_science that focuses on classifying computational problems according to their inherent difficulty, " +
+        "and relating complexity_classes to each other.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
         List<Rule> rules = sentence.GenerateRules();
@@ -50,7 +50,7 @@ public class ComputationalComplexityStoryTest {
     // such as an algorithm.
     void TestSentenceTwo() {
         String content = "A computational problem is understood to be a task that is in principle amenable to being " +
-        "solved by a computer, which is equivalent to stating that the problem may be solved by mechanical application " +
+        "solved by a computer, which is equivalent to stating that the problem may be solved by mechanical_application " +
         "of mathematical steps, such as an algorithm.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
