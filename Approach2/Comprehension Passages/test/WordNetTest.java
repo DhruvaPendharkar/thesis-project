@@ -44,7 +44,7 @@ class WordNetTest {
             ruleString.add(rule.toString());
         }
 
-        Assert.assertEquals(41, ruleString.size());
+        Assert.assertEquals(48, ruleString.size());
         Assert.assertTrue(ruleString.contains("lion(X, noun_person) :- lion(X),not -lion(X, noun_person),-lion(X, noun_animal),not lion(X, noun_location)"));
         Assert.assertTrue(ruleString.contains("lion(X, noun_location) :- lion(X),not -lion(X, noun_location),-lion(X, noun_animal),-lion(X, noun_person)"));
     }
@@ -61,7 +61,7 @@ class WordNetTest {
             ruleString.add(rule.toString());
         }
 
-        Assert.assertEquals(41, ruleString.size());
+        Assert.assertEquals(48, ruleString.size());
         Assert.assertTrue(ruleString.contains("celebrity(X, noun_person) :- lion(X, noun_person)"));
         Assert.assertTrue(ruleString.contains("big_cat(X, noun_animal) :- lion(X, noun_animal)"));
         Assert.assertTrue(ruleString.contains("person(X, noun_tops) :- lion(X, noun_person)"));
@@ -97,7 +97,7 @@ class WordNetTest {
             ruleString.add(rule.toString());
         }
 
-        Assert.assertEquals(67, ruleString.size());
+        Assert.assertEquals(74, ruleString.size());
     }
 
     @Test
@@ -130,7 +130,7 @@ class WordNetTest {
         String code = WordNet.WriteStoryFacts(manager, "predicate(term1, term2)", false);
         Assert.assertTrue(code.length() != 0);
         String[] lines = code.split("\n");
-        Assert.assertEquals(19, lines.length);
+        Assert.assertEquals(22, lines.length);
 
         Assert.assertEquals("ontology\\\\celebrity", lines[0]);
         Assert.assertEquals("ontology\\\\feline", lines[1]);
@@ -143,14 +143,17 @@ class WordNetTest {
         Assert.assertEquals("ontology\\\\lion", lines[8]);
         Assert.assertEquals("ontology\\\\big_cat", lines[9]);
         Assert.assertEquals("ontology\\\\mammal", lines[10]);
-        Assert.assertEquals("ontology\\\\person", lines[11]);
-        Assert.assertEquals("ontology\\\\carnivore", lines[12]);
-        Assert.assertEquals("ontology\\\\animal", lines[13]);
-        Assert.assertEquals("ontology\\\\adult", lines[14]);
-        Assert.assertEquals("ontology\\\\important_person", lines[15]);
-        Assert.assertEquals("ontology\\\\entity", lines[16]);
-        Assert.assertEquals("ontology\\\\object", lines[17]);
-        Assert.assertEquals("predicate(term1, term2)", lines[18]);
+        Assert.assertEquals("ontology\\\\sign_of_the_zodiac", lines[11]);
+        Assert.assertEquals("ontology\\\\person", lines[12]);
+        Assert.assertEquals("ontology\\\\carnivore", lines[13]);
+        Assert.assertEquals("ontology\\\\animal", lines[14]);
+        Assert.assertEquals("ontology\\\\location", lines[15]);
+        Assert.assertEquals("ontology\\\\region", lines[16]);
+        Assert.assertEquals("ontology\\\\adult", lines[17]);
+        Assert.assertEquals("ontology\\\\important_person", lines[18]);
+        Assert.assertEquals("ontology\\\\entity", lines[19]);
+        Assert.assertEquals("ontology\\\\object", lines[20]);
+        Assert.assertEquals("predicate(term1, term2)", lines[21]);
     }
 
 }
