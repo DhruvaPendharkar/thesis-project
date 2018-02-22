@@ -79,6 +79,7 @@ public class WordNet {
         IWord iWord = dictionary.getWord(wordID);
         ISynset synset = iWord.getSynset();
         List<ISynsetID> hypernyms = synset.getRelatedSynsets(Pointer.HYPERNYM);
+        if(hypernyms.size() == 0) hypernyms = synset.getRelatedSynsets(Pointer.HYPERNYM_INSTANCE);
         HashMap<String, IWordID> hypernymMap = GetHypernymsMap(dictionary, hypernyms, sense);
         if(hypernymMap.isEmpty()) {
             return;
