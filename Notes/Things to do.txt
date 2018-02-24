@@ -29,3 +29,17 @@ is something like branch(geometry), branch(computational_complexity),
 _is(4, branch, computational_complexity), _is(6, branch, geometry)
 _property(4, branch, of(computer_science))
 So its only the event id that will keep things sane.
+
+7. Properties and Coordinating Conjunctions
+properties of both the verbs in the co-ordinating conjunctions, should be added
+Actually this relates to all the X and X where X = verb, X = noun
+(Last sentence of story six)
+
+8. Using the long form of the relations
+eg nmod:through so that you can use that in conjunctions
+Sentence 5 in story 6 --> through pistons and turbines
+
+9. Compound Words
+Can you use the compound relations given in the dependencies instead using your own 
+to get a better relation eg Sentence 1 -> Story 6
+Steam_engines are external combustion_engines

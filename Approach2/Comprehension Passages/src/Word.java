@@ -525,27 +525,14 @@ public class Word {
             for (Word modifier : modifiers) {
                 List<Literal> bodyList = new ArrayList<>();
                 boolean isVariable = false;
-                if(subject.IsW_Word()){
-                    subject.lemma = "X";
-                    isVariable = true;
-                }
-
                 bodyList.add(new Literal(new Word(subject.lemma, isVariable)));
                 isVariable = false;
-                if(modifier.IsW_Word()){
-                    modifier.lemma = "X";
-                    isVariable = true;
-                }
                 bodyList.add(new Literal(new Word(modifier.lemma, isVariable)));
                 Literal head = new Literal(isWord, bodyList);
                 rules.add(new Rule(head, null, false));
             }
         }
         return rules;
-    }
-
-    private boolean IsW_Word() {
-        return this.getPOSTag().startsWith("W");
     }
 
     private List<Word> GetClausalComplements() {
