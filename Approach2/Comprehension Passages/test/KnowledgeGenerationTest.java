@@ -102,10 +102,10 @@ class KnowledgeGenerationTest {
 
     @Test
     void Test2_1Story() throws IOException {
-        String content = "One_of_the_most_famous people born in Warsaw was Maria_Skłodowska_Curie, Maria_Curie " +
+        String content = "One_of_the_most_famous people born in Warsaw was Maria_Sklodowska_Curie, Maria_Curie " +
         "achieved international recognition for Maria_Curie's research on radioactivity and was the first " +
-        "female recipient of the Nobel Prize. The famous musicians include Władysław_Szpilman and Frédéric_Chopin. " +
-        "Though Chopin was born in the village of Żelazowa_Wola about 60_km from Warsaw, Chopin moved to the city " +
+        "female recipient of the Nobel Prize. The famous musicians include Wladyslaw_Szpilman and Frederic_Chopin. " +
+        "Though Chopin was born in the village of Zelazowa_Wola about 60_km from Warsaw, Chopin moved to the city " +
         "with Chopin's family, when Chopin was seven_months_old. Casimir_Pulaski, a polish general and hero of the " +
         "American Revolutionary War, was born in Warsaw in 1745.";
         StorageManager manager = new StorageManager();
@@ -197,11 +197,43 @@ class KnowledgeGenerationTest {
 
     @Test
     void Test5_1Story() throws IOException {
-        String content = "Computational complexity theory is a branch of the theory of computation in theoretical " +
-        "computer science that focuses on classifying computational problems according to their inherent difficulty, " +
-        "and relating those classes to each other. A computational problem is understood to be a task that is in " +
-        "principle amenable to being solved by a computer, which is equivalent to stating that the problem may be " +
-        "solved by mechanical application of mathematical steps, such as an algorithm.";
+        String content = "Computational_complexity_theory is a branch of the theory_of_computation, in theoretical " +
+        "computer_science, the branch focuses on classifying computational problems according to the problem's " +
+        "inherent difficulty, and relating complexity_classes to each other. A computational problem is understood " +
+        "to be a task that is in principle amenable to being solved by a computer, which is equivalent to stating " +
+        "that the problem may be solved by mechanical_application of mathematical steps such as an algorithm.";
+        StorageManager manager = new StorageManager();
+        Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
+
+        TreeSet<String> ruleString = new TreeSet<>();
+        System.out.println("%-------------------------------------------------------%");
+        System.out.println("%Story%");
+        System.out.println("%-------------------------------------------------------%");
+        for(Rule rule : rulesPair.getKey()){
+            ruleString.add(rule.toString());
+        }
+        PrintRules(ruleString);
+        Assert.assertEquals(47, ruleString.size());
+
+        System.out.println("%%-------------------------------------------------------%%");
+        System.out.println("%%Ontology%%");
+        System.out.println("%%-------------------------------------------------------%%");
+        ruleString = new TreeSet<>();
+        for(Rule rule : rulesPair.getValue()){
+            ruleString.add(rule.toString());
+        }
+        PrintRules(ruleString);
+        Assert.assertEquals(268, ruleString.size());
+    }
+
+    @Test
+    void Test6_1Story() throws IOException {
+        String content = "Steam engines are external combustion engines, where the working fluid is separate from the " +
+                "combustion products. Non-combustion heat sources such as solar power, nuclear power or geothermal energy may " +
+                "be used. The ideal thermodynamic cycle used to analyze this process is called the Rankine cycle. In the cycle, " +
+                "water is heated and transforms into steam within a boiler operating at a high pressure. When expanded through " +
+                "pistons or turbines, mechanical work is done. The reduced-pressure steam is then condensed and pumped back " +
+                "into the boiler.";
         StorageManager manager = new StorageManager();
         Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
 
@@ -352,28 +384,6 @@ class KnowledgeGenerationTest {
         "followed, known as the Wars of Religion, fought intermittently from 1562 to 1598. The wars finally ended " +
         "with the granting of the Edict of Nantes, which granted the Huguenots substantial religious, political and " +
         "military autonomy.";
-        StorageManager manager = new StorageManager();
-        Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
-
-        TreeSet<String> ruleString = new TreeSet<>();
-        System.out.println("%-------------------------------------------------------%");
-        System.out.println("%Story%");
-        System.out.println("%-------------------------------------------------------%");
-        for(Rule rule : rulesPair.getKey()){
-            ruleString.add(rule.toString());
-        }
-        PrintRules(ruleString);
-        Assert.assertEquals(97, ruleString.size());
-    }
-
-    @Test
-    void Test12_1Story() throws IOException {
-        String content = "Steam engines are external combustion engines, where the working fluid is separate from the " +
-        "combustion products. Non-combustion heat sources such as solar power, nuclear power or geothermal energy may " +
-        "be used. The ideal thermodynamic cycle used to analyze this process is called the Rankine cycle. In the cycle, " +
-        "water is heated and transforms into steam within a boiler operating at a high pressure. When expanded through " +
-        "pistons or turbines, mechanical work is done. The reduced-pressure steam is then condensed and pumped back " +
-        "into the boiler.";
         StorageManager manager = new StorageManager();
         Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
 

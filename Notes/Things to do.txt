@@ -1,0 +1,31 @@
+1. Process mwe - multiword expressions
+Multi-word expressions should not be processed in the normal way and should be
+ignored things like such as, according to, as soon as, these things are not to be
+played with
+
+2. Process mwe - (such as)
+Incase of the multi-word expressions such as "such-as", we get more insight into the 
+relation of concept example where the sentence can go like rivals such as Facebook...
+So here _is(rival, facebook), favorite information such as movies which becomes 
+_is(information, movies)
+
+3. team(team), branch(branch) ... or basically for X(X)
+Although this is true, is it really a correct assumption and a required fact.
+Test this theory and mostly it just gives no real information although it seems
+a fact.
+
+4. Parts of dates (19_feb_1990)
+So here you need to divide the different parts of the date into its various components.
+day(19), month(feb), year(1990) as now this is more intereseting
+
+5. Adjectives and Modifiers for _possess(X, P) and _property(X, Y)
+So better answers can be given with the help of adjectives and other modifiers like
+numerical qualifiers so _possess(table, leg), _possess(table, 4_leg) etc.. etc..
+
+6. Different properties and information wont go together, need to annotate properties
+with event ids -- important problem how to give event ids to properties and possessions
+For example give me a branch of computer science and lets say that the information given
+is something like branch(geometry), branch(computational_complexity), 
+_is(4, branch, computational_complexity), _is(6, branch, geometry)
+_property(4, branch, of(computer_science))
+So its only the event id that will keep things sane.
