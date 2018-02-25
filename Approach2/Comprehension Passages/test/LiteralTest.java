@@ -18,13 +18,6 @@ class LiteralTest {
     }
 
     @Test
-    void TestQuestionAtomLiteralToString() {
-        Word atom = new Word(1, "test", "test", "WH", "");
-        Literal literal = new Literal(atom);
-        Assert.assertEquals("X", literal.toString());
-    }
-
-    @Test
     void TestNoBodyLiteralToString() {
         Word predicate = new Word("do", false);
         Literal literal = new Literal(predicate, new ArrayList<>());

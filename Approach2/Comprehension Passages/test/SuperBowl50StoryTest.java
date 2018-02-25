@@ -131,7 +131,7 @@ public class SuperBowl50StoryTest {
         Assert.assertTrue(ruleString.contains("_is('super_bowl_50', super_bowl)"));
         Assert.assertTrue(ruleString.contains("_is('super_bowl_50', '50th_super_bowl')"));
         Assert.assertTrue(ruleString.contains("_property(emphasize, suspend)"));
-        Assert.assertTrue(ruleString.contains("_property(emphasize, under(tradition))"));
+        Assert.assertTrue(ruleString.contains("_property(emphasize, tradition)"));
         Assert.assertTrue(ruleString.contains("_property(emphasize, know)"));
         Assert.assertTrue(ruleString.contains("_property(name, with(roman_numerals))"));
         Assert.assertTrue(ruleString.contains("_property(know, with(initiative))"));

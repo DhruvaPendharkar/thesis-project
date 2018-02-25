@@ -42,7 +42,7 @@ public class OxygenStoryTest {
         Assert.assertTrue(ruleString.contains("_is(oxygen, element)"));
         Assert.assertTrue(ruleString.contains("_mod(atomic_number, 8)"));
         Assert.assertTrue(ruleString.contains("_mod(element, chemical)"));
-        Assert.assertTrue(ruleString.contains("_property(element, '8_atomic_number')"));
+        Assert.assertTrue(ruleString.contains("_property(element, with('8_atomic_number'))"));
         Assert.assertTrue(ruleString.contains("_property(element, with(symbol_o))"));
         Assert.assertTrue(ruleString.contains("element(oxygen)"));
     }
@@ -104,7 +104,7 @@ public class OxygenStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(element, third_most)"));
         Assert.assertTrue(ruleString.contains("_property(element, after(hydrogen))"));
         Assert.assertTrue(ruleString.contains("_property(element, by(mass))"));
-        Assert.assertTrue(ruleString.contains("_property(element, helium)"));
+        Assert.assertTrue(ruleString.contains("_property(element, after(helium))"));
         Assert.assertTrue(ruleString.contains("_property(element, in(universe))"));
         Assert.assertTrue(ruleString.contains("element(oxygen)"));
     }
@@ -134,7 +134,7 @@ public class OxygenStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(temperature, standard)"));
         Assert.assertTrue(ruleString.contains("_property(atom, of(oxygen))"));
         Assert.assertTrue(ruleString.contains("_property(bind, at(temperature))"));
-        Assert.assertTrue(ruleString.contains("_property(bind, pressure)"));
+        Assert.assertTrue(ruleString.contains("_property(bind, at(pressure))"));
         Assert.assertTrue(ruleString.contains("_property(form, with('formula_o2'))"));
         Assert.assertTrue(ruleString.contains("_relation(1, 2, _clcomplement)"));
         Assert.assertTrue(ruleString.contains("event(1, bind, atom, null)"));

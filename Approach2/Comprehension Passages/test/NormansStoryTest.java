@@ -77,8 +77,8 @@ public class NormansStoryTest {
         Assert.assertTrue(ruleString.contains("_possess(norman, rollo)"));
         Assert.assertTrue(ruleString.contains("_property(descend, from(denmark_iceland))"));
         Assert.assertTrue(ruleString.contains("_property(descend, from(raider))"));
-        Assert.assertTrue(ruleString.contains("_property(descend, norway)"));
-        Assert.assertTrue(ruleString.contains("_property(descend, pirate)"));
+        Assert.assertTrue(ruleString.contains("_property(descend, from(norway))"));
+        Assert.assertTrue(ruleString.contains("_property(descend, from(pirate))"));
         Assert.assertTrue(ruleString.contains("_property(descend, under(leader))"));
         Assert.assertTrue(ruleString.contains("_property(king_charles_iii, of(west_francia))"));
         Assert.assertTrue(ruleString.contains("_property(swear, to(king_charles_iii))"));

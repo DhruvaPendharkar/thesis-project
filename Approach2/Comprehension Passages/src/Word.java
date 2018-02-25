@@ -1,6 +1,7 @@
 import edu.mit.jwi.item.IIndexWord;
 import edu.mit.jwi.item.POS;
 import edu.stanford.nlp.trees.GrammaticalRelation;
+import javafx.util.Pair;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -55,18 +56,23 @@ public class Word {
             return;
         }
 
-        String relationShort = relation.getShortName();
-        if(relationShort.equalsIgnoreCase("amod") && !dependentWord.getPOSTag().equals("JJ")){
+        String relationName = relation.getShortName();
+        if(relationName.equalsIgnoreCase("amod") && !dependentWord.getPOSTag().equals("JJ")){
             dependentWord.POSTag = String.format("JJ-%s", dependentWord.POSTag);
         }
 
-        if(!this.relationMap.containsKey(relationShort)){
-            this.relationMap.put(relationShort, new ArrayList<>());
+        String specific = relation.getSpecific();
+        if(relationName.equals("nmod") && specific != null){
+            relationName = String.format("%s:%s", relationName, specific);
         }
 
-        List<Word> dependencies = this.relationMap.get(relationShort);
+        if(!this.relationMap.containsKey(relationName)){
+            this.relationMap.put(relationName, new ArrayList<>());
+        }
+
+        List<Word> dependencies = this.relationMap.get(relationName);
         dependencies.add(dependentWord);
-        this.relationMap.put(relationShort, dependencies);
+        this.relationMap.put(relationName, dependencies);
     }
 
     public String getPOSTag(){
@@ -210,15 +216,15 @@ public class Word {
     private List<Rule> GenerateNominalModifierRules() {
         List<Rule> rules = new ArrayList<>();
         Word predicate = new Word("_property", false);
-        List<Word> modifiers = this.GetNominalModifiers();
+        List<Pair<Word, Word>> modifierPairs = this.GetNominalModifiers();
 
-        for(Word modifier : modifiers) {
+        for(Pair<Word, Word> modifier : modifierPairs) {
             List<Literal> bodyList = new ArrayList<>();
             Literal concept = new Literal(this);
-            List<Word> numModifiers = modifier.GetNumericalModifiers();
-            numModifiers.add(modifier);
+            List<Word> numModifiers = modifier.getKey().GetNumericalModifiers();
+            numModifiers.add(modifier.getKey());
             Word modifiedWord = CreateCompoundWord(numModifiers);
-            Word preposition = modifier.GetPreposition();
+            Word preposition = modifier.getValue();
             Literal modifierLiteral = new Literal(modifiedWord);
 
             if(preposition != null) {
@@ -235,7 +241,85 @@ public class Word {
             rules.add(rule);
         }
 
+        List<Word> modifiers = this.GetSpecialNominalModifiers("agent");
+        for(Word modifier : modifiers) {
+            Literal concept = new Literal(this);
+            List<Literal> literals = new ArrayList<>();
+            literals.add(new Literal(modifier));
+            Literal modifierLiteral = new Literal(new Word("by", false), literals);
+            List<Literal> bodyList = new ArrayList<>();
+            bodyList.add(concept);
+            bodyList.add(modifierLiteral);
+            Literal head = new Literal(predicate, bodyList);
+            Rule rule = new Rule(head, null, false);
+            rules.add(rule);
+        }
+
+        rules.addAll(GenerateSuchAsRules());
         return rules;
+    }
+
+    private List<Rule> GenerateSuchAsRules() {
+        List<Rule> rules = new ArrayList<>();
+        List<Word> modifiers = this.GetSpecialNominalModifiers("such_as");
+        for(Word modifier : modifiers) {
+            List<Word> adjectives = this.GetAdjectives();
+            List<Word> modifierAdjectives = modifier.GetAdjectives();
+            List<Literal> bodyList = new ArrayList<>();
+            bodyList.add(new Literal(this));
+            bodyList.add(new Literal(modifier));
+            Literal head = new Literal(new Word("_is", false), bodyList);
+            Rule rule = new Rule(head, null, false);
+            rules.add(rule);
+
+            adjectives.add(this);
+            Word adjModifier = Word.CreateCompoundWord(adjectives);
+            bodyList = new ArrayList<>();
+            bodyList.add(new Literal(adjModifier));
+            bodyList.add(new Literal(modifier));
+            head = new Literal(new Word("_is", false), bodyList);
+            rule = new Rule(head, null, false);
+            rules.add(rule);
+
+            modifierAdjectives.add(modifier);
+            Word otherAdjModifier = Word.CreateCompoundWord(modifierAdjectives);
+            bodyList = new ArrayList<>();
+            bodyList.add(new Literal(this));
+            bodyList.add(new Literal(otherAdjModifier));
+            head = new Literal(new Word("_is", false), bodyList);
+            rule = new Rule(head, null, false);
+            rules.add(rule);
+
+            bodyList = new ArrayList<>();
+            bodyList.add(new Literal(adjModifier));
+            bodyList.add(new Literal(otherAdjModifier));
+            head = new Literal(new Word("_is", false), bodyList);
+            rule = new Rule(head, null, false);
+            rules.add(rule);
+
+            if(WordNet.IsDictionaryWord(this)){
+                List<Literal> terms = new ArrayList<>();
+                terms.add(new Literal(modifier));
+                head = new Literal(this, terms);
+                rule = new Rule(head, null, false);
+                rules.add(rule);
+
+                terms = new ArrayList<>();
+                terms.add(new Literal(otherAdjModifier));
+                head = new Literal(this, terms);
+                rule = new Rule(head, null, false);
+                rules.add(rule);
+            }
+        }
+
+        return rules;
+    }
+
+    private List<Word> GetSpecialNominalModifiers(String specialSpecific) {
+        List<Word> specialModifiers = new ArrayList<>();
+        String relationLong = String.format("nmod:%s", specialSpecific);
+        if(this.relationMap.containsKey(relationLong)) specialModifiers.addAll(this.relationMap.get(relationLong));
+        return specialModifiers;
     }
 
     private List<Rule> GenerateAdjectiveRules() {
@@ -272,10 +356,30 @@ public class Word {
         return numericalModifiers;
     }
 
-    private List<Word> GetNominalModifiers() {
-        List<Word> nominalModifiers = new ArrayList<>();
-        if(this.relationMap.containsKey("nmod")) nominalModifiers.addAll(this.relationMap.get("nmod"));
-        return nominalModifiers;
+    private List<Pair<Word, Word>> GetNominalModifiers() {
+        List<Pair<Word, Word>> nominalModifierPairs = new ArrayList<>();
+        List<String> relations = new ArrayList<>(this.relationMap.keySet());
+        relations.removeIf(x -> !x.startsWith("nmod"));
+
+        for(String relation : relations){
+            String prepString = relation.contains(":") ? relation.split(":")[1] : "";
+            if(ShouldExcludeNominalModifierPreps(prepString)) continue;
+            Word preposition = null;
+            if(!prepString.equals("")) preposition = new Word(prepString, false);
+            List<Word> modifiers = this.relationMap.get(relation);
+            for(Word modifier : modifiers){
+                nominalModifierPairs.add(new Pair<>(modifier, preposition));
+            }
+        }
+
+        return nominalModifierPairs;
+    }
+
+    private boolean ShouldExcludeNominalModifierPreps(String prepString) {
+        if(prepString.equals("poss")) return true;
+        if(prepString.equals("agent")) return true;
+        if(prepString.equals("such_as")) return true;
+        return false;
     }
 
     private List<Rule> GenerateNERRules() {
@@ -576,15 +680,15 @@ public class Word {
             List<Word> adjectiveDirectObjects = GetSupplimentaryFromAdjectives(directObjects);
             directObjects.addAll(adjectiveDirectObjects);
             for(Word directObject : directObjects){
-                List<Word> nmods = directObject.GetNominalModifiers();
+                List<Pair<Word, Word>> nmods = directObject.GetNominalModifiers();
                 if(nmods.size() == 0) continue;
-                for(Word nmod : nmods){
-                    Word preposition = nmod.GetPreposition();
+                for(Pair<Word, Word> nmod : nmods){
+                    Word preposition = nmod.getValue();
                     if(preposition == null) continue;
                     List<Word> wordCollection = new ArrayList<>();
                     wordCollection.add(directObject);
                     wordCollection.add(preposition);
-                    wordCollection.add(nmod);
+                    wordCollection.add(nmod.getKey());
                     Word compound = CreateCompoundWord(wordCollection);
                     supplimentaryDirectObjects.add(compound);
                 }
@@ -594,11 +698,6 @@ public class Word {
         }
 
         return directObjects;
-    }
-
-    private Word GetPreposition() {
-        if(this.relationMap.containsKey("case")) return this.relationMap.get("case").get(0);
-        return null;
     }
 
     private List<Word> GetSubjects() {

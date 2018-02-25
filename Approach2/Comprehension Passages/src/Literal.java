@@ -25,9 +25,6 @@ public class Literal {
             this.predicate = String.format("'%s'", this.predicate);
         }
         this.isAtom = true;
-        if(atom.getPOSTag().startsWith("W")){
-            this.predicate = "X";
-        }
     }
 
     @Override

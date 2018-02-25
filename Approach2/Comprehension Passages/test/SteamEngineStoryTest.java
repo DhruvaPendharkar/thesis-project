@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.TreeSet;
 
 /**
  * Created by dhruv on 2/19/2018.
@@ -52,26 +53,39 @@ public class SteamEngineStoryTest {
     @Test
     // Non-combustion heat sources such as solar power, nuclear power or geothermal energy may be used.
     void TestSentenceTwo() {
-        String content = "Non-combustion heat_sources such as solar power, nuclear power or geothermal " +
+        String content = "Non-combustion heat sources such as solar power, nuclear power or geothermal " +
         "energy may be used.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
         List<Rule> rules = sentence.GenerateRules();
         HashSet<String> ruleString = new HashSet<>();
-        for(Rule rule : rules){
+        TreeSet<Rule> rulesSet = new TreeSet<>(rules);
+        for(Rule rule : rulesSet){
             ruleString.add(rule.toString());
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(8, ruleString.size());
-        Assert.assertTrue(ruleString.contains("_mod(heat_sources, non_combustion)"));
-        Assert.assertTrue(ruleString.contains("_property(heat_sources, such(power))"));
-        Assert.assertTrue(ruleString.contains("_property(heat_sources, power)"));
-        Assert.assertTrue(ruleString.contains("_property(heat_sources, energy)"));
-        Assert.assertTrue(ruleString.contains("_mod(power, solar)"));
-        Assert.assertTrue(ruleString.contains("_mod(power, nuclear)"));
+        Assert.assertEquals(20, ruleString.size());
+        Assert.assertTrue(ruleString.contains("_is(non_combustion_source, energy)"));
+        Assert.assertTrue(ruleString.contains("_is(non_combustion_source, geothermal_energy)"));
+        Assert.assertTrue(ruleString.contains("_is(non_combustion_source, nuclear_power)"));
+        Assert.assertTrue(ruleString.contains("_is(non_combustion_source, power)"));
+        Assert.assertTrue(ruleString.contains("_is(non_combustion_source, solar_power)"));
+        Assert.assertTrue(ruleString.contains("_is(source, energy)"));
+        Assert.assertTrue(ruleString.contains("_is(source, geothermal_energy)"));
+        Assert.assertTrue(ruleString.contains("_is(source, nuclear_power)"));
+        Assert.assertTrue(ruleString.contains("_is(source, power)"));
+        Assert.assertTrue(ruleString.contains("_is(source, solar_power)"));
         Assert.assertTrue(ruleString.contains("_mod(energy, geothermal)"));
-        Assert.assertTrue(ruleString.contains("event(2, use, null, heat_sources)"));
+        Assert.assertTrue(ruleString.contains("_mod(power, nuclear)"));
+        Assert.assertTrue(ruleString.contains("_mod(power, solar)"));
+        Assert.assertTrue(ruleString.contains("_mod(source, non_combustion)"));
+        Assert.assertTrue(ruleString.contains("event(2, use, null, source)"));
+        Assert.assertTrue(ruleString.contains("source(energy)"));
+        Assert.assertTrue(ruleString.contains("source(geothermal_energy)"));
+        Assert.assertTrue(ruleString.contains("source(nuclear_power)"));
+        Assert.assertTrue(ruleString.contains("source(power)"));
+        Assert.assertTrue(ruleString.contains("source(solar_power)"));
     }
 
     @Test
@@ -138,9 +152,9 @@ public class SteamEngineStoryTest {
 
         Assert.assertEquals(7, ruleString.size());
         Assert.assertTrue(ruleString.contains("event(1, expand, null, null)"));
-        Assert.assertTrue(ruleString.contains("_mod(expand, X)"));
+        Assert.assertTrue(ruleString.contains("_mod(expand, when)"));
         Assert.assertTrue(ruleString.contains("_property(expand, through(piston))"));
-        Assert.assertTrue(ruleString.contains("_property(expand, turbine)"));
+        Assert.assertTrue(ruleString.contains("_property(expand, through(turbine))"));
         Assert.assertTrue(ruleString.contains("_mod(work, mechanical)"));
         Assert.assertTrue(ruleString.contains("event(3, do, null, work)"));
         Assert.assertTrue(ruleString.contains("_relation(3, 1, _clause)"));
