@@ -1,7 +1,4 @@
-1. Process mwe - multiword expressions
-Multi-word expressions should not be processed in the normal way and should be
-ignored things like such as, according to, as soon as, these things are not to be
-played with
+Things to do :
 
 2. Process mwe - (such as)
 Incase of the multi-word expressions such as "such-as", we get more insight into the 
@@ -59,3 +56,10 @@ atomic_number_8
 12. Process compound particles
 compound:prt clause tells about verb + particle
 eg taking down, making up
+
+Done :
+
+1. Process mwe - multiword expressions
+Multi-word expressions should not be processed in the normal way and should be
+ignored things like such as, according to, as soon as, these things are not to be
+played with. This will get solved if you use the long form of the nmods   ---- Possibly Done ----

@@ -1,5 +1,6 @@
 import edu.mit.jwi.item.IIndexWord;
 import edu.mit.jwi.item.POS;
+import edu.stanford.nlp.trees.GrammaticalRelation;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -49,22 +50,23 @@ public class Word {
         return String.format("%s-%s", this.word, this.wordIndex);
     }
 
-    public void AddDependency(Word dependentWord, String relationLong) {
+    public void AddDependency(Word dependentWord, GrammaticalRelation relation) {
         if(dependentWord == null){
             return;
         }
 
-        if(relationLong.equalsIgnoreCase("amod") && !dependentWord.getPOSTag().equals("JJ")){
+        String relationShort = relation.getShortName();
+        if(relationShort.equalsIgnoreCase("amod") && !dependentWord.getPOSTag().equals("JJ")){
             dependentWord.POSTag = String.format("JJ-%s", dependentWord.POSTag);
         }
 
-        if(!this.relationMap.containsKey(relationLong)){
-            this.relationMap.put(relationLong, new ArrayList<>());
+        if(!this.relationMap.containsKey(relationShort)){
+            this.relationMap.put(relationShort, new ArrayList<>());
         }
 
-        List<Word> dependencies = this.relationMap.get(relationLong);
+        List<Word> dependencies = this.relationMap.get(relationShort);
         dependencies.add(dependentWord);
-        this.relationMap.put(relationLong, dependencies);
+        this.relationMap.put(relationShort, dependencies);
     }
 
     public String getPOSTag(){

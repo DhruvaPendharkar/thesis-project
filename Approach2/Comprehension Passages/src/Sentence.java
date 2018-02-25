@@ -313,7 +313,7 @@ public class Sentence {
             }
 
             if(independentWord != null && dependentWord != null){
-                independentWord.AddDependency(dependentWord, dependency.reln().getShortName());
+                independentWord.AddDependency(dependentWord, dependency.reln());
             }
         }
 

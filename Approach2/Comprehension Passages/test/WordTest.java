@@ -1,3 +1,5 @@
+import edu.stanford.nlp.international.Language;
+import edu.stanford.nlp.trees.GrammaticalRelation;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
@@ -16,14 +18,14 @@ class WordTest {
     @Test
     void TestAddNullDependency() {
         Word word = new Word(1, "test", "test", "NN", "");
-        word.AddDependency(null, "");
+        word.AddDependency(null, new GrammaticalRelation(Language.English, "rel1", "relation1", GrammaticalRelation.DEPENDENT));
     }
 
     @Test
     void TestAddNewDependency() {
         Word word = new Word(1, "test", "test", "NN", "");
         Word dependant = new Word(2, "dependant", "dependant", "NN", "");
-        word.AddDependency(dependant, "depends");
+        word.AddDependency(dependant, new GrammaticalRelation(Language.English, "rel2", "relation2", GrammaticalRelation.DEPENDENT));
     }
 
     @Test
@@ -31,8 +33,8 @@ class WordTest {
         Word word = new Word(1, "test", "test", "NN", "");
         Word dependant = new Word(2, "dependant", "dependant", "NN", "");
         Word anotherDependancy = new Word(2, "anotherDependancy", "anotherDependancy", "NN", "");
-        word.AddDependency(dependant, "depends");
-        word.AddDependency(anotherDependancy, "depends");
+        word.AddDependency(dependant, new GrammaticalRelation(Language.English, "rel3", "relation3", GrammaticalRelation.DEPENDENT));
+        word.AddDependency(anotherDependancy, new GrammaticalRelation(Language.English, "rel4", "relation4", GrammaticalRelation.DEPENDENT));
     }
 
     @Test
