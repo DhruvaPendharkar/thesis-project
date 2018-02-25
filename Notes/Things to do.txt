@@ -43,3 +43,19 @@ Sentence 5 in story 6 --> through pistons and turbines
 Can you use the compound relations given in the dependencies instead using your own 
 to get a better relation eg Sentence 1 -> Story 6
 Steam_engines are external combustion_engines
+
+10. Using adjectives for prepositions
+I fell into hot water
+event(E, fall, I, null)
+_property(fall, into(water))
+_property(fall, into(hot_water))
+Story 6 sentences
+
+11. Adjectives and other modifiers arranged according to word index
+Modifiers when combined with base words need to be created with ordinal indices in mind
+eg atomic-8 number-9 8-10, so here num_mod is 8 of atomic_number, this should be created as
+atomic_number_8
+
+12. Process compound particles
+compound:prt clause tells about verb + particle
+eg taking down, making up
