@@ -53,16 +53,16 @@ Done :
 Multi-word expressions should not be processed in the normal way and should be
 ignored things like such as, according to, as soon as, these things are not to be
 played with. This will get solved if you use the long form of the nmods   
----- Possibly Done ----
+---- Done ----
 
 2. Process mwe - (such as)
 Incase of the multi-word expressions such as "such-as", we get more insight into the 
 relation of concept example where the sentence can go like rivals such as Facebook...
 So here _is(rival, facebook), favorite information such as movies which becomes 
 _is(information, movies)
----- Possibly Done ----
+---- Done ----
 
 8. Using the long form of the relations
 eg nmod:through so that you can use that in conjunctions
 Sentence 5 in story 6 --> through pistons and turbines
----- Possibly Done ----
+---- Done ----
