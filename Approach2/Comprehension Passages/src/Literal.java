@@ -21,7 +21,7 @@ public class Literal {
 
     public Literal(Word atom){
         this.predicate = atom.getLemma();
-        if(IsMixedCase(this.predicate)){
+        if(IsMixedCase(this.predicate) || this.predicate.contains(".")){
             this.predicate = String.format("'%s'", this.predicate);
         }
         this.isAtom = true;
