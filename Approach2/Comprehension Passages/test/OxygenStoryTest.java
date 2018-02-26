@@ -159,7 +159,7 @@ public class OxygenStoryTest {
 
         Assert.assertEquals(8, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(oxygen_gas, diatomic)"));
-        Assert.assertTrue(ruleString.contains("_mod(percent, 20.8)"));
+        Assert.assertTrue(ruleString.contains("_mod(percent, '20.8')"));
         Assert.assertTrue(ruleString.contains("_possess(earth, atmosphere)"));
         Assert.assertTrue(ruleString.contains("_property(percent, of(atmosphere))"));
         Assert.assertTrue(ruleString.contains("event(1, constitute, diatomic_oxygen_gas, percent)"));

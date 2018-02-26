@@ -1,20 +1,30 @@
 Steam engines are external combustion engines, where the working fluid is separate from the combustion products. Non-combustion heat sources such as solar power, nuclear power or geothermal energy may be used. The ideal thermodynamic cycle used to analyze this process is called the Rankine cycle. In the cycle, water is heated and transforms into steam within a boiler operating at a high pressure. When expanded through pistons or turbines, mechanical work is done. The reduced-pressure steam is then condensed and pumped back into the boiler.
 
 Q1. Along with geothermal and nuclear, what is a notable non-combustion heat source?
+?- source(X), X \= geothermal_energy, X \= nuclear_power, X \= energy.
 A. [solar, solar power, solar power, nuclear power or geothermal energy, solar]
+--> X = solar_power; X = power
 ---------------
 Q2. What ideal thermodynamic cycle analyzes the process by which steam engines work?
+?- _mod(cycle, ideal), _mod(cycle, thermodynamic), _mod(cycle, X), event(E, analyze, S, process).
 A. [Rankine, Rankine cycle, Rankine cycle, Rankine cycle]
+--> X = rankine
 ---------------
 Q3. In the Rankine cycle, what does water turn into when heated?
+?- event(E, transform, water, O), _property(transform, into(X)).
 A. [steam, steam, steam, steam]
+--> X = steam
 ---------------
 Q4. At what pressure is water heated in the Rankine cycle?
+?- _mod(pressure, X).
 A. [high, high, high pressure, high]
+--> X = high
 ---------------
 Q5. What types of engines are steam engines?
+?- _is(steam_engines, X).
 A. [external combustion, external combustion, external combustion engines, external combustion]
+--> X = combustion_engines, X = external_combustion_engines
 
 ******************
-Results : (0/5)
+Results : (4/5)
 ******************

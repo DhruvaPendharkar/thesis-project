@@ -115,7 +115,7 @@ public class SteamEngineStoryTest {
     @Test
     // In the cycle, water is heated and transforms into steam within a boiler operating at a high pressure.
     void TestSentenceFour() {
-        String content = "In the cycle, water is heated and transforms into steam within a boiler operating " +
+        String content = "In the Rankine cycle, water is heated and transforms into steam within a boiler operating " +
         "at a high pressure.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
@@ -126,7 +126,8 @@ public class SteamEngineStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(8, ruleString.size());
+        Assert.assertEquals(9, ruleString.size());
+        Assert.assertTrue(ruleString.contains("_mod(cycle, rankine)"));
         Assert.assertTrue(ruleString.contains("event(2, heat, water, null)"));
         Assert.assertTrue(ruleString.contains("_property(heat, in(cycle))"));
         Assert.assertTrue(ruleString.contains("_relation(2, 3, _conj)"));

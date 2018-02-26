@@ -1,50 +1,75 @@
 Oxygen is a chemical element with symbol O and atomic number 8. It is a member of the chalcogen group on the periodic table and is a highly reactive nonmetal and oxidizing agent that readily forms compounds (notably oxides) with most elements. By mass, oxygen is the third-most abundant element in the universe, after hydrogen and helium. At standard temperature and pressure, two atoms of the element bind to form dioxygen, a colorless and odorless diatomic gas with the formula O2. Diatomic oxygen gas constitutes 20.8% of the Earth's atmosphere. However, monitoring of atmospheric oxygen levels show a global downward trend, because of fossil-fuel burning. Oxygen is the most abundant element by mass in the Earth's crust as part of oxide compounds such as silicon dioxide, making up almost half of the crust's mass.
 
 Q1. The atomic number of the periodic table for oxygen?
+?- _mod(atomic_number, X).
 A. [8, 8, 8, 8, 8]
+--> X = 8
 ---------------
 Q2. What is the second most abundant element?
 A. [helium, helium, helium, helium, helium]
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ---------------
 Q3. How many atoms combine to form dioxygen?
+?- _mod(atom, X)
 A. [two atoms, two, two, two, two]
+--> X = two
 ---------------
 Q4. Roughly, how much oxygen makes up the Earth crust?
 A. [almost half, almost half, half, almost half, half]
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ---------------
 Q5. Which gas makes up 20.8% of the Earth's atmosphere?
+?- _mod(percent, '20.8'), _property(percent, of(atmosphere)), _possess(earth, atmosphere), event(E, constitute, X, O), _mod(X, A)
 A. [Diatomic oxygen, Diatomic oxygen, Diatomic oxygen gas, Diatomic oxygen, Diatomic oxygen gas]
+--> X = oxygen_gas, A = diatomic
 ---------------
 Q6. How much of the earth's atmosphere is diatomic oxygen?
+?-  _mod(percent, X), _property(percent, of(atmosphere)), _possess(earth, atmosphere), event(E, constitute, oxygen_gas, O), _mod(oxygen_gas, diatomic).
 A. [20.8%, 20.8%, 20.8%, 20.8%, 20.8%]
+--> 20.8
 ---------------
 Q7. What element makes up almost half of the earth's crust by mass?
 A. [Oxygen, Oxygen, Oxygen, Oxygen, Oxygen]
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ---------------
 Q8. What is the atomic number for oxygen?
+?- _mod(atomic_number, X).
 A. [8, 8, 8, 8, 8]
+--> X = 8
 ---------------
 Q9. Are atmospheric oxygen levels going up, down, or staying the same?
 A. [monitoring of atmospheric oxygen levels show a global downward trend, down, down, down, downward]
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ---------------
 Q10. What are the three most abundent elements of the universe by mass?
+?- element(X).
 A. [By mass, oxygen is the third-most abundant element in the universe, after hydrogen and helium, oxygen is the third-most abundant element in the universe, after hydrogen and helium, oxygen is the third-most abundant element in the universe, after hydrogen and helium, oxygen is the third-most abundant element in the universe, after hydrogen and helium, By mass, oxygen is the third-most abundant element in the universe, after hydrogen and helium.]
+--> X = oxygen, 
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ---------------
 Q11. What is the atomic number of the element oxygen?
+?- _mod(atomic_number, X).
 A. [8, 8, 8, 8, 8]
+--> X = 8
 ---------------
 Q12. Of what group in the periodic table is oxygen a member?
 A. [chalcogen, chalcogen, chalcogen, chalcogen, the chalcogen group]
+--> XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ---------------
 Q13. What type of compounds does oxygen most commonly form?
+?- _property(compound, like(X)).
 A. [oxides, oxides, oxides, oxide compounds, oxide]
+--> X = oxide
 ---------------
 Q14. Compared to other elements, how abundant does oxygen rank?
+?- _mod(oxygen, X).
 A. [third, third-most, third, third-most, third]
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ---------------
 Q15. Under normal conditions, what do two atoms of oxygen form?
+?- event(E, form, atom, O), _mod(atom, two). 
 A. [dioxygen, diatomic gas, dioxygen, dioxygen, dioxygen]
-
+--> O = dioxygen
 ******************
-Results : (0/15)
+Results : (8/15)
 ******************

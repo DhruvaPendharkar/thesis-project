@@ -229,10 +229,10 @@ class KnowledgeGenerationTest {
     @Test
     void Test6_1Story() throws IOException {
         String content = "Steam_engines are external combustion_engines, where the working fluid is separate from the combustion products. " +
-        "Non-combustion heat_sources such as solar power, nuclear power or geothermal energy may be used. The ideal thermodynamic cycle used " +
-        "to analyze this process is called the Rankine cycle. In the cycle, water is heated and transforms into steam within a boiler operating " +
-        "at a high pressure. When expanded through pistons or turbines, mechanical work is done. The reduced-pressure steam is then condensed " +
-        "and pumped back into the boiler.";
+        "Non-combustion heat sources such as solar power, nuclear power or geothermal energy may be used. The ideal thermodynamic cycle " +
+        "used to analyze this process is called the Rankine cycle. In the Rankine cycle, water is heated and transforms into steam within a boiler " +
+        "operating at a high pressure. When expanded through pistons or turbines, mechanical work is done. The reduced-pressure steam is " +
+        "then condensed and pumped back into the boiler.";
         StorageManager manager = new StorageManager();
         Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
 
@@ -244,7 +244,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(66, ruleString.size());
+        Assert.assertEquals(73, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -254,7 +254,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(435, ruleString.size());
+        Assert.assertEquals(500, ruleString.size());
     }
 
     @Test
