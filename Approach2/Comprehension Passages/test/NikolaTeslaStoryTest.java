@@ -42,8 +42,8 @@ public class NikolaTeslaStoryTest {
         Assert.assertEquals(27, ruleString.size());
         Assert.assertTrue(ruleString.contains("time('10_july_1856')"));
         Assert.assertTrue(ruleString.contains("time('7_january_1943')"));
-        Assert.assertTrue(ruleString.contains("_birth_date(nikola_tesla, '10_july_1856')"));
-        Assert.assertTrue(ruleString.contains("_death_date(nikola_tesla, '7_january_1943')"));
+        Assert.assertTrue(ruleString.contains("_start_date(nikola_tesla, '10_july_1856')"));
+        Assert.assertTrue(ruleString.contains("_end_date(nikola_tesla, '7_january_1943')"));
         Assert.assertTrue(ruleString.contains("_abbreviation(ac, alternating_current)"));
         Assert.assertTrue(ruleString.contains("_mod(inventor, serbian_american)"));
         Assert.assertTrue(ruleString.contains("_is(nikola_tesla, inventor)"));

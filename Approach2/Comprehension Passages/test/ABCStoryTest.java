@@ -45,7 +45,7 @@ public class ABCStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(21, ruleString.size());
+        Assert.assertTrue(21 <= ruleString.size());
         Assert.assertTrue(ruleString.contains("_abbreviation(abc, american_broadcasting_company)"));
         Assert.assertTrue(ruleString.contains("_is(american_broadcasting_company, american_commercial_network)"));
         Assert.assertTrue(ruleString.contains("_is(american_broadcasting_company, network)"));

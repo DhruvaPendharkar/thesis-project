@@ -144,12 +144,14 @@ public class ApolloStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(0, ruleString.size());
-        Assert.assertTrue(ruleString.contains("_abbreviation('1962____1966', project_gemini)"));
+        Assert.assertEquals(7, ruleString.size());
+        Assert.assertTrue(ruleString.contains("_end_date(project_gemini, 1966)"));
+        Assert.assertTrue(ruleString.contains("_start_date(project_gemini, 1962)"));
         Assert.assertTrue(ruleString.contains("_mod(project_gemini, two_man)"));
         Assert.assertTrue(ruleString.contains("_property(follow, by(project_gemini))"));
         Assert.assertTrue(ruleString.contains("event(2, follow, null, project_mercury)"));
-        Assert.assertTrue(ruleString.contains("time('1962____1966')"));
+        Assert.assertTrue(ruleString.contains("time(1962)"));
+        Assert.assertTrue(ruleString.contains("time(1966)"));
     }
 
     @Test

@@ -97,8 +97,8 @@ public class Sentence {
 
                 Word birthDate = wordCollection.get(1);
                 Word deathDate = wordCollection.get(3);
-                Word birthDateWord = new Word("_birth_date", false);
-                Word deathDateWord = new Word("_death_date", false);
+                Word birthDateWord = new Word("_start_date", false);
+                Word deathDateWord = new Word("_end_date", false);
 
                 List<Literal> terms = new ArrayList<>();
                 terms.add(new Literal(previousNounWord));
@@ -181,7 +181,7 @@ public class Sentence {
         List<Word> timeWords = new ArrayList<>();
         Word timeWord = new Word("time", false);
         for(Word word : inputList){
-            if(word.getNERTag() == NamedEntityTagger.NamedEntityTags.DATE){
+            if(word.getNERTag() == NamedEntityTagger.NamedEntityTags.DATE && !word.getPOSTag().equals(":")){
                 timeWords.add(word);
             }
             else {

@@ -67,8 +67,8 @@ public class AmazonRainforestStoryTest {
     // This basin encompasses 7,000,000 square kilometres (2,700,000 sq mi), of which 5,500,000 square kilometres
     // (2,100,000 sq mi) are covered by the rainforest.
     void TestSentenceTwo() {
-        String content = "This basin encompasses 7,000,000 square_kilometres (2,700,000 square_miles), of which 5,500,000" +
-        " square kilometres (2,100,000 sq mi) are covered by the rainforest.";
+        String content = "This basin encompasses 7,000,000 square_kilometre, of which 5,500,000 square_kilometre are " +
+        "covered by the rainforest.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
         List<Rule> rules = sentence.GenerateRules();
@@ -83,17 +83,15 @@ public class AmazonRainforestStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(0, ruleString.size());
-        Assert.assertTrue(ruleString.contains("_abbreviation('2,100,000_sq_mi', kilometres)"));
-        Assert.assertTrue(ruleString.contains("_abbreviation('2,700,000_sq_mi', kilometres)"));
-        Assert.assertTrue(ruleString.contains("_mod(kilometre, 5,500,000)"));
-        Assert.assertTrue(ruleString.contains("_mod(kilometre, 7,000,000)"));
-        Assert.assertTrue(ruleString.contains("_mod(kilometre, square)"));
+        Assert.assertEquals(8, ruleString.size());
+        Assert.assertTrue(ruleString.contains("_mod(square_kilometre, 5,500,000)"));
+        Assert.assertTrue(ruleString.contains("_mod(square_kilometre, 7,000,000)"));
         Assert.assertTrue(ruleString.contains("_property(cover, by(rainforest))"));
-        Assert.assertTrue(ruleString.contains("_property(cover, of('7,000,000_kilometre'))"));
-        Assert.assertTrue(ruleString.contains("event(1, encompass, basin, kilometre)"));
+        Assert.assertTrue(ruleString.contains("_property(cover, of('7,000,000_square_kilometre'))"));
         Assert.assertTrue(ruleString.contains("event(1, encompass, basin, square_kilometre)"));
-        Assert.assertTrue(ruleString.contains("event(3, cover, null, kilometre)"));
+        Assert.assertTrue(ruleString.contains("event(1, encompass, basin, '7,000,000_square_kilometre')"));
+        Assert.assertTrue(ruleString.contains("event(3, cover, null, square_kilometre)"));
+        Assert.assertTrue(ruleString.contains("event(3, cover, null, '5,500,000_square_kilometre')"));
     }
 
     @Test

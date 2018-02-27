@@ -361,13 +361,12 @@ class KnowledgeGenerationTest {
     }
 
     @Test
-    void Test25_1Story() throws IOException {
-        String content = "The American Broadcasting Company (ABC) (stylized in its logo as abc since 1957) is an " +
-        "American commercial broadcast television network that is owned by the Disney–ABC Television Group, " +
-        "a subsidiary of Disney Media Networks division of The Walt Disney Company. The network is part of the " +
-        "Big Three television networks. The network is headquartered on Columbus Avenue and West 66th Street " +
-        "in Manhattan, with additional major offices and production facilities in New York City, Los Angeles " +
-        "and Burbank, California.";
+    void Test10_1Story() throws IOException {
+        String content = "The American Broadcasting Company (ABC), stylized in the network's logo as abc since 1957, is " +
+        "an American commercial broadcast television network that is owned by the Disney_ABC_Television_Group, a subsidiary " +
+        "of Disney_Media_Networks division of The_Walt_Disney_Company. The ABC network is part of The_Big_Three television " +
+        "networks. The network is headquartered on Columbus_Avenue and West_66th_Street in Manhattan, with additional major " +
+        "offices and production facilities in New_York_City, Los_Angeles and Burbank in California.";
         StorageManager manager = new StorageManager();
         Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
 
@@ -379,7 +378,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(97, ruleString.size());
+        Assert.assertEquals(54, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -389,7 +388,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(579, ruleString.size());
+        Assert.assertEquals(410, ruleString.size());
     }
 
 /*
