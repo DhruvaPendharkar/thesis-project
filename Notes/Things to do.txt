@@ -47,6 +47,10 @@ atomic_number_8
 compound:prt clause tells about verb + particle
 eg taking down, making up
 
+13. Adding numnods and adjectives for the direct objects/subjects in events
+So here I guess that the adjectives are already taken care of the only thing 
+that is not is nummod
+
 Done :
 
 1. Process mwe - multiword expressions
