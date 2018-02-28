@@ -51,6 +51,9 @@ eg taking down, making up
 So here I guess that the adjectives are already taken care of the only thing 
 that is not is nummod
 
+14. For nummods you need to make another predicate like number(X)
+You can see all the "CD"'s and modify them
+
 Done :
 
 1. Process mwe - multiword expressions

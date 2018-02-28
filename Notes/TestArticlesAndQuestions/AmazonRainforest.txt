@@ -1,0 +1,75 @@
+The Amazon_rainforest, also known in English as Amazonia or the Amazon_Jungle, is a moist broadleafed forest that covers most of the Amazon_basin of South_America. This basin encompasses 7,000,000 square_kilometre, of which 5,500,000 square_kilometre are covered by the rainforest. The Amazon_Rainforest includes territory belonging to nine nations. The majority of the forest is contained within Brazil with 60 percent of the rainforest, followed by Peru with 13 percent, Colombia with 10 percent, and with minor amounts in Venezuela, Ecuador, Bolivia, Guyana, Suriname and French_Guiana. States or departments in four nations contain the word, Amazonas, in their name. The Amazon represents over half of the planet's remaining rainforests, and comprises of the largest and most biodiverse tract of tropical rainforest in the world, with an estimated 390 billion individual trees divided into 16,000 species.
+
+Q1. Which name is also used to describe the Amazon rainforest in English?
+?- event(E, know, S, O), _property(know, in(english)), _property(know, as(X)).
+A. [also known in English as Amazonia or the Amazon Jungle,, Amazonia or the Amazon Jungle, Amazonia]
+--> X = amazon_jungle; X = amazonia
+---------------
+Q2. How many square kilometers of rainforest is covered in the basin?
+?- _mod(square_kilometre, X), number(X).
+A. [5,500,000 square kilometres (2,100,000 sq mi) are covered by the rainforest., 5,500,000, 5,500,000]
+--> X = 5,500,000;
+---------------
+Q3. How many nations control this region in total?
+?- _mod(nation, N), number(N).
+A. [This region includes territory belonging to nine nations., nine, nine]
+--> N = nine;
+---------------
+Q4. How many nations contain "Amazonas" in their names?
+?- _mod(nation, N), number(N).
+A. [States or departments in four nations contain "Amazonas" in their names., four, four]
+--> N = four
+---------------
+Q5. What percentage does the Amazon represents in rainforests on the planet?
+?- event(E, represent, amazon, X).
+A. [The Amazon represents over half of the planet's remaining rainforests, over half]
+--> X = half; X = half_of_rainforest;
+---------------
+Q6. What rainforest covers the majority of the Amazon basin in South America?
+? event(E, cover, S, most_of_amazon_basin), _property(amazon_basin, of(south_america)),_is(X, S).
+A. [The Amazon rainforest, Amazon rainforest, The Amazon]
+--> X = amazon_rainforest
+---------------
+Q7. In what country can most of the Amazon rainforest be found?
+?- event(E, contain, S, O), _property(contain, within(X)).
+A. [Brazil, Brazil, Brazil]
+--> X = brazil
+---------------
+Q8. The Amazon rainforest makes up what amount of Earth's rainforests?
+?- event(E, represent, amazon, X).
+A. [over half, over half, over half]
+--> X = half; X = half_of_rainforest;
+---------------
+Q9. How many species of trees can be found in the Amazon rainforest?
+?- _mod(species, N), number(N).
+A. [16,000, 16,000, 16,000]
+--> N = 16,000
+---------------
+Q10. What kind of forest is the Amazon rainforest?
+?- _mod(forest, X), _is(amazon_rainforest, forest).
+A. [moist broadleaf forest, moist broadleaf forest, tropical]
+--> X = broadleafed; X = moist
+---------------
+Q11. How many square kilometers is the Amazon Basin?
+?- event(E, encompass, basin, square_kilometre), _mod(square_kilometre, X), number(X).
+A. [7,000,000 square kilometres (2,70, 7,000,000, 7,000,000 square kilometres]
+--> X = 7,000,000
+---------------
+Q12. How many nations are within the Amazon Basin?
+?- _mod(nation, N), number(N).
+A. [nine nations, nine, nine]
+--> N = nine
+---------------
+Q13. Which nation contains the majority of the amazon forest?
+?- event(E, contain, S, majority), _property(contain, within(X)).
+A. [Brazil, Brazil, Brazil]
+--> X = brazil
+---------------
+Q14. What is the estimate for the amount of tree species in the amazon tropical rain forest?
+?- _mod(species, N).
+A. [16,000 species, 16,000, 16,000]
+--> N = 16,000;
+
+******************
+Results : (12/14)
+******************

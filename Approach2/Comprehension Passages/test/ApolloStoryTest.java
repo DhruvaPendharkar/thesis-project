@@ -168,7 +168,7 @@ public class ApolloStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(4, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(flight, first)"));
         Assert.assertTrue(ruleString.contains("_mod(flight, manned)"));
         Assert.assertTrue(ruleString.contains("_property(flight, of(apollo))"));

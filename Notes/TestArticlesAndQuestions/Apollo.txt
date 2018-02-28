@@ -1,0 +1,27 @@
+The Apollo program, also known as Project_Apollo, was the third United_States human spaceflight program carried out by the National_Aeronautics_and_Space_Administration (NASA), which accomplished landing the first humans on the Moon from 1969 to 1972. First conceived during Dwight_D_Eisenhower's administration as a three-man spacecraft to follow the one-man Project_Mercury, which put the first Americans in space, Apollo was later dedicated to president John_F_Kennedy's national goal of 'landing a man on the Moon and returning him safely to the Earth' by the end of the 1960s, which John_F_Kennedy proposed in an address to Congress in May 25 1961. Project_Mercury was followed by the two-man Project_Gemini (1962 – 1966). The first manned flight of Apollo was in 1968.
+
+Q1. What project put the first Americans into space?      [*I*M*P*]
+?- event(E, put, X, first_american), _property(put, in(space))
+A. [Project Mercury, spacecraft, Project Mercury, Apollo, Project Apollo]
+--> X = one_man_project_mercury; X = project_mercury
+---------------
+Q2. What program was created to carry out these projects and missions?
+?- _property(carry, by(X)), organization(O), _abbreviation(O, X).
+A. [National Aeronautics and Space Administration (NASA), National Aeronautics and Space Administration (NASA, Apollo, Project Mercury, Apollo program]
+--> X = national_aeronautics_and_space_administration; O = nasa;
+---------------
+Q3. What year did the first manned Apollo flight occur?
+A. [1968, 1969, 1962, 1968, 1969]
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+---------------
+Q4. What President is credited with the original notion of putting Americans in space?
+A. [Dwight D. Eisenhower, John F. Kennedy's, John F. Kennedy's, Dwight D. Eisenhower, Dwight D. Eisenhower]
+---------------
+Q5. How many people were on the project that followed Project Mercury?
+?- event(E, follow, S, project_mercury), _property(follow, by(P)), _mod(P, X).
+A. [two, rst, two, two, two-man]
+--> X = two_man
+
+******************
+Results : (4/5)
+******************

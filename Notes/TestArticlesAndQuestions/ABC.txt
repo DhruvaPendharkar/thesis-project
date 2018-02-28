@@ -1,0 +1,30 @@
+The American Broadcasting Company (ABC) (stylized in its logo as abc since 1957) is an American commercial broadcast television network that is owned by the Disney–ABC Television Group, a subsidiary of Disney Media Networks division of The Walt Disney Company. The network is part of the Big Three television networks. The network is headquartered on Columbus Avenue and West 66th Street in Manhattan, with additional major offices and production facilities in New York City, Los Angeles and Burbank, California.
+
+Q1. What company owns the American Broadcasting Company?
+?- event(E, own, S, O), _is(american_broadcasting_company, O), _property(own, by(X)).
+A. [The Walt Disney Company, Disney–ABC Television Group, Disney–ABC Television Group]
+--> X = disney_abc_television_group
+---------------
+Q2. In what year did ABC stylize it's logo as abc?
+?- _property(stylize, since(X)), time(X), _property(logo, as(abc)), _relation(C, E, _clause), event(E, stylize, S, O), _abbreviation(abc, C).
+A. [1957, 1957, 1957]
+--> X = 1957
+---------------
+Q3. In what borough of New York City is ABC headquartered?
+?- event(E, headquarter, S, C), _is(C1, C), _abbreviation(abc, C1), _property(headquarter, in(X)).
+A. [Manhattan, Manhattan, Manhattan]
+--> X = manhattan
+---------------
+Q4. On what streets is the ABC headquarters located
+?- event(E, headquarter, S, C), _is(C1, C), _abbreviation(abc, C1), _property(headquarter, on(X)).
+A. [Columbus Avenue and West 66th Street, Columbus Avenue and West 66th Street, Columbus Avenue and West 66th Street]
+--> X = west_66th_street; X = columbus_avenue;
+---------------
+Q5. Disney-ABC Television Group is a subsidiary of what division of the Walt Disney Company?
+?- _is(disney_abc_television_group, subsidiary), _property(division, of(the_walt_disney_company)), _mod(division, X).
+A. [Disney Media Networks, Disney Media Networks, Disney Media Networks]
+--> X = disney_media_networks;
+
+******************
+Results : (5/5)
+******************

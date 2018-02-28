@@ -83,15 +83,13 @@ public class AmazonRainforestStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(8, ruleString.size());
+        Assert.assertEquals(6, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(square_kilometre, 5,500,000)"));
         Assert.assertTrue(ruleString.contains("_mod(square_kilometre, 7,000,000)"));
         Assert.assertTrue(ruleString.contains("_property(cover, by(rainforest))"));
         Assert.assertTrue(ruleString.contains("_property(cover, of('7,000,000_square_kilometre'))"));
         Assert.assertTrue(ruleString.contains("event(1, encompass, basin, square_kilometre)"));
-        Assert.assertTrue(ruleString.contains("event(1, encompass, basin, '7,000,000_square_kilometre')"));
         Assert.assertTrue(ruleString.contains("event(3, cover, null, square_kilometre)"));
-        Assert.assertTrue(ruleString.contains("event(3, cover, null, '5,500,000_square_kilometre')"));
     }
 
     @Test

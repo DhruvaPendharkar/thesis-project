@@ -292,14 +292,13 @@ class KnowledgeGenerationTest {
 
     @Test
     void Test8_1Story() throws IOException {
-        String content = "The Apollo program, also known as Project Apollo, was the third United States human " +
-        "spaceflight program carried out by the National Aeronautics and Space Administration (NASA), which " +
-        "accomplished landing the first humans on the Moon from 1969 to 1972. First conceived during Dwight D. " +
-        "Eisenhower's administration as a three-man spacecraft to follow the one-man Project Mercury which put " +
-        "the first Americans in space, Apollo was later dedicated to President John F. Kennedy's national goal " +
-        "of 'landing a man on the Moon and returning him safely to the Earth' by the end of the 1960s, which he " +
-        "proposed in a May 25, 1961, address to Congress. Project Mercury was followed by the two-man Project " +
-        "Gemini (1962–66). The first manned flight of Apollo was in 1968.";
+        String content = "The Apollo program, also known as Project_Apollo, was the third United_States human spaceflight " +
+        "program carried out by the National_Aeronautics_and_Space_Administration (NASA), which accomplished landing the " +
+        "first humans on the Moon from 1969 to 1972. First conceived during Dwight_D_Eisenhower's administration as a " +
+        "three-man spacecraft to follow the one-man Project_Mercury, which put the first Americans in space, Apollo was " +
+        "later dedicated to president John_F_Kennedy's national goal of 'landing a man on the Moon and returning him safely " +
+        "to the Earth' by the end of the 1960s, which John_F_Kennedy proposed in an address to Congress in May 25 1961. " +
+        "Project_Mercury was followed by the two-man Project_Gemini (1962 – 1966). The first manned flight of Apollo was in 1968.";
         StorageManager manager = new StorageManager();
         Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
 
@@ -311,7 +310,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(97, ruleString.size());
+        Assert.assertEquals(93, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -321,21 +320,20 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(579, ruleString.size());
+        Assert.assertEquals(652, ruleString.size());
     }
 
     @Test
     void Test9_1Story() throws IOException {
-        String content = "The Amazon rainforest, Amazonía or usually Amazonia; French: Forêt amazonienne; Dutch: " +
-        "Amazoneregenwoud), also known in English as Amazonia or the Amazon Jungle, is a moist broadleaf forest that " +
-        "covers most of the Amazon basin of South America. This basin encompasses 7,000,000 square kilometres " +
-        "(2,700,000 sq mi), of which 5,500,000 square kilometres (2,100,000 sq mi) are covered by the rainforest. " +
-        "This region includes territory belonging to nine nations. The majority of the forest is contained within " +
-        "Brazil, with 60% of the rainforest, followed by Peru with 13%, Colombia with 10%, and with minor amounts " +
-        "in Venezuela, Ecuador, Bolivia, Guyana, Suriname and French Guiana. States or departments in four nations " +
-        "contain 'Amazonas' in their names. The Amazon represents over half of the planet's remaining rainforests, " +
-        "and comprises the largest and most biodiverse tract of tropical rainforest in the world, with an estimated " +
-        "390 billion individual trees divided into 16,000 species.";
+        String content = "The Amazon_rainforest, also known in English as Amazonia or the Amazon_Jungle, is a moist " +
+        "broadleafed forest that covers most of the Amazon_basin of South_America. This basin encompasses 7,000,000 " +
+        "square_kilometre, of which 5,500,000 square_kilometre are covered by the rainforest. The Amazon_Rainforest " +
+        "includes territory belonging to nine nations. The majority of the forest is contained within Brazil with 60 " +
+        "percent of the rainforest, followed by Peru with 13 percent, Colombia with 10 percent, and with minor amounts " +
+        "in Venezuela, Ecuador, Bolivia, Guyana, Suriname and French_Guiana. States or departments in four nations contain " +
+        "the word, Amazonas, in their name. The Amazon represents over half of the planet's remaining rainforests, and " +
+        "comprises of the largest and most biodiverse tract of tropical rainforest in the world, with an estimated 390 " +
+        "billion individual trees divided into 16,000 species.";
         StorageManager manager = new StorageManager();
         Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
 
@@ -347,7 +345,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(97, ruleString.size());
+        Assert.assertEquals(113, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -357,7 +355,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(579, ruleString.size());
+        Assert.assertEquals(604, ruleString.size());
     }
 
     @Test
