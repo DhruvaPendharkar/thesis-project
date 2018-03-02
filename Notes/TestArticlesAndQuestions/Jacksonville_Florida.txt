@@ -1,0 +1,20 @@
+Jacksonville is the largest city by population in the U.S. state of Florida, and the largest city by area in the contiguous United States. It is the county seat of Duval County, with which the city government consolidated in 1968. Consolidation gave Jacksonville its great size and placed most of its metropolitan population within the city limits; with an estimated population of 853,382 in 2014, it is the most populous city proper in Florida and the Southeast, and the 12th most populous in the United States. Jacksonville is the principal city in the Jacksonville metropolitan area, with a population of 1,345,596 in 2010.
+
+Q1. Which Florida city has the biggest population?
+A. [Jacksonville, Jacksonville, Jacksonville]
+---------------
+Q2. What was the population Jacksonville city as of 2010?
+A. [1,345,596, 1,345,596, 1,345,596]
+---------------
+Q3. Based on population alone, what is Jacksonville's ranking in the United States?
+A. [12th, 12th, 12th]
+---------------
+Q4. In which county does Jacksonville reside?
+A. [Duval, Duval County, Duval County]
+---------------
+Q5. What year did consolidation cause Jacksonville to become part of Duval County?
+A. [1968, 1968, 1968]
+
+******************
+Results : (0/5)
+******************

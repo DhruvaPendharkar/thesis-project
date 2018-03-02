@@ -1,0 +1,50 @@
+The immune system is a system of many biological structures and processes within an organism that protects against disease. To function properly, an immune system must detect a wide variety of agents, known as pathogens, from viruses to parasitic worms, and distinguish them from the organism's own healthy tissue. In many species, the immune system can be classified into subsystems, such as the innate immune system versus the adaptive immune system, or humoral immunity versus cell-mediated immunity. In humans, the blood–brain barrier, blood–cerebrospinal fluid barrier, and similar fluid–brain barriers separate the peripheral immune system from the neuroimmune system which protects the brain.
+
+Q1. What is the immune system?
+A. [a system of many biological structures and processes within an organism that protects against disease, system of many biological structures and processes, a system of many biological structures and processes within an organism, a system of many biological structures and processes within an organism]
+---------------
+Q2. What does the immune system protect against?
+A. [a wide variety of agents, known as pathogens, from viruses to parasitic worms, disease, disease, against disease]
+---------------
+Q3. What are two of its subsystems?
+A. [the innate immune system versus the adaptive immune system, innate immune system versus the adaptive immune system, humoral immunity versus cell-mediated immunity, innate immune system versus the adaptive immune system]
+---------------
+Q4. What is the subsystem that protects the human brain?
+A. [the neuroimmune system, neuroimmune system, neuroimmune system, neuroimmune system]
+---------------
+Q5. What is the immune system?
+A. [biological structures and processes within an organism, system of many biological structures and processes, a system of many biological structures and processes within an organism, a system of many biological structures and processes within an organism]
+---------------
+Q6. What does the immune system protect against?
+A. [pathogens, from viruses to parasitic worms, disease, disease, against disease]
+---------------
+Q7. What are two of its subsystems?
+A. [innate immune system versus the adaptive immune system, innate immune system versus the adaptive immune system, humoral immunity versus cell-mediated immunity, innate immune system versus the adaptive immune system]
+---------------
+Q8. The immune system protects organisms against what?
+A. [disease, disease, disease, disease]
+---------------
+Q9. What are the agents the immune system detects known as?
+A. [pathogens, pathogens, pathogens, pathogens]
+---------------
+Q10. Which part of the immune system protects the brain?
+A. [neuroimmune system, neuroimmune, neuroimmune, neuroimmune system]
+---------------
+Q11. What separates the neuroimmune system and peripheral immune system in humans?
+A. [blood–brain barrier, blood–cerebrospinal fluid barrier, blood–brain barrier, blood–cerebrospinal fluid barrier, and similar fluid–brain barriers, blood–brain barrier, blood–cerebrospinal fluid barrier, and similar fluid–brain barriers, fluid–brain barriers]
+---------------
+Q12. What are the agents detected by the immune system called?
+A. [pathogens, pathogens, pathogens, pathogens]
+---------------
+Q13. What are the two major subsystems of the immune system?
+A. [innate immune system versus the adaptive immune system, innate immune system versus the adaptive immune system, innate immune system versus the adaptive immune system, innate immune system versus the adaptive immune system]
+---------------
+Q14. What are the two different types of immunity?
+A. [humoral immunity versus cell-mediated immunity, humoral immunity versus cell-mediated immunity, humoral immunity versus cell-mediated immunity, humoral immunity versus cell-mediated immunity]
+---------------
+Q15. What is the immune system of the brained known as?
+A. [neuroimmune system, neuroimmune, neuroimmune system, neuroimmune system]
+
+******************
+Results : (0/15)
+******************
