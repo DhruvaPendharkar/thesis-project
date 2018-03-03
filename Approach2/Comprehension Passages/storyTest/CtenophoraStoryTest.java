@@ -182,8 +182,8 @@ public class CtenophoraStoryTest {
     // In ctenophores, the layers of mass_of_jelly are two cells deep, while the layers in cnidarians are only one
     // cell deep.
     void TestSentenceSix() {
-        String content = "In ctenophores, the layers of mass_of_jelly are two cells deep, while the layers in cnidarians " +
-        "are only one cell deep.";
+        String content = "In ctenophores, the layers of mass_of_jelly are two_cells_deep, while the layers in cnidarians " +
+        "are only one_cell_deep.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
         List<Rule> rules = sentence.GenerateRules();
@@ -198,12 +198,13 @@ public class CtenophoraStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(5, ruleString.size());
-        Assert.assertTrue(ruleString.contains("_is(layer, deep)"));
-        Assert.assertTrue(ruleString.contains("_mod(cell, one)"));
-        Assert.assertTrue(ruleString.contains("_mod(cell, two)"));
+        Assert.assertEquals(6, ruleString.size());
+        Assert.assertTrue(ruleString.contains("_is(layer, one_cell_deep)"));
+        Assert.assertTrue(ruleString.contains("_is(layer, only_one_cell_deep)"));
+        Assert.assertTrue(ruleString.contains("_is(layer, two_cells_deep)"));
         Assert.assertTrue(ruleString.contains("_property(layer, in(cnidarian))"));
         Assert.assertTrue(ruleString.contains("_property(layer, of(mass_of_jelly))"));
+        Assert.assertTrue(ruleString.contains("_property(two_cells_deep, in(ctenophore))"));
     }
 
     @Test
