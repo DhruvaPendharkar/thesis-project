@@ -4,16 +4,26 @@ Results :
 +-----------------------------------+-----------+-------+
 | Article							|  Result	|	%	|
 +-----------------------------------+-----------+-------+
-| ABC								| (5/5)		| 100.0	|
-| AmazonRainforest					| (12/14)	| 85.71	|
-| Apollo							| (4/5)		| 80.00	|
-| Computational_Complexity_Theory	| (3/3)		| 100.0	|
-| Nikola_Tesla						| (6/7)		| 85.70	|
-| Normans							| (4/5)		| 80.00	|
-| Oxygen							| (8/15)	| 53.30	|
-| Steam_Engine						| (4/5)		| 80.00	|
-| Super_Bowl_50						| (25/29)	| 86.20	|
-| Warsaw							| (3/5)		| 60.00	|
+| ABC								| (0/0)		| 00.00	|
+| AmazonRainforest					| (0/0)		| 00.00	|
+| Apollo							| (0/0)		| 00.00	|
+| ComputationalComplexity			| (0/0)		| 00.00	|
+| Ctenophora						| (0/0)		| 00.00	|
+| European_Union_Law				| (0/0)		| 00.00	|
+| GengisKhan						| (0/0)		| 00.00	|
+| Geology							| (0/0)		| 00.00	|
+| ImmuneSystem						| (0/0)		| 00.00	|
+| JacksonvilleFlorida				| (0/0)		| 00.00	|
+| Kenya								| (0/0)		| 00.00	|
+| Martin_Luther						| (0/0)		| 00.00	|
+| NikolaTesla						| (0/0)		| 00.00	|
+| Normans							| (0/0)		| 00.00	|
+| Oxygen							| (0/0)		| 00.00	|
+| Rhine								| (0/0)		| 00.00	|
+| Southern_California				| (0/0)		| 00.00	|
+| SteamEngine						| (0/0)		| 00.00	|
+| SuperBowl50						| (0/0)		| 00.00	|
+| Warsaw							| (0/0)		| 00.00	|
 +-----------------------------------+-----------+-------+
-| Total								| (74/93)	| 79.56	|
+| Total								| (0/0)		| 00.00	|
 +-----------------------------------+-----------+-------+
