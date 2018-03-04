@@ -1,0 +1,41 @@
+Ctenophora, commonly known as comb_jellies, is a phylum of animals that live in marine_waters worldwide. Ctenophora's most distinctive feature is the combs, groups of cilia, which the Ctenophora use for swimming. Ctenophora are the largest animals that swim by means of cilia. Adults of various species range from a few millimeters to 1.5 meters in size. Like cnidarians, Ctenophora's bodies consist of a mass_of_jelly, with one layer of cells on the outside and another lining the internal cavity. In ctenophores, the layers of mass_of_jelly are two_cells_deep, while the layers in cnidarians are only one_cell_deep. Some authors combined ctenophores and cnidarians in one phylum, Coelenterata, as both groups rely on water flow through the body cavity for both digestion and respiration. Increasing awareness of the differences persuaded more recent authors to classify ctenophores and cnidarians as separate phyla.
+		
+Q1. What are Ctenophora commonly known as?
+A. [comb jellies, comb jellies, comb jellies]
+---------------
+Q2. Where do Ctenophora live?
+A. [marine waters worldwide., marine waters worldwide, marine waters]
+---------------
+Q3. What size are adult Ctenophora?
+A. [a few millimeters to 1.5 m (4 ft 11 in) in size., a few millimeters to 1.5 m (4 ft 11 in) in size, a few millimeters to 1.5 m]
+---------------
+Q4. What is a ctenophora?
+A. [phylum of animals that live in marine waters, a phylum of animals, comb jellies]
+---------------
+Q5. What does the ctenophora use to swim?
+A. [‘combs’ – groups of cilia, cilia, cilia]
+---------------
+Q6. What does ctenophora use for digestion and respiration?
+A. [water flow through the body cavity, water flow, water flow through the body cavity]
+---------------
+Q7. How large can ctenophora grow?
+A. [1.5 m (4 ft 11 in), a few millimeters to 1.5 m]
+---------------
+Q8. What is the most distinctive feature of ctenophora?
+A. [‘combs’ – groups of cilia, combs, the ‘combs’]
+---------------
+Q9. What are ctenophora commonly known as?
+A. [comb jellies, comb jellies, comb jellies]
+---------------
+Q10. How big can ctenophora grow?
+A. [1.5 m (4 ft 11 in), 1.5 m (4 ft 11 in), a few millimeters to 1.5 m]
+---------------
+Q11. What does ctenophora rely on for digestion and respiration?
+A. [water flow through the body cavity, κτείς kteis 'comb' and φέρω pherō 'carry', water flow through the body cavity]
+---------------
+Q12. Where do ctenophora live?
+A. [marine waters, marine waters worldwide, marine waters]
+
+******************
+Results : (0/12)
+******************
