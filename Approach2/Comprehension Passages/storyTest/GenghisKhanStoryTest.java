@@ -10,7 +10,7 @@ import java.util.TreeSet;
 /**
  * Created by dhruv on 2/19/2018.
  */
-public class GengisKhanStoryTest {
+public class GenghisKhanStoryTest {
     @BeforeAll
     static void TestSetupParser() {
         Sentence.SetupLexicalizedParser();

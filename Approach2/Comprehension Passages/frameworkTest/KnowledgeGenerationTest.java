@@ -198,7 +198,15 @@ class KnowledgeGenerationTest {
 
     @Test
     void TestCtenophoraStory_1() throws IOException {
-        String content = "";
+        String content = "Ctenophora, commonly known as comb_jellies, is a phylum of animals that live in marine_waters " +
+        "worldwide. Ctenophora's most distinctive feature is the combs, groups of cilia, which the Ctenophora use for " +
+        "swimming. Ctenophora are the largest animals that swim by means of cilia. Adults of various species range from " +
+        "a few millimeters to 1.5 meters in size. Like cnidarians, Ctenophora's bodies consist of a mass_of_jelly, with " +
+        "one layer of cells on the outside and another lining the internal cavity. In ctenophores, the layers of " +
+        "mass_of_jelly are two_cells_deep, while the layers in cnidarians are only one_cell_deep. Some authors combined " +
+        "ctenophores and cnidarians in one phylum, Coelenterata, as both groups rely on water flow through the body cavity " +
+        "for both digestion and respiration. Increasing awareness of the differences persuaded more recent authors to " +
+        "classify ctenophores and cnidarians as separate phyla.";
         StorageManager manager = new StorageManager();
         Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
 
@@ -210,7 +218,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(108, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -220,12 +228,18 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(581, ruleString.size());
     }
 
     @Test
     void TestEuropeanUnionLawStory_1() throws IOException {
-        String content = "";
+        String content = "European_Union_Law is a body of treaties and legislation, such as Regulations_and_Directives, " +
+        "which have direct_effect or indirect_effect on the laws of European_Union member states. The three sources of " +
+        "European_Union_Law are primary_law, secondary_law and supplementary_law. The main sources of primary_law are the " +
+        "Treaties establishing the European_Union. Secondary sources include regulations and directives, which are based " +
+        "on the Treaties. The legislature of the European_Union is principally composed of the European_Parliament and the " +
+        "Council_of_the_European_Union, which under the Treaties may establish secondary_law to pursue the objective set " +
+        "out in the Treaties.";
         StorageManager manager = new StorageManager();
         Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
 
@@ -237,7 +251,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(55, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -247,12 +261,17 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(327, ruleString.size());
     }
 
     @Test
     void TestGenghisKhanStory_1() throws IOException {
-        String content = "";
+        String content = "Genghis_Khan came to power by uniting many of the nomadic tribes of Northeast_Asia. After " +
+        "founding the Mongol_Empire and being proclaimed as Genghis_Khan, Genghis_Khan started the Mongol invasion that " +
+        "resulted in the conquest of most of Eurasia. The Mongol invasions included raids or invasions of the Qara_Khitai, " +
+        "Caucasus, Khwarezmid_Empire, Western_Xia and Jin dynasties. The Mongol invasion campaigns were often accompanied " +
+        "by wholesale massacres of the civilian populations especially in the Khwarezmian and Xia lands. By the end of " +
+        "Genghis_Khan's life, the Mongol_Empire occupied a substantial portion of Central_Asia and China.";
         StorageManager manager = new StorageManager();
         Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
 
@@ -264,7 +283,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(64, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -274,12 +293,21 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(531, ruleString.size());
     }
 
     @Test
     void TestGeologyStory_1() throws IOException {
-        String content = "";
+        String content = "Geology has three major types of rocks namely, igneous, sedimentary, and metamorphic. The " +
+        "rock_cycle is an important concept in geology, which illustrates the relationships between these three types " +
+        "of rock, and magma. When a rock crystallizes from magma or lava, the rock is an igneous rock. This rock can " +
+        "be weathered and eroded, and then redeposited and lithified into a sedimentary rock, or be turned into a " +
+        "metamorphic rock due to heat and pressure that change the mineral content of the rock which gives the rock a " +
+        "characteristic fabric. The sedimentary rock can then be subsequently turned into a metamorphic rock due to heat " +
+        "and pressure and is then weathered, eroded, deposited, and lithified, ultimately becoming a sedimentary rock. " +
+        "Sedimentary rock may also be re-eroded and redeposited, and metamorphic rock may also undergo additional " +
+        "metamorphism. All three types of rocks may be re-melted. When the rocks are melted, a new magma is formed, from " +
+        "the magma an igneous_rock may once again crystallize.";
         StorageManager manager = new StorageManager();
         Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
 
@@ -291,7 +319,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(101, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -301,12 +329,18 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(329, ruleString.size());
     }
 
     @Test
     void TestImmuneSystemStory_1() throws IOException {
-        String content = "";
+        String content = "The immune_system is a system of many biological structures and processes within an organism " +
+        "that protects against disease. To function properly, an immune_system must detect a wide variety of agents, " +
+        "known as pathogens, from viruses to parasitic worms, and distinguish pathogens from the organism's own healthy " +
+        "tissue. In many species, the immune_system can be classified into subsystems, such as the innate_immune_system " +
+        "versus the adaptive_immune_system, or humoral_immunity versus cell_mediated_immunity. In humans, the " +
+        "blood–brain barrier, blood–cerebrospinal_fluid barrier, and similar fluid–brain barriers separate the peripheral " +
+        "immune_system from the neuroimmune_system, which protects the brain.";
         StorageManager manager = new StorageManager();
         Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
 
@@ -318,7 +352,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(67, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -328,12 +362,18 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(387, ruleString.size());
     }
 
     @Test
     void TestJacksonvilleStory_1() throws IOException {
-        String content = "";
+        String content = "Jacksonville is the largest city by population in the United_State's state of Florida, and " +
+        "the largest city by area in the contiguous United_States. Jacksonville is the county_seat of Duval_County, " +
+        "with which the city's government consolidated in 1968. Consolidation gave Jacksonville Jacksonville's great " +
+        "size and placed most of Jacksonville's metropolitan population within the city limits, with an estimated " +
+        "population of 853,382 in 2014. Jacksonville is the most populous city proper in Florida and the Southeast, " +
+        "and the 12th most populous in the United_States. Jacksonville is the principal city in the Jacksonville's " +
+        "metropolitan area, with a population of 1,345,596 in 2010.";
         StorageManager manager = new StorageManager();
         Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
 
@@ -345,7 +385,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(63, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -355,12 +395,18 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(299, ruleString.size());
     }
 
     @Test
     void TestKenyaStory_1() throws IOException {
-        String content = "";
+        String content = "Kenya, officially the Republic_of_Kenya, is a country in Africa and a founding member of the " +
+        "East_African_Community (EAC). Kenya's capital and largest city is Nairobi. Kenya's territory lies on the " +
+        "equator and overlies the East_African_Rift covering a diverse and expansive terrain that extends roughly from " +
+        "Lake_Victoria to Lake_Turkana, which was formerly called as Lake_Rudolf, and further south-east to the " +
+        "Indian_Ocean. Kenya is bordered by Tanzania to the south, Uganda to the west, South_Sudan to the north-west, " +
+        "Ethiopia to the north, and Somalia to the north-east. Kenya covers 581,309 square_kilometre, and had a " +
+        "population of approximately 45 million people in July 2014.";
         StorageManager manager = new StorageManager();
         Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
 
@@ -372,7 +418,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(76, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -382,12 +428,19 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(342, ruleString.size());
     }
 
     @Test
     void TestMartin_LutherStory_1() throws IOException {
-        String content = "";
+        String content = "Martin_Luther (10 November 1483 – 18 February 1546) was a German_professor of theology, " +
+        "composer, priest, former_monk and a seminal_figure in the Protestant_Reformation. Martin_Luther came to reject " +
+        "several teachings and practices of the Late_Medieval_Catholic_Church. Martin_Luther strongly disputed the " +
+        "claim that freedom from God's punishment for sin could be purchased with money. Martin_Luther proposed an " +
+        "academic discussion of the power and usefulness of indulgences in Martin_Luther's proposition, " +
+        "Ninety_Five_Theses, of 1517. Martin_Luther's refusal to retract all of Martin_Luther's writings at the demand " +
+        "of Pope_Leo_X in 1520 and the Holy_Roman_Emperor_Charles_V at the Diet_of_Worms in 1521 resulted in " +
+        "Martin_Luther's excommunication by the Pope and condemnation as an outlaw by the Emperor.";
         StorageManager manager = new StorageManager();
         Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
 
@@ -399,7 +452,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(84, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -409,7 +462,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(503, ruleString.size());
     }
 
     @Test
@@ -510,7 +563,12 @@ class KnowledgeGenerationTest {
 
     @Test
     void TestRhineStory_1() throws IOException {
-        String content = "";
+        String content = "The Rhine, is a European river that begins in the Swiss_canton of Graubünden in the " +
+        "southeastern_Swiss_Alps, forms part of the Swiss-Austrian border, Swiss-Liechtenstein border, Swiss-German " +
+        "and then the Franco-German border, then flows through the Rhineland and eventually empties into the North_Sea " +
+        "in the Netherlands. The biggest city on the river, Rhine, is Cologne in Germany with a population of more than " +
+        "1,050,000 people. The Rhine is the second-longest river in Central and Western_Europe, after the Danube, at " +
+        "about 1,230 kilometre, with an average discharge of about 2,900 m3/s.";
         StorageManager manager = new StorageManager();
         Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
 
@@ -522,7 +580,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(55, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -532,12 +590,17 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(405, ruleString.size());
     }
 
     @Test
     void TestSouthern_CaliforniaStory_1() throws IOException {
-        String content = "";
+        String content = "Southern_California, often abbreviated as SoCal, is a geographic and cultural region that " +
+        "generally comprises California's southernmost 10 counties. Southern_California is, traditionally described as " +
+        "\"eight_counties\", based on demographics and economic ties. The eight counties are Imperial, Los_Angeles, " +
+        "Orange, Riverside, San_Bernardino, San_Diego, Santa_Barbara, and Ventura. The more extensive 10-county " +
+        "definition, including Kern and San_Luis_Obispo counties, is also used based on historical political divisions. " +
+        "Southern_California is a major economic center for the state_of_California and the United_States.";
         StorageManager manager = new StorageManager();
         Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
 
@@ -549,7 +612,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(71, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -559,7 +622,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(451, ruleString.size());
     }
 
     @Test
