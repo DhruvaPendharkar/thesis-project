@@ -43,7 +43,22 @@ public class Southern_CaliforniaStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(15, ruleString.size());
+        Assert.assertTrue(ruleString.contains("_mod(abbreviate, often)"));
+        Assert.assertTrue(ruleString.contains("_mod(comprise, generally)"));
+        Assert.assertTrue(ruleString.contains("_mod(county, 10)"));
+        Assert.assertTrue(ruleString.contains("_mod(county, southernmost)"));
+        Assert.assertTrue(ruleString.contains("_mod(region, cultural)"));
+        Assert.assertTrue(ruleString.contains("_mod(region, geographic)"));
+        Assert.assertTrue(ruleString.contains("_possess(california, county)"));
+        Assert.assertTrue(ruleString.contains("_relation(1, 2, _clause)"));
+        Assert.assertTrue(ruleString.contains("event(1, abbreviate, southern_california, null)"));
+        Assert.assertTrue(ruleString.contains("event(2, be, geographic_cultural_region, null)"));
+        Assert.assertTrue(ruleString.contains("event(2, be, region, null)"));
+        Assert.assertTrue(ruleString.contains("event(3, comprise, geographic_cultural_region, county)"));
+        Assert.assertTrue(ruleString.contains("event(3, comprise, geographic_cultural_region, southernmost_county)"));
+        Assert.assertTrue(ruleString.contains("event(3, comprise, region, county)"));
+        Assert.assertTrue(ruleString.contains("event(3, comprise, region, southernmost_county)"));
     }
 
     @Test
@@ -117,7 +132,7 @@ public class Southern_CaliforniaStoryTest {
     @Test
     // Southern_California is a major economic center for the state of California and the United_States.
     void TestSentenceFive() {
-        String content = "Southern_California is a major economic center for the state of California and the " +
+        String content = "Southern_California is a major economic center for the state_of_California and the " +
         "United_States.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
@@ -133,6 +148,13 @@ public class Southern_CaliforniaStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(7, ruleString.size());
+        Assert.assertTrue(ruleString.contains("_is(southern_california, center)"));
+        Assert.assertTrue(ruleString.contains("_is(southern_california, major_economic_center)"));
+        Assert.assertTrue(ruleString.contains("_mod(center, economic)"));
+        Assert.assertTrue(ruleString.contains("_mod(center, major)"));
+        Assert.assertTrue(ruleString.contains("_property(center, for(state_of_california))"));
+        Assert.assertTrue(ruleString.contains("_property(center, for(united_states))"));
+        Assert.assertTrue(ruleString.contains("center(southern_california)"));
     }
 }

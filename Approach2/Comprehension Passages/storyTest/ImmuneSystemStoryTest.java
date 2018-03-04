@@ -75,7 +75,7 @@ public class ImmuneSystemStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(19, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(function, properly)"));
         Assert.assertTrue(ruleString.contains("_mod(tissue, healthy)"));
         Assert.assertTrue(ruleString.contains("_mod(tissue, own)"));
@@ -117,25 +117,21 @@ public class ImmuneSystemStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(14, ruleString.size());
+        Assert.assertTrue(ruleString.contains("_is(subsystem, adaptive_immune_system)"));
+        Assert.assertTrue(ruleString.contains("_is(subsystem, cell_mediated_immunity)"));
         Assert.assertTrue(ruleString.contains("_is(subsystem, humoral_immunity)"));
-        Assert.assertTrue(ruleString.contains("_is(subsystem, immune_system)"));
-        Assert.assertTrue(ruleString.contains("_is(subsystem, immunity)"));
         Assert.assertTrue(ruleString.contains("_is(subsystem, innate_immune_system)"));
-        Assert.assertTrue(ruleString.contains("_mod(immune_system, adaptive)"));
-        Assert.assertTrue(ruleString.contains("_mod(immune_system, innate)"));
-        Assert.assertTrue(ruleString.contains("_mod(immunity, cell_mediated)"));
-        Assert.assertTrue(ruleString.contains("_mod(immunity, humoral)"));
         Assert.assertTrue(ruleString.contains("_mod(species, many)"));
         Assert.assertTrue(ruleString.contains("_property(classify, in(species))"));
         Assert.assertTrue(ruleString.contains("_property(classify, into(subsystem))"));
-        Assert.assertTrue(ruleString.contains("_property(immune_system, versus(immune_system))"));
-        Assert.assertTrue(ruleString.contains("_property(immunity, versus(immunity))"));
+        Assert.assertTrue(ruleString.contains("_property(innate_immune_system, versus(adaptive_immune_system))"));
+        Assert.assertTrue(ruleString.contains("_property(subsystem, versus(cell_mediated_immunity))"));
         Assert.assertTrue(ruleString.contains("event(2, classify, null, immune_system)"));
         Assert.assertTrue(ruleString.contains("subsystem(humoral_immunity)"));
-        Assert.assertTrue(ruleString.contains("subsystem(immune_system)"));
-        Assert.assertTrue(ruleString.contains("subsystem(immunity)"));
         Assert.assertTrue(ruleString.contains("subsystem(innate_immune_system)"));
+        Assert.assertTrue(ruleString.contains("subsystem(adaptive_immune_system)"));
+        Assert.assertTrue(ruleString.contains("subsystem(cell_mediated_immunity)"));
     }
 
     @Test
@@ -158,7 +154,7 @@ public class ImmuneSystemStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(9, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(barrier, blood)"));
         Assert.assertTrue(ruleString.contains("_mod(fluid, similar)"));
         Assert.assertTrue(ruleString.contains("_mod(immune_system, peripheral)"));

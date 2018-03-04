@@ -85,7 +85,7 @@ public class RhineStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(8, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(river, rhine)"));
         Assert.assertTrue(ruleString.contains("_mod(city, biggest)"));
         Assert.assertTrue(ruleString.contains("_mod(people, 1,050,000)"));

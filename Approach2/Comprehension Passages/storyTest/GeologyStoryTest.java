@@ -24,9 +24,9 @@ public class GeologyStoryTest {
     }
 
     @Test
-    // Geology has three major types of rock namely, igneous, sedimentary, and metamorphic.
+    // Geology has three major types of rocks namely, igneous, sedimentary, and metamorphic.
     void TestSentenceOne() {
-        String content = "Geology has three major types of rock namely, igneous, sedimentary, and metamorphic.";
+        String content = "Geology has three major types of rocks namely, igneous, sedimentary, and metamorphic.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
         List<Rule> rules = sentence.GenerateRules();
@@ -48,7 +48,7 @@ public class GeologyStoryTest {
     // The rock cycle is an important concept in geology, which illustrates the relationships between these three
     // types of rock, and magma.
     void TestSentenceTwo() {
-        String content = "The rock cycle is an important concept in geology, which illustrates the relationships " +
+        String content = "The rock_cycle is an important concept in geology, which illustrates the relationships " +
         "between these three types of rock, and magma.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
@@ -64,7 +64,19 @@ public class GeologyStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(12, ruleString.size());
+        Assert.assertTrue(ruleString.contains("_is(rock_cycle, concept)"));
+        Assert.assertTrue(ruleString.contains("_is(rock_cycle, important_concept)"));
+        Assert.assertTrue(ruleString.contains("_mod(concept, important)"));
+        Assert.assertTrue(ruleString.contains("_mod(type, three)"));
+        Assert.assertTrue(ruleString.contains("_property(concept, in(geology))"));
+        Assert.assertTrue(ruleString.contains("_property(relationship, between(three_type))"));
+        Assert.assertTrue(ruleString.contains("_property(relationship, of(rock))"));
+        Assert.assertTrue(ruleString.contains("concept(rock_cycle)"));
+        Assert.assertTrue(ruleString.contains("event(2, illustrate, geology, magma)"));
+        Assert.assertTrue(ruleString.contains("event(2, illustrate, geology, relationship)"));
+        Assert.assertTrue(ruleString.contains("event(2, illustrate, geology, relationship_between_type)"));
+        Assert.assertTrue(ruleString.contains("event(2, illustrate, geology, relationship_of_rock)"));
     }
 
     @Test
@@ -85,7 +97,15 @@ public class GeologyStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(8, ruleString.size());
+        Assert.assertTrue(ruleString.contains("_is(rock, igneous_rock)"));
+        Assert.assertTrue(ruleString.contains("_is(rock, rock)"));
+        Assert.assertTrue(ruleString.contains("_mod(crystallize, when)"));
+        Assert.assertTrue(ruleString.contains("_mod(rock, igneous)"));
+        Assert.assertTrue(ruleString.contains("_property(crystallize, from(lava))"));
+        Assert.assertTrue(ruleString.contains("_property(crystallize, from(magma))"));
+        Assert.assertTrue(ruleString.contains("event(1, crystallize, rock, null)"));
+        Assert.assertTrue(ruleString.contains("rock(rock)"));
     }
 
     @Test
@@ -95,7 +115,7 @@ public class GeologyStoryTest {
     void TestSentenceFour() {
         String content = "This rock can be weathered and eroded, and then redeposited and lithified into a sedimentary " +
         "rock, or be turned into a metamorphic rock due to heat and pressure that change the mineral content of the rock " +
-        "which gives it a characteristic fabric.";
+        "which gives the rock a characteristic fabric.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
         List<Rule> rules = sentence.GenerateRules();
@@ -133,7 +153,29 @@ public class GeologyStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(22, ruleString.size());
+        Assert.assertTrue(ruleString.contains("_mod(fabric, characteristic)"));
+        Assert.assertTrue(ruleString.contains("_mod(redeposit, then)"));
+        Assert.assertTrue(ruleString.contains("_mod(rock, due)"));
+        Assert.assertTrue(ruleString.contains("_mod(rock, metamorphic)"));
+        Assert.assertTrue(ruleString.contains("_mod(rock, sedimentary)"));
+        Assert.assertTrue(ruleString.contains("_property(content, of(rock))"));
+        Assert.assertTrue(ruleString.contains("_property(lithify, into(rock))"));
+        Assert.assertTrue(ruleString.contains("_property(turn, into(rock))"));
+        Assert.assertTrue(ruleString.contains("_relation(2, 3, _conj)"));
+        Assert.assertTrue(ruleString.contains("_relation(2, 4, _conj)"));
+        Assert.assertTrue(ruleString.contains("_relation(2, 5, _conj)"));
+        Assert.assertTrue(ruleString.contains("_relation(2, 7, _conj)"));
+        Assert.assertTrue(ruleString.contains("_relation(4, 5, _conj)"));
+        Assert.assertTrue(ruleString.contains("_relation(4, 7, _conj)"));
+        Assert.assertTrue(ruleString.contains("event(2, weather, null, rock)"));
+        Assert.assertTrue(ruleString.contains("event(3, erode, null, rock)"));
+        Assert.assertTrue(ruleString.contains("event(4, redeposit, content, null)"));
+        Assert.assertTrue(ruleString.contains("event(5, lithify, content, null)"));
+        Assert.assertTrue(ruleString.contains("event(7, turn, null, content)"));
+        Assert.assertTrue(ruleString.contains("event(8, change, null, null)"));
+        Assert.assertTrue(ruleString.contains("event(9, give, rock, characteristic_fabric)"));
+        Assert.assertTrue(ruleString.contains("event(9, give, rock, fabric)"));
     }
 
     @Test
@@ -156,7 +198,19 @@ public class GeologyStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(12, ruleString.size());
+        Assert.assertTrue(ruleString.contains("_is(rock, re_eroded)"));
+        Assert.assertTrue(ruleString.contains("_is(sedimentary_rock, re_eroded)"));
+        Assert.assertTrue(ruleString.contains("_mod(metamorphism, additional)"));
+        Assert.assertTrue(ruleString.contains("_mod(rock, metamorphic)"));
+        Assert.assertTrue(ruleString.contains("_mod(rock, sedimentary)"));
+        Assert.assertTrue(ruleString.contains("_mod(undergo, also)"));
+        Assert.assertTrue(ruleString.contains("event(2, redeposit, rock, null)"));
+        Assert.assertTrue(ruleString.contains("event(2, redeposit, sedimentary_rock, null)"));
+        Assert.assertTrue(ruleString.contains("event(3, undergo, metamorphic_rock, additional_metamorphism)"));
+        Assert.assertTrue(ruleString.contains("event(3, undergo, metamorphic_rock, metamorphism)"));
+        Assert.assertTrue(ruleString.contains("event(3, undergo, rock, additional_metamorphism)"));
+        Assert.assertTrue(ruleString.contains("event(3, undergo, rock, metamorphism)"));
     }
 
     @Test
@@ -177,13 +231,16 @@ public class GeologyStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(3, ruleString.size());
+        Assert.assertTrue(ruleString.contains("_is(type, re_melted)"));
+        Assert.assertTrue(ruleString.contains("_mod(type, three)"));
+        Assert.assertTrue(ruleString.contains("_property(type, of(rock))"));
     }
 
     @Test
     // When the rocks are melted, a new magma is formed, from which an igneous rock may once again crystallize.
     void TestSentenceEight() {
-        String content = "When the rocks are melted, a new magma is formed, from which an igneous rock may once again " +
+        String content = "When the rocks are melted, a new magma is formed, from the magma an igneous_rock may once again " +
         "crystallize.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
@@ -199,6 +256,14 @@ public class GeologyStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(8, ruleString.size());
+        Assert.assertTrue(ruleString.contains("_mod(crystallize, again)"));
+        Assert.assertTrue(ruleString.contains("_mod(magma, new)"));
+        Assert.assertTrue(ruleString.contains("_mod(melt, when)"));
+        Assert.assertTrue(ruleString.contains("_property(form, from(magma))"));
+        Assert.assertTrue(ruleString.contains("_relation(4, 2, _clause)"));
+        Assert.assertTrue(ruleString.contains("event(2, melt, null, rock)"));
+        Assert.assertTrue(ruleString.contains("event(4, form, null, magma)"));
+        Assert.assertTrue(ruleString.contains("event(5, crystallize, igneous_rock, null)"));
     }
 }
