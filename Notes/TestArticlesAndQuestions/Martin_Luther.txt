@@ -1,20 +1,28 @@
 Martin_Luther (10 November 1483 – 18 February 1546) was a German_professor of theology, composer, priest, former_monk and a seminal_figure in the Protestant_Reformation. Martin_Luther came to reject several teachings and practices of the Late_Medieval_Catholic_Church. Martin_Luther strongly disputed the claim that freedom from God's punishment for sin could be purchased with money. Martin_Luther proposed an academic discussion of the power and usefulness of indulgences in Martin_Luther's proposition, Ninety_Five_Theses, of 1517. Martin_Luther's refusal to retract all of Martin_Luther's writings at the demand of Pope_Leo_X in 1520 and the Holy_Roman_Emperor_Charles_V at the Diet_of_Worms in 1521 resulted in Martin_Luther's excommunication by the Pope and condemnation as an outlaw by the Emperor.
 
 Q1. Of what nationality was Martin Luther?
+?- nationality(X) :- _is(martin_luther, X), _mod(X, N), country(N, _).
 A. [German, German, German]
+XXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ---------------
 Q2. When did Martin Luther die?
+?- _end_date(martin_luther, T), time(T).
 A. [18 February 1546, 1546, 1546]
+--> T = 18_february_1546
 ---------------
 Q3. What organization's teaching did Luther reject?
+?- event(E, reject, martin_luther, teaching), _property(teaching, of(X)).
 A. [Catholic Church., Late Medieval Catholic Church, Late Medieval Catholic Church]
+--> X = late_medieval_catholic_church
 ---------------
 Q4. What did the Church claim could be avoided with money?
 A. [God's punishment, God's punishment for sin, God's punishment]
+XXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ---------------
 Q5. What did the Church do when Luther refused to retract his writings?
 A. [excommunication, excommunication, excommunication]
+XXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 ******************
-Results : (0/5)
+Results : (2/5)
 ******************

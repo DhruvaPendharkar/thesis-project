@@ -34,8 +34,8 @@ _property(place, in(2014)).
 _property(place, with(population)).
 _property(place, within(limit)).
 _property(population, in(state)).
-_property(population, of(1,345,596)).
-_property(population, of(853,382)).
+_property(population, of('1,345,596')).
+_property(population, of('853,382')).
 _property(populous, in(united_states)).
 _property(proper, in(florida)).
 _property(proper, in(southeast)).

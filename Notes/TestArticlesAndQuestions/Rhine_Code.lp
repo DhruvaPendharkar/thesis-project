@@ -6,7 +6,7 @@ _is(city, cologne).
 _is(rhine, river).
 _is(rhine, second_longest_river).
 _is(river, rhine).
-_mod('m3/s', 2,900).
+_mod('m3/s', '2,900').
 _mod(border, franco_german).
 _mod(border, swiss_austrian).
 _mod(border, swiss_liechtenstein).
@@ -14,13 +14,13 @@ _mod(city, biggest).
 _mod(discharge, average).
 _mod(empty, eventually).
 _mod(flow, then).
-_mod(people, 1,050,000).
+_mod(people, '1,050,000').
 _mod(river, second_longest).
 _property(begin, in(swiss_canton)).
 _property(city, on(river)).
 _property(cologne, in(germany)).
 _property(cologne, with(population)).
-_property(danube, at(1,230)).
+_property(danube, at('1,230')).
 _property(discharge, of('2,900_m3/s')).
 _property(empty, into(north_sea)).
 _property(flow, through(rhineland)).

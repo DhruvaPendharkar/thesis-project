@@ -1,50 +1,75 @@
 The immune system is a system of many biological structures and processes within an organism that protects against disease. To function properly, an immune system must detect a wide variety of agents, known as pathogens, from viruses to parasitic worms, and distinguish them from the organism's own healthy tissue. In many species, the immune system can be classified into subsystems, such as the innate immune system versus the adaptive immune system, or humoral immunity versus cell-mediated immunity. In humans, the blood–brain barrier, blood–cerebrospinal fluid barrier, and similar fluid–brain barriers separate the peripheral immune system from the neuroimmune system which protects the brain.
 
 Q1. What is the immune system?
+?- _is(immune_system, X), _property(X, P).
 A. [a system of many biological structures and processes within an organism that protects against disease, system of many biological structures and processes, a system of many biological structures and processes within an organism, a system of many biological structures and processes within an organism]
+--> X = system, P = of(process); X = system, P = of(structure)
 ---------------
 Q2. What does the immune system protect against?
+?- event(E, protect, _, _), _property(protect, against(X)).
 A. [a wide variety of agents, known as pathogens, from viruses to parasitic worms, disease, disease, against disease]
+--> X = disease;
 ---------------
 Q3. What are two of its subsystems?
+?- event(E, classify, _, immune_system), subsystem(X).
 A. [the innate immune system versus the adaptive immune system, innate immune system versus the adaptive immune system, humoral immunity versus cell-mediated immunity, innate immune system versus the adaptive immune system]
+--> X = humoral_immunity; X = innate_immune_system
 ---------------
 Q4. What is the subsystem that protects the human brain?
+?- event(E, protect, X, brain).
 A. [the neuroimmune system, neuroimmune system, neuroimmune system, neuroimmune system]
+--> X = neuroimmune_system;
 ---------------
 Q5. What is the immune system?
+?- _is(immune_system, X), _property(X, P).
 A. [biological structures and processes within an organism, system of many biological structures and processes, a system of many biological structures and processes within an organism, a system of many biological structures and processes within an organism]
+--> X = system, P = of(process); X = system, P = of(structure)
 ---------------
 Q6. What does the immune system protect against?
+?- event(E, protect, neuroimmune_system, O), _property(protect, against(X)).
 A. [pathogens, from viruses to parasitic worms, disease, disease, against disease]
+--> X = disease
 ---------------
 Q7. What are two of its subsystems?
+?- event(E, classify, _, immune_system), subsystem(X).
 A. [innate immune system versus the adaptive immune system, innate immune system versus the adaptive immune system, humoral immunity versus cell-mediated immunity, innate immune system versus the adaptive immune system]
+--> X = humoral_immunity; X = innate_immune_system
 ---------------
 Q8. The immune system protects organisms against what?
+?- event(E, protect, neuroimmune_system, O), _property(protect, against(X)).
 A. [disease, disease, disease, disease]
+--> X = disease
 ---------------
 Q9. What are the agents the immune system detects known as?
+?- event(E, detect, immune_system, O), _property(O, of(agent)), _property(know, as(X))
 A. [pathogens, pathogens, pathogens, pathogens]
+--> X = pathogen;
 ---------------
 Q10. Which part of the immune system protects the brain?
+?- event(E, protect, X, brain).
 A. [neuroimmune system, neuroimmune, neuroimmune, neuroimmune system]
+--> X = neuroimmune_system
 ---------------
 Q11. What separates the neuroimmune system and peripheral immune system in humans?
+?- event(E, separate, S, immune_system), event(E, separate, S, peripheral_immune_system)
 A. [blood–brain barrier, blood–cerebrospinal fluid barrier, blood–brain barrier, blood–cerebrospinal fluid barrier, and similar fluid–brain barriers, blood–brain barrier, blood–cerebrospinal fluid barrier, and similar fluid–brain barriers, fluid–brain barriers]
+--> S = barrier
 ---------------
 Q12. What are the agents detected by the immune system called?
+?- event(E, detect, immune_system, O), _property(O, of(agent)), _property(know, as(X))
 A. [pathogens, pathogens, pathogens, pathogens]
+--> X = pathogen
 ---------------
 Q13. What are the two major subsystems of the immune system?
 A. [innate immune system versus the adaptive immune system, innate immune system versus the adaptive immune system, innate immune system versus the adaptive immune system, innate immune system versus the adaptive immune system]
 ---------------
 Q14. What are the two different types of immunity?
 A. [humoral immunity versus cell-mediated immunity, humoral immunity versus cell-mediated immunity, humoral immunity versus cell-mediated immunity, humoral immunity versus cell-mediated immunity]
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ---------------
-Q15. What is the immune system of the brained known as?
+Q15. What is the immune system of the brain known as?
 A. [neuroimmune system, neuroimmune, neuroimmune system, neuroimmune system]
-
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ******************
-Results : (0/15)
+Results : (13/15)
 ******************

@@ -51,7 +51,7 @@ public class ImmuneSystemStoryTest {
         Assert.assertTrue(ruleString.contains("_property(structure, within(organism))"));
         Assert.assertTrue(ruleString.contains("_property(system, of(process))"));
         Assert.assertTrue(ruleString.contains("_property(system, of(structure))"));
-        Assert.assertTrue(ruleString.contains("event(2, protect, organism, null)"));
+        Assert.assertTrue(ruleString.contains("event(2, protect, system, null)"));
         Assert.assertTrue(ruleString.contains("system(immune_system)"));
     }
 

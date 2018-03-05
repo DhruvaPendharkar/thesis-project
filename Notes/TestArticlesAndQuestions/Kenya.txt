@@ -1,20 +1,29 @@
 Kenya (/'k?nj?/; locally ['k??a] ( listen)), officially the Republic of Kenya, is a country in Africa and a founding member of the East African Community (EAC). Its capital and largest city is Nairobi. Kenya's territory lies on the equator and overlies the East African Rift covering a diverse and expansive terrain that extends roughly from Lake Victoria to Lake Turkana (formerly called Lake Rudolf) and further south-east to the Indian Ocean. It is bordered by Tanzania to the south, Uganda to the west, South Sudan to the north-west, Ethiopia to the north and Somalia to the north-east. Kenya covers 581,309 km2 (224,445 sq mi), and had a population of approximately 45 million people in July 2014.
 
 Q1. Where is Kenya located?
+?- _property(Y, in(X)), _is(kenya, Y).
 A. [in Africa, Africa]
+--> X = africa;
 ---------------
 Q2. What is Kenya a founding member of?
+?- _property(member, of(X)), _mod(member, founding), _is(kenya, member).
 A. [East African Community, East African Community, East African Community]
+--> X = east_african_community
 ---------------
-Q3. What is the capitol of Kenya?
+Q3. What is the capital of Kenya?
+?- _is(capital, X), _possess(kenya, capital).
 A. [Nairobi, Nairobi, Nairobi]
+--> X = nairobi;
 ---------------
 Q4. What country boarders the south of Kenya?
+?- _property(X, to(south)), event(E, border, S, kenya), country(X, _).
 A. [Tanzania, Tanzania, Tanzania]
+X = tanzania
 ---------------
 Q5. What was the population of Kenya in 2014?
+?- _property(population, of(X)), event(E, have, kenya, population).
 A. [45 million people, 45 million people, approximately 45 million]
-
+--> X = million_people
 ******************
-Results : (0/5)
+Results : (5/5)
 ******************
