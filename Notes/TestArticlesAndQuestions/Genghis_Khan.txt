@@ -1,20 +1,27 @@
-He came to power by uniting many of the nomadic tribes of Northeast Asia. After founding the Mongol Empire and being proclaimed "Genghis Khan", he started the Mongol invasions that resulted in the conquest of most of Eurasia. These included raids or invasions of the Qara Khitai, Caucasus, Khwarezmid Empire, Western Xia and Jin dynasties. These campaigns were often accompanied by wholesale massacres of the civilian populations – especially in the Khwarezmian and Xia controlled lands. By the end of his life, the Mongol Empire occupied a substantial portion of Central Asia and China.
+Genghis_Khan came to power by uniting many of the nomadic tribes of Northeast_Asia. After founding the Mongol_Empire and being proclaimed as Genghis_Khan, Genghis_Khan started the Mongol invasion that resulted in the conquest of most of Eurasia. The Mongol invasions included raids or invasions of the Qara_Khitai, Caucasus, Khwarezmid_Empire, Western_Xia and Jin dynasties. The Mongol invasion campaigns were often accompanied by wholesale massacres of the civilian populations especially in the Khwarezmian and Xia lands. By the end of Genghis_Khan's life, the Mongol_Empire occupied a substantial portion of Central_Asia and China.
 
 Q1. What do we call the empire that Genghis Khan founded?
+?- event(E2, found, _, X), event(E1, _, genghis_khan, _), _relation(E1, E2, _).
 A. [the Mongol Empire, Mongol Empire, Mongol Empire]
+--> X = mongol_empire
 ---------------
 Q2. Who did Genghis Khan unite before he began conquering the rest of Eurasia?
+?- event(E2, unite, _, X), event(E1, _, genghis_khan, _), _relation(E1, E2, _).
 A. [many of the nomadic tribes of Northeast Asia, nomadic tribes of Northeast Asia, many of the nomadic tribes of Northeast Asia.]
+--> X = many_of_tribe
 ---------------
 Q3. In which regions in particular did Genghis Khan's armies massacre civilians?
 A. [Khwarezmian and Xia controlled lands, Khwarezmian and Xia controlled lands, Qara Khitai, Caucasus, Khwarezmid Empire, Western Xia and Jin dynasties]
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ---------------
 Q4. What areas did Genghis Khan control at the end of his life?
+?- _property(end, of(life)), _possess(genghis_khan, life), event(E, occupy, S, O), _property(O, X).
 A. [a substantial portion of Central Asia and China, substantial portion of Central Asia and China, a substantial portion of Central Asia and China]
+--> O = portion, X = of(central_asia); O = portion, X = of(china)
 ---------------
 Q5. Which other empires or dynasties did Genghis Khan conquer?
 A. [the Qara Khitai, Caucasus, Khwarezmid Empire, Western Xia and Jin dynasties, Qara Khitai, Caucasus, Khwarezmid Empire, Western Xia and Jin, Khwarezmian and Xia controlled lands]
-
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ******************
-Results : (0/5)
+Results : (3/5)
 ******************

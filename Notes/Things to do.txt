@@ -56,6 +56,12 @@ that is not is nummod
 14. For nummods you need to make another predicate like number(X)
 You can see all the "CD"'s and modify them. Something like there are 
 3000 animals in the zoo. So this can be converted into number(3000), _mod(animal, 3000)
+or basically actually any 'CD'
+
+15. For compound words if you can split things like Mogul_Empire
+and say things like _is(Mogul_Empire, empire).
+This will fail for things like United_States where it might say that
+_is(United_States, state) but I think that should be ok, idk
 
 *****************************************************************************************
 ****************************		Done		*****************************************

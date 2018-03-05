@@ -1,41 +1,61 @@
 Ctenophora, commonly known as comb_jellies, is a phylum of animals that live in marine_waters worldwide. Ctenophora's most distinctive feature is the combs, groups of cilia, which the Ctenophora use for swimming. Ctenophora are the largest animals that swim by means of cilia. Adults of various species range from a few millimeters to 1.5 meters in size. Like cnidarians, Ctenophora's bodies consist of a mass_of_jelly, with one layer of cells on the outside and another lining the internal cavity. In ctenophores, the layers of mass_of_jelly are two_cells_deep, while the layers in cnidarians are only one_cell_deep. Some authors combined ctenophores and cnidarians in one phylum, Coelenterata, as both groups rely on water flow through the body cavity for both digestion and respiration. Increasing awareness of the differences persuaded more recent authors to classify ctenophores and cnidarians as separate phyla.
 		
 Q1. What are Ctenophora commonly known as?
+?- _property(know, as(X)), _mod(know, commonly).
 A. [comb jellies, comb jellies, comb jellies]
+--> X = comb_jellies.
 ---------------
 Q2. Where do Ctenophora live?
+?- event(E, live, S, O), _is(ctenophora, S), _property(live, in(X)).
 A. [marine waters worldwide., marine waters worldwide, marine waters]
+--> X = marine_waters
 ---------------
 Q3. What size are adult Ctenophora?
 A. [a few millimeters to 1.5 m (4 ft 11 in) in size., a few millimeters to 1.5 m (4 ft 11 in) in size, a few millimeters to 1.5 m]
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ---------------
 Q4. What is a ctenophora?
+?- _is(ctenophora, X).
 A. [phylum of animals that live in marine waters, a phylum of animals, comb jellies]
+--> X = animal; X = largest_animal; X = phylum
 ---------------
 Q5. What does the ctenophora use to swim?
+?- event(E, swim, S, O), _is(ctenophora, S), _property(swim, X).
 A. [‘combs’ – groups of cilia, cilia, cilia]
+X = by_means_of(cilium)
 ---------------
 Q6. What does ctenophora use for digestion and respiration?
+?- _property(X, for(digestion)), _property(X, for(respiration)).
 A. [water flow through the body cavity, water flow, water flow through the body cavity]
+--> X = cavity
 ---------------
 Q7. How large can ctenophora grow?
 A. [1.5 m (4 ft 11 in), a few millimeters to 1.5 m]
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ---------------
 Q8. What is the most distinctive feature of ctenophora?
+?- _is(distinctive_feature, X), _possess(ctenophora, feature).
 A. [‘combs’ – groups of cilia, combs, the ‘combs’]
+--> X = comb
 ---------------
 Q9. What are ctenophora commonly known as?
+?- _property(know, as(X)), _mod(know, commonly).
 A. [comb jellies, comb jellies, comb jellies]
+--> X = comb_jellies
 ---------------
 Q10. How big can ctenophora grow?
 A. [1.5 m (4 ft 11 in), 1.5 m (4 ft 11 in), a few millimeters to 1.5 m]
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ---------------
 Q11. What does ctenophora rely on for digestion and respiration?
+?- _property(X, for(digestion)), _property(X, for(respiration)).
 A. [water flow through the body cavity, κτείς kteis 'comb' and φέρω pherō 'carry', water flow through the body cavity]
+--> X = cavity
 ---------------
 Q12. Where do ctenophora live?
+?- event(E, live, S, O), _is(ctenophora, S), _property(live, in(X)).
 A. [marine waters, marine waters worldwide, marine waters]
-
+--> X = marine_waters
 ******************
-Results : (0/12)
+Results : (9/12)
 ******************

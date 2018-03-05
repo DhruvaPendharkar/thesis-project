@@ -1,20 +1,29 @@
 Geology has three major types of rocks namely, igneous, sedimentary, and metamorphic. The rock_cycle is an important concept in geology, which illustrates the relationships between these three types of rock, and magma. When a rock crystallizes from magma or lava, the rock is an igneous rock. This rock can be weathered and eroded, and then redeposited and lithified into a sedimentary rock, or be turned into a metamorphic rock due to heat and pressure that change the mineral content of the rock which gives the rock a characteristic fabric. The sedimentary rock can then be subsequently turned into a metamorphic rock due to heat and pressure and is then weathered, eroded, deposited, and lithified, ultimately becoming a sedimentary rock. Sedimentary rock may also be re-eroded and redeposited, and metamorphic rock may also undergo additional metamorphism. All three types of rocks may be re-melted. When the rocks are melted, a new magma is formed, from the magma an igneous_rock may once again crystallize.
 
 Q1. An igneous rock is a rock that crystallizes from what?
+?- event(E, crystallize, igneous_rock, O), _property(crystallize, from(X)).
 A. [melt (magma and/or lava), melt, rock crystallizes from melt (magma and/or lava), melt (magma and/or lava)]
+--> X = lava; X = magma
 ---------------
 Q2. Sedimentary rock can be turned into which of the three types of rock?
+?- event(E, turn, S, rock), _property(turn, into(X)), _mod(X, Y), _mod(rock, sedimentary).
 A. [metamorphic rock, metamorphic, metamorphic rock, metamorphic]
+--> O = rock, X = rock, Y = metamorphic
 ---------------
 Q3. When the three types of rock are re-melted what is formed? 
+?- event(E1, melt, _, rock), event(E2, form, _, O), _mod(O, A).
 A. [new magma, igneous, new magma, magma]
+--> O = magma, A = new;
 ---------------
 Q4. What are the three major types of rock? 
 A. [igneous, sedimentary, and metamorphic, igneous, sedimentary, and metamorphic, igneous, sedimentary, and metamorphic, igneous, sedimentary, and metamorphic]
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ---------------
 Q5. What changes the mineral content of a rock?
+?- event(E, change, S, content), _property(content, of(rock)).
 A. [heat and pressure, heat and pressure, heat and pressure, heat and pressure]
+--> S = heat; S = pressure
 		
 ******************
-Results : (0/13)
+Results : (4/5)
 ******************

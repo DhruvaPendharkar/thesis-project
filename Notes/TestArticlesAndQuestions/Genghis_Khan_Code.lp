@@ -49,12 +49,12 @@ event(6, start, genghis_khan, invasion).
 event(6, start, genghis_khan, mongol_invasion).
 event(7, result, invasion, null).
 event(7, result, mongol_invasion, null).
-event(8, include, invasion, invasion).
-event(8, include, invasion, raid).
-event(8, include, invasion, raid_of_dynasty).
-event(8, include, mongol_invasion, invasion).
-event(8, include, mongol_invasion, raid).
-event(8, include, mongol_invasion, raid_of_dynasty).
+event(8, 'include', invasion, invasion).
+event(8, 'include', invasion, raid).
+event(8, 'include', invasion, raid_of_dynasty).
+event(8, 'include', mongol_invasion, invasion).
+event(8, 'include', mongol_invasion, raid).
+event(8, 'include', mongol_invasion, raid_of_dynasty).
 genghis_khan(genghis_khan).
 invasion(invasion).
 land(land).

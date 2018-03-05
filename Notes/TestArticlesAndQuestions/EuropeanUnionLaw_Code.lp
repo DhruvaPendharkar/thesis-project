@@ -39,10 +39,10 @@ event(13, set, null, null).
 event(2, have, regulations_and_directives, direct_effect).
 event(2, have, regulations_and_directives, indirect_effect).
 event(5, establish, null, european_union).
-event(6, include, secondary_source, directive).
-event(6, include, secondary_source, regulation).
-event(6, include, source, directive).
-event(6, include, source, regulation).
+event(6, 'include', secondary_source, directive).
+event(6, 'include', secondary_source, regulation).
+event(6, 'include', source, directive).
+event(6, 'include', source, regulation).
 event(8, base, null, directive).
 event(8, base, null, regulation).
 law(law).

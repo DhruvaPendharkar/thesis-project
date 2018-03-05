@@ -1,44 +1,74 @@
 European_Union_Law is a body of treaties and legislation, such as Regulations_and_Directives, which have direct_effect or indirect_effect on the laws of European_Union member states. The three sources of European_Union_Law are primary_law, secondary_law and supplementary_law. The main sources of primary_law are the Treaties establishing the European_Union. Secondary sources include regulations and directives, which are based on the Treaties. The legislature of the European_Union is principally composed of the European_Parliament and the Council_of_the_European_Union, which under the Treaties may establish secondary_law to pursue the objective set out in the Treaties.
 
 Q1. What are the three sources of European Union law?
+?- _is(source, X), _mod(source, three), _property(source, of(european_union_law)).
 A. [primary law, secondary law and supplementary law., primary law, secondary law and supplementary law, primary law, secondary law and supplementary law, primary law, secondary law and supplementary law]
+--> X = primary_law; X = secondary_law; X = supplementary_law
 ---------------
 Q2. What is European Union Law?
+?- _is(european_union_law, X).
 A. [a body of treaties and legislation, a body of treaties and legislation, such as Regulations and Directives, which have direct effect or indirect effect on the laws of European Union member states, a body of treaties and legislation, such as Regulations and Directives, a body of treaties and legislation, such as Regulations and Directives]
+--> X = body
 ---------------
 Q3. What are the main sources of primary law?
+?- _is(source, X), _mod(source, main), _property(source, of(primary_law)).
+_is(source, X), _mod(source, main), _property(source, of(primary_law)), _relation(X, E, _clause), event(E, V, S, O).
 A. [Treaties establishing the European Union, the Treaties establishing the European Union, primary law, secondary law and supplementary law, the Treaties establishing the European Union]
+--> X = treaty
+	X = treaty; E = 5; V = establish; O = european_union
 ---------------
 Q4. What are the secondary sources of primary law?
+?- event(E, 'include', secondary_source, X)
 A. [regulations and directives, regulations and directives which are based on the Treaties, regulations and directives which are based on the Treaties, regulations and directives which are based on the Treaties]
+--> X = directive; 	X = regulation
 ---------------
 Q5. What are the two bodies that make up the European Union's legislature?
+?- event(E, compose, S, legislature), _property(compose, of(X)).
 A. [European Parliament and the Council of the European Union, the European Parliament and the Council of the European Union, European Parliament and the Council of the European Union, European Parliament and the Council of the European Union]
+--> X = council_of_the_european_union; X = european_parliament
 ---------------
 Q6. What is European Union law?
+?- _is(european_union_law, X), _property(X, Y).
 A. [a body of treaties and legislation, a body of treaties and legislation, such as Regulations and Directives, which have direct effect or indirect effect on the laws of European Union member states, a body of treaties and legislation, such as Regulations and Directives, a body of treaties and legislation, such as Regulations and Directives]
+--> X = body
+	X = body, Y = of(legislation); X = body, Y = of(treaty)
 ---------------
 Q7. What effect does European Union law have on laws of member states?
+?- event(E, have, Z, X), _is(european_union_law, Y), _is(Y, Z).
 A. [direct effect or indirect effect, direct effect or indirect effect on the laws of European Union member states, direct effect or indirect effect, direct effect or indirect effect]
+--> X = direct_effect; X = indirect_effect
 ---------------
 Q8. What are the three sources of European Union law?
+?- _is(source, X), _mod(source, three), _property(source, of(european_union_law)).
 A. [primary law, secondary law and supplementary law, primary law, secondary law and supplementary law, primary law, secondary law and supplementary law, primary law, secondary law and supplementary law]
+--> X = primary_law; X = secondary_law; X = supplementary_law
 ---------------
 Q9. What are the main legislative bodies of the European Union?
+?- event(E, compose, S, legislature), _property(compose, of(X)).
 A. [European Parliament and the Council of the European Union, the Treaties establishing the European Union, European Parliament and the Council of the European Union, European Parliament and the Council of the European Union]
+--> X = council_of_the_european_union; X = european_parliament
 ---------------
 Q10. What are the three main sources of European Union law?
+?- _is(source, X), _mod(source, three), _property(source, of(european_union_law)).
 A. [primary law, secondary law and supplementary law, primary law, secondary law and supplementary law, primary law, secondary law and supplementary law, primary law, secondary law and supplementary law]
+--> X = primary_law; X = secondary_law; X = supplementary_law
 ---------------
 Q11. What are the main sources of primary law?
+?- _is(source, X), _mod(source, main), _property(source, of(primary_law)).
+_is(source, X), _mod(source, main), _property(source, of(primary_law)), _relation(X, E, _clause), event(E, V, S, O).
 A. [the Treaties establishing the European Union, the Treaties establishing the European Union, the Treaties establishing the European Union, the Treaties establishing the European Union]
+--> X = treaty
+	X = treaty; E = 5; V = establish; O = european_union
 ---------------
 Q12. What is the legislature of the European Union comprised of?
+?- event(E, compose, S, legislature), _property(compose, of(X)).
 A. [the European Parliament and the Council of the European Union, the European Parliament and the Council of the European Union, European Parliament and the Council of the European Union, European Parliament and the Council of the European Union]
+--> X = council_of_the_european_union; X = european_parliament
 ---------------
 Q13. How many sources of European Union law are there?
+?- _mod(source, X), _property(source, of(european_union_law)), number(X).
 A. [three, three, three, three]
-		
+--> X = three
 ******************
-Results : (0/13)
+Results : (13/13)
 ******************
