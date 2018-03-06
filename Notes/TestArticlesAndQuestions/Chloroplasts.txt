@@ -1,0 +1,29 @@
+Chloroplasts's main role is to conduct photosynthesis, where the photosynthetic pigment, chlorophyll, captures the energy from sunlight and converts the energy, and stores the energy in the energy-storage molecules, ATP and NADPH, while freeing oxygen from water. Chloroplasts then use the ATP and NADPH to make organic molecules from carbon_dioxide in a process known as the Calvin_Cycle. Chloroplasts carry out a number_of_functions, like fatty_acid_synthesis, amino_acid_synthesis, and the immune_response in plants. The number_of_chloroplasts, per cell, varies from 1 in algae, up_to 100 in plants such as Arabidopsis and wheat.
+		
+Q1. What is the primary purpose of chloroplasts?
+?- event(E1, be, main_role, _), event(E2, V, S, O), _relation(E1, E2, _clcomplement).
+A. [to conduct photosynthesis, conduct photosynthesis, conduct photosynthesis]
+--> V = conduct, O = photosynthesis;
+---------------
+Q2. What does ATP store?
+?- _property(X, in(atp)).
+A. [energy, energy, energy]
+--> X = energy;
+---------------
+Q3. What does NADPH store?
+?- _property(X, in(nadph)).
+A. [energy, energy, energy]
+--> X = energy;
+---------------
+Q4. What is the process of turning CO2 into organic molecules called?
+?- _property(know, X), event(E, know, S, O), _relation(process, E, _clause).
+A. [the Calvin cycle, Calvin cycle, Calvin cycle]
+--> X = as(calvin_cycle)
+---------------
+Q5. How many chloroplasts per cell does algae have?
+A. [1, 1, 1]
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+******************
+Results : (4/5)
+******************

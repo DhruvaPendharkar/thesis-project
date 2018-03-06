@@ -30,7 +30,7 @@ public class CloroplastsStoryTest {
     void TestSentenceOne() {
         String content = "Chloroplasts's main role is to conduct photosynthesis, where the photosynthetic pigment, " +
         "chlorophyll, captures the energy from sunlight and converts the energy, and stores the energy in the " +
-        "energy-storage molecules ATP and NADPH, while freeing oxygen from water.";
+        "energy-storage molecules, ATP and NADPH, while freeing oxygen from water.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
         List<Rule> rules = sentence.GenerateRules();
@@ -45,18 +45,21 @@ public class CloroplastsStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(25, ruleString.size());
+        Assert.assertEquals(28, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(pigment, chlorophyll)"));
-        Assert.assertTrue(ruleString.contains("_mod(atp, energy_storage)"));
         Assert.assertTrue(ruleString.contains("_mod(capture, where)"));
+        Assert.assertTrue(ruleString.contains("_mod(molecule, energy_storage)"));
         Assert.assertTrue(ruleString.contains("_mod(pigment, photosynthetic)"));
         Assert.assertTrue(ruleString.contains("_mod(role, main)"));
         Assert.assertTrue(ruleString.contains("_possess(chloroplast, role)"));
         Assert.assertTrue(ruleString.contains("_property(capture, from(sunlight))"));
         Assert.assertTrue(ruleString.contains("_property(energy, in(atp))"));
+        Assert.assertTrue(ruleString.contains("_property(energy, in(molecule))"));
         Assert.assertTrue(ruleString.contains("_property(energy, in(nadph))"));
         Assert.assertTrue(ruleString.contains("_property(free, from(water))"));
         Assert.assertTrue(ruleString.contains("_relation(1, 2, _clcomplement)"));
+        Assert.assertTrue(ruleString.contains("_relation(2, 3, _clause)"));
+        Assert.assertTrue(ruleString.contains("_relation(2, 4, _clause)"));
         Assert.assertTrue(ruleString.contains("_relation(3, 4, _conj)"));
         Assert.assertTrue(ruleString.contains("_relation(3, store, _conj)"));
         Assert.assertTrue(ruleString.contains("event(1, be, main_role, null)"));

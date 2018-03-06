@@ -169,7 +169,7 @@ class KnowledgeGenerationTest {
     void TestCloroplastsStory_1() throws IOException {
         String content = "Chloroplasts's main role is to conduct photosynthesis, where the photosynthetic pigment, " +
         "chlorophyll, captures the energy from sunlight and converts the energy, and stores the energy in the " +
-        "energy-storage molecules ATP and NADPH, while freeing oxygen from water. Chloroplasts then use the ATP and " +
+        "energy-storage molecules, ATP and NADPH, while freeing oxygen from water. Chloroplasts then use the ATP and " +
         "NADPH to make organic molecules from carbon_dioxide in a process known as the Calvin_Cycle. Chloroplasts carry " +
         "out a number_of_functions, like fatty_acid_synthesis, amino_acid_synthesis, and the immune_response in plants. " +
         "The number_of_chloroplasts, per cell, varies from 1 in algae, up_to 100 in plants such as Arabidopsis and wheat.";
@@ -184,7 +184,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(78, ruleString.size());
+        Assert.assertEquals(79, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
