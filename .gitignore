@@ -1,4 +1,4 @@
 *.class
 *.jar
-*.pdf
 *.xml
+edu.mit*.pdf
