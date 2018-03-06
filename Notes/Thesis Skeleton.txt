@@ -1,0 +1,147 @@
+Chapters : 
+	1. Acknowledgements
+	2. Abstract
+	3. Introduction
+		-- Why was this approach taken
+		-- What are the advantages of this approach
+		-- Why are probabilistic approaches inefficient
+			-- Justification
+			-- Provability
+		-- Summary of the below chapters
+			-- Chap4 deals with ASP, Sasp, Clasp and other systems
+			-- Chap5 deals with the General Architecture of the system
+			-- Chap7 deals with NLP techniques for extraction
+			-- Chap6 deals with Development Environment and Paradigm
+			-- Chap8 deals with use of KRnR for Question Answering
+			-- Chap9 Results on SQuAD dataset
+			-- Chap10 deals with other systems like Cyc
+				-- why cyc failed?? too many solvers??
+			-- Chap11 deals with improvements and future work
+				-- Improving semantics
+				-- Applying the KB to other applications
+				-- Adding more knowledge on verbs
+				-- Trying to answer higher level questions
+	4. Background
+		-- What is ASP
+		-- Syntax and Semantics
+		-- Closed World Assumption (CWA)
+		-- Modelling Negation
+		-- NAF vs Classicial Negation
+		-- Non-monotonic Logic and Default Reasoning
+		-- Present systems SASP, CLASP, CCASP
+	5. General System Architecture
+		-- Components of the system
+			-- Text Preprocessing (98% automatic)
+				-- Combining concepts
+				-- Coreference resolution
+				-- Missing terms/ assumed words for correct parsing
+			-- WordNet Interface
+				-- Extracts concepts and their relations from WordNet
+			-- Default Knowledge Base
+				-- Knowledge about verbs (reusable)
+				-- Common rules (_is or similar terms)
+				-- Rules that help answer questions (where, when)
+			-- Text to ASP Facts
+				-- Uses rules mentioned in the later chapters
+				-- Automatic conversion in a set of rules and facts
+			-- WordNet to Ontology Rules
+				-- Hypernym rules
+				-- Meronym rules (not implemented)
+				-- Disambiguation rules
+	6. Development Paradigm and Development Environment
+		-- Paradigm
+			-- Test Driven Development
+			-- Steps in TDD
+		-- Environment
+			-- Java with IntelliJIdea
+			-- JUnit Test Framework
+			-- Stanford Core Toolkit
+			-- WordNet Java API
+	7. Approach for Knowledge Extraction
+		-- NLP Tools used
+			-- Stanford Dependency Parser
+			-- Stanford POS Tagger
+			-- Stanford NER Tagger
+		-- Stanford Dependencies and their meaning
+			-- Important dependency relations
+			-- Core arguments and Non-core arguments of predicates
+		-- WordNet
+			-- WordNet Relations
+				-- Hypernym
+				-- Meronyms
+			-- WordNet Senses
+			-- Different sense classes used in WordNet
+		-- Representation of Knowledge from Story
+			-- building semantic graph
+			-- event structure
+			-- property structure
+			-- modifiers
+			-- possessive structure
+			-- is_a relation (appositional modifiers)
+			-- _relation structure
+			-- Named entity tags and relations
+				-- time
+				-- locations
+				-- organizations
+			-- Rules used to build the above structure
+				-- preprocessing
+					-- time spans [start_date - end_date]
+					-- dates and times
+					-- concepts
+					-- abbreviations
+				-- event structure
+					-- subject/modified subject/modified
+					-- direct object/modified direct and indirect object
+				-- property structure
+					-- nominal modifiers (nmod)
+					-- prepositions
+					-- conjunctions like and/or
+				-- modifiers structure
+					-- noun properties ie adjectives or noun clauses
+					-- verb properties ie adverbs
+				-- possessive structure
+					-- used for a genitive case
+				-- _is_a relation
+					-- used for similarity relation
+					-- appositional modifiers
+					-- to be verb
+		-- Supplimentary Knowledge
+			-- Ontology representation
+				-- Hypernym Rules
+				-- Meronym Rules (Level K)
+			-- Word Sense Disambiguation
+				-- Representation of WSD
+				-- Default knowledge pattern
+					-- Strong exceptions
+					-- Weak exceptions
+				-- Preference Patterns for WSD
+				-- Multiple senses to a concept
+	8. Application in Question Answering and other Applications
+		-- SQuAD Dataset
+		-- Articles from Random Domains (Rough Categorization)
+		-- Questions as queries
+		-- Positives and Negatives
+			-- Able to answer questions from passage
+			-- Able to produce multiple answers
+			-- Not able to answer complex questions
+			-- Verb and Noun similarity not implemented
+		-- Other Applications of Knowlege Representation
+	9. Results and Analysis
+		-- Results about Question Answering
+		-- % Success and % First Choice
+	10. Related Work and Contribution
+		-- Other Knowledge Representation systems
+			-- Cyc
+	11. Conclusions and Future Work
+		-- Conclusions
+			-- System can be improved by adding more knowledge
+			-- Can make use of more and more NLP tools to improve performance
+			-- Can give multiple answers if exists
+			-- Will help in utilizing the vast amount of knowledge in text
+		-- Future Work
+			-- Adding Rules for more knowledge patterns
+			-- Adding Rules to handle more domains
+			-- Modelling semantic similarity for answering questions
+				ie synonyms, similarity score between words
+			-- Answering cross sentence questions
+	12. Appendix

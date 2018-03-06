@@ -66,6 +66,11 @@ _is(United_States, state) but I think that should be ok, idk
 16. Put quotes for atoms with keywords [include] or commas [,]
 ie event(E, 'include', S, O). or _property(population, of('12,345')).
 
+17. What about a negative sentence atleaast cover one sentence like that
+e.g Ramesh did not eat ice-cream on Sunday.
+-event(1, eat, Ramesh, icecream).
+_property(eat, on(sunday)).
+
 *****************************************************************************************
 *										Done											*
 *****************************************************************************************
