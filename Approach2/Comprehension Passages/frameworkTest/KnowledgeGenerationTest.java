@@ -166,6 +166,38 @@ class KnowledgeGenerationTest {
     }
 
     @Test
+    void TestCloroplastsStory_1() throws IOException {
+        String content = "Chloroplasts's main role is to conduct photosynthesis, where the photosynthetic pigment, " +
+        "chlorophyll, captures the energy from sunlight and converts the energy, and stores the energy in the " +
+        "energy-storage molecules ATP and NADPH, while freeing oxygen from water. Chloroplasts then use the ATP and " +
+        "NADPH to make organic molecules from carbon_dioxide in a process known as the Calvin_Cycle. Chloroplasts carry " +
+        "out a number_of_functions, like fatty_acid_synthesis, amino_acid_synthesis, and the immune_response in plants. " +
+        "The number_of_chloroplasts, per cell, varies from 1 in algae, up_to 100 in plants such as Arabidopsis and wheat.";
+        StorageManager manager = new StorageManager();
+        Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
+
+        TreeSet<String> ruleString = new TreeSet<>();
+        System.out.println("%-------------------------------------------------------%");
+        System.out.println("%Story%");
+        System.out.println("%-------------------------------------------------------%");
+        for(Rule rule : rulesPair.getKey()){
+            ruleString.add(rule.toString());
+        }
+        PrintRules(ruleString);
+        Assert.assertEquals(78, ruleString.size());
+
+        System.out.println("%%-------------------------------------------------------%%");
+        System.out.println("%%Ontology%%");
+        System.out.println("%%-------------------------------------------------------%%");
+        ruleString = new TreeSet<>();
+        for(Rule rule : rulesPair.getValue()){
+            ruleString.add(rule.toString());
+        }
+        PrintRules(ruleString);
+        Assert.assertEquals(383, ruleString.size());
+    }
+
+    @Test
     void TestComplexityStory_1() throws IOException {
         String content = "Computational_complexity_theory is a branch of the theory_of_computation, in theoretical " +
         "computer_science, the branch focuses on classifying computational problems according to the problem's " +
@@ -363,39 +395,6 @@ class KnowledgeGenerationTest {
         }
         PrintRules(ruleString);
         Assert.assertEquals(387, ruleString.size());
-    }
-
-    @Test
-    void TestJacksonvilleStory_1() throws IOException {
-        String content = "Jacksonville is the largest city by population in the United_State's state of Florida, and " +
-        "the largest city by area in the contiguous United_States. Jacksonville is the county_seat of Duval_County, " +
-        "with which the city's government consolidated in 1968. Consolidation gave Jacksonville Jacksonville's great " +
-        "size and placed most of Jacksonville's metropolitan population within the city limits, with an estimated " +
-        "population of 853,382 in 2014. Jacksonville is the most populous city proper in Florida and the Southeast, " +
-        "and the 12th most populous in the United_States. Jacksonville is the principal city in the Jacksonville's " +
-        "metropolitan area, with a population of 1,345,596 in 2010.";
-        StorageManager manager = new StorageManager();
-        Pair<List<Rule>, List<Rule>> rulesPair = KnowledgeGeneration.RepresentKnowledge(manager, content);
-
-        TreeSet<String> ruleString = new TreeSet<>();
-        System.out.println("%-------------------------------------------------------%");
-        System.out.println("%Story%");
-        System.out.println("%-------------------------------------------------------%");
-        for(Rule rule : rulesPair.getKey()){
-            ruleString.add(rule.toString());
-        }
-        PrintRules(ruleString);
-        Assert.assertEquals(63, ruleString.size());
-
-        System.out.println("%%-------------------------------------------------------%%");
-        System.out.println("%%Ontology%%");
-        System.out.println("%%-------------------------------------------------------%%");
-        ruleString = new TreeSet<>();
-        for(Rule rule : rulesPair.getValue()){
-            ruleString.add(rule.toString());
-        }
-        PrintRules(ruleString);
-        Assert.assertEquals(299, ruleString.size());
     }
 
     @Test

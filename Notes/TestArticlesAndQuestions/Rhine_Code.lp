@@ -24,7 +24,7 @@ _property(danube, at('1,230')).
 _property(discharge, of('2,900_m3/s')).
 _property(empty, into(north_sea)).
 _property(flow, through(rhineland)).
-_property(graubünden, in(southeastern_swiss_alps)).
+_property(graubunden, in(southeastern_swiss_alps)).
 _property(north_sea, in(netherland)).
 _property(part, of(border)).
 _property(part, of(swiss_german)).
@@ -32,7 +32,7 @@ _property(population, of('1,050,000_people')).
 _property(river, in(central)).
 _property(river, in(western_europe)).
 _property(river, with(discharge)).
-_property(swiss_canton, of(graubünden)).
+_property(swiss_canton, of(graubunden)).
 border(border).
 city(city).
 cologne(biggest_city).

@@ -1,29 +1,42 @@
-The Rhine (Romansh: Rein, German: Rhein, French: le Rhin, Dutch: Rijn) is a European river that begins in the Swiss canton of Graubünden in the southeastern Swiss Alps, forms part of the Swiss-Austrian, Swiss-Liechtenstein border, Swiss-German and then the Franco-German border, then flows through the Rhineland and eventually empties into the North Sea in the Netherlands. The biggest city on the river Rhine is Cologne, Germany with a population of more than 1,050,000 people. It is the second-longest river in Central and Western Europe (after the Danube), at about 1,230 km (760 mi),[note 2][note 1] with an average discharge of about 2,900 m3/s (100,000 cu ft/s).
+The Rhine, is a European river that begins in the Swiss_canton of Graubünden in the southeastern_Swiss_Alps, forms part of the Swiss-Austrian border, Swiss-Liechtenstein border, Swiss-German and then the Franco-German border, then flows through the Rhineland and eventually empties into the North_Sea in the Netherlands. The biggest city on the river, Rhine, is Cologne in Germany with a population of more than 1,050,000 people. The Rhine is the second-longest river in Central and Western_Europe, after the Danube, at about 1,230 kilometre, with an average discharge of about 2,900 m3/s.
 
-Q1. Where does the Rhine begin? 
+Q1. Where does the Rhine begin?
+?- event(E, begin, rhine, O), _property(begin, in(X)), _property(X, Y).
 A. [Swiss canton, s in the Swiss canton of Graubünden in the southeastern Swiss Alps,, Graubünden, Graubünden]
+--> X = swiss_canton, Y = of(graubunden)
 ---------------
 Q2. Where does the Rhine empty?
+?- event(E, empty, rhine, O), _property(empty, X).
 A. [North Sea, the North Sea in the Netherlands, North Sea, North Sea]
+--> X = into(north_sea)
 ---------------
 Q3. What is the largest city the Rhine runs through? 
+?- _is(city, X), _mod(city, biggest).
 A. [Cologne, Germany, Cologne, Germany, Cologne]
+--> X = cologne
 ---------------
 Q4. What river is larger than the Rhine?
 A. [Danube, the Danube, Danube, Danube]
+XXXXXXXXXXXXXXXXXXXXXXXXXX
 ---------------
 Q5. How long is the Rhine?
 A. [1,230 km (760 mi), 1,230 km (760 mi), 1,230 km, 1,230 km]
+XXXXXXXXXXXXXXXXXXXXXXXXXX
 ---------------
 Q6. Where is the Rhine? 
+?- _is(X, rhine), _property(X, in(Y)).
 A. [Europe, Central and Western Europe, Germany, Germany]
+--> Y = central; Y = western_europe
 ---------------
 Q7. What country does the Rhine empty?
+?- event(E, empty, rhine, O), _property(empty, into(X)), _property(X, in(Y)).
 A. [Netherlands, Germany, Netherlands, Netherlands]
+--> Y = netherland;
 ---------------
 Q8. How long is the Rhine? 
 A. [1,230 km, 1,230 km (760 mi), 1,230 km, 1,230 km]
+XXXXXXXXXXXXXXXXXXXXXXXXXX
 
 ******************
-Results : (0/8)
+Results : (5/8)
 ******************

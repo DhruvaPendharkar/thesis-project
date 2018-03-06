@@ -52,7 +52,7 @@ event(3, comprise, region, county).
 event(3, comprise, region, southernmost_county).
 event(5, describe, null, null).
 event(6, base, null, null).
-event(8, include, null, null).
+event(8, 'include', null, null).
 imperial(county).
 imperial(los_angeles).
 imperial(orange).
