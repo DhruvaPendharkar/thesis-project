@@ -14,10 +14,26 @@ public class QuestionString {
     }
 
     private static void GenerateTestForQuestion(String[] questions) {
-        String testFormat = "";
+        String testFormat = "@Test\n" +
+                "    // \n" +
+                "    void TestSentence() {\n" +
+                "        String content = \"%s\";\n" +
+                "        Sentence sentence = Sentence.ParseSentence(content);\n" +
+                "        System.out.println(Sentence.DependenciesToString(sentence));\n" +
+                "        List<Rule> rules = sentence.GenerateRules();\n" +
+                "        HashSet<String> ruleString = new HashSet<>();\n" +
+                "        TreeSet<Rule> rulesSet = new TreeSet<>(rules);\n" +
+                "        for(Rule rule : rulesSet){\n" +
+                "            ruleString.add(rule.toString());\n" +
+                "            System.out.println(rule.toString());\n" +
+                "        }\n" +
+                "\n" +
+                "        Assert.assertEquals(0, ruleString.size());\n" +
+                "    }";
 
         for(String question : questions){
             String testString = String.format(testFormat, question);
+            System.out.println(testString);
         }
     }
 
