@@ -132,6 +132,8 @@ Chapters :
 	10. Related Work and Contribution
 		-- Other Knowledge Representation systems
 			-- Cyc
+			-- Watson
+			-- Baral Paper
 	11. Conclusions and Future Work
 		-- Conclusions
 			-- System can be improved by adding more knowledge
