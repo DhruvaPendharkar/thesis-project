@@ -62,7 +62,7 @@ public class WarsawStoryTest {
     @Test
     // Sentence : "Famous musicians include Władysław Szpilman and Frédéric Chopin.
     void TestSentenceTwo() {
-        String content = "The famous musicians include Władysław_Szpilman and Frédéric_Chopin";
+        String content = "The famous musicians include Wladyslaw_Szpilman and Frederic_Chopin";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
         List<Rule> rules = sentence.GenerateRules();
@@ -74,17 +74,17 @@ public class WarsawStoryTest {
 
         Assert.assertEquals(5, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(musician, famous)"));
-        Assert.assertTrue(ruleString.contains("event(1, include, musician, władysław_szpilman)"));
-        Assert.assertTrue(ruleString.contains("event(1, include, musician, frédéric_chopin)"));
-        Assert.assertTrue(ruleString.contains("event(1, include, famous_musician, władysław_szpilman)"));
-        Assert.assertTrue(ruleString.contains("event(1, include, famous_musician, frédéric_chopin)"));
+        Assert.assertTrue(ruleString.contains("event(1, 'include', musician, wladyslaw_szpilman)"));
+        Assert.assertTrue(ruleString.contains("event(1, 'include', musician, frederic_chopin)"));
+        Assert.assertTrue(ruleString.contains("event(1, 'include', famous_musician, wladyslaw_szpilman)"));
+        Assert.assertTrue(ruleString.contains("event(1, 'include', famous_musician, frederic_chopin)"));
     }
 
     @Test
     // Sentence : "Though Chopin was born in the village of Żelazowa Wola, about 60 km (37 mi) from Warsaw,
     // he moved to the city with his family when he was seven months old.
     void TestSentenceThree() {
-        String content = "Though Chopin was born in the village of Żelazowa_Wola about 60_km from Warsaw, " +
+        String content = "Though Chopin was born in the village of Zelazowa_Wola about 60_km from Warsaw, " +
         "Chopin moved to the city with Chopin's family, when Chopin was seven_months_old.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
@@ -99,7 +99,7 @@ public class WarsawStoryTest {
         Assert.assertTrue(ruleString.contains("event(2, bear, null, chopin)"));
         Assert.assertTrue(ruleString.contains("_property(bear, in(village))"));
         Assert.assertTrue(ruleString.contains("_property(bear, about('60_km'))"));
-        Assert.assertTrue(ruleString.contains("_property(village, of(żelazowa_wola))"));
+        Assert.assertTrue(ruleString.contains("_property(village, of(zelazowa_wola))"));
         Assert.assertTrue(ruleString.contains("_property('60_km', from(warsaw))"));
         Assert.assertTrue(ruleString.contains("event(3, move, chopin, null)"));
         Assert.assertTrue(ruleString.contains("_relation(3, 2, _clause)"));

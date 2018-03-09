@@ -88,7 +88,7 @@ public class RhineStoryTest {
         Assert.assertEquals(8, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(river, rhine)"));
         Assert.assertTrue(ruleString.contains("_mod(city, biggest)"));
-        Assert.assertTrue(ruleString.contains("_mod(people, 1,050,000)"));
+        Assert.assertTrue(ruleString.contains("_mod(people, '1,050,000')"));
         Assert.assertTrue(ruleString.contains("_property(city, on(river))"));
         Assert.assertTrue(ruleString.contains("_property(cologne, in(germany))"));
         Assert.assertTrue(ruleString.contains("_property(cologne, with(population))"));
@@ -119,9 +119,9 @@ public class RhineStoryTest {
         Assert.assertEquals(0, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(rhine, river)"));
         Assert.assertTrue(ruleString.contains("_is(rhine, second_longest_river)"));
-        Assert.assertTrue(ruleString.contains("_mod('m3/s', 2,900)"));
+        Assert.assertTrue(ruleString.contains("_mod('m3/s', '2,900')"));
         Assert.assertTrue(ruleString.contains("_mod(discharge, average)"));
-        Assert.assertTrue(ruleString.contains("_mod(kilometre, 1,230)"));
+        Assert.assertTrue(ruleString.contains("_mod(kilometre, '1,230')"));
         Assert.assertTrue(ruleString.contains("_mod(river, second_longest)"));
         Assert.assertTrue(ruleString.contains("_property(danube, at('1,230_kilometre'))"));
         Assert.assertTrue(ruleString.contains("_property(danube, with(discharge))"));

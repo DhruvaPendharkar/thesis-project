@@ -168,7 +168,7 @@ public class KenyaStoryTest {
 
         Assert.assertEquals(9, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(people, million)"));
-        Assert.assertTrue(ruleString.contains("_mod(square_kilometre, 581,309)"));
+        Assert.assertTrue(ruleString.contains("_mod(square_kilometre, '581,309')"));
         Assert.assertTrue(ruleString.contains("_property(have, in('july_2014'))"));
         Assert.assertTrue(ruleString.contains("_property(population, of(million_people))"));
         Assert.assertTrue(ruleString.contains("_relation(1, 2, _conj)"));

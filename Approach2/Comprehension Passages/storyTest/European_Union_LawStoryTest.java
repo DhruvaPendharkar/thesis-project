@@ -134,10 +134,10 @@ public class European_Union_LawStoryTest {
         Assert.assertEquals(8, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(source, secondary)"));
         Assert.assertTrue(ruleString.contains("_property(base, on(treaty))"));
-        Assert.assertTrue(ruleString.contains("event(1, include, secondary_source, directive)"));
-        Assert.assertTrue(ruleString.contains("event(1, include, secondary_source, regulation)"));
-        Assert.assertTrue(ruleString.contains("event(1, include, source, directive)"));
-        Assert.assertTrue(ruleString.contains("event(1, include, source, regulation)"));
+        Assert.assertTrue(ruleString.contains("event(1, 'include', secondary_source, directive)"));
+        Assert.assertTrue(ruleString.contains("event(1, 'include', secondary_source, regulation)"));
+        Assert.assertTrue(ruleString.contains("event(1, 'include', source, directive)"));
+        Assert.assertTrue(ruleString.contains("event(1, 'include', source, regulation)"));
         Assert.assertTrue(ruleString.contains("event(3, base, null, directive)"));
         Assert.assertTrue(ruleString.contains("event(3, base, null, regulation)"));
     }

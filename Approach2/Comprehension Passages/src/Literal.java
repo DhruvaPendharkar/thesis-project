@@ -21,10 +21,17 @@ public class Literal implements Comparable<Literal> {
 
     public Literal(Word atom){
         this.predicate = atom.getLemma();
-        if(IsMixedCase(this.predicate) || this.predicate.contains(".")){
+        if(IsMixedCase(this.predicate) || this.predicate.contains(".") ||
+            this.predicate.contains(",") || IsSASPKeyword(this.predicate)){
             this.predicate = String.format("'%s'", this.predicate);
         }
         this.isAtom = true;
+    }
+
+    private boolean IsSASPKeyword(String predicate) {
+        if(predicate.equals("include")) return true;
+        if(predicate.equals("compare")) return true;
+        return false;
     }
 
     @Override
