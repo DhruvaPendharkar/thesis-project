@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Created by dhruv on 9/24/2017.
@@ -91,11 +93,15 @@ public class Rule implements Comparable<Rule> {
     }
 
     public static List<Rule> AggregateAllRules(List<Rule> rules) {
-        List<Literal> bodyList = new ArrayList<>();
+        Set<Literal> literalSet = new TreeSet<>();
         for(Rule rule : rules){
-            bodyList.add(rule.head);
+            if(rule.head != null){
+                if(rule.body != null && rule.body.size() == 0) continue;
+                literalSet.add(rule.head);
+            }
         }
 
+        List<Literal> bodyList = new ArrayList<>(literalSet);
         Rule rule = new Rule(null, bodyList, false);
         rules = new ArrayList<>();
         rules.add(rule);

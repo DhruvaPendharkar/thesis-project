@@ -11,8 +11,10 @@ public class Question extends Sentence {
     }
 
     public List<Rule> GenerateRules() {
-        List<Rule> rules = new ArrayList<>();
+        List<Rule> rules = this.preProcessRules;
+
         for(Word word : this.wordList){
+            if(word.getPOSTag().equalsIgnoreCase(",")) continue;
             rules.addAll(word.GenerateRules());
         }
 

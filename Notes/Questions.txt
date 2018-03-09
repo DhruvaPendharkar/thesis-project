@@ -1,9 +1,33 @@
 What company owns the American Broadcasting Company?
-In what year did ABC stylize it's logo as abc?
-In what borough of New York City is ABC headquartered?
-On what streets is the ABC headquarters located?
-Disney-ABC Television Group is a subsidiary of what division of the Walt Disney Company?
+?- event(E, own, S, O), _similar(american_broadcasting_company, O), company(S, _).
+?- event(E, own, _, O), _similar(american_broadcasting_company, O), _property(own, by(X)), _similar(X, Y), company(X, _).
+?- event(E, own, _, O), _similar(american_broadcasting_company, O), _property(own, by(X)), company(X, _).
+?- _property(own, by(X)), company(X, _).
+?- _property(own, by(X))
+?- event(E, own, S, _), S \= null
 
+In what year did ABC stylize it's logo as abc?
+?- event(E, stylize, S, O), _similar(abc, S), _similar(logo, O), _property(stylize, since(X)), year(X).
+?- event(E, stylize, S, _), _similar(abc, S), _property(stylize, in(O)), _similar(logo, O), _property(stylize, since(X)), year(X).
+?- _property(stylize, since(X)), year(X).
+?- year(X).
+
+In what borough of New York City is ABC headquartered?
+?- event(E, headquarter, S, O), _similar(abc, O),_property(borough, of(new_york_city)), _property(headquarter, in(X)), borough(X, _).
+?- event(E, headquarter, S, O), _similar(abc, O), _property(headquarter, in(X)), borough(X, _).
+?- _property(headquarter, in(X)), borough(X, _).
+?- borough(X, _).
+
+On what streets is the ABC headquarters located?
+?- event(E, locate, S, O), _similar(headquarters, S), _property(locate, on(X)), street(X).
+?- _property(locate, on(X)), street(X).
+?- _property(_, on(X)), street(X).
+?- street(X).
+
+Disney-ABC Television Group is a subsidiary of what division of the Walt Disney Company?
+?- _is(disney_abc_television_group, subsidiary),_property(division, of(the_walt_disney_company)), _mod(division, X).
+?- _property(division, of(the_walt_disney_company)), _mod(division, X).
+?- _mod(division, X).
 -----------------------
 
 Which name is also used to describe the Amazon rainforest in English?

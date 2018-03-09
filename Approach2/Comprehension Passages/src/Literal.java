@@ -3,7 +3,7 @@ import java.util.List;
 /**
  * Created by dhruv on 9/24/2017.
  */
-public class Literal {
+public class Literal implements Comparable<Literal> {
     private String predicate;
     private List<Literal> terms;
     private boolean isAtom;
@@ -61,5 +61,10 @@ public class Literal {
         boolean containsNumbers = content.matches(".*[0-9].*");
         boolean containsLetters = content.matches(".*[A-Za-z_].*");
         return containsNumbers && containsLetters;
+    }
+
+    @Override
+    public int compareTo(Literal o) {
+        return this.toString().compareTo(o.toString());
     }
 }
