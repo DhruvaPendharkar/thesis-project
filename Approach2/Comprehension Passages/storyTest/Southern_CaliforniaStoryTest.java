@@ -43,7 +43,7 @@ public class Southern_CaliforniaStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(15, ruleString.size());
+        Assert.assertEquals(16, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(abbreviate, often)"));
         Assert.assertTrue(ruleString.contains("_mod(comprise, generally)"));
         Assert.assertTrue(ruleString.contains("_mod(county, 10)"));
@@ -59,6 +59,7 @@ public class Southern_CaliforniaStoryTest {
         Assert.assertTrue(ruleString.contains("event(3, comprise, geographic_cultural_region, southernmost_county)"));
         Assert.assertTrue(ruleString.contains("event(3, comprise, region, county)"));
         Assert.assertTrue(ruleString.contains("event(3, comprise, region, southernmost_county)"));
+        Assert.assertTrue(ruleString.contains("number(10)"));
     }
 
     @Test

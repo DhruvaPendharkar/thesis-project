@@ -97,6 +97,7 @@ lava(lava).
 magma(magma).
 metamorphism(metamorphism).
 mineral(mineral).
+number(three).
 pressure(pressure).
 relationship(relationship).
 rock(rock).

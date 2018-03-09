@@ -96,6 +96,16 @@ half(half).
 majority(majority).
 name(name).
 nation(nation).
+number('16,000').
+number('5,500,000').
+number('7,000,000').
+number(10).
+number(13).
+number(390).
+number(60).
+number(billion).
+number(four).
+number(nine).
 organization(amazon).
 organization(amazonas).
 percent(colombia).

@@ -4,7 +4,9 @@
 _is(computational_complexity_theory, branch).
 _is(computational_problem, task).
 _is(computer, equivalent).
+_is(mathematical_step, algorithm).
 _is(problem, task).
+_is(step, algorithm).
 _is(task, amenable_principle).
 _is(task, principle).
 _mod(computer_science, theoretical).
@@ -15,12 +17,11 @@ _mod(step, mathematical).
 _possess(problem, difficulty).
 _property(branch, in(computer_science)).
 _property(branch, of(theory_of_computation)).
-_property(classify, accord(difficulty)).
+_property(classify, according_to(difficulty)).
 _property(mechanical_application, of(step)).
 _property(relate, to(other)).
 _property(solve, by(computer)).
 _property(solve, by(mechanical_application)).
-_property(step, such(algorithm)).
 _relation(13, 15, _clcomplement).
 _relation(2, 3, _clause).
 _relation(2, 5, _clause).
@@ -44,6 +45,7 @@ event(7, understand, null, problem).
 principle(principle).
 principle(task).
 problem(problem).
+step(algorithm).
 step(step).
 task(computational_problem).
 task(problem).

@@ -32,6 +32,7 @@ _relation(8, 7, _clause).
 _relation(people, 1, _clause).
 chopin(chopin).
 city(city).
+event(1, bear, null, null).
 event(11, bear, null, casimir_pulaski).
 event(3, achieve, maria_curie, international_recognition).
 event(3, achieve, maria_curie, recognition).

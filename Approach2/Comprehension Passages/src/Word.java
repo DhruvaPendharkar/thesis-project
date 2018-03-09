@@ -893,4 +893,9 @@ public class Word {
         }
         return rules;
     }
+
+    public boolean IsNumber() {
+        if(this.getPOSTag().equals("CD")) return true;
+        return false;
+    }
 }

@@ -217,6 +217,22 @@ public class Sentence {
     private List<Rule> GeneratePreProcessRules(List<Word> inputList) {
         List<Rule> rules = new ArrayList<>();
         rules.addAll(GenerateAbbreviationRules(inputList));
+        rules.addAll(GenerateCardinalRules(inputList));
+        return rules;
+    }
+
+    private List<Rule> GenerateCardinalRules(List<Word> inputList) {
+        List<Rule> rules = new ArrayList<>();
+        Word numPredicate = new Word("number", false);
+        for(Word word : inputList){
+            if(word.IsNumber()){
+                List<Literal> bodyList = new ArrayList<>();
+                bodyList.add(new Literal(word));
+                Literal head = new Literal(numPredicate, bodyList);
+                Rule rule = new Rule(head, null, false);
+                rules.add(rule);
+            }
+        }
         return rules;
     }
 

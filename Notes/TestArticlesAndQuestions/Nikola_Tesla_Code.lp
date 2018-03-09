@@ -2,8 +2,7 @@
 %Story%
 %-------------------------------------------------------%
 _abbreviation(ac, alternating_current).
-_birth_date(nikola_tesla, '10_july_1856').
-_death_date(nikola_tesla, '7_january_1943').
+_end_date(nikola_tesla, '7_january_1943').
 _is(nikola_tesla, electrical_engineer).
 _is(nikola_tesla, engineer).
 _is(nikola_tesla, futurist).
@@ -22,11 +21,13 @@ _property(contribution, to(design)).
 _property(design, of(system)).
 _property(know, for(contribution)).
 _relation(futurist, 2, _clause).
+_start_date(nikola_tesla, '10_july_1856').
 contribution(contribution).
 design(design).
 electricity(electricity).
 engineer(engineer).
 engineer(nikola_tesla).
+event(2, know, null, null).
 futurist(futurist).
 futurist(nikola_tesla).
 inventor(inventor).

@@ -83,13 +83,15 @@ public class AmazonRainforestStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(6, ruleString.size());
+        Assert.assertEquals(8, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(square_kilometre, '5,500,000')"));
         Assert.assertTrue(ruleString.contains("_mod(square_kilometre, '7,000,000')"));
         Assert.assertTrue(ruleString.contains("_property(cover, by(rainforest))"));
         Assert.assertTrue(ruleString.contains("_property(cover, of('7,000,000_square_kilometre'))"));
         Assert.assertTrue(ruleString.contains("event(1, encompass, basin, square_kilometre)"));
         Assert.assertTrue(ruleString.contains("event(3, cover, null, square_kilometre)"));
+        Assert.assertTrue(ruleString.contains("number('5,500,000')"));
+        Assert.assertTrue(ruleString.contains("number('7,000,000')"));
     }
 
     @Test
@@ -110,12 +112,13 @@ public class AmazonRainforestStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(5, ruleString.size());
+        Assert.assertEquals(6, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(nation, nine)"));
         Assert.assertTrue(ruleString.contains("_property(belong, to(nine_nation))"));
         Assert.assertTrue(ruleString.contains("_relation(territory, 2, _clause)"));
         Assert.assertTrue(ruleString.contains("event(1, 'include', amazon_rainforest, territory)"));
         Assert.assertTrue(ruleString.contains("event(2, belong, null, null)"));
+        Assert.assertTrue(ruleString.contains("number(nine)"));
     }
 
     @Test
@@ -139,7 +142,7 @@ public class AmazonRainforestStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(19, ruleString.size());
+        Assert.assertEquals(22, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(amount, minor)"));
         Assert.assertTrue(ruleString.contains("_mod(percent, 10)"));
         Assert.assertTrue(ruleString.contains("_mod(percent, 13)"));
@@ -159,6 +162,9 @@ public class AmazonRainforestStoryTest {
         Assert.assertTrue(ruleString.contains("_property(peru, with('13_percent'))"));
         Assert.assertTrue(ruleString.contains("event(2, contain, null, majority)"));
         Assert.assertTrue(ruleString.contains("event(3, follow, null, null)"));
+        Assert.assertTrue(ruleString.contains("number(10)"));
+        Assert.assertTrue(ruleString.contains("number(13)"));
+        Assert.assertTrue(ruleString.contains("number(60)"));
     }
 
     @Test
@@ -179,7 +185,7 @@ public class AmazonRainforestStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(12, ruleString.size());
+        Assert.assertEquals(13, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(word, amazona)"));
         Assert.assertTrue(ruleString.contains("_mod(nation, four)"));
         Assert.assertTrue(ruleString.contains("_possess(they, name)"));
@@ -190,6 +196,7 @@ public class AmazonRainforestStoryTest {
         Assert.assertTrue(ruleString.contains("event(1, contain, null, word)"));
         Assert.assertTrue(ruleString.contains("event(1, contain, state, word)"));
         Assert.assertTrue(ruleString.contains("event(1, contain, state, word_in_name)"));
+        Assert.assertTrue(ruleString.contains("number(four)"));
         Assert.assertTrue(ruleString.contains("organization(amazonas)"));
         Assert.assertTrue(ruleString.contains("word(amazona)"));
     }
@@ -216,7 +223,7 @@ public class AmazonRainforestStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(21, ruleString.size());
+        Assert.assertEquals(24, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(rainforest, remaining)"));
         Assert.assertTrue(ruleString.contains("_mod(species, '16,000')"));
         Assert.assertTrue(ruleString.contains("_mod(tract, largest)"));
@@ -237,6 +244,9 @@ public class AmazonRainforestStoryTest {
         Assert.assertTrue(ruleString.contains("event(1, represent, amazon, half_of_rainforest)"));
         Assert.assertTrue(ruleString.contains("event(3, comprise, amazon, null)"));
         Assert.assertTrue(ruleString.contains("event(5, divide, null, null)"));
+        Assert.assertTrue(ruleString.contains("number('16,000')"));
+        Assert.assertTrue(ruleString.contains("number(390)"));
+        Assert.assertTrue(ruleString.contains("number(billion)"));
         Assert.assertTrue(ruleString.contains("organization(amazon)"));
     }
 }

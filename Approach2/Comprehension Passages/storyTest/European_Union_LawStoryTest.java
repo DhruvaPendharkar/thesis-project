@@ -74,7 +74,7 @@ public class European_Union_LawStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(8, ruleString.size());
+        Assert.assertEquals(9, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(source, primary_law)"));
         Assert.assertTrue(ruleString.contains("_is(source, secondary_law)"));
         Assert.assertTrue(ruleString.contains("_is(source, supplementary_law)"));
@@ -83,6 +83,7 @@ public class European_Union_LawStoryTest {
         Assert.assertTrue(ruleString.contains("source(secondary_law)"));
         Assert.assertTrue(ruleString.contains("source(supplementary_law)"));
         Assert.assertTrue(ruleString.contains("_property(source, of(european_union_law))"));
+        Assert.assertTrue(ruleString.contains("number(three)"));
     }
 
     @Test

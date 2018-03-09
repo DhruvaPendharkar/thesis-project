@@ -25,7 +25,7 @@ _mod(gas, diatomic).
 _mod(gas, odorless).
 _mod(oxygen_gas, diatomic).
 _mod(oxygen_levels, atmospheric).
-_mod(percent, '20.8').
+_mod(percent, 8).
 _mod(temperature, standard).
 _mod(trend, downward).
 _mod(trend, global).
@@ -87,6 +87,9 @@ member(member).
 member(oxygen).
 monitoring(monitoring).
 nonmetal(oxygen).
+number(20).
+number(8).
+number(two).
 oxide(oxide).
 oxygen(oxygen).
 part(part).

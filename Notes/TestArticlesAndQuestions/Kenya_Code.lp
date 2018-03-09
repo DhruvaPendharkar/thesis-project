@@ -13,7 +13,7 @@ _mod(extend, roughly).
 _mod(member, founding).
 _mod(people, million).
 _mod(south_east, further).
-_mod(square_kilometre, 581,309).
+_mod(square_kilometre, '581,309').
 _mod(terrain, diverse).
 _mod(terrain, expansive).
 _possess(kenya, capital).
@@ -66,6 +66,9 @@ nairobi(city).
 nairobi(largest_city).
 nairobi(nairobi).
 north(north).
+number('581,309').
+number(45).
+number(million).
 people(people).
 population(population).
 republic_of_kenya(republic_of_kenya).

@@ -100,6 +100,9 @@ layer(layer).
 means(means).
 meter(meter).
 millimeter(millimeter).
+number(1).
+number(5).
+number(one).
 phylum(coelenterata).
 phylum(ctenophora).
 phylum(phylum).

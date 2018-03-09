@@ -63,6 +63,8 @@ imperial(santa_barbara).
 imperial(ventura).
 kern(kern).
 los_angeles(los_angeles).
+number(10).
+number(eight).
 orange(orange).
 organization(imperial).
 region(region).

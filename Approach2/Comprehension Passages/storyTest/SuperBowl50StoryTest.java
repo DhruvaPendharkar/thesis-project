@@ -83,7 +83,7 @@ public class SuperBowl50StoryTest {
             System.out.println(rule);
         }
 
-        Assert.assertEquals(18, ruleString.size());
+        Assert.assertEquals(19, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(title, third)"));
         Assert.assertTrue(ruleString.contains("_mod(title, super_bowl)"));
         Assert.assertTrue(ruleString.contains("_abbreviation(afc, american_football_conference)"));
@@ -102,6 +102,7 @@ public class SuperBowl50StoryTest {
         Assert.assertTrue(ruleString.contains("event(1, defeat, denver_broncos, carolina_panthers)"));
         Assert.assertTrue(ruleString.contains("event(2, earn, afc, title)"));
         Assert.assertTrue(ruleString.contains("event(2, earn, afc, third_super_bowl_title)"));
+        Assert.assertTrue(ruleString.contains("number('24_10')"));
     }
 
     @Test

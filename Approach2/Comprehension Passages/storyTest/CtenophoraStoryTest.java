@@ -132,7 +132,7 @@ public class CtenophoraStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(8, ruleString.size());
+        Assert.assertEquals(9, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(meter, '1.5')"));
         Assert.assertTrue(ruleString.contains("_mod(millimeter, few)"));
         Assert.assertTrue(ruleString.contains("_mod(species, various)"));
@@ -141,6 +141,7 @@ public class CtenophoraStoryTest {
         Assert.assertTrue(ruleString.contains("_property(range, from(millimeter))"));
         Assert.assertTrue(ruleString.contains("_property(range, to('1.5_meter'))"));
         Assert.assertTrue(ruleString.contains("event(1, range, adult, null)"));
+        Assert.assertTrue(ruleString.contains("number('1.5')"));
     }
 
     @Test
@@ -163,7 +164,7 @@ public class CtenophoraStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(12, ruleString.size());
+        Assert.assertEquals(13, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(cavity, internal)"));
         Assert.assertTrue(ruleString.contains("_mod(layer, one)"));
         Assert.assertTrue(ruleString.contains("_possess(ctenophora, body)"));
@@ -176,6 +177,7 @@ public class CtenophoraStoryTest {
         Assert.assertTrue(ruleString.contains("event(1, consist, body, null)"));
         Assert.assertTrue(ruleString.contains("event(2, line, another, cavity)"));
         Assert.assertTrue(ruleString.contains("event(2, line, another, internal_cavity)"));
+        Assert.assertTrue(ruleString.contains("number(one)"));
     }
 
     @Test
@@ -227,7 +229,7 @@ public class CtenophoraStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(11, ruleString.size());
+        Assert.assertEquals(12, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(phylum, coelenterata)"));
         Assert.assertTrue(ruleString.contains("_mod(phylum, one)"));
         Assert.assertTrue(ruleString.contains("_property(cavity, for(digestion))"));
@@ -239,7 +241,7 @@ public class CtenophoraStoryTest {
         Assert.assertTrue(ruleString.contains("event(1, combine, author, ctenophore)"));
         Assert.assertTrue(ruleString.contains("event(2, rely, group, null)"));
         Assert.assertTrue(ruleString.contains("phylum(coelenterata)"));
-
+        Assert.assertTrue(ruleString.contains("number(one)"));
     }
 
     @Test

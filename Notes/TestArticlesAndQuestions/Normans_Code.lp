@@ -24,9 +24,9 @@ _possess(norman, rollo).
 _property(assimilate, with(population)).
 _property(culture, of(west_francia)).
 _property(descend, from(denmark_iceland)).
-_property(descend, from(raider)).
 _property(descend, from(norway)).
-_property(descend, pirate).
+_property(descend, from(pirate)).
+_property(descend, from(raider)).
 _property(descend, under(leader)).
 _property(descendant, through(generation)).
 _property(emerge, in('the_first_half_of_the_10th_century')).

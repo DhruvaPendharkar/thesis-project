@@ -67,6 +67,8 @@ event(9, carry, chloroplast, like_fatty_acid_synthesis).
 event(9, carry, chloroplast, number_of_functions).
 immune_response(immune_response).
 molecule(molecule).
+number(1).
+number(100).
 oxygen(oxygen).
 photosynthesis(photosynthesis).
 pigment(chlorophyll).

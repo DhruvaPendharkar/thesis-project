@@ -37,7 +37,7 @@ public class OxygenStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(7, ruleString.size());
+        Assert.assertEquals(8, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(oxygen, chemical_element)"));
         Assert.assertTrue(ruleString.contains("_is(oxygen, element)"));
         Assert.assertTrue(ruleString.contains("_mod(atomic_number, 8)"));
@@ -45,6 +45,7 @@ public class OxygenStoryTest {
         Assert.assertTrue(ruleString.contains("_property(element, with('8_atomic_number'))"));
         Assert.assertTrue(ruleString.contains("_property(element, with(symbol_o))"));
         Assert.assertTrue(ruleString.contains("element(oxygen)"));
+        Assert.assertTrue(ruleString.contains("number(8)"));
     }
 
     @Test
@@ -125,7 +126,7 @@ public class OxygenStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(15, ruleString.size());
+        Assert.assertEquals(16, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(dioxygen, gas)"));
         Assert.assertTrue(ruleString.contains("_mod(atom, two)"));
         Assert.assertTrue(ruleString.contains("_mod(gas, colorless)"));
@@ -141,6 +142,7 @@ public class OxygenStoryTest {
         Assert.assertTrue(ruleString.contains("event(2, form, atom, dioxygen)"));
         Assert.assertTrue(ruleString.contains("event(2, form, null, dioxygen)"));
         Assert.assertTrue(ruleString.contains("gas(dioxygen)"));
+        Assert.assertTrue(ruleString.contains("number(two)"));
     }
 
     @Test
@@ -157,7 +159,7 @@ public class OxygenStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(8, ruleString.size());
+        Assert.assertEquals(9, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(oxygen_gas, diatomic)"));
         Assert.assertTrue(ruleString.contains("_mod(percent, '20.8')"));
         Assert.assertTrue(ruleString.contains("_possess(earth, atmosphere)"));
@@ -166,6 +168,7 @@ public class OxygenStoryTest {
         Assert.assertTrue(ruleString.contains("event(1, constitute, diatomic_oxygen_gas, percent_of_atmosphere)"));
         Assert.assertTrue(ruleString.contains("event(1, constitute, oxygen_gas, percent)"));
         Assert.assertTrue(ruleString.contains("event(1, constitute, oxygen_gas, percent_of_atmosphere)"));
+        Assert.assertTrue(ruleString.contains("number('20.8')"));
     }
 
     @Test

@@ -160,7 +160,7 @@ public class CloroplastsStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(9, ruleString.size());
+        Assert.assertEquals(11, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(plant, arabidopsis)"));
         Assert.assertTrue(ruleString.contains("_is(plant, wheat)"));
         Assert.assertTrue(ruleString.contains("_mod(up_to, 100)"));
@@ -168,6 +168,8 @@ public class CloroplastsStoryTest {
         Assert.assertTrue(ruleString.contains("_property(up_to, in(plant))"));
         Assert.assertTrue(ruleString.contains("_property(vary, from(1))"));
         Assert.assertTrue(ruleString.contains("event(1, vary, number_of_chloroplasts, null)"));
+        Assert.assertTrue(ruleString.contains("number(1)"));
+        Assert.assertTrue(ruleString.contains("number(100)"));
         Assert.assertTrue(ruleString.contains("plant(arabidopsis)"));
         Assert.assertTrue(ruleString.contains("plant(wheat)"));
     }
