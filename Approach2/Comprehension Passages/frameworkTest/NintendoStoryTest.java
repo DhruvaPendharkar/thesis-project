@@ -122,7 +122,7 @@ public class NintendoStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(22, ruleString.size());
+        Assert.assertEquals(24, ruleString.size());
         Assert.assertTrue(ruleString.contains("organization(nintendo)"));
         Assert.assertTrue(ruleString.contains("time('march_2016')"));
         Assert.assertTrue(ruleString.contains("event(2, introduce, nintendo, miitomo)"));
@@ -145,6 +145,8 @@ public class NintendoStoryTest {
         Assert.assertTrue(ruleString.contains("_is(personal_information, favorite_movie)"));
         Assert.assertTrue(ruleString.contains("information(movie)"));
         Assert.assertTrue(ruleString.contains("information(favorite_movie)"));
+        Assert.assertTrue(ruleString.contains("month('march_2016', march)"));
+        Assert.assertTrue(ruleString.contains("year('march_2016', 2016)"));
     }
 
     @Test
@@ -195,7 +197,7 @@ public class NintendoStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(10, ruleString.size());
+        Assert.assertEquals(12, ruleString.size());
         Assert.assertTrue(ruleString.contains("organization(nintendo)"));
         Assert.assertTrue(ruleString.contains("time('may_9')"));
         Assert.assertTrue(ruleString.contains("_mod(nintendo, kyoto_based)"));
@@ -206,6 +208,8 @@ public class NintendoStoryTest {
         Assert.assertTrue(ruleString.contains("event(2, end, app_service, null)"));
         Assert.assertTrue(ruleString.contains("event(2, end, free_to_play_app_service, null)"));
         Assert.assertTrue(ruleString.contains("_property(end, on('may_9'))"));
+        Assert.assertTrue(ruleString.contains("month('may_9', may)"));
+        Assert.assertTrue(ruleString.contains("day('may_9', 9)"));
     }
 
     @Test

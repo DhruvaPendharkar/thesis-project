@@ -898,4 +898,48 @@ public class Word {
         if(this.getPOSTag().equals("CD")) return true;
         return false;
     }
+
+    public boolean IsDay() {
+        if(this.IsNumber() && this.getNERTag() == NamedEntityTagger.NamedEntityTags.DATE) {
+            try{
+                int day = Integer.parseInt(this.getWord());
+                if(day > 0 && day < 32) return true;
+            }
+            catch (Exception ex) {
+                return false;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean IsYear() {
+        if(this.IsNumber() && this.getNERTag() == NamedEntityTagger.NamedEntityTags.DATE) {
+            if(this.getWord().length() == 4)
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean IsMonth() {
+        String month = this.getWord().toLowerCase();
+        switch (month){
+            case "jan": case "january":
+            case "feb": case "february":
+            case "mar": case "march":
+            case "apr": case "april":
+            case "may":
+            case "jun": case "june":
+            case "jul": case "july":
+            case "aug": case "august":
+            case "sep": case "sept": case "september":
+            case "oct": case "october":
+            case "nov": case "november":
+            case "dec": case "december":
+                return true;
+        }
+
+        return false;
+    }
 }

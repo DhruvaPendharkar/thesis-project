@@ -127,7 +127,7 @@ public class Martin_LutherStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(12, ruleString.size());
+        Assert.assertEquals(13, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(discussion, academic)"));
         Assert.assertTrue(ruleString.contains("_possess(martin_luther, proposition)"));
         Assert.assertTrue(ruleString.contains("_property(discussion, of(power))"));
@@ -140,6 +140,7 @@ public class Martin_LutherStoryTest {
         Assert.assertTrue(ruleString.contains("event(1, propose, martin_luther, discussion_of_power)"));
         Assert.assertTrue(ruleString.contains("event(1, propose, martin_luther, discussion_of_usefulness)"));
         Assert.assertTrue(ruleString.contains("time(1517)"));
+        Assert.assertTrue(ruleString.contains("year(1517, 1517)"));
     }
 
     @Test
@@ -164,7 +165,7 @@ public class Martin_LutherStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(18, ruleString.size());
+        Assert.assertEquals(20, ruleString.size());
         Assert.assertTrue(ruleString.contains("_possess(martin_luther, excommunication)"));
         Assert.assertTrue(ruleString.contains("_possess(martin_luther, refusal)"));
         Assert.assertTrue(ruleString.contains("_property(demand, of(pope_leo_x))"));
@@ -183,5 +184,7 @@ public class Martin_LutherStoryTest {
         Assert.assertTrue(ruleString.contains("event(2, result, holy_roman_emperor_charles_v, null)"));
         Assert.assertTrue(ruleString.contains("time(1520)"));
         Assert.assertTrue(ruleString.contains("time(1521)"));
+        Assert.assertTrue(ruleString.contains("year(1520, 1520)"));
+        Assert.assertTrue(ruleString.contains("year(1521, 1521)"));
     }
 }

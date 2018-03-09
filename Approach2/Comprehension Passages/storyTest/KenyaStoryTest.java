@@ -166,7 +166,7 @@ public class KenyaStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(12, ruleString.size());
+        Assert.assertEquals(14, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(people, million)"));
         Assert.assertTrue(ruleString.contains("_mod(square_kilometre, '581,309')"));
         Assert.assertTrue(ruleString.contains("_property(have, in('july_2014'))"));
@@ -175,9 +175,11 @@ public class KenyaStoryTest {
         Assert.assertTrue(ruleString.contains("event(1, cover, kenya, square_kilometre)"));
         Assert.assertTrue(ruleString.contains("event(2, have, kenya, population)"));
         Assert.assertTrue(ruleString.contains("event(2, have, kenya, population_of_people)"));
-        Assert.assertTrue(ruleString.contains("time('july_2014')"));
+        Assert.assertTrue(ruleString.contains("month('july_2014', july)"));
         Assert.assertTrue(ruleString.contains("number('581,309')"));
         Assert.assertTrue(ruleString.contains("number(45)"));
         Assert.assertTrue(ruleString.contains("number(million)"));
+        Assert.assertTrue(ruleString.contains("time('july_2014')"));
+        Assert.assertTrue(ruleString.contains("year('july_2014', 2014)"));
     }
 }

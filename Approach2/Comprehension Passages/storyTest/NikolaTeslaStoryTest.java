@@ -39,9 +39,15 @@ public class NikolaTeslaStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(27, ruleString.size());
+        Assert.assertEquals(33, ruleString.size());
         Assert.assertTrue(ruleString.contains("time('10_july_1856')"));
         Assert.assertTrue(ruleString.contains("time('7_january_1943')"));
+        Assert.assertTrue(ruleString.contains("day('10_july_1856', 10)"));
+        Assert.assertTrue(ruleString.contains("month('10_july_1856', july)"));
+        Assert.assertTrue(ruleString.contains("year('10_july_1856', 1856)"));
+        Assert.assertTrue(ruleString.contains("day('7_january_1943', 7)"));
+        Assert.assertTrue(ruleString.contains("month('7_january_1943', january)"));
+        Assert.assertTrue(ruleString.contains("year('7_january_1943', 1943)"));
         Assert.assertTrue(ruleString.contains("_start_date(nikola_tesla, '10_july_1856')"));
         Assert.assertTrue(ruleString.contains("_end_date(nikola_tesla, '7_january_1943')"));
         Assert.assertTrue(ruleString.contains("_abbreviation(ac, alternating_current)"));

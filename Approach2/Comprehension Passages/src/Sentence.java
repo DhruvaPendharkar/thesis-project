@@ -189,12 +189,13 @@ public class Sentence {
                     Word date = Word.CreateCompoundWord(timeWords);
                     date.SetNERTag(NamedEntityTagger.NamedEntityTags.DATE);
                     wordList.add(date);
-                    timeWords = new ArrayList<>();
 
                     List<Literal> terms = new ArrayList<>();
                     terms.add(new Literal(date));
                     Literal head = new Literal(timeWord, terms);
                     rules.add(new Rule(head, null, false));
+                    rules.addAll(GenerateRulesForDateParts(date, timeWords));
+                    timeWords = new ArrayList<>();
                 }
                 wordList.add(word);
             }
@@ -212,6 +213,33 @@ public class Sentence {
         }
 
         return new Pair<>(wordList, rules);
+    }
+
+    private List<Rule> GenerateRulesForDateParts(Word date, List<Word> timeWords) {
+        List<Rule> rules = new ArrayList<>();
+        for(Word timePart : timeWords){
+            Word predicate = new Word("time", false);
+            List<Literal> terms = new ArrayList<>();
+            terms.add(new Literal(date));
+            if(timePart.IsDay()){
+                predicate = new Word("day", false);
+                terms.add(new Literal(timePart));
+            }
+            else if(timePart.IsMonth()){
+                predicate = new Word("month", false);
+                terms.add(new Literal(timePart));
+            }
+            else if(timePart.IsYear()){
+                predicate = new Word("year", false);
+                terms.add(new Literal(timePart));
+            }
+
+            Literal head = new Literal(predicate, terms);
+            Rule rule = new Rule(head, null, false);
+            rules.add(rule);
+        }
+
+        return rules;
     }
 
     private List<Rule> GeneratePreProcessRules(List<Word> inputList) {

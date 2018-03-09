@@ -40,7 +40,7 @@ public class ApolloStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(23, ruleString.size());
+        Assert.assertEquals(25, ruleString.size());
         Assert.assertTrue(ruleString.contains("_abbreviation(nasa, national_aeronautics_and_space_administration)"));
         Assert.assertTrue(ruleString.contains("_is(apollo_program, program)"));
         Assert.assertTrue(ruleString.contains("_is(apollo_program, third_united_states_human_program)"));
@@ -64,6 +64,8 @@ public class ApolloStoryTest {
         Assert.assertTrue(ruleString.contains("program(apollo_program)"));
         Assert.assertTrue(ruleString.contains("program(program)"));
         Assert.assertTrue(ruleString.contains("time('moon_from_1969_to_1972')"));
+        Assert.assertTrue(ruleString.contains("year('moon_from_1969_to_1972', 1969)"));
+        Assert.assertTrue(ruleString.contains("year('moon_from_1969_to_1972', 1972)"));
     }
 
     @Test
@@ -86,7 +88,7 @@ public class ApolloStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(41, ruleString.size());
+        Assert.assertEquals(44, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(american, first)"));
         Assert.assertTrue(ruleString.contains("_mod(conceive, first)"));
         Assert.assertTrue(ruleString.contains("_mod(dedicate, later)"));
@@ -128,6 +130,9 @@ public class ApolloStoryTest {
         Assert.assertTrue(ruleString.contains("organization(congress)"));
         Assert.assertTrue(ruleString.contains("time('may_25_1961')"));
         Assert.assertTrue(ruleString.contains("time(1960)"));
+        Assert.assertTrue(ruleString.contains("month('may_25_1961', may)"));
+        Assert.assertTrue(ruleString.contains("year('may_25_1961', 1961)"));
+        Assert.assertTrue(ruleString.contains("day('may_25_1961', 25)"));
     }
 
     @Test
@@ -144,7 +149,7 @@ public class ApolloStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(7, ruleString.size());
+        Assert.assertEquals(9, ruleString.size());
         Assert.assertTrue(ruleString.contains("_end_date(project_gemini, 1966)"));
         Assert.assertTrue(ruleString.contains("_start_date(project_gemini, 1962)"));
         Assert.assertTrue(ruleString.contains("_mod(project_gemini, two_man)"));
@@ -152,6 +157,8 @@ public class ApolloStoryTest {
         Assert.assertTrue(ruleString.contains("event(2, follow, null, project_mercury)"));
         Assert.assertTrue(ruleString.contains("time(1962)"));
         Assert.assertTrue(ruleString.contains("time(1966)"));
+        Assert.assertTrue(ruleString.contains("year(1962, 1962)"));
+        Assert.assertTrue(ruleString.contains("year(1966, 1966)"));
     }
 
     @Test
@@ -168,10 +175,11 @@ public class ApolloStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(4, ruleString.size());
+        Assert.assertEquals(5, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(flight, first)"));
         Assert.assertTrue(ruleString.contains("_mod(flight, manned)"));
         Assert.assertTrue(ruleString.contains("_property(flight, of(apollo))"));
         Assert.assertTrue(ruleString.contains("time(1968)"));
+        Assert.assertTrue(ruleString.contains("year(1968, 1968)"));
     }
 }
