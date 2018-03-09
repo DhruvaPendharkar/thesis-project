@@ -53,11 +53,6 @@ eg taking down, making up
 So here I guess that the adjectives are already taken care of the only thing 
 that is not is nummod
 
-14. For nummods you need to make another predicate like number(X)
-You can see all the "CD"'s and modify them. Something like there are 
-3000 animals in the zoo. So this can be converted into number(3000), _mod(animal, 3000)
-or basically actually any 'CD'
-
 15. For compound words if you can split things like Mogul_Empire
 and say things like _is(Mogul_Empire, empire).
 This will fail for things like United_States where it might say that
@@ -92,4 +87,10 @@ Sentence 5 in story 6 --> through pistons and turbines
 
 16. Put quotes for atoms with keywords [include] or commas [,]
 ie event(E, 'include', S, O). or _property(population, of('12,345')).
+---- Done ----
+
+14. For nummods you need to make another predicate like number(X)
+You can see all the "CD"'s and modify them. Something like there are 
+3000 animals in the zoo. So this can be converted into number(3000), _mod(animal, 3000)
+or basically actually any 'CD'
 ---- Done ----
