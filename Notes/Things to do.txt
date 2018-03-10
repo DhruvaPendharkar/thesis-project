@@ -2,11 +2,6 @@
 *										Things to do									*
 *****************************************************************************************
 
-3. team(team), branch(branch) ... or basically for X(X)
-Although this is true, is it really a correct assumption and a required fact.
-Test this theory and mostly it just gives no real information although it seems
-a fact. I think this is required for the hypernym relation.
-
 5. Adjectives and Modifiers for _possess(X, P) and _property(X, Y)
 So better answers can be given with the help of adjectives and other modifiers like
 numerical qualifiers so _possess(table, leg), _possess(table, 4_leg) etc.. etc..
@@ -23,11 +18,6 @@ So its only the event id that will keep things sane.
 properties of both the verbs in the co-ordinating conjunctions, should be added
 Actually this relates to all the X and X where X = verb, X = noun
 (Last sentence of story six)
-
-9. Compound Words
-Can you use the compound relations given in the dependencies instead using your own 
-to get a better relation eg Sentence 1 -> Story 6
-Steam_engines are external combustion_engines
 
 10. Using adjectives for prepositions
 I fell into hot water
@@ -49,15 +39,24 @@ eg taking down, making up
 So here I guess that the adjectives are already taken care of the only thing 
 that is not is nummod
 
-15. For compound words if you can split things like Mogul_Empire
-and say things like _is(Mogul_Empire, empire).
-This will fail for things like United_States where it might say that
-_is(United_States, state) but I think that should be ok, idk
+*****************************************************************************************
+*										Good To Have									*
+*****************************************************************************************
+
+9. Compound Words
+Can you use the compound relations given in the dependencies instead using your own 
+to get a better relation eg Sentence 1 -> Story 6
+Steam_engines are external combustion_engines
 
 17. What about a negative sentence atleast cover one sentence like that
 e.g Ramesh did not eat ice-cream on Sunday.
 -event(1, eat, Ramesh, icecream).
 _property(eat, on(sunday)).
+
+15. For compound words if you can split things like Mogul_Empire
+and say things like _is(Mogul_Empire, empire).
+This will fail for things like United_States where it might say that
+_is(United_States, state) but I think that should be ok, idk
 
 *****************************************************************************************
 *										Done											*
@@ -101,3 +100,9 @@ day(19_feb_1990, 19)., month(19_feb_1990, feb)., year(19_feb_1990, 1990).
 e.g Ramesh ate ice-cream on Sunday.
 _property(eat, on, sunday).
 ---- Done ----
+
+3. team(team), branch(branch) ... or basically for X(X)
+Although this is true, is it really a correct assumption and a required fact.
+Test this theory and mostly it just gives no real information although it seems
+a fact. I think this is required for the hypernym relation.
+---- Not Done But No Need To Change ----
