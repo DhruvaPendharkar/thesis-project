@@ -46,7 +46,7 @@ public class RhineStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(17, ruleString.size());
+        Assert.assertEquals(18, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(border, franco_german)"));
         Assert.assertTrue(ruleString.contains("_mod(border, swiss_austrian)"));
         Assert.assertTrue(ruleString.contains("_mod(border, swiss_liechtenstein)"));
@@ -60,6 +60,7 @@ public class RhineStoryTest {
         Assert.assertTrue(ruleString.contains("_property(part, of, border)"));
         Assert.assertTrue(ruleString.contains("_property(part, of, swiss_german)"));
         Assert.assertTrue(ruleString.contains("_property(swiss_canton, of, graubunden)"));
+        Assert.assertTrue(ruleString.contains("event(1, be, null, null)"));
         Assert.assertTrue(ruleString.contains("event(2, begin, rhine, null)"));
         Assert.assertTrue(ruleString.contains("event(2, begin, river, null)"));
         Assert.assertTrue(ruleString.contains("event(3, flow, rhine, null)"));
@@ -85,7 +86,7 @@ public class RhineStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(9, ruleString.size());
+        Assert.assertEquals(10, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(river, rhine)"));
         Assert.assertTrue(ruleString.contains("_mod(city, biggest)"));
         Assert.assertTrue(ruleString.contains("_mod(people, '1,050,000')"));
@@ -93,6 +94,7 @@ public class RhineStoryTest {
         Assert.assertTrue(ruleString.contains("_property(cologne, in, germany)"));
         Assert.assertTrue(ruleString.contains("_property(cologne, with, population)"));
         Assert.assertTrue(ruleString.contains("_property(population, of, '1,050,000_people')"));
+        Assert.assertTrue(ruleString.contains("event(1, be, null, null)"));
         Assert.assertTrue(ruleString.contains("river(rhine)"));
         Assert.assertTrue(ruleString.contains("number('1,050,000')"));
     }

@@ -53,7 +53,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(163, ruleString.size());
+        Assert.assertEquals(168, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -84,7 +84,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(55, ruleString.size());
+        Assert.assertEquals(59, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -119,7 +119,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(123, ruleString.size());
+        Assert.assertEquals(126, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -152,7 +152,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(95, ruleString.size());
+        Assert.assertEquals(99, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -215,7 +215,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(49, ruleString.size());
+        Assert.assertEquals(56, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -250,7 +250,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(111, ruleString.size());
+        Assert.assertEquals(116, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -283,7 +283,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(56, ruleString.size());
+        Assert.assertEquals(61, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -315,7 +315,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(64, ruleString.size());
+        Assert.assertEquals(66, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -351,7 +351,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(103, ruleString.size());
+        Assert.assertEquals(113, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -384,7 +384,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(67, ruleString.size());
+        Assert.assertEquals(69, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -417,7 +417,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(79, ruleString.size());
+        Assert.assertEquals(83, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -451,7 +451,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(92, ruleString.size());
+        Assert.assertEquals(94, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -480,7 +480,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(44, ruleString.size());
+        Assert.assertEquals(45, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -514,7 +514,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(80, ruleString.size());
+        Assert.assertEquals(82, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -547,7 +547,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(98, ruleString.size());
+        Assert.assertEquals(103, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -579,7 +579,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(58, ruleString.size());
+        Assert.assertEquals(61, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -611,7 +611,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(73, ruleString.size());
+        Assert.assertEquals(78, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -642,7 +642,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(73, ruleString.size());
+        Assert.assertEquals(80, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -676,7 +676,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(83, ruleString.size());
+        Assert.assertEquals(87, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");
@@ -708,7 +708,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(57, ruleString.size());
+        Assert.assertEquals(62, ruleString.size());
 
         System.out.println("%%-------------------------------------------------------%%");
         System.out.println("%%Ontology%%");

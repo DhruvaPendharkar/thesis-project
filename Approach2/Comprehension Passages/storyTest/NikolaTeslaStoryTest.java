@@ -39,7 +39,7 @@ public class NikolaTeslaStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(33, ruleString.size());
+        Assert.assertEquals(34, ruleString.size());
         Assert.assertTrue(ruleString.contains("time('10_july_1856')"));
         Assert.assertTrue(ruleString.contains("time('7_january_1943')"));
         Assert.assertTrue(ruleString.contains("day('10_july_1856', 10)"));
@@ -73,6 +73,7 @@ public class NikolaTeslaStoryTest {
         Assert.assertTrue(ruleString.contains("_property(design, of, system)"));
         Assert.assertTrue(ruleString.contains("_mod(system, modern)"));
         Assert.assertTrue(ruleString.contains("_mod(system, alternating_current)"));
+        Assert.assertTrue(ruleString.contains("event(1, be, null, null)"));
         Assert.assertTrue(ruleString.contains("event(2, know, null, null)"));
     }
 }

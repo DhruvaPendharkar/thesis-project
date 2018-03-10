@@ -43,7 +43,7 @@ public class KenyaStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(9, ruleString.size());
+        Assert.assertEquals(10, ruleString.size());
         Assert.assertTrue(ruleString.contains("_abbreviation(eac, east_african_community)"));
         Assert.assertTrue(ruleString.contains("_is(kenya, country)"));
         Assert.assertTrue(ruleString.contains("_is(kenya, founding_member)"));
@@ -52,6 +52,7 @@ public class KenyaStoryTest {
         Assert.assertTrue(ruleString.contains("_property(country, in, africa)"));
         Assert.assertTrue(ruleString.contains("_property(member, of, east_african_community)"));
         Assert.assertTrue(ruleString.contains("country(kenya)"));
+        Assert.assertTrue(ruleString.contains("event(1, be, null, null)"));
         Assert.assertTrue(ruleString.contains("member(kenya)"));
     }
 

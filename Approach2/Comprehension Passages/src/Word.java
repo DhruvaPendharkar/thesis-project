@@ -467,7 +467,7 @@ public class Word {
                 }
             }
 
-            if(subjects.size() == 0 && modifiers.size() == 0 && !this.getLemma().equals("be")){
+            if(subjects.size() == 0 && modifiers.size() == 0){
                 List<Literal> bodyList = new ArrayList<>();
                 bodyList.add(new Literal(new Word(String.valueOf(this.id), false)));
                 bodyList.add(new Literal(new Word(this.lemma, false)));

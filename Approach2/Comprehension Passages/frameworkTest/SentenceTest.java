@@ -49,7 +49,8 @@ class SentenceTest {
         List<Rule> rules = sentence.GenerateRules();
         HashSet<String> ruleString = new HashSet<>();
         for(Rule rule : rules) ruleString.add(rule.toString());
-        Assert.assertEquals(5, ruleString.size());
+        Assert.assertEquals(6, ruleString.size());
+        Assert.assertTrue(ruleString.contains("event(1, be, null, null)"));
         Assert.assertTrue(ruleString.contains("event(3, live, charlie, null)"));
         Assert.assertTrue(ruleString.contains("event(2, bear, null, charlie)"));
         Assert.assertTrue(ruleString.contains("_relation(3, 2, _clause)"));

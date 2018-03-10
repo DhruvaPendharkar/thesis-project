@@ -39,7 +39,7 @@ public class WarsawStoryTest {
             ruleString.add(rule.toString());
         }
 
-        Assert.assertEquals(17, ruleString.size());
+        Assert.assertEquals(19, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(people, one_of_the_most_famous)"));
         Assert.assertTrue(ruleString.contains("_mod(recognition, international)"));
         Assert.assertTrue(ruleString.contains("_mod(prize, nobel)"));
@@ -55,8 +55,10 @@ public class WarsawStoryTest {
         Assert.assertTrue(ruleString.contains("_relation(3, recipient, _conj)"));
         Assert.assertTrue(ruleString.contains("_relation(people, 1, _clause)"));
         Assert.assertTrue(ruleString.contains("event(1, bear, null, null)"));
+        Assert.assertTrue(ruleString.contains("event(2, be, null, null)"));
         Assert.assertTrue(ruleString.contains("event(3, achieve, maria_curie, recognition)"));
         Assert.assertTrue(ruleString.contains("event(3, achieve, maria_curie, international_recognition)"));
+        Assert.assertTrue(ruleString.contains("event(4, be, null, null)"));
     }
 
     @Test
@@ -95,13 +97,15 @@ public class WarsawStoryTest {
             System.out.println(rule);
         }
 
-        Assert.assertEquals(10, ruleString.size());
+        Assert.assertEquals(12, ruleString.size());
         Assert.assertTrue(ruleString.contains("event(2, bear, null, chopin)"));
         Assert.assertTrue(ruleString.contains("_property(2, bear, in, village)"));
         Assert.assertTrue(ruleString.contains("_property(2, bear, about, '60_km')"));
         Assert.assertTrue(ruleString.contains("_property(village, of, zelazowa_wola)"));
         Assert.assertTrue(ruleString.contains("_property('60_km', from, warsaw)"));
+        Assert.assertTrue(ruleString.contains("event(1, be, null, null)"));
         Assert.assertTrue(ruleString.contains("event(3, move, chopin, null)"));
+        Assert.assertTrue(ruleString.contains("event(4, be, null, null)"));
         Assert.assertTrue(ruleString.contains("_relation(3, 2, _clause)"));
         Assert.assertTrue(ruleString.contains("_property(3, move, to, city)"));
         Assert.assertTrue(ruleString.contains("_property(city, with, family)"));
@@ -122,7 +126,7 @@ public class WarsawStoryTest {
             System.out.println(rule);
         }
 
-        Assert.assertEquals(11, ruleString.size());
+        Assert.assertEquals(12, ruleString.size());
         Assert.assertTrue(ruleString.contains("time(1745)"));
         Assert.assertTrue(ruleString.contains("_mod(war, american)"));
         Assert.assertTrue(ruleString.contains("_mod(war, revolutionary)"));
@@ -133,6 +137,7 @@ public class WarsawStoryTest {
         Assert.assertTrue(ruleString.contains("_is(casimir_pulaski, hero)"));
         Assert.assertTrue(ruleString.contains("general(casimir_pulaski)"));
         Assert.assertTrue(ruleString.contains("hero(casimir_pulaski)"));
+        Assert.assertTrue(ruleString.contains("event(1, be, null, null)"));
         Assert.assertTrue(ruleString.contains("event(2, bear, null, casimir_pulaski)"));
     }
 }

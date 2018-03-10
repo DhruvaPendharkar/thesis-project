@@ -38,7 +38,7 @@ public class SteamEngineStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(9, ruleString.size());
+        Assert.assertEquals(11, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(combustion_engines, external)"));
         Assert.assertTrue(ruleString.contains("_is(steam_engines, combustion_engines)"));
         Assert.assertTrue(ruleString.contains("_is(steam_engines, external_combustion_engines)"));
@@ -48,6 +48,8 @@ public class SteamEngineStoryTest {
         Assert.assertTrue(ruleString.contains("separate(fluid)"));
         Assert.assertTrue(ruleString.contains("_is(working_fluid, separate)"));
         Assert.assertTrue(ruleString.contains("separate(working_fluid)"));
+        Assert.assertTrue(ruleString.contains("event(1, be, null, null)"));
+        Assert.assertTrue(ruleString.contains("event(3, be, null, null)"));
     }
 
     @Test
@@ -65,7 +67,7 @@ public class SteamEngineStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(20, ruleString.size());
+        Assert.assertEquals(21, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(non_combustion_source, energy)"));
         Assert.assertTrue(ruleString.contains("_is(non_combustion_source, geothermal_energy)"));
         Assert.assertTrue(ruleString.contains("_is(non_combustion_source, nuclear_power)"));
@@ -86,6 +88,7 @@ public class SteamEngineStoryTest {
         Assert.assertTrue(ruleString.contains("source(nuclear_power)"));
         Assert.assertTrue(ruleString.contains("source(power)"));
         Assert.assertTrue(ruleString.contains("source(solar_power)"));
+        Assert.assertTrue(ruleString.contains("event(1, be, null, null)"));
     }
 
     @Test
@@ -102,13 +105,14 @@ public class SteamEngineStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(7, ruleString.size());
+        Assert.assertEquals(8, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(cycle, ideal)"));
         Assert.assertTrue(ruleString.contains("_mod(cycle, thermodynamic)"));
         Assert.assertTrue(ruleString.contains("_relation(cycle, 1, _clause)"));
         Assert.assertTrue(ruleString.contains("event(1, use, null, null)"));
         Assert.assertTrue(ruleString.contains("_relation(1, 2, _clcomplement)"));
         Assert.assertTrue(ruleString.contains("event(2, analyze, null, process)"));
+        Assert.assertTrue(ruleString.contains("event(3, be, null, null)"));
         Assert.assertTrue(ruleString.contains("_mod(cycle, rankine)"));
     }
 
@@ -126,8 +130,9 @@ public class SteamEngineStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(9, ruleString.size());
+        Assert.assertEquals(10, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(cycle, rankine)"));
+        Assert.assertTrue(ruleString.contains("event(1, be, null, null)"));
         Assert.assertTrue(ruleString.contains("event(2, heat, water, null)"));
         Assert.assertTrue(ruleString.contains("_property(2, heat, in, cycle)"));
         Assert.assertTrue(ruleString.contains("_relation(2, 3, _conj)"));
@@ -151,8 +156,9 @@ public class SteamEngineStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(7, ruleString.size());
+        Assert.assertEquals(8, ruleString.size());
         Assert.assertTrue(ruleString.contains("event(1, expand, null, null)"));
+        Assert.assertTrue(ruleString.contains("event(2, be, null, null)"));
         Assert.assertTrue(ruleString.contains("_mod(expand, when)"));
         Assert.assertTrue(ruleString.contains("_property(1, expand, through, piston)"));
         Assert.assertTrue(ruleString.contains("_property(1, expand, through, turbine)"));
@@ -175,10 +181,11 @@ public class SteamEngineStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(6, ruleString.size());
+        Assert.assertEquals(7, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(steam, reduced_pressure)"));
         Assert.assertTrue(ruleString.contains("_is(steam, condensed)"));
         Assert.assertTrue(ruleString.contains("_is(reduced_pressure_steam, condensed)"));
+        Assert.assertTrue(ruleString.contains("event(1, be, null, null)"));
         Assert.assertTrue(ruleString.contains("event(2, pump, steam, null)"));
         Assert.assertTrue(ruleString.contains("event(2, pump, reduced_pressure_steam, null)"));
         Assert.assertTrue(ruleString.contains("_property(2, pump, into, boiler)"));

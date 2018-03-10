@@ -149,7 +149,7 @@ public class Southern_CaliforniaStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(7, ruleString.size());
+        Assert.assertEquals(8, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(southern_california, center)"));
         Assert.assertTrue(ruleString.contains("_is(southern_california, major_economic_center)"));
         Assert.assertTrue(ruleString.contains("_mod(center, economic)"));
@@ -157,5 +157,6 @@ public class Southern_CaliforniaStoryTest {
         Assert.assertTrue(ruleString.contains("_property(center, for, state_of_california)"));
         Assert.assertTrue(ruleString.contains("_property(center, for, united_states)"));
         Assert.assertTrue(ruleString.contains("center(southern_california)"));
+        Assert.assertTrue(ruleString.contains("event(1, be, null, null)"));
     }
 }

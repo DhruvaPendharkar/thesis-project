@@ -72,7 +72,7 @@ public class GenghisKhanStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(14, ruleString.size());
+        Assert.assertEquals(15, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(invasion, mongol)"));
         Assert.assertTrue(ruleString.contains("_property(conquest, of, most)"));
         Assert.assertTrue(ruleString.contains("_property(most, of, eurasia)"));
@@ -82,6 +82,7 @@ public class GenghisKhanStoryTest {
         Assert.assertTrue(ruleString.contains("_relation(4, 1, _clause)"));
         Assert.assertTrue(ruleString.contains("_relation(4, 3, _clause)"));
         Assert.assertTrue(ruleString.contains("event(1, found, null, mongol_empire)"));
+        Assert.assertTrue(ruleString.contains("event(2, be, null, null)"));
         Assert.assertTrue(ruleString.contains("event(3, proclaim, null, null)"));
         Assert.assertTrue(ruleString.contains("event(4, start, genghis_khan, invasion)"));
         Assert.assertTrue(ruleString.contains("event(4, start, genghis_khan, mongol_invasion)"));

@@ -41,7 +41,7 @@ public class ComputationalComplexityStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(18, ruleString.size());
+        Assert.assertEquals(19, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(computational_complexity_theory, branch)"));
         Assert.assertTrue(ruleString.contains("_mod(computer_science, theoretical)"));
         Assert.assertTrue(ruleString.contains("_mod(difficulty, inherent)"));
@@ -55,6 +55,7 @@ public class ComputationalComplexityStoryTest {
         Assert.assertTrue(ruleString.contains("_relation(2, 5, _clause)"));
         Assert.assertTrue(ruleString.contains("_relation(3, 5, _conj)"));
         Assert.assertTrue(ruleString.contains("branch(computational_complexity_theory)"));
+        Assert.assertTrue(ruleString.contains("event(1, be, null, null)"));
         Assert.assertTrue(ruleString.contains("event(2, focus, branch, null)"));
         Assert.assertTrue(ruleString.contains("event(3, classify, null, computational_problem)"));
         Assert.assertTrue(ruleString.contains("event(3, classify, null, problem)"));
@@ -80,7 +81,7 @@ public class ComputationalComplexityStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(21, ruleString.size());
+        Assert.assertEquals(27, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(computational_problem, task)"));
         Assert.assertTrue(ruleString.contains("_is(mathematical_step, algorithm)"));
         Assert.assertTrue(ruleString.contains("_is(problem, task)"));
@@ -96,9 +97,15 @@ public class ComputationalComplexityStoryTest {
         Assert.assertTrue(ruleString.contains("_relation(8, 10, _clcomplement)"));
         Assert.assertTrue(ruleString.contains("equivalent(task)"));
         Assert.assertTrue(ruleString.contains("event(10, solve, null, problem)"));
+        Assert.assertTrue(ruleString.contains("event(1, be, null, null)"));
         Assert.assertTrue(ruleString.contains("event(2, understand, null, problem)"));
+        Assert.assertTrue(ruleString.contains("event(3, be, null, null)"));
+        Assert.assertTrue(ruleString.contains("event(4, be, null, null)"));
+        Assert.assertTrue(ruleString.contains("event(5, be, null, null)"));
         Assert.assertTrue(ruleString.contains("event(6, solve, null, null)"));
+        Assert.assertTrue(ruleString.contains("event(7, be, null, null)"));
         Assert.assertTrue(ruleString.contains("event(8, state, null, null)"));
+        Assert.assertTrue(ruleString.contains("event(9, be, null, null)"));
         Assert.assertTrue(ruleString.contains("step(algorithm)"));
         Assert.assertTrue(ruleString.contains("task(computational_problem)"));
         Assert.assertTrue(ruleString.contains("task(problem)"));

@@ -39,7 +39,7 @@ public class NormansStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(11, ruleString.size());
+        Assert.assertEquals(13, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(norman, people)"));
         Assert.assertTrue(ruleString.contains("_is(normandy, region)"));
         Assert.assertTrue(ruleString.contains("_mod(century, '10th')"));
@@ -50,7 +50,9 @@ public class NormansStoryTest {
         Assert.assertTrue(ruleString.contains("_possess(norman, name)"));
         Assert.assertTrue(ruleString.contains("people(norman)"));
         Assert.assertTrue(ruleString.contains("region(normandy)"));
+        Assert.assertTrue(ruleString.contains("event(1, be, null, null)"));
         Assert.assertTrue(ruleString.contains("event(2, give, people, name)"));
+        Assert.assertTrue(ruleString.contains("event(3, be, null, null)"));
     }
 
     @Test

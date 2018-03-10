@@ -42,7 +42,7 @@ public class CtenophoraStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(10, ruleString.size());
+        Assert.assertEquals(11, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(ctenophora, phylum)"));
         Assert.assertTrue(ruleString.contains("_mod(know, commonly)"));
         Assert.assertTrue(ruleString.contains("_mod(live, worldwide)"));
@@ -51,6 +51,7 @@ public class CtenophoraStoryTest {
         Assert.assertTrue(ruleString.contains("_property(phylum, of, animal)"));
         Assert.assertTrue(ruleString.contains("_relation(ctenophora, 1, _clause)"));
         Assert.assertTrue(ruleString.contains("event(1, know, null, null)"));
+        Assert.assertTrue(ruleString.contains("event(2, be, null, null)"));
         Assert.assertTrue(ruleString.contains("event(3, live, animal, null)"));
         Assert.assertTrue(ruleString.contains("phylum(ctenophora)"));
     }
@@ -104,12 +105,13 @@ public class CtenophoraStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(7, ruleString.size());
+        Assert.assertEquals(8, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(ctenophora, animal)"));
         Assert.assertTrue(ruleString.contains("_is(ctenophora, largest_animal)"));
         Assert.assertTrue(ruleString.contains("_mod(animal, largest)"));
         Assert.assertTrue(ruleString.contains("_property(2, swim, by_means_of, cilium)"));
         Assert.assertTrue(ruleString.contains("animal(ctenophora)"));
+        Assert.assertTrue(ruleString.contains("event(1, be, null, null)"));
         Assert.assertTrue(ruleString.contains("event(2, swim, animal, null)"));
         Assert.assertTrue(ruleString.contains("event(2, swim, largest_animal, null)"));
     }
@@ -200,13 +202,15 @@ public class CtenophoraStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(6, ruleString.size());
+        Assert.assertEquals(8, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(layer, one_cell_deep)"));
         Assert.assertTrue(ruleString.contains("_is(layer, only_one_cell_deep)"));
         Assert.assertTrue(ruleString.contains("_is(layer, two_cells_deep)"));
         Assert.assertTrue(ruleString.contains("_property(layer, in, cnidarian)"));
         Assert.assertTrue(ruleString.contains("_property(layer, of, mass_of_jelly)"));
         Assert.assertTrue(ruleString.contains("_property(two_cells_deep, in, ctenophore)"));
+        Assert.assertTrue(ruleString.contains("event(1, be, null, null)"));
+        Assert.assertTrue(ruleString.contains("event(2, be, null, null)"));
     }
 
     @Test

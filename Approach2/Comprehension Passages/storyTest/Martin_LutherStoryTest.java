@@ -96,7 +96,7 @@ public class Martin_LutherStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(8, ruleString.size());
+        Assert.assertEquals(9, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(dispute, strongly)"));
         Assert.assertTrue(ruleString.contains("_possess(god, punishment)"));
         Assert.assertTrue(ruleString.contains("_property(freedom, from, punishment)"));
@@ -104,6 +104,7 @@ public class Martin_LutherStoryTest {
         Assert.assertTrue(ruleString.contains("_property(3, purchase, with, money)"));
         Assert.assertTrue(ruleString.contains("_relation(1, 3, _clcomplement)"));
         Assert.assertTrue(ruleString.contains("event(1, dispute, martin_luther, claim)"));
+        Assert.assertTrue(ruleString.contains("event(2, be, null, null)"));
         Assert.assertTrue(ruleString.contains("event(3, purchase, null, freedom)"));
     }
 

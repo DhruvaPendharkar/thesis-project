@@ -88,10 +88,11 @@ public class ABCStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(5, ruleString.size());
+        Assert.assertEquals(6, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(network, part)"));
         Assert.assertTrue(ruleString.contains("_mod(network, the_big_three)"));
         Assert.assertTrue(ruleString.contains("_property(part, of, network)"));
+        Assert.assertTrue(ruleString.contains("event(1, be, null, null)"));
         Assert.assertTrue(ruleString.contains("organization(abc)"));
         Assert.assertTrue(ruleString.contains("part(network)"));
     }
@@ -116,7 +117,7 @@ public class ABCStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(12, ruleString.size());
+        Assert.assertEquals(13, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(office, additional)"));
         Assert.assertTrue(ruleString.contains("_mod(office, major)"));
         Assert.assertTrue(ruleString.contains("_property(columbus_avenue, in, manhattan)"));
@@ -128,6 +129,7 @@ public class ABCStoryTest {
         Assert.assertTrue(ruleString.contains("_property(2, headquarter, on, 'west_66th_street')"));
         Assert.assertTrue(ruleString.contains("_property(2, headquarter, on, columbus_avenue)"));
         Assert.assertTrue(ruleString.contains("_property(2, headquarter, on, facility)"));
+        Assert.assertTrue(ruleString.contains("event(1, be, null, null)"));
         Assert.assertTrue(ruleString.contains("event(2, headquarter, null, network)"));
     }
 }

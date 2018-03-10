@@ -40,7 +40,7 @@ public class ApolloStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(25, ruleString.size());
+        Assert.assertEquals(26, ruleString.size());
         Assert.assertTrue(ruleString.contains("_abbreviation(nasa, national_aeronautics_and_space_administration)"));
         Assert.assertTrue(ruleString.contains("_is(apollo_program, program)"));
         Assert.assertTrue(ruleString.contains("_is(apollo_program, third_united_states_human_program)"));
@@ -58,6 +58,7 @@ public class ApolloStoryTest {
         Assert.assertTrue(ruleString.contains("_relation(program, 1, _clause)"));
         Assert.assertTrue(ruleString.contains("_relation(program, 3, _clause)"));
         Assert.assertTrue(ruleString.contains("event(1, know, null, null)"));
+        Assert.assertTrue(ruleString.contains("event(2, be, null, null)"));
         Assert.assertTrue(ruleString.contains("event(3, carry, null, null)"));
         Assert.assertTrue(ruleString.contains("event(4, accomplish, national_aeronautics_and_space_administration, null)"));
         Assert.assertTrue(ruleString.contains("organization(nasa)"));
@@ -88,7 +89,7 @@ public class ApolloStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(44, ruleString.size());
+        Assert.assertEquals(45, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(american, first)"));
         Assert.assertTrue(ruleString.contains("_mod(conceive, first)"));
         Assert.assertTrue(ruleString.contains("_mod(dedicate, later)"));
@@ -122,6 +123,7 @@ public class ApolloStoryTest {
         Assert.assertTrue(ruleString.contains("event(3, put, one_man_project_mercury, first_american)"));
         Assert.assertTrue(ruleString.contains("event(3, put, project_mercury, american)"));
         Assert.assertTrue(ruleString.contains("event(3, put, project_mercury, first_american)"));
+        Assert.assertTrue(ruleString.contains("event(4, be, null, null)"));
         Assert.assertTrue(ruleString.contains("event(5, dedicate, null, apollo)"));
         Assert.assertTrue(ruleString.contains("event(6, land, null, man)"));
         Assert.assertTrue(ruleString.contains("event(6, land, null, man_on_moon)"));
@@ -149,11 +151,12 @@ public class ApolloStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(9, ruleString.size());
+        Assert.assertEquals(10, ruleString.size());
         Assert.assertTrue(ruleString.contains("_end_date(project_gemini, 1966)"));
         Assert.assertTrue(ruleString.contains("_start_date(project_gemini, 1962)"));
         Assert.assertTrue(ruleString.contains("_mod(project_gemini, two_man)"));
         Assert.assertTrue(ruleString.contains("_property(2, follow, by, project_gemini)"));
+        Assert.assertTrue(ruleString.contains("event(1, be, null, null)"));
         Assert.assertTrue(ruleString.contains("event(2, follow, null, project_mercury)"));
         Assert.assertTrue(ruleString.contains("time(1962)"));
         Assert.assertTrue(ruleString.contains("time(1966)"));
@@ -175,10 +178,11 @@ public class ApolloStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(5, ruleString.size());
+        Assert.assertEquals(6, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(flight, first)"));
         Assert.assertTrue(ruleString.contains("_mod(flight, manned)"));
         Assert.assertTrue(ruleString.contains("_property(flight, of, apollo)"));
+        Assert.assertTrue(ruleString.contains("event(1, be, null, null)"));
         Assert.assertTrue(ruleString.contains("time(1968)"));
         Assert.assertTrue(ruleString.contains("year(1968, 1968)"));
     }
