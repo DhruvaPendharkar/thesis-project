@@ -39,6 +39,9 @@ eg taking down, making up
 So here I guess that the adjectives are already taken care of the only thing 
 that is not is nummod
 
+18. Fix the disambiguation code
+Change the disambiguation code to not have a weak exception
+
 *****************************************************************************************
 *										Good To Have									*
 *****************************************************************************************
