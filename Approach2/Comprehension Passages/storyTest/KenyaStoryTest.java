@@ -57,7 +57,7 @@ public class KenyaStoryTest {
 
     @Test
     // Kenya's capital and largest city is Nairobi.
-    void TestSentenceTwo() {
+    void TestSentenceTwo_Failed() {
         String content = "Kenya's capital and largest city is Nairobi.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
@@ -87,7 +87,7 @@ public class KenyaStoryTest {
     // Kenya's territory lies on the equator and overlies the East_African_Rift covering a diverse and expansive
     // terrain that extends roughly from Lake_Victoria to Lake_Turkana, which was formerly called as Lake_Rudolf, and
     // further south-east to the Indian_Ocean.
-    void TestSentenceThree() {
+    void TestSentenceThree_Failed() {
         String content = "Kenya's territory lies on the equator and overlies the East_African_Rift covering a diverse " +
         "and expansive terrain that extends roughly from Lake_Victoria to Lake_Turkana, which was formerly called as " +
         "Lake_Rudolf, and further south-east to the Indian_Ocean.";
@@ -127,7 +127,7 @@ public class KenyaStoryTest {
     @Test
     // Kenya is bordered by Tanzania to the south, Uganda to the west, South_Sudan to the north-west, Ethiopia to the
     // north and Somalia to the north-east.
-    void TestSentenceFour() {
+    void TestSentenceFour_Failed() {
         String content = "Kenya is bordered by Tanzania to the south, Uganda to the west, South_Sudan to the north-west, " +
         "Ethiopia to the north, and Somalia to the north-east.";
         Sentence sentence = Sentence.ParseSentence(content);

@@ -64,7 +64,7 @@ public class Southern_CaliforniaStoryTest {
 
     @Test
     // Southern_California is, traditionally described as "eight_counties", based on demographics and economic ties.
-    void TestSentenceTwo() {
+    void TestSentenceTwo_Failed() {
         String content = "Southern_California is, traditionally described as \"eight_counties\", based on demographics " +
         "and economic ties.";
         Sentence sentence = Sentence.ParseSentence(content);
@@ -87,7 +87,7 @@ public class Southern_CaliforniaStoryTest {
     @Test
     // The eight counties are Imperial, Los_Angeles, Orange, Riverside, San_Bernardino, San_Diego, Santa_Barbara,
     // and Ventura.
-    void TestSentenceThree() {
+    void TestSentenceThree_Failed() {
         String content = "The eight counties are Imperial, Los_Angeles, Orange, Riverside, San_Bernardino, San_Diego, " +
         "Santa_Barbara, and Ventura.";
         Sentence sentence = Sentence.ParseSentence(content);
@@ -110,7 +110,7 @@ public class Southern_CaliforniaStoryTest {
     @Test
     // The more extensive 10-county definition, including Kern and San_Luis_Obispo counties, is also used based on
     // historical political divisions.
-    void TestSentenceFour() {
+    void TestSentenceFour_Failed() {
         String content = "The more extensive 10-county definition, including Kern and San_Luis_Obispo counties, " +
         "is also used based on historical political divisions.";
         Sentence sentence = Sentence.ParseSentence(content);

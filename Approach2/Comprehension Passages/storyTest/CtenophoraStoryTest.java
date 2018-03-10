@@ -57,7 +57,7 @@ public class CtenophoraStoryTest {
 
     @Test
     // Ctenophora's most distinctive feature is the combs, groups of cilia which the Ctenophora use for swimming.
-    void TestSentenceTwo() {
+    void TestSentenceTwo_Failed() {
         String content = "Ctenophora's most distinctive feature is the combs, groups of cilia, which the Ctenophora " +
         "use for swimming.";
         Sentence sentence = Sentence.ParseSentence(content);

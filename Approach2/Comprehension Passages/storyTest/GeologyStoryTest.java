@@ -25,7 +25,7 @@ public class GeologyStoryTest {
 
     @Test
     // Geology has three major types of rocks namely, igneous, sedimentary, and metamorphic.
-    void TestSentenceOne() {
+    void TestSentenceOne_Failed() {
         String content = "Geology has three major types of rocks namely, igneous, sedimentary, and metamorphic.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
@@ -113,7 +113,7 @@ public class GeologyStoryTest {
     // This rock can be weathered and eroded, and then redeposited and lithified into a sedimentary rock, or be turned
     // into a metamorphic rock due to heat and pressure that change the mineral content of the rock which gives it a
     // characteristic fabric.
-    void TestSentenceFour() {
+    void TestSentenceFour_Failed() {
         String content = "This rock can be weathered and eroded, and then redeposited and lithified into a sedimentary " +
         "rock, or be turned into a metamorphic rock due to heat and pressure that change the mineral content of the rock " +
         "which gives the rock a characteristic fabric.";
@@ -137,7 +137,7 @@ public class GeologyStoryTest {
     @Test
     // The sedimentary rock can then be subsequently turned into a metamorphic rock due to heat and pressure and is
     // then weathered, eroded, deposited, and lithified, ultimately becoming a sedimentary rock.
-    void TestSentenceFive() {
+    void TestSentenceFive_Failed() {
         String content = "The sedimentary rock can then be subsequently turned into a metamorphic rock due to heat and " +
         "pressure and is then weathered, eroded, deposited, and lithified, ultimately becoming a sedimentary rock.";
         Sentence sentence = Sentence.ParseSentence(content);

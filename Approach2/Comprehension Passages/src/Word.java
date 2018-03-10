@@ -247,6 +247,9 @@ public class Word {
         for(Word modifier : modifiers) {
             Literal concept = new Literal(this);
             List<Literal> bodyList = new ArrayList<>();
+            if(this.id.length() != 0){
+                bodyList.add(new Literal(new Word(this.id, false)));
+            }
             bodyList.add(concept);
             bodyList.add(new Literal(new Word("by", false)));
             bodyList.add(new Literal(modifier));

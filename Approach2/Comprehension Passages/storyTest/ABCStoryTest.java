@@ -56,7 +56,7 @@ public class ABCStoryTest {
         Assert.assertTrue(ruleString.contains("_possess(network, logo)"));
         Assert.assertTrue(ruleString.contains("_property(division, of, the_walt_disney_company)"));
         Assert.assertTrue(ruleString.contains("_property(logo, as, abc)"));
-        Assert.assertTrue(ruleString.contains("_property(own, by, disney_abc_television_group)"));
+        Assert.assertTrue(ruleString.contains("_property(4, own, by, disney_abc_television_group)"));
         Assert.assertTrue(ruleString.contains("_property(1, stylize, in, logo)"));
         Assert.assertTrue(ruleString.contains("_property(1, stylize, since, 1957)"));
         Assert.assertTrue(ruleString.contains("_property(subsidiary, of, division)"));

@@ -26,7 +26,7 @@ public class ImmuneSystemStoryTest {
     @Test
     // The immune_system is a system of many biological structures and processes within an organism that protects
     // against disease.
-    void TestSentenceOne() {
+    void TestSentenceOne_Failed() {
         String content = "The immune_system is a system of many biological structures and processes within an organism " +
         "that protects against disease.";
         Sentence sentence = Sentence.ParseSentence(content);
@@ -100,7 +100,7 @@ public class ImmuneSystemStoryTest {
     @Test
     // In many species, the immune_system can be classified into subsystems, such as the innate immune_system versus
     // the adaptive immune_system, or humoral immunity versus cell-mediated immunity.
-    void TestSentenceThree() {
+    void TestSentenceThree_Failed() {
         String content = "In many species, the immune_system can be classified into subsystems, such as the " +
         "innate_immune_system versus the adaptive_immune_system, or humoral_immunity versus cell_mediated_immunity.";
         Sentence sentence = Sentence.ParseSentence(content);

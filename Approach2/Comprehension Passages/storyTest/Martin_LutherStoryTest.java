@@ -26,7 +26,7 @@ public class Martin_LutherStoryTest {
     @Test
     // Martin_Luther (10 November 1483 – 18 February 1546) was a German professor of theology, composer, priest, former
     // monk and a seminal figure in the Protestant_Reformation.
-    void TestSentenceOne() {
+    void TestSentenceOne_Failed() {
         String content = "Martin_Luther (10 November 1483 – 18 February 1546) was a German_professor of theology, " +
         "composer, priest, former_monk and a seminal_figure in the Protestant_Reformation.";
         Sentence sentence = Sentence.ParseSentence(content);

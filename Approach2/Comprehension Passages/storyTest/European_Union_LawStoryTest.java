@@ -58,7 +58,7 @@ public class European_Union_LawStoryTest {
 
     @Test
     // The three sources of European_Union_Law are primary_law, secondary_law and supplementary_law.
-    void TestSentenceTwo() {
+    void TestSentenceTwo_Failed() {
         String content = "The three sources of European_Union_Law are primary_law, secondary_law and supplementary_law.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
@@ -88,7 +88,7 @@ public class European_Union_LawStoryTest {
 
     @Test
     // The main sources of primary_law are the Treaties establishing the European_Union.
-    void TestSentenceThree() {
+    void TestSentenceThree_Failed() {
         String content = "The main sources of primary_law are the Treaties establishing the European_Union.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));

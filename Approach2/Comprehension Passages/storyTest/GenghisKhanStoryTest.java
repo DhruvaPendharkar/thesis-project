@@ -92,7 +92,7 @@ public class GenghisKhanStoryTest {
     @Test
     // The Mongol invasions included raids or invasions of the Qara Khitai, Caucasus, Khwarezmid Empire, Western Xia
     // and Jin dynasties.
-    void TestSentenceThree() {
+    void TestSentenceThree_Failed() {
         String content = "The Mongol invasions included raids or invasions of the Qara_Khitai, Caucasus, Khwarezmid_Empire, " +
         "Western_Xia and Jin dynasties.";
         Sentence sentence = Sentence.ParseSentence(content);
@@ -128,7 +128,7 @@ public class GenghisKhanStoryTest {
     @Test
     // The Mongol invasion campaigns were often accompanied by wholesale massacres of the civilian populations especially
     // in the Khwarezmian and Xia controlled lands.
-    void TestSentenceFour() {
+    void TestSentenceFour_Failed() {
         String content = "The Mongol invasion campaigns were often accompanied by wholesale massacres of the civilian " +
         "populations especially in the Khwarezmian and Xia lands.";
         Sentence sentence = Sentence.ParseSentence(content);
