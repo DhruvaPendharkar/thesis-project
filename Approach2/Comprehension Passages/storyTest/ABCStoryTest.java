@@ -57,8 +57,8 @@ public class ABCStoryTest {
         Assert.assertTrue(ruleString.contains("_property(division, of, the_walt_disney_company)"));
         Assert.assertTrue(ruleString.contains("_property(logo, as, abc)"));
         Assert.assertTrue(ruleString.contains("_property(own, by, disney_abc_television_group)"));
-        Assert.assertTrue(ruleString.contains("_property(stylize, in, logo)"));
-        Assert.assertTrue(ruleString.contains("_property(stylize, since, 1957)"));
+        Assert.assertTrue(ruleString.contains("_property(1, stylize, in, logo)"));
+        Assert.assertTrue(ruleString.contains("_property(1, stylize, since, 1957)"));
         Assert.assertTrue(ruleString.contains("_property(subsidiary, of, division)"));
         Assert.assertTrue(ruleString.contains("_relation(american_broadcasting_company, 1, _clause)"));
         Assert.assertTrue(ruleString.contains("event(1, stylize, null, null)"));
@@ -124,10 +124,10 @@ public class ABCStoryTest {
         Assert.assertTrue(ruleString.contains("_property(facility, in, burbank)"));
         Assert.assertTrue(ruleString.contains("_property(facility, in, los_angeles)"));
         Assert.assertTrue(ruleString.contains("_property(facility, in, new_york_city)"));
-        Assert.assertTrue(ruleString.contains("_property(headquarter, in, california)"));
-        Assert.assertTrue(ruleString.contains("_property(headquarter, on, 'west_66th_street')"));
-        Assert.assertTrue(ruleString.contains("_property(headquarter, on, columbus_avenue)"));
-        Assert.assertTrue(ruleString.contains("_property(headquarter, on, facility)"));
+        Assert.assertTrue(ruleString.contains("_property(2, headquarter, in, california)"));
+        Assert.assertTrue(ruleString.contains("_property(2, headquarter, on, 'west_66th_street')"));
+        Assert.assertTrue(ruleString.contains("_property(2, headquarter, on, columbus_avenue)"));
+        Assert.assertTrue(ruleString.contains("_property(2, headquarter, on, facility)"));
         Assert.assertTrue(ruleString.contains("event(2, headquarter, null, network)"));
     }
 }

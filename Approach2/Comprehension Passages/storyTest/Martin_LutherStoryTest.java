@@ -101,7 +101,7 @@ public class Martin_LutherStoryTest {
         Assert.assertTrue(ruleString.contains("_possess(god, punishment)"));
         Assert.assertTrue(ruleString.contains("_property(freedom, from, punishment)"));
         Assert.assertTrue(ruleString.contains("_property(punishment, for, sin)"));
-        Assert.assertTrue(ruleString.contains("_property(purchase, with, money)"));
+        Assert.assertTrue(ruleString.contains("_property(3, purchase, with, money)"));
         Assert.assertTrue(ruleString.contains("_relation(1, 3, _clcomplement)"));
         Assert.assertTrue(ruleString.contains("event(1, dispute, martin_luther, claim)"));
         Assert.assertTrue(ruleString.contains("event(3, purchase, null, freedom)"));
@@ -173,10 +173,10 @@ public class Martin_LutherStoryTest {
         Assert.assertTrue(ruleString.contains("_property(holy_roman_emperor_charles_v, at, diet_of_worms)"));
         Assert.assertTrue(ruleString.contains("_property(pope, as, outlaw)"));
         Assert.assertTrue(ruleString.contains("_property(pope_leo_x, in, 1520)"));
-        Assert.assertTrue(ruleString.contains("_property(result, by, condemnation)"));
-        Assert.assertTrue(ruleString.contains("_property(result, by, emperor)"));
-        Assert.assertTrue(ruleString.contains("_property(result, by, pope)"));
-        Assert.assertTrue(ruleString.contains("_property(result, in, excommunication)"));
+        Assert.assertTrue(ruleString.contains("_property(2, result, by, condemnation)"));
+        Assert.assertTrue(ruleString.contains("_property(2, result, by, emperor)"));
+        Assert.assertTrue(ruleString.contains("_property(2, result, by, pope)"));
+        Assert.assertTrue(ruleString.contains("_property(2, result, in, excommunication)"));
         Assert.assertTrue(ruleString.contains("_property(writings, at, demand)"));
         Assert.assertTrue(ruleString.contains("_relation(refusal, 1, _clause)"));
         Assert.assertTrue(ruleString.contains("event(1, retract, null, all)"));

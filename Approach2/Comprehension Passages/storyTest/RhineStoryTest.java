@@ -52,9 +52,9 @@ public class RhineStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(border, swiss_liechtenstein)"));
         Assert.assertTrue(ruleString.contains("_mod(empty, eventually)"));
         Assert.assertTrue(ruleString.contains("_mod(flow, then)"));
-        Assert.assertTrue(ruleString.contains("_property(begin, in, swiss_canton)"));
-        Assert.assertTrue(ruleString.contains("_property(empty, into, north_sea)"));
-        Assert.assertTrue(ruleString.contains("_property(flow, through, rhineland)"));
+        Assert.assertTrue(ruleString.contains("_property(2, begin, in, swiss_canton)"));
+        Assert.assertTrue(ruleString.contains("_property(4, empty, into, north_sea)"));
+        Assert.assertTrue(ruleString.contains("_property(3, flow, through, rhineland)"));
         Assert.assertTrue(ruleString.contains("_property(graubunden, in, southeastern_swiss_alps)"));
         Assert.assertTrue(ruleString.contains("_property(north_sea, in, netherland)"));
         Assert.assertTrue(ruleString.contains("_property(part, of, border)"));

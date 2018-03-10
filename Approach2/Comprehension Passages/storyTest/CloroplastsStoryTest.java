@@ -52,11 +52,11 @@ public class CloroplastsStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(pigment, photosynthetic)"));
         Assert.assertTrue(ruleString.contains("_mod(role, main)"));
         Assert.assertTrue(ruleString.contains("_possess(chloroplast, role)"));
-        Assert.assertTrue(ruleString.contains("_property(capture, from, sunlight)"));
+        Assert.assertTrue(ruleString.contains("_property(3, capture, from, sunlight)"));
         Assert.assertTrue(ruleString.contains("_property(energy, in, atp)"));
         Assert.assertTrue(ruleString.contains("_property(energy, in, molecule)"));
         Assert.assertTrue(ruleString.contains("_property(energy, in, nadph)"));
-        Assert.assertTrue(ruleString.contains("_property(free, from, water)"));
+        Assert.assertTrue(ruleString.contains("_property(5, free, from, water)"));
         Assert.assertTrue(ruleString.contains("_relation(1, 2, _clcomplement)"));
         Assert.assertTrue(ruleString.contains("_relation(2, 3, _clause)"));
         Assert.assertTrue(ruleString.contains("_relation(2, 4, _clause)"));
@@ -99,9 +99,9 @@ public class CloroplastsStoryTest {
         Assert.assertEquals(12, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(molecule, organic)"));
         Assert.assertTrue(ruleString.contains("_mod(use, then)"));
-        Assert.assertTrue(ruleString.contains("_property(know, as, calvin_cycle)"));
-        Assert.assertTrue(ruleString.contains("_property(make, from, carbon_dioxide)"));
-        Assert.assertTrue(ruleString.contains("_property(make, in, process)"));
+        Assert.assertTrue(ruleString.contains("_property(3, know, as, calvin_cycle)"));
+        Assert.assertTrue(ruleString.contains("_property(2, make, from, carbon_dioxide)"));
+        Assert.assertTrue(ruleString.contains("_property(2, make, in, process)"));
         Assert.assertTrue(ruleString.contains("_relation(1, 2, _clause)"));
         Assert.assertTrue(ruleString.contains("_relation(process, 3, _clause)"));
         Assert.assertTrue(ruleString.contains("event(1, use, chloroplast, atp)"));
@@ -133,10 +133,10 @@ public class CloroplastsStoryTest {
 
         Assert.assertEquals(7, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(fatty_acid_synthesis, like)"));
-        Assert.assertTrue(ruleString.contains("_property(carry, out, amino_acid_synthesis)"));
-        Assert.assertTrue(ruleString.contains("_property(carry, out, fatty_acid_synthesis)"));
-        Assert.assertTrue(ruleString.contains("_property(carry, out, immune_response)"));
-        Assert.assertTrue(ruleString.contains("_property(carry, out, number_of_functions)"));
+        Assert.assertTrue(ruleString.contains("_property(1, carry, out, amino_acid_synthesis)"));
+        Assert.assertTrue(ruleString.contains("_property(1, carry, out, fatty_acid_synthesis)"));
+        Assert.assertTrue(ruleString.contains("_property(1, carry, out, immune_response)"));
+        Assert.assertTrue(ruleString.contains("_property(1, carry, out, number_of_functions)"));
         Assert.assertTrue(ruleString.contains("_property(immune_response, in, plant)"));
         Assert.assertTrue(ruleString.contains("event(1, carry, chloroplast, null)"));
     }
@@ -166,7 +166,7 @@ public class CloroplastsStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(up_to, 100)"));
         Assert.assertTrue(ruleString.contains("_property(number_of_chloroplasts, per, cell)"));
         Assert.assertTrue(ruleString.contains("_property(up_to, in, plant)"));
-        Assert.assertTrue(ruleString.contains("_property(vary, from, 1)"));
+        Assert.assertTrue(ruleString.contains("_property(1, vary, from, 1)"));
         Assert.assertTrue(ruleString.contains("event(1, vary, number_of_chloroplasts, null)"));
         Assert.assertTrue(ruleString.contains("number(1)"));
         Assert.assertTrue(ruleString.contains("number(100)"));

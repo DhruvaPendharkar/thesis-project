@@ -67,8 +67,8 @@ public class NikolaTeslaStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(engineer, electrical)"));
         Assert.assertTrue(ruleString.contains("_mod(engineer, mechanical)"));
         Assert.assertTrue(ruleString.contains("_mod(know, best)"));
-        Assert.assertTrue(ruleString.contains("_property(know, for, contribution)"));
-        Assert.assertTrue(ruleString.contains("_property(know, to, design)"));
+        Assert.assertTrue(ruleString.contains("_property(2, know, for, contribution)"));
+        Assert.assertTrue(ruleString.contains("_property(2, know, to, design)"));
         Assert.assertTrue(ruleString.contains("_possess(nikola_tesla, contribution)"));
         Assert.assertTrue(ruleString.contains("_property(design, of, system)"));
         Assert.assertTrue(ruleString.contains("_mod(system, modern)"));

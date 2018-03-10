@@ -48,9 +48,9 @@ public class ComputationalComplexityStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(problem, computational)"));
         Assert.assertTrue(ruleString.contains("_possess(problem, difficulty)"));
         Assert.assertTrue(ruleString.contains("_property(branch, of, theory_of_computation)"));
-        Assert.assertTrue(ruleString.contains("_property(classify, according_to, difficulty)"));
-        Assert.assertTrue(ruleString.contains("_property(focus, in, computer_science)"));
-        Assert.assertTrue(ruleString.contains("_property(relate, to, other)"));
+        Assert.assertTrue(ruleString.contains("_property(3, classify, according_to, difficulty)"));
+        Assert.assertTrue(ruleString.contains("_property(2, focus, in, computer_science)"));
+        Assert.assertTrue(ruleString.contains("_property(5, relate, to, other)"));
         Assert.assertTrue(ruleString.contains("_relation(2, 3, _clause)"));
         Assert.assertTrue(ruleString.contains("_relation(2, 5, _clause)"));
         Assert.assertTrue(ruleString.contains("_relation(3, 5, _conj)"));

@@ -225,6 +225,10 @@ public class Word {
             numModifiers.add(modifier.getKey());
             Word modifiedWord = CreateCompoundWord(numModifiers);
             Word preposition = modifier.getValue();
+            if(this.id.length() > 0) {
+                bodyList.add(new Literal(new Word(this.id, false)));
+            }
+
             bodyList.add(concept);
 
             if(preposition == null) {

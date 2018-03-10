@@ -134,9 +134,9 @@ public class OxygenStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(gas, odorless)"));
         Assert.assertTrue(ruleString.contains("_mod(temperature, standard)"));
         Assert.assertTrue(ruleString.contains("_property(atom, of, oxygen)"));
-        Assert.assertTrue(ruleString.contains("_property(bind, at, temperature)"));
-        Assert.assertTrue(ruleString.contains("_property(bind, at, pressure)"));
-        Assert.assertTrue(ruleString.contains("_property(form, with, 'formula_o2')"));
+        Assert.assertTrue(ruleString.contains("_property(1, bind, at, temperature)"));
+        Assert.assertTrue(ruleString.contains("_property(1, bind, at, pressure)"));
+        Assert.assertTrue(ruleString.contains("_property(2, form, with, 'formula_o2')"));
         Assert.assertTrue(ruleString.contains("_relation(1, 2, _clcomplement)"));
         Assert.assertTrue(ruleString.contains("event(1, bind, atom, null)"));
         Assert.assertTrue(ruleString.contains("event(2, form, atom, dioxygen)"));

@@ -50,9 +50,9 @@ public class AmazonRainforestStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(forest, moist)"));
         Assert.assertTrue(ruleString.contains("_mod(know, also)"));
         Assert.assertTrue(ruleString.contains("_property(amazon_basin, of, south_america)"));
-        Assert.assertTrue(ruleString.contains("_property(know, as, amazon_jungle)"));
-        Assert.assertTrue(ruleString.contains("_property(know, as, amazonia)"));
-        Assert.assertTrue(ruleString.contains("_property(know, in, english)"));
+        Assert.assertTrue(ruleString.contains("_property(1, know, as, amazon_jungle)"));
+        Assert.assertTrue(ruleString.contains("_property(1, know, as, amazonia)"));
+        Assert.assertTrue(ruleString.contains("_property(1, know, in, english)"));
         Assert.assertTrue(ruleString.contains("_property(most, of, amazon_basin)"));
         Assert.assertTrue(ruleString.contains("_relation(amazon_rainforest, 1, _clause)"));
         Assert.assertTrue(ruleString.contains("event(1, know, null, null)"));
@@ -87,7 +87,7 @@ public class AmazonRainforestStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(square_kilometre, '5,500,000')"));
         Assert.assertTrue(ruleString.contains("_mod(square_kilometre, '7,000,000')"));
         Assert.assertTrue(ruleString.contains("_property(cover, by, rainforest)"));
-        Assert.assertTrue(ruleString.contains("_property(cover, of, '7,000,000_square_kilometre')"));
+        Assert.assertTrue(ruleString.contains("_property(3, cover, of, '7,000,000_square_kilometre')"));
         Assert.assertTrue(ruleString.contains("event(1, encompass, basin, square_kilometre)"));
         Assert.assertTrue(ruleString.contains("event(3, cover, null, square_kilometre)"));
         Assert.assertTrue(ruleString.contains("number('5,500,000')"));
@@ -114,7 +114,7 @@ public class AmazonRainforestStoryTest {
 
         Assert.assertEquals(6, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(nation, nine)"));
-        Assert.assertTrue(ruleString.contains("_property(belong, to, nine_nation)"));
+        Assert.assertTrue(ruleString.contains("_property(2, belong, to, nine_nation)"));
         Assert.assertTrue(ruleString.contains("_relation(territory, 2, _clause)"));
         Assert.assertTrue(ruleString.contains("event(1, 'include', amazon_rainforest, territory)"));
         Assert.assertTrue(ruleString.contains("event(2, belong, null, null)"));
@@ -155,8 +155,8 @@ public class AmazonRainforestStoryTest {
         Assert.assertTrue(ruleString.contains("_property(amount, in, venezuela)"));
         Assert.assertTrue(ruleString.contains("_property(colombia, with, '10_percent')"));
         Assert.assertTrue(ruleString.contains("_property(colombia, with, amount)"));
-        Assert.assertTrue(ruleString.contains("_property(contain, with, '60_percent')"));
-        Assert.assertTrue(ruleString.contains("_property(contain, within, brazil)"));
+        Assert.assertTrue(ruleString.contains("_property(2, contain, with, '60_percent')"));
+        Assert.assertTrue(ruleString.contains("_property(2, contain, within, brazil)"));
         Assert.assertTrue(ruleString.contains("_property(majority, of, forest)"));
         Assert.assertTrue(ruleString.contains("_property(percent, of, rainforest)"));
         Assert.assertTrue(ruleString.contains("_property(peru, with, '13_percent')"));
@@ -232,8 +232,8 @@ public class AmazonRainforestStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(tree, rainforest)"));
         Assert.assertTrue(ruleString.contains("_mod(tree, tropical)"));
         Assert.assertTrue(ruleString.contains("_possess(planet, rainforest)"));
-        Assert.assertTrue(ruleString.contains("_property(comprise, of, tract)"));
-        Assert.assertTrue(ruleString.contains("_property(divide, into, '16,000_species')"));
+        Assert.assertTrue(ruleString.contains("_property(3, comprise, of, tract)"));
+        Assert.assertTrue(ruleString.contains("_property(5, divide, into, '16,000_species')"));
         Assert.assertTrue(ruleString.contains("_property(half, of, rainforest)"));
         Assert.assertTrue(ruleString.contains("_property(rainforest, in, world)"));
         Assert.assertTrue(ruleString.contains("_property(rainforest, with, billion)"));
