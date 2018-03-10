@@ -54,12 +54,12 @@ public class ABCStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(network, american)"));
         Assert.assertTrue(ruleString.contains("_mod(network, commercial)"));
         Assert.assertTrue(ruleString.contains("_possess(network, logo)"));
-        Assert.assertTrue(ruleString.contains("_property(division, of(the_walt_disney_company))"));
-        Assert.assertTrue(ruleString.contains("_property(logo, as(abc))"));
-        Assert.assertTrue(ruleString.contains("_property(own, by(disney_abc_television_group))"));
-        Assert.assertTrue(ruleString.contains("_property(stylize, in(logo))"));
-        Assert.assertTrue(ruleString.contains("_property(stylize, since(1957))"));
-        Assert.assertTrue(ruleString.contains("_property(subsidiary, of(division))"));
+        Assert.assertTrue(ruleString.contains("_property(division, of, the_walt_disney_company)"));
+        Assert.assertTrue(ruleString.contains("_property(logo, as, abc)"));
+        Assert.assertTrue(ruleString.contains("_property(own, by, disney_abc_television_group)"));
+        Assert.assertTrue(ruleString.contains("_property(stylize, in, logo)"));
+        Assert.assertTrue(ruleString.contains("_property(stylize, since, 1957)"));
+        Assert.assertTrue(ruleString.contains("_property(subsidiary, of, division)"));
         Assert.assertTrue(ruleString.contains("_relation(american_broadcasting_company, 1, _clause)"));
         Assert.assertTrue(ruleString.contains("event(1, stylize, null, null)"));
         Assert.assertTrue(ruleString.contains("event(4, own, null, network)"));
@@ -67,6 +67,7 @@ public class ABCStoryTest {
         Assert.assertTrue(ruleString.contains("organization(american_broadcasting_company)"));
         Assert.assertTrue(ruleString.contains("subsidiary(disney_abc_television_group)"));
         Assert.assertTrue(ruleString.contains("time(1957)"));
+        Assert.assertTrue(ruleString.contains("year(1957, 1957)"));
     }
 
     @Test
@@ -90,7 +91,7 @@ public class ABCStoryTest {
         Assert.assertEquals(5, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(network, part)"));
         Assert.assertTrue(ruleString.contains("_mod(network, the_big_three)"));
-        Assert.assertTrue(ruleString.contains("_property(part, of(network))"));
+        Assert.assertTrue(ruleString.contains("_property(part, of, network)"));
         Assert.assertTrue(ruleString.contains("organization(abc)"));
         Assert.assertTrue(ruleString.contains("part(network)"));
     }
@@ -118,15 +119,15 @@ public class ABCStoryTest {
         Assert.assertEquals(12, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(office, additional)"));
         Assert.assertTrue(ruleString.contains("_mod(office, major)"));
-        Assert.assertTrue(ruleString.contains("_property(columbus_avenue, in(manhattan))"));
-        Assert.assertTrue(ruleString.contains("_property(columbus_avenue, with(office))"));
-        Assert.assertTrue(ruleString.contains("_property(facility, in(burbank))"));
-        Assert.assertTrue(ruleString.contains("_property(facility, in(los_angeles))"));
-        Assert.assertTrue(ruleString.contains("_property(facility, in(new_york_city))"));
-        Assert.assertTrue(ruleString.contains("_property(headquarter, in(california))"));
-        Assert.assertTrue(ruleString.contains("_property(headquarter, on('west_66th_street'))"));
-        Assert.assertTrue(ruleString.contains("_property(headquarter, on(columbus_avenue))"));
-        Assert.assertTrue(ruleString.contains("_property(headquarter, on(facility))"));
+        Assert.assertTrue(ruleString.contains("_property(columbus_avenue, in, manhattan)"));
+        Assert.assertTrue(ruleString.contains("_property(columbus_avenue, with, office)"));
+        Assert.assertTrue(ruleString.contains("_property(facility, in, burbank)"));
+        Assert.assertTrue(ruleString.contains("_property(facility, in, los_angeles)"));
+        Assert.assertTrue(ruleString.contains("_property(facility, in, new_york_city)"));
+        Assert.assertTrue(ruleString.contains("_property(headquarter, in, california)"));
+        Assert.assertTrue(ruleString.contains("_property(headquarter, on, 'west_66th_street')"));
+        Assert.assertTrue(ruleString.contains("_property(headquarter, on, columbus_avenue)"));
+        Assert.assertTrue(ruleString.contains("_property(headquarter, on, facility)"));
         Assert.assertTrue(ruleString.contains("event(2, headquarter, null, network)"));
     }
 }

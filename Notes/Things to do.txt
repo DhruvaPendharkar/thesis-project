@@ -96,3 +96,8 @@ So here you need to divide the different parts of the date into its various comp
 day(19), month(feb), year(1990) as now this is more intereseting
 day(19_feb_1990, 19)., month(19_feb_1990, feb)., year(19_feb_1990, 1990).
 ---- Done ----
+
+18. Separate prepositions from nmods
+e.g Ramesh ate ice-cream on Sunday.
+_property(eat, on, sunday).
+---- Done ----

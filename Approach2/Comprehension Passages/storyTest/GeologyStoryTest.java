@@ -69,9 +69,9 @@ public class GeologyStoryTest {
         Assert.assertTrue(ruleString.contains("_is(rock_cycle, important_concept)"));
         Assert.assertTrue(ruleString.contains("_mod(concept, important)"));
         Assert.assertTrue(ruleString.contains("_mod(type, three)"));
-        Assert.assertTrue(ruleString.contains("_property(concept, in(geology))"));
-        Assert.assertTrue(ruleString.contains("_property(relationship, between(three_type))"));
-        Assert.assertTrue(ruleString.contains("_property(relationship, of(rock))"));
+        Assert.assertTrue(ruleString.contains("_property(concept, in, geology)"));
+        Assert.assertTrue(ruleString.contains("_property(relationship, between, three_type)"));
+        Assert.assertTrue(ruleString.contains("_property(relationship, of, rock)"));
         Assert.assertTrue(ruleString.contains("concept(rock_cycle)"));
         Assert.assertTrue(ruleString.contains("event(2, illustrate, geology, magma)"));
         Assert.assertTrue(ruleString.contains("event(2, illustrate, geology, relationship)"));
@@ -103,8 +103,8 @@ public class GeologyStoryTest {
         Assert.assertTrue(ruleString.contains("_is(rock, rock)"));
         Assert.assertTrue(ruleString.contains("_mod(crystallize, when)"));
         Assert.assertTrue(ruleString.contains("_mod(rock, igneous)"));
-        Assert.assertTrue(ruleString.contains("_property(crystallize, from(lava))"));
-        Assert.assertTrue(ruleString.contains("_property(crystallize, from(magma))"));
+        Assert.assertTrue(ruleString.contains("_property(crystallize, from, lava)"));
+        Assert.assertTrue(ruleString.contains("_property(crystallize, from, magma)"));
         Assert.assertTrue(ruleString.contains("event(1, crystallize, rock, null)"));
         Assert.assertTrue(ruleString.contains("rock(rock)"));
     }
@@ -160,9 +160,9 @@ public class GeologyStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(rock, due)"));
         Assert.assertTrue(ruleString.contains("_mod(rock, metamorphic)"));
         Assert.assertTrue(ruleString.contains("_mod(rock, sedimentary)"));
-        Assert.assertTrue(ruleString.contains("_property(content, of(rock))"));
-        Assert.assertTrue(ruleString.contains("_property(lithify, into(rock))"));
-        Assert.assertTrue(ruleString.contains("_property(turn, into(rock))"));
+        Assert.assertTrue(ruleString.contains("_property(content, of, rock)"));
+        Assert.assertTrue(ruleString.contains("_property(lithify, into, rock)"));
+        Assert.assertTrue(ruleString.contains("_property(turn, into, rock)"));
         Assert.assertTrue(ruleString.contains("_relation(2, 3, _conj)"));
         Assert.assertTrue(ruleString.contains("_relation(2, 4, _conj)"));
         Assert.assertTrue(ruleString.contains("_relation(2, 5, _conj)"));
@@ -235,7 +235,7 @@ public class GeologyStoryTest {
         Assert.assertEquals(4, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(type, re_melted)"));
         Assert.assertTrue(ruleString.contains("_mod(type, three)"));
-        Assert.assertTrue(ruleString.contains("_property(type, of(rock))"));
+        Assert.assertTrue(ruleString.contains("_property(type, of, rock)"));
         Assert.assertTrue(ruleString.contains("number(three)"));
     }
 
@@ -262,7 +262,7 @@ public class GeologyStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(crystallize, again)"));
         Assert.assertTrue(ruleString.contains("_mod(magma, new)"));
         Assert.assertTrue(ruleString.contains("_mod(melt, when)"));
-        Assert.assertTrue(ruleString.contains("_property(form, from(magma))"));
+        Assert.assertTrue(ruleString.contains("_property(form, from, magma)"));
         Assert.assertTrue(ruleString.contains("_relation(4, 2, _clause)"));
         Assert.assertTrue(ruleString.contains("event(2, melt, null, rock)"));
         Assert.assertTrue(ruleString.contains("event(4, form, null, magma)"));

@@ -42,8 +42,8 @@ public class OxygenStoryTest {
         Assert.assertTrue(ruleString.contains("_is(oxygen, element)"));
         Assert.assertTrue(ruleString.contains("_mod(atomic_number, 8)"));
         Assert.assertTrue(ruleString.contains("_mod(element, chemical)"));
-        Assert.assertTrue(ruleString.contains("_property(element, with('8_atomic_number'))"));
-        Assert.assertTrue(ruleString.contains("_property(element, with(symbol_o))"));
+        Assert.assertTrue(ruleString.contains("_property(element, with, '8_atomic_number')"));
+        Assert.assertTrue(ruleString.contains("_property(element, with, symbol_o)"));
         Assert.assertTrue(ruleString.contains("element(oxygen)"));
         Assert.assertTrue(ruleString.contains("number(8)"));
     }
@@ -72,9 +72,9 @@ public class OxygenStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(element, most)"));
         Assert.assertTrue(ruleString.contains("_mod(form, readily)"));
         Assert.assertTrue(ruleString.contains("_mod(oxide, like)"));
-        Assert.assertTrue(ruleString.contains("_property(chalcogen_group, on(periodic_table))"));
-        Assert.assertTrue(ruleString.contains("_property(member, of(chalcogen_group))"));
-        Assert.assertTrue(ruleString.contains("_property(oxide, with(element))"));
+        Assert.assertTrue(ruleString.contains("_property(chalcogen_group, on, periodic_table)"));
+        Assert.assertTrue(ruleString.contains("_property(member, of, chalcogen_group)"));
+        Assert.assertTrue(ruleString.contains("_property(oxide, with, element)"));
         Assert.assertTrue(ruleString.contains("compound(oxide)"));
         Assert.assertTrue(ruleString.contains("event(3, oxidize, oxygen, agent)"));
         Assert.assertTrue(ruleString.contains("event(4, form, compound, null)"));
@@ -103,10 +103,10 @@ public class OxygenStoryTest {
         Assert.assertTrue(ruleString.contains("_is(oxygen, third_most_abundant_element)"));
         Assert.assertTrue(ruleString.contains("_mod(element, abundant)"));
         Assert.assertTrue(ruleString.contains("_mod(element, third_most)"));
-        Assert.assertTrue(ruleString.contains("_property(element, after(hydrogen))"));
-        Assert.assertTrue(ruleString.contains("_property(element, by(mass))"));
-        Assert.assertTrue(ruleString.contains("_property(element, after(helium))"));
-        Assert.assertTrue(ruleString.contains("_property(element, in(universe))"));
+        Assert.assertTrue(ruleString.contains("_property(element, after, hydrogen)"));
+        Assert.assertTrue(ruleString.contains("_property(element, by, mass)"));
+        Assert.assertTrue(ruleString.contains("_property(element, after, helium)"));
+        Assert.assertTrue(ruleString.contains("_property(element, in, universe)"));
         Assert.assertTrue(ruleString.contains("element(oxygen)"));
     }
 
@@ -133,10 +133,10 @@ public class OxygenStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(gas, diatomic)"));
         Assert.assertTrue(ruleString.contains("_mod(gas, odorless)"));
         Assert.assertTrue(ruleString.contains("_mod(temperature, standard)"));
-        Assert.assertTrue(ruleString.contains("_property(atom, of(oxygen))"));
-        Assert.assertTrue(ruleString.contains("_property(bind, at(temperature))"));
-        Assert.assertTrue(ruleString.contains("_property(bind, at(pressure))"));
-        Assert.assertTrue(ruleString.contains("_property(form, with('formula_o2'))"));
+        Assert.assertTrue(ruleString.contains("_property(atom, of, oxygen)"));
+        Assert.assertTrue(ruleString.contains("_property(bind, at, temperature)"));
+        Assert.assertTrue(ruleString.contains("_property(bind, at, pressure)"));
+        Assert.assertTrue(ruleString.contains("_property(form, with, 'formula_o2')"));
         Assert.assertTrue(ruleString.contains("_relation(1, 2, _clcomplement)"));
         Assert.assertTrue(ruleString.contains("event(1, bind, atom, null)"));
         Assert.assertTrue(ruleString.contains("event(2, form, atom, dioxygen)"));
@@ -163,7 +163,7 @@ public class OxygenStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(oxygen_gas, diatomic)"));
         Assert.assertTrue(ruleString.contains("_mod(percent, '20.8')"));
         Assert.assertTrue(ruleString.contains("_possess(earth, atmosphere)"));
-        Assert.assertTrue(ruleString.contains("_property(percent, of(atmosphere))"));
+        Assert.assertTrue(ruleString.contains("_property(percent, of, atmosphere)"));
         Assert.assertTrue(ruleString.contains("event(1, constitute, diatomic_oxygen_gas, percent)"));
         Assert.assertTrue(ruleString.contains("event(1, constitute, diatomic_oxygen_gas, percent_of_atmosphere)"));
         Assert.assertTrue(ruleString.contains("event(1, constitute, oxygen_gas, percent)"));
@@ -191,8 +191,8 @@ public class OxygenStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(oxygen_levels, atmospheric)"));
         Assert.assertTrue(ruleString.contains("_mod(trend, downward)"));
         Assert.assertTrue(ruleString.contains("_mod(trend, global)"));
-        Assert.assertTrue(ruleString.contains("_property(burning, of(fossil_fuel))"));
-        Assert.assertTrue(ruleString.contains("_property(monitoring, of(oxygen_levels))"));
+        Assert.assertTrue(ruleString.contains("_property(burning, of, fossil_fuel)"));
+        Assert.assertTrue(ruleString.contains("_property(monitoring, of, oxygen_levels)"));
         Assert.assertTrue(ruleString.contains("event(1, show, monitoring, global_downward_trend)"));
         Assert.assertTrue(ruleString.contains("event(1, show, monitoring, trend)"));
     }
@@ -219,11 +219,11 @@ public class OxygenStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(element, abundant)"));
         Assert.assertTrue(ruleString.contains("_possess(crust, mass)"));
         Assert.assertTrue(ruleString.contains("_possess(earth, crust)"));
-        Assert.assertTrue(ruleString.contains("_property(crust, as(part))"));
-        Assert.assertTrue(ruleString.contains("_property(element, by(mass))"));
-        Assert.assertTrue(ruleString.contains("_property(half, of(mass))"));
-        Assert.assertTrue(ruleString.contains("_property(mass, in(crust))"));
-        Assert.assertTrue(ruleString.contains("_property(part, of(oxide_compounds))"));
+        Assert.assertTrue(ruleString.contains("_property(crust, as, part)"));
+        Assert.assertTrue(ruleString.contains("_property(element, by, mass)"));
+        Assert.assertTrue(ruleString.contains("_property(half, of, mass)"));
+        Assert.assertTrue(ruleString.contains("_property(mass, in, crust)"));
+        Assert.assertTrue(ruleString.contains("_property(part, of, oxide_compounds)"));
         Assert.assertTrue(ruleString.contains("element(oxygen)"));
         Assert.assertTrue(ruleString.contains("event(2, make, null, half)"));
         Assert.assertTrue(ruleString.contains("event(2, make, null, half_of_mass)"));

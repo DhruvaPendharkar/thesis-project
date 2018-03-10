@@ -225,16 +225,14 @@ public class Word {
             numModifiers.add(modifier.getKey());
             Word modifiedWord = CreateCompoundWord(numModifiers);
             Word preposition = modifier.getValue();
-            Literal modifierLiteral = new Literal(modifiedWord);
+            bodyList.add(concept);
 
-            if(preposition != null) {
-                List<Literal> literalList = new ArrayList<>();
-                literalList.add(new Literal(modifiedWord));
-                modifierLiteral = new Literal(preposition, literalList);
+            if(preposition == null) {
+                preposition = new Word("null", false);
             }
 
-            bodyList.add(concept);
-            bodyList.add(modifierLiteral);
+            bodyList.add(new Literal(preposition));
+            bodyList.add(new Literal(modifiedWord));
 
             Literal head = new Literal(predicate, bodyList);
             Rule rule = new Rule(head, null, false);
@@ -244,12 +242,10 @@ public class Word {
         List<Word> modifiers = this.GetSpecialNominalModifiers("agent");
         for(Word modifier : modifiers) {
             Literal concept = new Literal(this);
-            List<Literal> literals = new ArrayList<>();
-            literals.add(new Literal(modifier));
-            Literal modifierLiteral = new Literal(new Word("by", false), literals);
             List<Literal> bodyList = new ArrayList<>();
             bodyList.add(concept);
-            bodyList.add(modifierLiteral);
+            bodyList.add(new Literal(new Word("by", false)));
+            bodyList.add(new Literal(modifier));
             Literal head = new Literal(predicate, bodyList);
             Rule rule = new Rule(head, null, false);
             rules.add(rule);

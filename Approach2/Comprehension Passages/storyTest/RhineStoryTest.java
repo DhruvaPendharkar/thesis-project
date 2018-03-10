@@ -28,7 +28,7 @@ public class RhineStoryTest {
     // forms part of the Swiss-Austrian border, Swiss-Liechtenstein border, Swiss-German and then the Franco-German
     // border, then flows through the Rhineland and eventually empties into the North_Sea in the Netherlands.
     void TestSentenceOne() {
-        String content = "The Rhine, is a European river that begins in the Swiss_canton of Graubünden in the " +
+        String content = "The Rhine, is a European river that begins in the Swiss_canton of Graubunden in the " +
         "southeastern_Swiss_Alps, forms part of the Swiss-Austrian border, Swiss-Liechtenstein border, Swiss-German and " +
         "then the Franco-German border, then flows through the Rhineland and eventually empties into the North_Sea in " +
         "the Netherlands.";
@@ -52,14 +52,14 @@ public class RhineStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(border, swiss_liechtenstein)"));
         Assert.assertTrue(ruleString.contains("_mod(empty, eventually)"));
         Assert.assertTrue(ruleString.contains("_mod(flow, then)"));
-        Assert.assertTrue(ruleString.contains("_property(begin, in(swiss_canton))"));
-        Assert.assertTrue(ruleString.contains("_property(empty, into(north_sea))"));
-        Assert.assertTrue(ruleString.contains("_property(flow, through(rhineland))"));
-        Assert.assertTrue(ruleString.contains("_property(graubünden, in(southeastern_swiss_alps))"));
-        Assert.assertTrue(ruleString.contains("_property(north_sea, in(netherland))"));
-        Assert.assertTrue(ruleString.contains("_property(part, of(border))"));
-        Assert.assertTrue(ruleString.contains("_property(part, of(swiss_german))"));
-        Assert.assertTrue(ruleString.contains("_property(swiss_canton, of(graubünden))"));
+        Assert.assertTrue(ruleString.contains("_property(begin, in, swiss_canton)"));
+        Assert.assertTrue(ruleString.contains("_property(empty, into, north_sea)"));
+        Assert.assertTrue(ruleString.contains("_property(flow, through, rhineland)"));
+        Assert.assertTrue(ruleString.contains("_property(graubunden, in, southeastern_swiss_alps)"));
+        Assert.assertTrue(ruleString.contains("_property(north_sea, in, netherland)"));
+        Assert.assertTrue(ruleString.contains("_property(part, of, border)"));
+        Assert.assertTrue(ruleString.contains("_property(part, of, swiss_german)"));
+        Assert.assertTrue(ruleString.contains("_property(swiss_canton, of, graubunden)"));
         Assert.assertTrue(ruleString.contains("event(2, begin, rhine, null)"));
         Assert.assertTrue(ruleString.contains("event(2, begin, river, null)"));
         Assert.assertTrue(ruleString.contains("event(3, flow, rhine, null)"));
@@ -89,10 +89,10 @@ public class RhineStoryTest {
         Assert.assertTrue(ruleString.contains("_is(river, rhine)"));
         Assert.assertTrue(ruleString.contains("_mod(city, biggest)"));
         Assert.assertTrue(ruleString.contains("_mod(people, '1,050,000')"));
-        Assert.assertTrue(ruleString.contains("_property(city, on(river))"));
-        Assert.assertTrue(ruleString.contains("_property(cologne, in(germany))"));
-        Assert.assertTrue(ruleString.contains("_property(cologne, with(population))"));
-        Assert.assertTrue(ruleString.contains("_property(population, of('1,050,000_people'))"));
+        Assert.assertTrue(ruleString.contains("_property(city, on, river)"));
+        Assert.assertTrue(ruleString.contains("_property(cologne, in, germany)"));
+        Assert.assertTrue(ruleString.contains("_property(cologne, with, population)"));
+        Assert.assertTrue(ruleString.contains("_property(population, of, '1,050,000_people')"));
         Assert.assertTrue(ruleString.contains("river(rhine)"));
         Assert.assertTrue(ruleString.contains("number('1,050,000')"));
     }
@@ -124,11 +124,11 @@ public class RhineStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(discharge, average)"));
         Assert.assertTrue(ruleString.contains("_mod(kilometre, '1,230')"));
         Assert.assertTrue(ruleString.contains("_mod(river, second_longest)"));
-        Assert.assertTrue(ruleString.contains("_property(danube, at('1,230_kilometre'))"));
-        Assert.assertTrue(ruleString.contains("_property(danube, with(discharge))"));
-        Assert.assertTrue(ruleString.contains("_property(discharge, of('2,900_m3/s'))"));
-        Assert.assertTrue(ruleString.contains("_property(river, in(central))"));
-        Assert.assertTrue(ruleString.contains("_property(river, in(western_europe))"));
+        Assert.assertTrue(ruleString.contains("_property(danube, at, '1,230_kilometre')"));
+        Assert.assertTrue(ruleString.contains("_property(danube, with, discharge)"));
+        Assert.assertTrue(ruleString.contains("_property(discharge, of, '2,900_m3/s')"));
+        Assert.assertTrue(ruleString.contains("_property(river, in, central)"));
+        Assert.assertTrue(ruleString.contains("_property(river, in, western_europe)"));
         Assert.assertTrue(ruleString.contains("number('1,230')"));
         Assert.assertTrue(ruleString.contains("number('2,900')"));
         Assert.assertTrue(ruleString.contains("river(rhine)"));

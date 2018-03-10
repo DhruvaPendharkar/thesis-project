@@ -47,10 +47,10 @@ public class ComputationalComplexityStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(difficulty, inherent)"));
         Assert.assertTrue(ruleString.contains("_mod(problem, computational)"));
         Assert.assertTrue(ruleString.contains("_possess(problem, difficulty)"));
-        Assert.assertTrue(ruleString.contains("_property(branch, of(theory_of_computation))"));
-        Assert.assertTrue(ruleString.contains("_property(classify, according_to(difficulty))"));
-        Assert.assertTrue(ruleString.contains("_property(focus, in(computer_science))"));
-        Assert.assertTrue(ruleString.contains("_property(relate, to(other))"));
+        Assert.assertTrue(ruleString.contains("_property(branch, of, theory_of_computation)"));
+        Assert.assertTrue(ruleString.contains("_property(classify, according_to, difficulty)"));
+        Assert.assertTrue(ruleString.contains("_property(focus, in, computer_science)"));
+        Assert.assertTrue(ruleString.contains("_property(relate, to, other)"));
         Assert.assertTrue(ruleString.contains("_relation(2, 3, _clause)"));
         Assert.assertTrue(ruleString.contains("_relation(2, 5, _clause)"));
         Assert.assertTrue(ruleString.contains("_relation(3, 5, _conj)"));
@@ -67,7 +67,7 @@ public class ComputationalComplexityStoryTest {
     // which is equivalent to stating that the problem may be solved by mechanical application of mathematical steps,
     // such as an algorithm.
     void TestSentenceTwo() {
-        String content = "A computational problem is understood to be a task that is in principle amenable to being " +
+        String content = "A computational problem is understood to be a task that is in principle, amenable to being " +
         "solved by a computer, the task is equivalent to stating that the problem may be solved by mechanical_application " +
         "of mathematical steps such as an algorithm.";
         Sentence sentence = Sentence.ParseSentence(content);
@@ -80,27 +80,25 @@ public class ComputationalComplexityStoryTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(23, ruleString.size());
+        Assert.assertEquals(21, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(computational_problem, task)"));
         Assert.assertTrue(ruleString.contains("_is(mathematical_step, algorithm)"));
-        Assert.assertTrue(ruleString.contains("_is(step, algorithm)"));
         Assert.assertTrue(ruleString.contains("_is(problem, task)"));
-        Assert.assertTrue(ruleString.contains("_is(task, amenable_principle)"));
-        Assert.assertTrue(ruleString.contains("_is(task, principle)"));
+        Assert.assertTrue(ruleString.contains("_is(step, algorithm)"));
+        Assert.assertTrue(ruleString.contains("_is(task, amenable)"));
         Assert.assertTrue(ruleString.contains("_is(task, equivalent)"));
-        Assert.assertTrue(ruleString.contains("_mod(principle, amenable)"));
         Assert.assertTrue(ruleString.contains("_mod(problem, computational)"));
         Assert.assertTrue(ruleString.contains("_mod(step, mathematical)"));
-        Assert.assertTrue(ruleString.contains("_property(mechanical_application, of(step))"));
-        Assert.assertTrue(ruleString.contains("_property(solve, by(computer))"));
-        Assert.assertTrue(ruleString.contains("_property(solve, by(mechanical_application))"));
+        Assert.assertTrue(ruleString.contains("_property(amenable, in, principle)"));
+        Assert.assertTrue(ruleString.contains("_property(mechanical_application, of, step)"));
+        Assert.assertTrue(ruleString.contains("_property(solve, by, computer)"));
+        Assert.assertTrue(ruleString.contains("_property(solve, by, mechanical_application)"));
         Assert.assertTrue(ruleString.contains("_relation(8, 10, _clcomplement)"));
         Assert.assertTrue(ruleString.contains("equivalent(task)"));
         Assert.assertTrue(ruleString.contains("event(10, solve, null, problem)"));
         Assert.assertTrue(ruleString.contains("event(2, understand, null, problem)"));
         Assert.assertTrue(ruleString.contains("event(6, solve, null, null)"));
         Assert.assertTrue(ruleString.contains("event(8, state, null, null)"));
-        Assert.assertTrue(ruleString.contains("principle(task)"));
         Assert.assertTrue(ruleString.contains("step(algorithm)"));
         Assert.assertTrue(ruleString.contains("task(computational_problem)"));
         Assert.assertTrue(ruleString.contains("task(problem)"));
