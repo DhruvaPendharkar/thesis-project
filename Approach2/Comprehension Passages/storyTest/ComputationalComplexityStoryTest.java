@@ -47,7 +47,7 @@ public class ComputationalComplexityStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(difficulty, inherent)"));
         Assert.assertTrue(ruleString.contains("_mod(problem, computational)"));
         Assert.assertTrue(ruleString.contains("_possess(problem, difficulty)"));
-        Assert.assertTrue(ruleString.contains("_property(branch, of, theory_of_computation)"));
+        Assert.assertTrue(ruleString.contains("_property(1, branch, of, theory_of_computation)"));
         Assert.assertTrue(ruleString.contains("_property(3, classify, according_to, difficulty)"));
         Assert.assertTrue(ruleString.contains("_property(2, focus, in, computer_science)"));
         Assert.assertTrue(ruleString.contains("_property(5, relate, to, other)"));
@@ -90,8 +90,8 @@ public class ComputationalComplexityStoryTest {
         Assert.assertTrue(ruleString.contains("_is(task, equivalent)"));
         Assert.assertTrue(ruleString.contains("_mod(problem, computational)"));
         Assert.assertTrue(ruleString.contains("_mod(step, mathematical)"));
-        Assert.assertTrue(ruleString.contains("_property(amenable, in, principle)"));
-        Assert.assertTrue(ruleString.contains("_property(mechanical_application, of, step)"));
+        Assert.assertTrue(ruleString.contains("_property(2, amenable, in, principle)"));
+        Assert.assertTrue(ruleString.contains("_property(10, mechanical_application, of, step)"));
         Assert.assertTrue(ruleString.contains("_property(6, solve, _by, computer)"));
         Assert.assertTrue(ruleString.contains("_property(10, solve, _by, mechanical_application)"));
         Assert.assertTrue(ruleString.contains("_relation(8, 10, _clcomplement)"));

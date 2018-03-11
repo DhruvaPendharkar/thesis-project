@@ -62,8 +62,8 @@ public class SuperBowl50StoryTest {
         Assert.assertTrue(ruleString.contains("_abbreviation(nfl, national_football_league)"));
         Assert.assertTrue(ruleString.contains("_mod(season, 2015)"));
         Assert.assertTrue(ruleString.contains("_relation(1, 2, _clcomplement)"));
-        Assert.assertTrue(ruleString.contains("_property(champion, of, national_football_league)"));
-        Assert.assertTrue(ruleString.contains("_property(national_football_league, for, '2015_season')"));
+        Assert.assertTrue(ruleString.contains("_property(2, champion, of, national_football_league)"));
+        Assert.assertTrue(ruleString.contains("_property(2, national_football_league, for, '2015_season')"));
         Assert.assertTrue(ruleString.contains("event(1, be, 'super_bowl_50', null)"));
         Assert.assertTrue(ruleString.contains("event(2, determine, 'super_bowl_50', champion)"));
         Assert.assertTrue(ruleString.contains("event(2, determine, 'super_bowl_50', champion_of_national_football_league)"));
@@ -177,7 +177,7 @@ public class SuperBowl50StoryTest {
         Assert.assertTrue(ruleString.contains("_property(2, play, at, levis_stadium)"));
         Assert.assertTrue(ruleString.contains("_property(2, play, in, san_francisco_bay_area)"));
         Assert.assertTrue(ruleString.contains("_property(2, play, at, santa_clara)"));
-        Assert.assertTrue(ruleString.contains("_property(santa_clara, in, california)"));
+        Assert.assertTrue(ruleString.contains("_property(2, santa_clara, in, california)"));
         Assert.assertTrue(ruleString.contains("month('february_7_2016', february)"));
         Assert.assertTrue(ruleString.contains("day('february_7_2016', 7)"));
         Assert.assertTrue(ruleString.contains("year('february_7_2016', 2016)"));

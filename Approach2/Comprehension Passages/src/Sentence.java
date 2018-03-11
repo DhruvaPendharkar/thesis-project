@@ -41,6 +41,7 @@ public class Sentence {
         this.sentenceString = sentence;
         this.dependencies = dependencies;
         this.semanticRoot = GenerateSemanticTree(dependencies, this.wordList);
+        Word.SetWordIds(this.wordList);
     }
 
     private String PreprocessSentence(List<Word> inputList) {

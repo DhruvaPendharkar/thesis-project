@@ -101,9 +101,9 @@ public class NintendoStoryTest {
         }
 
         Assert.assertEquals(6, ruleString.size());
-        Assert.assertTrue(ruleString.contains("_property(number, of, user)"));
+        Assert.assertTrue(ruleString.contains("_property(3, number, of, user)"));
         Assert.assertTrue(ruleString.contains("_mod(user, active)"));
-        Assert.assertTrue(ruleString.contains("_property(user, of, game)"));
+        Assert.assertTrue(ruleString.contains("_property(3, user, of, game)"));
         Assert.assertTrue(ruleString.contains("event(1, have, null, null)"));
         Assert.assertTrue(ruleString.contains("event(2, be, null, null)"));
         Assert.assertTrue(ruleString.contains("event(3, decline, number, null)"));
@@ -232,7 +232,7 @@ public class NintendoStoryTest {
         Assert.assertEquals(19, ruleString.size());
         Assert.assertTrue(ruleString.contains("organization(nintendo)"));
         Assert.assertTrue(ruleString.contains("organization(mittomo)"));
-        Assert.assertTrue(ruleString.contains("_property(failure, since, stage)"));
+        Assert.assertTrue(ruleString.contains("_property(1, failure, since, stage)"));
         Assert.assertTrue(ruleString.contains("_is(app, failure)"));
         Assert.assertTrue(ruleString.contains("failure(app)"));
         Assert.assertTrue(ruleString.contains("_mod(stage, early)"));
@@ -246,7 +246,7 @@ public class NintendoStoryTest {
         Assert.assertTrue(ruleString.contains("_relation(6, 4, _clcomplement)"));
         Assert.assertTrue(ruleString.contains("_is(hideki_yasuda, analyst)"));
         Assert.assertTrue(ruleString.contains("analyst(hideki_yasuda)"));
-        Assert.assertTrue(ruleString.contains("_property(analyst, at, ace_research_institute)"));
+        Assert.assertTrue(ruleString.contains("_property(6, analyst, at, ace_research_institute)"));
         Assert.assertTrue(ruleString.contains("event(1, be, null, null)"));
         Assert.assertTrue(ruleString.contains("event(3, be, null, null)"));
     }
@@ -267,13 +267,13 @@ public class NintendoStoryTest {
         }
 
         Assert.assertEquals(10, ruleString.size());
-        Assert.assertTrue(ruleString.contains("_property(number, of, user)"));
+        Assert.assertTrue(ruleString.contains("_property(2, number, of, user)"));
         Assert.assertTrue(ruleString.contains("_mod(number, large)"));
         Assert.assertTrue(ruleString.contains("_mod(user, active)"));
         Assert.assertTrue(ruleString.contains("event(2, use, user, app)"));
         Assert.assertTrue(ruleString.contains("_mod(use, daily)"));
         Assert.assertTrue(ruleString.contains("_property(2, use, without, number)"));
-        Assert.assertTrue(ruleString.contains("_property(kind, of, service)"));
+        Assert.assertTrue(ruleString.contains("_property(2, kind, of, service)"));
         Assert.assertTrue(ruleString.contains("_is(kind, attractive)"));
         Assert.assertTrue(ruleString.contains("event(1, say, null, null)"));
         Assert.assertTrue(ruleString.contains("event(3, be, null, null)"));
@@ -301,7 +301,7 @@ public class NintendoStoryTest {
         Assert.assertTrue(ruleString.contains("event(2, introduce, nintendo, animal_crossing_pocket_camp)"));
         Assert.assertTrue(ruleString.contains("_property(2, introduce, besides, miitomo)"));
         Assert.assertTrue(ruleString.contains("_property(2, introduce, as, game_apps)"));
-        Assert.assertTrue(ruleString.contains("_property(game_apps, for, user)"));
+        Assert.assertTrue(ruleString.contains("_property(2, game_apps, for, user)"));
         Assert.assertTrue(ruleString.contains("_mod(user, smartphone)"));
         Assert.assertTrue(ruleString.contains("event(1, have, null, null)"));
 
@@ -342,7 +342,7 @@ public class NintendoStoryTest {
         Assert.assertTrue(ruleString.contains("event(4, become, business, null)"));
         Assert.assertTrue(ruleString.contains("event(4, become, smartphone_business, null)"));
         Assert.assertTrue(ruleString.contains("_mod(revenue_generator, major)"));
-        Assert.assertTrue(ruleString.contains("_property(revenue_generator, for, nintendo)"));
+        Assert.assertTrue(ruleString.contains("_property(4, revenue_generator, for, nintendo)"));
     }
 
     @Test

@@ -44,8 +44,8 @@ public class GenghisKhanStoryTest {
         Assert.assertEquals(8, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(tribe, nomadic)"));
         Assert.assertTrue(ruleString.contains("_property(1, come, to, power)"));
-        Assert.assertTrue(ruleString.contains("_property(many, of, tribe)"));
-        Assert.assertTrue(ruleString.contains("_property(tribe, of, northeast_asia)"));
+        Assert.assertTrue(ruleString.contains("_property(2, many, of, tribe)"));
+        Assert.assertTrue(ruleString.contains("_property(2, tribe, of, northeast_asia)"));
         Assert.assertTrue(ruleString.contains("_relation(1, 2, _clause)"));
         Assert.assertTrue(ruleString.contains("event(1, come, genghis_khan, null)"));
         Assert.assertTrue(ruleString.contains("event(2, unite, null, many)"));
@@ -74,8 +74,8 @@ public class GenghisKhanStoryTest {
 
         Assert.assertEquals(15, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(invasion, mongol)"));
-        Assert.assertTrue(ruleString.contains("_property(conquest, of, most)"));
-        Assert.assertTrue(ruleString.contains("_property(most, of, eurasia)"));
+        Assert.assertTrue(ruleString.contains("_property(5, conquest, of, most)"));
+        Assert.assertTrue(ruleString.contains("_property(5, most, of, eurasia)"));
         Assert.assertTrue(ruleString.contains("_property(3, proclaim, as, genghis_khan)"));
         Assert.assertTrue(ruleString.contains("_property(5, result, in, conquest)"));
         Assert.assertTrue(ruleString.contains("_relation(1, 3, _conj)"));
@@ -181,10 +181,10 @@ public class GenghisKhanStoryTest {
         Assert.assertEquals(10, ruleString.size());
         Assert.assertTrue(ruleString.contains("_mod(portion, substantial)"));
         Assert.assertTrue(ruleString.contains("_possess(genghis_khan, life)"));
-        Assert.assertTrue(ruleString.contains("_property(end, of, life)"));
+        Assert.assertTrue(ruleString.contains("_property(1, end, of, life)"));
         Assert.assertTrue(ruleString.contains("_property(1, occupy, by, end)"));
-        Assert.assertTrue(ruleString.contains("_property(portion, of, central_asia)"));
-        Assert.assertTrue(ruleString.contains("_property(portion, of, china)"));
+        Assert.assertTrue(ruleString.contains("_property(1, portion, of, central_asia)"));
+        Assert.assertTrue(ruleString.contains("_property(1, portion, of, china)"));
         Assert.assertTrue(ruleString.contains("event(1, occupy, mongol_empire, portion)"));
         Assert.assertTrue(ruleString.contains("event(1, occupy, mongol_empire, portion_of_central_asia)"));
         Assert.assertTrue(ruleString.contains("event(1, occupy, mongol_empire, portion_of_china)"));

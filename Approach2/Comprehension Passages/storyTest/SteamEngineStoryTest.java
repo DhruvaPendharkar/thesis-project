@@ -43,7 +43,7 @@ public class SteamEngineStoryTest {
         Assert.assertTrue(ruleString.contains("_is(steam_engines, combustion_engines)"));
         Assert.assertTrue(ruleString.contains("_is(steam_engines, external_combustion_engines)"));
         Assert.assertTrue(ruleString.contains("_mod(fluid, working)"));
-        Assert.assertTrue(ruleString.contains("_property(separate, from, product)"));
+        Assert.assertTrue(ruleString.contains("_property(1, separate, from, product)"));
         Assert.assertTrue(ruleString.contains("_is(fluid, separate)"));
         Assert.assertTrue(ruleString.contains("separate(fluid)"));
         Assert.assertTrue(ruleString.contains("_is(working_fluid, separate)"));
@@ -139,7 +139,7 @@ public class SteamEngineStoryTest {
         Assert.assertTrue(ruleString.contains("event(3, transform, water, null)"));
         Assert.assertTrue(ruleString.contains("_property(3, transform, into, steam)"));
         Assert.assertTrue(ruleString.contains("_property(3, transform, within, boiler)"));
-        Assert.assertTrue(ruleString.contains("_property(operating, at, pressure)"));
+        Assert.assertTrue(ruleString.contains("_property(3, operating, at, pressure)"));
         Assert.assertTrue(ruleString.contains("_mod(pressure, high)"));
     }
 

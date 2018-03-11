@@ -86,7 +86,7 @@ public class ImmuneSystemStoryTest {
         Assert.assertTrue(ruleString.contains("_property(2, detect, to, worm)"));
         Assert.assertTrue(ruleString.contains("_property(4, distinguish, from, tissue)"));
         Assert.assertTrue(ruleString.contains("_property(3, know, as, pathogen)"));
-        Assert.assertTrue(ruleString.contains("_property(variety, of, agent)"));
+        Assert.assertTrue(ruleString.contains("_property(2, variety, of, agent)"));
         Assert.assertTrue(ruleString.contains("_relation(2, 4, _conj)"));
         Assert.assertTrue(ruleString.contains("_relation(agent, 3, _clause)"));
         Assert.assertTrue(ruleString.contains("event(1, function, null, null)"));

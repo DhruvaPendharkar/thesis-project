@@ -56,9 +56,20 @@ public class Word {
             return;
         }
 
+        // Misinterpreting Adjective as a OtherTag(X)
         String relationName = relation.getShortName();
         if(relationName.equalsIgnoreCase("amod") && !dependentWord.getPOSTag().equals("JJ")){
             dependentWord.POSTag = String.format("JJ-%s", dependentWord.POSTag);
+        }
+
+        // Misinterpreting Verb as a Noun
+        if(relationName.equalsIgnoreCase("dobj") ||
+            (relationName.equalsIgnoreCase("nmod") && relation.getSpecific() != null &&
+             relation.getSpecific().equalsIgnoreCase("agent"))){
+            if(this.getPOSTag().startsWith("NN")) {
+                this.POSTag = String.format("VB-%s", this.POSTag);
+                this.id = String.valueOf(this.eventId++);
+            }
         }
 
         String specific = relation.getSpecific();
@@ -831,13 +842,25 @@ public class Word {
     private Word GetToBeCopula() {
         if(this.relationMap.containsKey("cop")) {
             List<Word> copulas = new ArrayList<>();
-            copulas .addAll(this.relationMap.get("cop"));
+            copulas.addAll(this.relationMap.get("cop"));
             for(Word copula : copulas){
                 if(copula.lemma.equals("be")) return copula;
             }
         };
 
         return null;
+    }
+
+    public static List<Word> ExtractVerbs(List<Word> wordList) {
+        List<Word> verbs = new ArrayList<>();
+        for(Word word : wordList){
+            if(word.relationMap.size() == 0) continue;
+            if(word.IsVerb()){
+                verbs.add(word);
+            }
+        }
+
+        return verbs;
     }
 
     public static Word CreateCompoundWord(List<Word> wordCollection) {
@@ -944,5 +967,32 @@ public class Word {
         }
 
         return false;
+    }
+
+    public static void SetWordIds(List<Word> wordsList) {
+        List<Word> verbs = Word.ExtractVerbs(wordsList);
+        for(Word word : wordsList){
+            if(verbs.contains(word)) {
+                SetWordIds(word, word.id);
+            }
+            else {
+                Word toBeCopula = word.GetToBeCopula();
+                if(toBeCopula == null) continue;
+                if(word.id.length() == 0) word.id = toBeCopula.id;
+                SetWordIds(word, toBeCopula.id);
+            }
+        }
+    }
+
+    private static void SetWordIds(Word word, String eventId) {
+        HashMap<String, List<Word>> relations = word.relationMap;
+        for(String relation : relations.keySet()){
+            List<Word> dependantWords = relations.get(relation);
+            for(Word dependantWord : dependantWords){
+                if(dependantWord.id.length() > 0) continue;
+                dependantWord.id = eventId;
+                SetWordIds(dependantWord, eventId);
+            }
+        }
     }
 }

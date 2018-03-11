@@ -46,7 +46,7 @@ public class NormansStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(century, '11th')"));
         Assert.assertTrue(ruleString.contains("_property(2, give, in, century)"));
         Assert.assertTrue(ruleString.contains("_property(2, give, to, normandy)"));
-        Assert.assertTrue(ruleString.contains("_property(region, in, france)"));
+        Assert.assertTrue(ruleString.contains("_property(2, region, in, france)"));
         Assert.assertTrue(ruleString.contains("_possess(norman, name)"));
         Assert.assertTrue(ruleString.contains("people(norman)"));
         Assert.assertTrue(ruleString.contains("region(normandy)"));
@@ -82,7 +82,7 @@ public class NormansStoryTest {
         Assert.assertTrue(ruleString.contains("_property(1, descend, from, norway)"));
         Assert.assertTrue(ruleString.contains("_property(1, descend, from, pirate)"));
         Assert.assertTrue(ruleString.contains("_property(1, descend, under, leader)"));
-        Assert.assertTrue(ruleString.contains("_property(king_charles_iii, of, west_francia)"));
+        Assert.assertTrue(ruleString.contains("_property(3, king_charles_iii, of, west_francia)"));
         Assert.assertTrue(ruleString.contains("_property(3, swear, to, king_charles_iii)"));
         Assert.assertTrue(ruleString.contains("_relation(2, 3, _clcomplement)"));
         Assert.assertTrue(ruleString.contains("_relation(leader, 2, _clause)"));
@@ -116,8 +116,8 @@ public class NormansStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(population, native)"));
         Assert.assertTrue(ruleString.contains("_possess(norman, descendant)"));
         Assert.assertTrue(ruleString.contains("_property(1, assimilate, with, population)"));
-        Assert.assertTrue(ruleString.contains("_property(culture, of, west_francia)"));
-        Assert.assertTrue(ruleString.contains("_property(descendant, through, generation)"));
+        Assert.assertTrue(ruleString.contains("_property(3, culture, of, west_francia)"));
+        Assert.assertTrue(ruleString.contains("_property(3, descendant, through, generation)"));
         Assert.assertTrue(ruleString.contains("_property(3, merge, with, culture)"));
         Assert.assertTrue(ruleString.contains("_relation(1, 2, _conj)"));
         Assert.assertTrue(ruleString.contains("_relation(generation, 1, _clause)"));
@@ -151,7 +151,7 @@ public class NormansStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(identity, distinct)"));
         Assert.assertTrue(ruleString.contains("_mod(identity, ethnic)"));
         Assert.assertTrue(ruleString.contains("_property(1, emerge, in, 'the_first_half_of_the_10th_century')"));
-        Assert.assertTrue(ruleString.contains("_property(identity, of, norman)"));
+        Assert.assertTrue(ruleString.contains("_property(1, identity, of, norman)"));
         Assert.assertTrue(ruleString.contains("_relation(1, 2, _conj)"));
         Assert.assertTrue(ruleString.contains("_relation(2, 3, _clcomplement)"));
         Assert.assertTrue(ruleString.contains("event(1, emerge, distinct_cultural_ethnic_identity, null)"));

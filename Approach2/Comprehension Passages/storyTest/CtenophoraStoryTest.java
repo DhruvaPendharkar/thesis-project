@@ -48,7 +48,7 @@ public class CtenophoraStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(live, worldwide)"));
         Assert.assertTrue(ruleString.contains("_property(1, know, as, comb_jellies)"));
         Assert.assertTrue(ruleString.contains("_property(3, live, in, marine_waters)"));
-        Assert.assertTrue(ruleString.contains("_property(phylum, of, animal)"));
+        Assert.assertTrue(ruleString.contains("_property(2, phylum, of, animal)"));
         Assert.assertTrue(ruleString.contains("_relation(ctenophora, 1, _clause)"));
         Assert.assertTrue(ruleString.contains("event(1, know, null, null)"));
         Assert.assertTrue(ruleString.contains("event(2, be, null, null)"));
@@ -138,8 +138,8 @@ public class CtenophoraStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(meter, '1.5')"));
         Assert.assertTrue(ruleString.contains("_mod(millimeter, few)"));
         Assert.assertTrue(ruleString.contains("_mod(species, various)"));
-        Assert.assertTrue(ruleString.contains("_property(adult, of, species)"));
-        Assert.assertTrue(ruleString.contains("_property(meter, in, size)"));
+        Assert.assertTrue(ruleString.contains("_property(1, adult, of, species)"));
+        Assert.assertTrue(ruleString.contains("_property(1, meter, in, size)"));
         Assert.assertTrue(ruleString.contains("_property(1, range, from, millimeter)"));
         Assert.assertTrue(ruleString.contains("_property(1, range, to, '1.5_meter')"));
         Assert.assertTrue(ruleString.contains("event(1, range, adult, null)"));
@@ -170,12 +170,12 @@ public class CtenophoraStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(cavity, internal)"));
         Assert.assertTrue(ruleString.contains("_mod(layer, one)"));
         Assert.assertTrue(ruleString.contains("_possess(ctenophora, body)"));
-        Assert.assertTrue(ruleString.contains("_property(cell, on, outside)"));
+        Assert.assertTrue(ruleString.contains("_property(1, cell, on, outside)"));
         Assert.assertTrue(ruleString.contains("_property(1, consist, like, cnidarian)"));
         Assert.assertTrue(ruleString.contains("_property(1, consist, of, mass_of_jelly)"));
         Assert.assertTrue(ruleString.contains("_property(1, consist, with, line)"));
         Assert.assertTrue(ruleString.contains("_property(1, consist, with, one_layer)"));
-        Assert.assertTrue(ruleString.contains("_property(layer, of, cell)"));
+        Assert.assertTrue(ruleString.contains("_property(1, layer, of, cell)"));
         Assert.assertTrue(ruleString.contains("event(1, consist, body, null)"));
         Assert.assertTrue(ruleString.contains("event(2, line, another, cavity)"));
         Assert.assertTrue(ruleString.contains("event(2, line, another, internal_cavity)"));
@@ -206,9 +206,9 @@ public class CtenophoraStoryTest {
         Assert.assertTrue(ruleString.contains("_is(layer, one_cell_deep)"));
         Assert.assertTrue(ruleString.contains("_is(layer, only_one_cell_deep)"));
         Assert.assertTrue(ruleString.contains("_is(layer, two_cells_deep)"));
-        Assert.assertTrue(ruleString.contains("_property(layer, in, cnidarian)"));
-        Assert.assertTrue(ruleString.contains("_property(layer, of, mass_of_jelly)"));
-        Assert.assertTrue(ruleString.contains("_property(two_cells_deep, in, ctenophore)"));
+        Assert.assertTrue(ruleString.contains("_property(1, layer, in, cnidarian)"));
+        Assert.assertTrue(ruleString.contains("_property(1, layer, of, mass_of_jelly)"));
+        Assert.assertTrue(ruleString.contains("_property(1, two_cells_deep, in, ctenophore)"));
         Assert.assertTrue(ruleString.contains("event(1, be, null, null)"));
         Assert.assertTrue(ruleString.contains("event(2, be, null, null)"));
     }
@@ -236,8 +236,8 @@ public class CtenophoraStoryTest {
         Assert.assertEquals(12, ruleString.size());
         Assert.assertTrue(ruleString.contains("_is(phylum, coelenterata)"));
         Assert.assertTrue(ruleString.contains("_mod(phylum, one)"));
-        Assert.assertTrue(ruleString.contains("_property(cavity, for, digestion)"));
-        Assert.assertTrue(ruleString.contains("_property(cavity, for, respiration)"));
+        Assert.assertTrue(ruleString.contains("_property(2, cavity, for, digestion)"));
+        Assert.assertTrue(ruleString.contains("_property(2, cavity, for, respiration)"));
         Assert.assertTrue(ruleString.contains("_property(1, combine, in, one_phylum)"));
         Assert.assertTrue(ruleString.contains("_property(2, rely, on, flow)"));
         Assert.assertTrue(ruleString.contains("_property(2, rely, through, cavity)"));
@@ -272,7 +272,7 @@ public class CtenophoraStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(author, recent)"));
         Assert.assertTrue(ruleString.contains("_mod(awareness, increasing)"));
         Assert.assertTrue(ruleString.contains("_mod(phyla, separate)"));
-        Assert.assertTrue(ruleString.contains("_property(awareness, of, difference)"));
+        Assert.assertTrue(ruleString.contains("_property(2, awareness, of, difference)"));
         Assert.assertTrue(ruleString.contains("_relation(2, 3, _clcomplement)"));
         Assert.assertTrue(ruleString.contains("event(2, persuade, awareness, author)"));
         Assert.assertTrue(ruleString.contains("event(2, persuade, awareness, more_recent_author)"));

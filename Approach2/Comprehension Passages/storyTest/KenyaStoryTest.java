@@ -49,8 +49,8 @@ public class KenyaStoryTest {
         Assert.assertTrue(ruleString.contains("_is(kenya, founding_member)"));
         Assert.assertTrue(ruleString.contains("_is(kenya, member)"));
         Assert.assertTrue(ruleString.contains("_mod(member, founding)"));
-        Assert.assertTrue(ruleString.contains("_property(country, in, africa)"));
-        Assert.assertTrue(ruleString.contains("_property(member, of, east_african_community)"));
+        Assert.assertTrue(ruleString.contains("_property(1, country, in, africa)"));
+        Assert.assertTrue(ruleString.contains("_property(1, member, of, east_african_community)"));
         Assert.assertTrue(ruleString.contains("country(kenya)"));
         Assert.assertTrue(ruleString.contains("event(1, be, null, null)"));
         Assert.assertTrue(ruleString.contains("member(kenya)"));
@@ -171,7 +171,7 @@ public class KenyaStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(people, million)"));
         Assert.assertTrue(ruleString.contains("_mod(square_kilometre, '581,309')"));
         Assert.assertTrue(ruleString.contains("_property(2, have, in, 'july_2014')"));
-        Assert.assertTrue(ruleString.contains("_property(population, of, million_people)"));
+        Assert.assertTrue(ruleString.contains("_property(2, population, of, million_people)"));
         Assert.assertTrue(ruleString.contains("_relation(1, 2, _conj)"));
         Assert.assertTrue(ruleString.contains("event(1, cover, kenya, square_kilometre)"));
         Assert.assertTrue(ruleString.contains("event(2, have, kenya, population)"));
