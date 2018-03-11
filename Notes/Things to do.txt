@@ -6,14 +6,6 @@
 So better answers can be given with the help of adjectives and other modifiers like
 numerical qualifiers so _possess(table, leg), _possess(table, 4_leg) etc.. etc..
 
-6. Different properties and information wont go together, need to annotate properties
-with event ids -- important problem how to give event ids to properties and possessions
-For example give me a branch of computer science and lets say that the information given
-is something like branch(geometry), branch(computational_complexity), 
-_is(4, branch, computational_complexity), _is(6, branch, geometry)
-_property(4, branch, of(computer_science))
-So its only the event id that will keep things sane.
-
 7. Properties and Coordinating Conjunctions
 properties of both the verbs in the co-ordinating conjunctions, should be added
 Actually this relates to all the X and X where X = verb, X = noun
@@ -112,4 +104,13 @@ a fact. I think this is required for the hypernym relation.
 
 19. nmod:agent needs to be changed from by to _by
 So this will give more information about the verb and the subject relation
+---- Done ----
+
+6. Different properties and information wont go together, need to annotate properties
+with event ids -- important problem how to give event ids to properties and possessions
+For example give me a branch of computer science and lets say that the information given
+is something like branch(geometry), branch(computational_complexity), 
+_is(4, branch, computational_complexity), _is(6, branch, geometry)
+_property(4, branch, of(computer_science))
+So its only the event id that will keep things sane.
 ---- Done ----
