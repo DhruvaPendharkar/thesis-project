@@ -23,12 +23,12 @@ class WordNetTest {
             ruleString.add(rule.toString());
         }
 
-        Assert.assertEquals(11, ruleString.size());
-        Assert.assertTrue(ruleString.contains("animal(X, noun_tops) :- animal(X),not abnormal_d_tops(X),not -animal(X, noun_tops)"));
-        Assert.assertTrue(ruleString.contains("organism(X, noun_tops) :- organism(X),not abnormal_d_tops(X),not -organism(X, noun_tops)"));
-        Assert.assertTrue(ruleString.contains("physical_entity(X, noun_tops) :- physical_entity(X),not abnormal_d_tops(X),not -physical_entity(X, noun_tops)"));
-        Assert.assertTrue(ruleString.contains("living_thing(X, noun_tops) :- living_thing(X),not abnormal_d_tops(X),not -living_thing(X, noun_tops)"));
-        Assert.assertTrue(ruleString.contains("entity(X, noun_tops) :- entity(X),not abnormal_d_tops(X),not -entity(X, noun_tops)"));
+        Assert.assertEquals(17, ruleString.size());
+        Assert.assertTrue(ruleString.contains("animal(X, noun_tops) :- animal(X),properties_tops(X),not -animal(X, noun_tops)"));
+        Assert.assertTrue(ruleString.contains("organism(X, noun_tops) :- organism(X),properties_tops(X),not -organism(X, noun_tops)"));
+        Assert.assertTrue(ruleString.contains("physical_entity(X, noun_tops) :- physical_entity(X),properties_tops(X),not -physical_entity(X, noun_tops)"));
+        Assert.assertTrue(ruleString.contains("living_thing(X, noun_tops) :- living_thing(X),properties_tops(X),not -living_thing(X, noun_tops)"));
+        Assert.assertTrue(ruleString.contains("entity(X, noun_tops) :- entity(X),properties_tops(X),not -entity(X, noun_tops)"));
 
     }
 
@@ -44,9 +44,30 @@ class WordNetTest {
             ruleString.add(rule.toString());
         }
 
-        Assert.assertEquals(48, ruleString.size());
+        Assert.assertEquals(69, ruleString.size());
         Assert.assertTrue(ruleString.contains("lion(X, noun_person) :- lion(X),not -lion(X, noun_person),-lion(X, noun_animal),not lion(X, noun_location)"));
         Assert.assertTrue(ruleString.contains("lion(X, noun_location) :- lion(X),not -lion(X, noun_location),-lion(X, noun_animal),-lion(X, noun_person)"));
+    }
+
+    @Test
+    void TestWSDRules() throws IOException {
+        HashSet<String> nouns = new HashSet<>();
+        nouns.add("tree");
+        StorageManager manager = new StorageManager();
+        WordNet.BuildOntology(nouns);
+        List<Rule> rules = WordNet.WriteOntology(manager, false);
+        HashSet<String> ruleString = new HashSet<>();
+        for(Rule rule : rules){
+            ruleString.add(rule.toString());
+        }
+
+        Assert.assertEquals(62, ruleString.size());
+        Assert.assertTrue(ruleString.contains("tree(X, noun_plant) :- tree(X),properties_plant(X),not -tree(X, noun_plant)"));
+        Assert.assertTrue(ruleString.contains("tree(X, noun_shape) :- tree(X),properties_shape(X),not -tree(X, noun_shape)"));
+        Assert.assertTrue(ruleString.contains("tree(X, noun_person) :- tree(X),properties_person(X),not -tree(X, noun_person)"));
+        Assert.assertTrue(ruleString.contains("tree(X, noun_plant) :- tree(X),not -tree(X, noun_plant),not tree(X, noun_shape),not tree(X, noun_person)"));
+        Assert.assertTrue(ruleString.contains("tree(X, noun_shape) :- tree(X),not -tree(X, noun_shape),-tree(X, noun_plant),not tree(X, noun_person)"));
+        Assert.assertTrue(ruleString.contains("tree(X, noun_person) :- tree(X),not -tree(X, noun_person),-tree(X, noun_plant),-tree(X, noun_shape)"));
     }
 
     @Test
@@ -61,7 +82,7 @@ class WordNetTest {
             ruleString.add(rule.toString());
         }
 
-        Assert.assertEquals(48, ruleString.size());
+        Assert.assertEquals(69, ruleString.size());
         Assert.assertTrue(ruleString.contains("celebrity(X, noun_person) :- lion(X, noun_person)"));
         Assert.assertTrue(ruleString.contains("big_cat(X, noun_animal) :- lion(X, noun_animal)"));
         Assert.assertTrue(ruleString.contains("person(X, noun_tops) :- lion(X, noun_person)"));
@@ -97,7 +118,7 @@ class WordNetTest {
             ruleString.add(rule.toString());
         }
 
-        Assert.assertEquals(74, ruleString.size());
+        Assert.assertEquals(105, ruleString.size());
     }
 
     @Test

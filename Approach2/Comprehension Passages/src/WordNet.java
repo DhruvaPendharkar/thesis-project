@@ -230,16 +230,18 @@ public class WordNet {
             rules.add(rule);
         }
 
-        if(concepts.size() <= 1) return rules;
+        if(concepts.size() < 1) return rules;
         rules.addAll(GeneratePreferenceRules(baseConcept, concepts));
         return rules;
     }
 
     private static List<Rule> GeneratePreferenceRules(String baseConcept, List<Concept> concepts) {
-        if(concepts.size() <= 1) return new ArrayList<>();
+        if(concepts.size() < 1) return new ArrayList<>();
         List<Rule> rules = new ArrayList<>();
         concepts = GetSenseRanks(baseConcept, concepts);
-
+        if(concepts.size() < 1) return new ArrayList<>();
+        Rule rule = GenerateDefaultPreference(baseConcept, concepts);
+        rules.add(rule);
         Word baseWord = new Word(baseConcept, false);
         Literal variable = new Literal(new Word("X", true));
         for(int i=1;i<concepts.size();i++){
@@ -278,14 +280,55 @@ public class WordNet {
                 bodyList.add(otherSense);
             }
 
-            Rule rule = new Rule(head, bodyList, false);
+            rule = new Rule(head, bodyList, false);
             rules.add(rule);
         }
         return rules;
     }
 
+    private static Rule GenerateDefaultPreference(String baseConcept, List<Concept> concepts) {
+        Word baseWord = new Word(baseConcept, false);
+        Literal variable = new Literal(new Word("X", true));
+        Concept defaultConcept = concepts.get(0);
+        Literal sense = new Literal(new Word(defaultConcept.sense, false));
+        List<Literal> terms = new ArrayList<>();
+        terms.add(variable);
+        terms.add(sense);
+        Literal head = new Literal(baseWord, terms);
+
+        Literal strongException = new Literal(baseWord, terms);
+        strongException.isClassicalNegation = true;
+        strongException.isNAF = true;
+
+        terms = new ArrayList<>();
+        terms.add(variable);
+        Literal baseLiteral = new Literal(baseWord, terms);
+
+        List<Literal> bodyList = new ArrayList<>();
+        bodyList.add(baseLiteral);
+        bodyList.add(strongException);
+
+        for(int i=1;i<concepts.size();i++) {
+            Concept senseConcept = concepts.get(i);
+            sense = new Literal(new Word(senseConcept.sense, false));
+            terms = new ArrayList<>();
+            terms.add(variable);
+            terms.add(sense);
+
+            Literal senseLiteral = new Literal(baseWord, terms);
+            senseLiteral.isNAF = true;
+            bodyList.add(senseLiteral);
+        }
+
+        Rule defaultRule = new Rule(head, bodyList, false);
+        return defaultRule;
+    }
+
     private static List<Concept> GetSenseRanks(String baseConcept, List<Concept> concepts) {
         IIndexWord idxWord = dictionary.getIndexWord(baseConcept, POS.NOUN);
+        if(idxWord == null) {
+            return new ArrayList<>();
+        }
         HashMap<Pair<Integer, String>, List<IWordID>> senseMap = GetSenses(dictionary, idxWord);
         HashMap<String, Integer> senseRankMap = GetRankMap(senseMap.keySet());
         for(Concept concept : concepts){
@@ -326,10 +369,9 @@ public class WordNet {
         terms.add(variable);
         bodyList.add(new Literal(baseWordPredicate, terms));
 
-        Word abnormalPredicateWord = new Word("abnormal_d_" + senseType, false);
-        Literal weakException = new Literal(abnormalPredicateWord, terms);
-        weakException.isNAF = true;
-        bodyList.add(weakException);
+        Word propertyPredicateWord = new Word("properties_" + senseType, false);
+        Literal propertyException = new Literal(propertyPredicateWord, terms);
+        bodyList.add(propertyException);
         bodyList.add(strongException);
 
         Rule rule = new Rule(head, bodyList, false);

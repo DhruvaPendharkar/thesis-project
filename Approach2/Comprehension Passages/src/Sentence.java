@@ -318,13 +318,13 @@ public class Sentence {
         //List<CoreMap> sentences = annotation.get(CoreAnnotations.SentencesAnnotation.class);
         int index = 1;
         for (CoreLabel token: annotation.get(CoreAnnotations.TokensAnnotation.class)) {
-                String wordString = token.get(CoreAnnotations.TextAnnotation.class);
-                String lemmaString = token.getString(CoreAnnotations.LemmaAnnotation.class);
-                String posTag = token.get(CoreAnnotations.PartOfSpeechAnnotation.class);
-                String NERTag = token.get(CoreAnnotations.NamedEntityTagAnnotation.class);
-                Word word = new Word(index, wordString, lemmaString, posTag, NERTag);
-                wordList.add(word);
-                index++;
+            String wordString = token.get(CoreAnnotations.TextAnnotation.class);
+            String lemmaString = token.getString(CoreAnnotations.LemmaAnnotation.class);
+            String posTag = token.get(CoreAnnotations.PartOfSpeechAnnotation.class);
+            String NERTag = token.get(CoreAnnotations.NamedEntityTagAnnotation.class);
+            Word word = new Word(index, wordString, lemmaString, posTag, NERTag);
+            wordList.add(word);
+            index++;
         }
 
         return wordList;

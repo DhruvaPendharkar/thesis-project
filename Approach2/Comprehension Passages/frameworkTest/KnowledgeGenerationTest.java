@@ -63,7 +63,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(751, ruleString.size());
+        Assert.assertEquals(1012, ruleString.size());
     }
 
     @Test
@@ -94,7 +94,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(410, ruleString.size());
+        Assert.assertEquals(561, ruleString.size());
     }
 
     @Test
@@ -129,7 +129,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(604, ruleString.size());
+        Assert.assertEquals(836, ruleString.size());
     }
 
     @Test
@@ -162,7 +162,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(635, ruleString.size());
+        Assert.assertEquals(867, ruleString.size());
     }
 
     @Test
@@ -194,7 +194,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(348, ruleString.size());
+        Assert.assertEquals(488, ruleString.size());
     }
 
     @Test
@@ -225,7 +225,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(268, ruleString.size());
+        Assert.assertEquals(370, ruleString.size());
     }
 
     @Test
@@ -260,7 +260,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(549, ruleString.size());
+        Assert.assertEquals(737, ruleString.size());
     }
 
     @Test
@@ -293,7 +293,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(327, ruleString.size());
+        Assert.assertEquals(444, ruleString.size());
     }
 
     @Test
@@ -325,7 +325,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(531, ruleString.size());
+        Assert.assertEquals(719, ruleString.size());
     }
 
     @Test
@@ -361,7 +361,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(329, ruleString.size());
+        Assert.assertEquals(450, ruleString.size());
     }
 
     @Test
@@ -394,7 +394,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(387, ruleString.size());
+        Assert.assertEquals(523, ruleString.size());
     }
 
     @Test
@@ -427,7 +427,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(342, ruleString.size());
+        Assert.assertEquals(472, ruleString.size());
     }
 
     @Test
@@ -461,7 +461,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(503, ruleString.size());
+        Assert.assertEquals(691, ruleString.size());
     }
 
     @Test
@@ -490,7 +490,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(232, ruleString.size());
+        Assert.assertEquals(323, ruleString.size());
     }
 
     @Test
@@ -524,7 +524,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(388, ruleString.size());
+        Assert.assertEquals(537, ruleString.size());
     }
 
     @Test
@@ -557,7 +557,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(579, ruleString.size());
+        Assert.assertEquals(783, ruleString.size());
     }
 
     @Test
@@ -589,7 +589,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(318, ruleString.size());
+        Assert.assertEquals(438, ruleString.size());
     }
 
     @Test
@@ -621,7 +621,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(451, ruleString.size());
+        Assert.assertEquals(621, ruleString.size());
     }
 
     @Test
@@ -652,7 +652,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(500, ruleString.size());
+        Assert.assertEquals(672, ruleString.size());
     }
 
     @Test
@@ -686,7 +686,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(272, ruleString.size());
+        Assert.assertEquals(384, ruleString.size());
     }
 
     @Test
@@ -718,7 +718,7 @@ class KnowledgeGenerationTest {
             ruleString.add(rule.toString());
         }
         PrintRules(ruleString);
-        Assert.assertEquals(365, ruleString.size());
+        Assert.assertEquals(509, ruleString.size());
     }
 
     private void PrintRules(TreeSet<String> ruleString) {
