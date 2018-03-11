@@ -109,3 +109,7 @@ Although this is true, is it really a correct assumption and a required fact.
 Test this theory and mostly it just gives no real information although it seems
 a fact. I think this is required for the hypernym relation.
 ---- Not Done But No Need To Change ----
+
+19. nmod:agent needs to be changed from by to _by
+So this will give more information about the verb and the subject relation
+---- Done ----

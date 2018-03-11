@@ -92,8 +92,8 @@ public class ComputationalComplexityStoryTest {
         Assert.assertTrue(ruleString.contains("_mod(step, mathematical)"));
         Assert.assertTrue(ruleString.contains("_property(amenable, in, principle)"));
         Assert.assertTrue(ruleString.contains("_property(mechanical_application, of, step)"));
-        Assert.assertTrue(ruleString.contains("_property(6, solve, by, computer)"));
-        Assert.assertTrue(ruleString.contains("_property(10, solve, by, mechanical_application)"));
+        Assert.assertTrue(ruleString.contains("_property(6, solve, _by, computer)"));
+        Assert.assertTrue(ruleString.contains("_property(10, solve, _by, mechanical_application)"));
         Assert.assertTrue(ruleString.contains("_relation(8, 10, _clcomplement)"));
         Assert.assertTrue(ruleString.contains("equivalent(task)"));
         Assert.assertTrue(ruleString.contains("event(10, solve, null, problem)"));

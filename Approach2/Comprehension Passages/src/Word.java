@@ -251,7 +251,7 @@ public class Word {
                 bodyList.add(new Literal(new Word(this.id, false)));
             }
             bodyList.add(concept);
-            bodyList.add(new Literal(new Word("by", false)));
+            bodyList.add(new Literal(new Word("_by", false)));
             bodyList.add(new Literal(modifier));
             Literal head = new Literal(predicate, bodyList);
             Rule rule = new Rule(head, null, false);
