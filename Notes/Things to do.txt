@@ -37,6 +37,13 @@ company(X, S1) :- subsidiary(X, S2). then also add the rule
 company(X) :- subsidiary(X, S2), not -company(X). 
 So here it matters what sense you take it should only be valid if sense is S2
 
+21. Questions - Removing constraints
+Constraints can be removed using the following rules
+a. Run queries without constraints
+b. Strip all predicates without a single variable
+c. Strip all predicates without a single 'X' variable
+d. Strip everything except the final constraint ie borough(X, _), year(X, _) etc...
+
 *****************************************************************************************
 *										Good To Have									*
 *****************************************************************************************

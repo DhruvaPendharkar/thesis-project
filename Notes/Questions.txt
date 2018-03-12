@@ -13,9 +13,9 @@ In what year did ABC stylize it's logo as abc?
 ?- year(X).
 
 In what borough of New York City is ABC headquartered?
-?- event(E, headquarter, S, O), _similar(abc, O),_property(borough, of(new_york_city)), _property(headquarter, in(X)), borough(X, _).
-?- event(E, headquarter, S, O), _similar(abc, O), _property(headquarter, in(X)), borough(X, _).
-?- _property(headquarter, in(X)), borough(X, _).
+?- event(E, headquarter, S, O), _similar(abc, O),_property(E, borough, of, new_york_city), _property(E, headquarter, in, X), borough(X, _).
+?- event(E, headquarter, S, O), _similar(abc, O), _property(E, headquarter, in, X), borough(X, _).
+?- _property(headquarter, in, X), borough(X, _).
 ?- borough(X, _).
 
 On what streets is the ABC headquarters located?

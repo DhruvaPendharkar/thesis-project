@@ -89,18 +89,10 @@ public class Question extends Sentence {
         constrains.addAll(Word.GenerateQuestionConstraintRules(information));
         Rule constraint = Rule.AggregateAllRules(constrains);
         for(Rule eventQuery : eventQueries){
-            Rule rule = ApplyConstraint(eventQuery, constraint);
+            Rule rule = Rule.ApplyConstraint(eventQuery, constraint);
             rules.add(rule);
         }
 
         return rules;
-    }
-
-    private Rule ApplyConstraint(Rule eventQuery, Rule constraint) {
-        List<Rule> rules = new ArrayList<>();
-        rules.add(eventQuery);
-        rules.add(constraint);
-        Rule combinedRule = Rule.AggregateAllRules(rules);
-        return combinedRule;
     }
 }

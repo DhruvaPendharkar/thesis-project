@@ -108,4 +108,12 @@ public class Rule implements Comparable<Rule> {
         Rule rule = new Rule(null, bodyList, false);
         return rule;
     }
+
+    public static Rule ApplyConstraint(Rule eventQuery, Rule constraint) {
+        List<Rule> rules = new ArrayList<>();
+        rules.add(eventQuery);
+        rules.add(constraint);
+        Rule combinedRule = Rule.AggregateAllRules(rules);
+        return combinedRule;
+    }
 }

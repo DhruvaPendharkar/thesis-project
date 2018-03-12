@@ -114,10 +114,92 @@ public class Word {
     public List<Rule> GenerateVerbQuestionRules(QuestionInformation information) {
         List<Rule> rules = new ArrayList<>();
         Rule normalQuery = GenerateNormalQuery(information);
-        if(normalQuery != null) rules.add(normalQuery);
-        if(information.answerType == AnswerType.SUBJECT){
-            Rule agentQuery = GenerateAgentQuery(information);
-            if(agentQuery != null) rules.add(agentQuery);
+        Rule agentQuery = GenerateAgentQuery(information);
+        Rule clausalQuery = GenerateClausalQuery(information);
+
+        List<Rule> propertyConstraints = GeneratePropertyConstraints(information);
+        Rule constraint = Rule.AggregateAllRules(propertyConstraints);
+
+        if(normalQuery != null) rules.add(Rule.ApplyConstraint(normalQuery, constraint));
+        if(agentQuery != null) rules.add(Rule.ApplyConstraint(agentQuery, constraint));
+        if(clausalQuery != null) rules.add(Rule.ApplyConstraint(clausalQuery, constraint));
+        return rules;
+    }
+
+    private Rule GenerateClausalQuery(QuestionInformation information) {
+        List<Rule> rules = new ArrayList<>();
+        Word eventWord = new Word("event", false);
+        String subjectFormat = information.answerType == AnswerType.SUBJECT ? "X%s" : "S%s";
+
+        List<Word> subjects = this.GetSubjects();
+        if(subjects.size() == 0) return null;
+
+        List<Literal> terms = new ArrayList<>();
+        terms.add(new Literal(new Word(String.format("E%s", this.id), true)));
+        terms.add(new Literal(new Word(this.getLemma(), false)));
+        terms.add(new Literal(new Word("_", false)));
+        terms.add(new Literal(new Word("_", false)));
+        Literal queryEvent = new Literal(eventWord, terms);
+        Rule rule = new Rule(queryEvent, null, true);
+        rules.add(rule);
+
+        Word clausalSubjectPredicate = new Word("_relation", false);
+        Word similarPredicate = new Word("_similar", false);
+        for(Word subject : subjects){
+            if(information.answerKind != subject) {
+                terms = new ArrayList<>();
+                terms.add(new Literal(subject));
+                terms.add(new Literal(new Word(String.format(subjectFormat, this.id), true)));
+                Literal similarQuery = new Literal(similarPredicate, terms);
+                rule = new Rule(similarQuery, null, true);
+                rules.add(rule);
+            }
+
+            terms = new ArrayList<>();
+            terms.add(new Literal(new Word(String.format(subjectFormat, this.id), true)));
+            terms.add(new Literal(new Word(String.format("E%s", this.id), true)));
+            terms.add(new Literal(new Word("_clause", false)));
+            Literal clausalQuery = new Literal(clausalSubjectPredicate, terms);
+            rule = new Rule(clausalQuery, null, true);
+            rules.add(rule);
+        }
+
+        if(rules.size() == 0) return null;
+        rule = Rule.AggregateAllRules(rules);
+        return rule;
+    }
+
+    private List<Rule> GeneratePropertyConstraints(QuestionInformation information) {
+        List<Rule> rules = new ArrayList<>();
+        Word predicate = new Word("_property", false);
+        List<Pair<Word, Word>> modifierPairs = this.GetNominalModifiers();
+
+        for(Pair<Word, Word> modifier : modifierPairs) {
+            List<Literal> bodyList = new ArrayList<>();
+            Literal concept = new Literal(this);
+            Word preposition = modifier.getValue();
+            if(this.id.length() > 0) {
+                bodyList.add(new Literal(new Word(String.format("E%s", this.id), true)));
+            }
+
+            bodyList.add(concept);
+
+            if(preposition == null) {
+                preposition = new Word("null", false);
+            }
+
+            bodyList.add(new Literal(preposition));
+            Word modifierWord = modifier.getKey();
+            if(modifierWord == information.answerKind) {
+                bodyList.add(new Literal(new Word(String.format("X%s", modifierWord.id), true)));
+            }
+            else {
+                bodyList.add(new Literal(modifierWord));
+            }
+
+            Literal head = new Literal(predicate, bodyList);
+            Rule rule = new Rule(head, null, false);
+            rules.add(rule);
         }
 
         return rules;
@@ -515,6 +597,10 @@ public class Word {
         String subjectFormat = questionInformation.answerType == AnswerType.SUBJECT ? "X%s" : "S%s";
         String objectFormat = questionInformation.answerType == AnswerType.OBJECT ? "X%s" : "O%s";
 
+        List<Word> subjects = this.GetSubjects();
+        List<Word> modifiers = this.GetModifiers();
+        if(subjects.size() == 0 && modifiers.size() == 0) return null;
+
         List<Literal> terms = new ArrayList<>();
         terms.add(new Literal(new Word(String.format("E%s", this.id), true)));
         terms.add(new Literal(new Word(this.getLemma(), false)));
@@ -525,7 +611,6 @@ public class Word {
         rules.add(rule);
 
         Word similarWord = new Word("_similar", false);
-        List<Word> subjects = this.GetSubjects();
         for(Word subject : subjects){
             if(questionInformation.answerType == AnswerType.SUBJECT && questionInformation.answerKind == subject) continue;
             terms = new ArrayList<>();
@@ -536,7 +621,6 @@ public class Word {
             rules.add(rule);
         }
 
-        List<Word> modifiers = this.GetModifiers();
         for(Word modifier : modifiers){
             if(questionInformation.answerType == AnswerType.OBJECT && questionInformation.answerKind == modifier) continue;
             terms = new ArrayList<>();
@@ -567,6 +651,10 @@ public class Word {
         Word eventWord = new Word("event", false);
         String subjectFormat = information.answerType == AnswerType.SUBJECT ? "X%s" : "S%s";
         String objectFormat = information.answerType == AnswerType.OBJECT ? "X%s" : "O%s";
+        List<Word> subjects = this.GetSubjects();
+        List<Word> modifiers = this.GetModifiers();
+
+        if(subjects.size() == 0 && modifiers.size() == 0) return null;
 
         List<Literal> terms = new ArrayList<>();
         terms.add(new Literal(new Word(String.format("E%s", this.id), true)));
@@ -578,7 +666,6 @@ public class Word {
         rules.add(rule);
 
         Word similarWord = new Word("_similar", false);
-        List<Word> subjects = this.GetSubjects();
         for(Word subject : subjects){
             if(information.answerType == AnswerType.SUBJECT && information.answerKind == subject) continue;
             terms = new ArrayList<>();
@@ -589,7 +676,6 @@ public class Word {
             rules.add(rule);
         }
 
-        List<Word> modifiers = this.GetModifiers();
         for(Word modifier : modifiers){
             if(information.answerType == AnswerType.OBJECT && information.answerKind == modifier) continue;
             terms = new ArrayList<>();
@@ -1129,7 +1215,6 @@ public class Word {
         if(information.answerKind == null) return rules;
 
         switch (information.answerType){
-            case UNKNOWN: return rules;
             case YEAR:
                 Word yearPredicate = new Word("year", false);
                 Word timePredicate = new Word("time", false);
@@ -1148,8 +1233,7 @@ public class Word {
                 rules.add(rule);
                 return rules;
 
-            case SUBJECT:
-            case OBJECT:
+            default:
                 Word basePredicate = information.answerKind;
                 terms = new ArrayList<>();
                 terms.add(new Literal(new Word(String.format("X%s", information.answerKind.id), true)));
