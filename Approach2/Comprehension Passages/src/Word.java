@@ -1241,8 +1241,21 @@ public class Word {
                 Literal baseLiteral = new Literal(basePredicate, terms);
                 rule = new Rule(baseLiteral, null, true);
                 rules.add(rule);
+
+                Word modPredicate = new Word("_mod", false);
+                terms = new ArrayList<>();
+                terms.add(new Literal(information.answerKind));
+                terms.add(new Literal(new Word(String.format("X%s", information.answerKind.id), true)));
+                Literal modLiteral = new Literal(modPredicate, terms);
+                rule = new Rule(modLiteral, null, true);
+                rules.add(rule);
         }
 
         return rules;
+    }
+
+    public List<Rule> GenerateNounConstraintRules(QuestionInformation information) {
+        List<Rule> propertyConstraints = GeneratePropertyConstraints(information);
+        return propertyConstraints;
     }
 }

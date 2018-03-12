@@ -76,7 +76,7 @@ public class Question extends Sentence {
 
     public List<Rule> GenerateRules() {
         List<Rule> rules = new ArrayList<>();
-        List<Rule> constrains = this.preProcessRules;
+        List<Rule> constraints = this.preProcessRules;
         List<Rule> eventQueries = new ArrayList<>();
 
         for(Word word : this.wordList){
@@ -84,13 +84,24 @@ public class Question extends Sentence {
             if(word.IsVerb()){
                 eventQueries.addAll(word.GenerateVerbQuestionRules(this.information));
             }
+            else if(word.IsNoun()){
+                constraints.addAll(word.GenerateNounConstraintRules(this.information));
+            }
         }
 
-        constrains.addAll(Word.GenerateQuestionConstraintRules(information));
-        Rule constraint = Rule.AggregateAllRules(constrains);
+        List<Rule> finalConstraints = Word.GenerateQuestionConstraintRules(information);
+        List<Rule> combinedConstraints = new ArrayList<>();
+        Rule allConstraints = Rule.AggregateAllRules(constraints);
+        for(Rule constraint : finalConstraints) {
+            Rule rule = Rule.ApplyConstraint(constraint, allConstraints);
+            combinedConstraints.add(rule);
+        }
+
         for(Rule eventQuery : eventQueries){
-            Rule rule = Rule.ApplyConstraint(eventQuery, constraint);
-            rules.add(rule);
+            for(Rule combinedConstraint : combinedConstraints){
+                Rule rule = Rule.ApplyConstraint(eventQuery, combinedConstraint);
+                rules.add(rule);
+            }
         }
 
         return rules;
