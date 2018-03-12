@@ -31,8 +31,11 @@ eg taking down, making up
 So here I guess that the adjectives are already taken care of the only thing 
 that is not is nummod
 
-18. Fix the disambiguation code
-Change the disambiguation code to not have a weak exception
+20. Include the X(X) relation in the hypernym rules as well
+ie if subsidiary --> company ie
+company(X, S1) :- subsidiary(X, S2). then also add the rule
+company(X) :- subsidiary(X, S2), not -company(X). 
+So here it matters what sense you take it should only be valid if sense is S2
 
 *****************************************************************************************
 *										Good To Have									*
@@ -113,4 +116,8 @@ is something like branch(geometry), branch(computational_complexity),
 _is(4, branch, computational_complexity), _is(6, branch, geometry)
 _property(4, branch, of(computer_science))
 So its only the event id that will keep things sane.
+---- Done ----
+
+18. Fix the disambiguation code
+Change the disambiguation code to not have a weak exception
 ---- Done ----

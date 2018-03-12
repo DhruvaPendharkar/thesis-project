@@ -92,19 +92,20 @@ public class Rule implements Comparable<Rule> {
         return 2;
     }
 
-    public static List<Rule> AggregateAllRules(List<Rule> rules) {
+    public static Rule AggregateAllRules(List<Rule> rules) {
         Set<Literal> literalSet = new TreeSet<>();
         for(Rule rule : rules){
             if(rule.head != null){
                 if(rule.body != null && rule.body.size() == 0) continue;
                 literalSet.add(rule.head);
             }
+            else if(rule.body != null && rule.body.size() > 0){
+                literalSet.addAll(rule.body);
+            }
         }
 
         List<Literal> bodyList = new ArrayList<>(literalSet);
         Rule rule = new Rule(null, bodyList, false);
-        rules = new ArrayList<>();
-        rules.add(rule);
-        return rules;
+        return rule;
     }
 }

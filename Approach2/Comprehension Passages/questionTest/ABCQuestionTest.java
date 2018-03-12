@@ -1,6 +1,7 @@
 
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
@@ -18,6 +19,11 @@ public class ABCQuestionTest {
         Assert.assertNotNull(Sentence.pipeline);
     }
 
+    @BeforeEach
+    void InitializeTest(){
+        Word.eventId = 1;
+    }
+
     @Test
     // What company owns the American Broadcasting Company?
     void TestSentenceOne() {
@@ -32,16 +38,18 @@ public class ABCQuestionTest {
             System.out.println(rule.toString());
         }
 
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(2, ruleString.size());
+        Assert.assertTrue(ruleString.contains("_property(E1, own, _by, X1),_similar(american_broadcasting_company, O1),company(X1, _),event(E1, own, _, O1)"));
+        Assert.assertTrue(ruleString.contains("_similar(american_broadcasting_company, O1),company(X1, _),event(E1, own, X1, O1)"));
     }
 
     @Test
     // In what year did ABC stylize it's logo as abc?
     void TestSentenceTwo() {
         String content = "In what year did ABC stylize abc's logo, as abc ?";
-        Sentence sentence = Sentence.ParseSentence(content);
-        System.out.println(Sentence.DependenciesToString(sentence));
-        List<Rule> rules = sentence.GenerateRules();
+        Question question = new Question(content);
+        System.out.println(Sentence.DependenciesToString(question));
+        List<Rule> rules = question.GenerateRules();
         HashSet<String> ruleString = new HashSet<>();
         TreeSet<Rule> rulesSet = new TreeSet<>(rules);
         for(Rule rule : rulesSet){

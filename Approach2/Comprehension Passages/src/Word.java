@@ -1,9 +1,6 @@
-import edu.mit.jwi.item.IIndexWord;
-import edu.mit.jwi.item.POS;
 import edu.stanford.nlp.trees.GrammaticalRelation;
 import javafx.util.Pair;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -21,10 +18,11 @@ public class Word {
     private String id;
     private NamedEntityTagger.NamedEntityTags NERTag;
     private HashMap<String, List<Word>> relationMap;
-
+    public boolean isVariable = false;
     public static int eventId = 1;
 
     Word(String word, boolean isVariable){
+        this.isVariable = isVariable;
         this.wordIndex = 0;
         this.word = word.toLowerCase();
         if(isVariable) this.word = word;
@@ -111,6 +109,18 @@ public class Word {
         }
 
         return new ArrayList<>();
+    }
+
+    public List<Rule> GenerateVerbQuestionRules(QuestionInformation information) {
+        List<Rule> rules = new ArrayList<>();
+        Rule normalQuery = GenerateNormalQuery(information);
+        if(normalQuery != null) rules.add(normalQuery);
+        if(information.answerType == AnswerType.SUBJECT){
+            Rule agentQuery = GenerateAgentQuery(information);
+            if(agentQuery != null) rules.add(agentQuery);
+        }
+
+        return rules;
     }
 
     public boolean IsAdjective() {
@@ -497,6 +507,102 @@ public class Word {
         }
 
         return rules;
+    }
+
+    private Rule GenerateAgentQuery(QuestionInformation questionInformation) {
+        List<Rule> rules = new ArrayList<>();
+        Word eventWord = new Word("event", false);
+        String subjectFormat = questionInformation.answerType == AnswerType.SUBJECT ? "X%s" : "S%s";
+        String objectFormat = questionInformation.answerType == AnswerType.OBJECT ? "X%s" : "O%s";
+
+        List<Literal> terms = new ArrayList<>();
+        terms.add(new Literal(new Word(String.format("E%s", this.id), true)));
+        terms.add(new Literal(new Word(this.getLemma(), false)));
+        terms.add(new Literal(new Word("_", false)));
+        terms.add(new Literal(new Word(String.format(objectFormat, this.id), true)));
+        Literal queryEvent = new Literal(eventWord, terms);
+        Rule rule = new Rule(queryEvent, null, true);
+        rules.add(rule);
+
+        Word similarWord = new Word("_similar", false);
+        List<Word> subjects = this.GetSubjects();
+        for(Word subject : subjects){
+            if(questionInformation.answerType == AnswerType.SUBJECT && questionInformation.answerKind == subject) continue;
+            terms = new ArrayList<>();
+            terms.add(new Literal(subject));
+            terms.add(new Literal(new Word(String.format(subjectFormat, this.id), true)));
+            Literal similarQuery = new Literal(similarWord, terms);
+            rule = new Rule(similarQuery, null, true);
+            rules.add(rule);
+        }
+
+        List<Word> modifiers = this.GetModifiers();
+        for(Word modifier : modifiers){
+            if(questionInformation.answerType == AnswerType.OBJECT && questionInformation.answerKind == modifier) continue;
+            terms = new ArrayList<>();
+            terms.add(new Literal(modifier));
+            terms.add(new Literal(new Word(String.format(objectFormat, this.id), true)));
+            Literal similarQuery = new Literal(similarWord, terms);
+            rule = new Rule(similarQuery, null, true);
+            rules.add(rule);
+        }
+
+        Word propertyWord = new Word("_property", false);
+        terms = new ArrayList<>();
+        terms.add(new Literal(new Word(String.format("E%s", this.id), true)));
+        terms.add(new Literal(new Word(this.getLemma(), false)));
+        terms.add(new Literal(new Word("_by", false)));
+        terms.add(new Literal(new Word(String.format(subjectFormat, this.id), true)));
+        Literal agentQuery = new Literal(propertyWord, terms);
+        rule = new Rule(agentQuery, null, true);
+        rules.add(rule);
+
+        if(rules.size() == 0) return null;
+        rule = Rule.AggregateAllRules(rules);
+        return rule;
+    }
+
+    private Rule GenerateNormalQuery(QuestionInformation information) {
+        List<Rule> rules = new ArrayList<>();
+        Word eventWord = new Word("event", false);
+        String subjectFormat = information.answerType == AnswerType.SUBJECT ? "X%s" : "S%s";
+        String objectFormat = information.answerType == AnswerType.OBJECT ? "X%s" : "O%s";
+
+        List<Literal> terms = new ArrayList<>();
+        terms.add(new Literal(new Word(String.format("E%s", this.id), true)));
+        terms.add(new Literal(new Word(this.getLemma(), false)));
+        terms.add(new Literal(new Word(String.format(subjectFormat, this.id), true)));
+        terms.add(new Literal(new Word(String.format("O%s", this.id), true)));
+        Literal queryEvent = new Literal(eventWord, terms);
+        Rule rule = new Rule(queryEvent, null, true);
+        rules.add(rule);
+
+        Word similarWord = new Word("_similar", false);
+        List<Word> subjects = this.GetSubjects();
+        for(Word subject : subjects){
+            if(information.answerType == AnswerType.SUBJECT && information.answerKind == subject) continue;
+            terms = new ArrayList<>();
+            terms.add(new Literal(subject));
+            terms.add(new Literal(new Word(String.format(subjectFormat, this.id), true)));
+            Literal similarQuery = new Literal(similarWord, terms);
+            rule = new Rule(similarQuery, null, true);
+            rules.add(rule);
+        }
+
+        List<Word> modifiers = this.GetModifiers();
+        for(Word modifier : modifiers){
+            if(information.answerType == AnswerType.OBJECT && information.answerKind == modifier) continue;
+            terms = new ArrayList<>();
+            terms.add(new Literal(modifier));
+            terms.add(new Literal(new Word(String.format(objectFormat, this.id), true)));
+            Literal similarQuery = new Literal(similarWord, terms);
+            rule = new Rule(similarQuery, null, true);
+            rules.add(rule);
+        }
+
+        if(rules.size() == 0) return null;
+        rule = Rule.AggregateAllRules(rules);
+        return rule;
     }
 
     private static List<Rule> GenerateAppositionalEventRules(Word actionWord, Word subject, Word object) {
@@ -994,5 +1100,65 @@ public class Word {
                 SetWordIds(dependantWord, eventId);
             }
         }
+    }
+
+    public List<Word> GetDeterminers() {
+        List<Word> determiners = new ArrayList<>();
+        if(this.relationMap.containsKey("det")) determiners.addAll(this.relationMap.get("det"));
+        return determiners;
+    }
+
+    public boolean IsQuestionWord() {
+        if(this.getPOSTag().startsWith("W")){
+            return true;
+        }
+
+        return false;
+    }
+
+    public AnswerType GetAnswerType(Word answerKind) {
+        List<Word> subjects = this.GetSubjects();
+        if(subjects.contains(answerKind)) return AnswerType.SUBJECT;
+        List<Word> modifiers = this.GetModifiers();
+        if(modifiers.contains(answerKind)) return AnswerType.OBJECT;
+        return AnswerType.UNKNOWN;
+    }
+
+    public static List<Rule> GenerateQuestionConstraintRules(QuestionInformation information) {
+        List<Rule> rules = new ArrayList<>();
+        if(information.answerKind == null) return rules;
+
+        switch (information.answerType){
+            case UNKNOWN: return rules;
+            case YEAR:
+                Word yearPredicate = new Word("year", false);
+                Word timePredicate = new Word("time", false);
+                Literal timeVariable = new Literal(new Word(String.format("T%s", information.answerKind.id), true));
+                List<Literal> terms = new ArrayList<>();
+                terms.add(timeVariable);
+                terms.add(new Literal(new Word(String.format("X%s", information.answerKind.id), true)));
+                Literal yearLiteral = new Literal(yearPredicate, terms);
+                Rule rule = new Rule(yearLiteral, null, true);
+                rules.add(rule);
+
+                terms = new ArrayList<>();
+                terms.add(timeVariable);
+                Literal timeLiteral = new Literal(timePredicate, terms);
+                rule = new Rule(timeLiteral, null, true);
+                rules.add(rule);
+                return rules;
+
+            case SUBJECT:
+            case OBJECT:
+                Word basePredicate = information.answerKind;
+                terms = new ArrayList<>();
+                terms.add(new Literal(new Word(String.format("X%s", information.answerKind.id), true)));
+                terms.add(new Literal(new Word("_", false)));
+                Literal baseLiteral = new Literal(basePredicate, terms);
+                rule = new Rule(baseLiteral, null, true);
+                rules.add(rule);
+        }
+
+        return rules;
     }
 }
