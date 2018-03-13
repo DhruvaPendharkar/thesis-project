@@ -71,12 +71,15 @@ street(X2, _).
 **********************************************************
 Disney-ABC Television Group is a subsidiary of what division of the Walt Disney Company?
 **********************************************************
-_is(disney_abc_television_group, subsidiary),_mod(division, X1),_property(E1, subsidiary, of, X1).
-_is(disney_abc_television_group, subsidiary),_property(E1, subsidiary, of, X1),division(X1, _).
-_mod(division, X1),_property(E1, subsidiary, of, X1).
-_property(E1, subsidiary, of, X1),division(X1, _).
-_mod(division, X1).
-division(X1, _).
+/*----------------  FACT  ------------------*/
+Assert.assertTrue(ruleString.contains("_is(disney_abc_television_group, subsidiary),_mod(division, X1),_property(E1, subsidiary, of, X1)"));
+Assert.assertTrue(ruleString.contains("_is(disney_abc_television_group, subsidiary),_property(E1, subsidiary, of, X1),division(X1, _)"));
+/*----------------  CONSTRAINT_QUERY  ------------------*/
+Assert.assertTrue(ruleString.contains("_mod(division, X1),_property(E1, subsidiary, of, X1)"));
+Assert.assertTrue(ruleString.contains("_property(E1, subsidiary, of, X1),division(X1, _)"));
+/*----------------  BASE_CONSTRAINT  ------------------*/
+Assert.assertTrue(ruleString.contains("_mod(division, X1)"));
+Assert.assertTrue(ruleString.contains("division(X1, _)"));
 
 -----------------------
 
