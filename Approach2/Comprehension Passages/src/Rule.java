@@ -10,7 +10,7 @@ public class Rule implements Comparable<Rule> {
     private Literal head;
     private List<Literal> body;
     private boolean isQuestion = false;
-
+    public LiteralType maxRuleQuality = LiteralType.FACT;
     public Rule(Literal head, List<Literal> body, boolean isQuestion){
         this.head = head;
         this.body = body;
@@ -115,5 +115,21 @@ public class Rule implements Comparable<Rule> {
         rules.add(constraint);
         Rule combinedRule = Rule.AggregateAllRules(rules);
         return combinedRule;
+    }
+
+    public static Rule FilterRule(Rule inputRule, LiteralType maxLiteralType) {
+        if(inputRule.head != null && inputRule.body != null && inputRule.body.size() > 0) return null;
+        int maxLiteralQuality = maxLiteralType.ordinal();
+        List<Literal> filteredLiterals = new ArrayList<>();
+        for(Literal bodyTerm : inputRule.body){
+            LiteralType literalType = bodyTerm.GetLiteralType();
+            int literalQuality = literalType.ordinal();
+            if(literalQuality < maxLiteralQuality) continue;
+            filteredLiterals.add(bodyTerm);
+        }
+
+        Rule filteredRule = new Rule(null, filteredLiterals, true);
+        filteredRule.maxRuleQuality = maxLiteralType;
+        return filteredRule;
     }
 }

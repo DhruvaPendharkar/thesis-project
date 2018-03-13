@@ -2,7 +2,6 @@ import edu.stanford.nlp.trees.GrammaticalRelation;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -60,7 +59,7 @@ public class Word {
             dependentWord.POSTag = String.format("JJ-%s", dependentWord.POSTag);
         }
 
-        // Misinterpreting Verb as a Noun
+        // Misinterpreting Verb as Noun
         if(relationName.equalsIgnoreCase("dobj") ||
             (relationName.equalsIgnoreCase("nmod") && relation.getSpecific() != null &&
              relation.getSpecific().equalsIgnoreCase("agent"))){
@@ -1218,10 +1217,12 @@ public class Word {
             case YEAR:
                 Word yearPredicate = new Word("year", false);
                 Word timePredicate = new Word("time", false);
-                Literal timeVariable = new Literal(new Word(String.format("T%s", information.answerKind.id), true));
+                Literal timeVariable = new Literal(new Word(String.format("T%s", information.answerKind.id), true),
+                    LiteralType.BASE_CONSTRAINT);
                 List<Literal> terms = new ArrayList<>();
                 terms.add(timeVariable);
-                terms.add(new Literal(new Word(String.format("X%s", information.answerKind.id), true)));
+                terms.add(new Literal(new Word(String.format("X%s", information.answerKind.id), true),
+                    LiteralType.BASE_CONSTRAINT));
                 Literal yearLiteral = new Literal(yearPredicate, terms);
                 Rule rule = new Rule(yearLiteral, null, true);
                 rules.add(rule);
@@ -1231,12 +1232,16 @@ public class Word {
                 Literal timeLiteral = new Literal(timePredicate, terms);
                 rule = new Rule(timeLiteral, null, true);
                 rules.add(rule);
+
+                rule = Rule.AggregateAllRules(rules);
+                rules = new ArrayList<>();
+                rules.add(rule);
                 return rules;
 
             default:
                 Word basePredicate = information.answerKind;
                 terms = new ArrayList<>();
-                terms.add(new Literal(new Word(String.format("X%s", information.answerKind.id), true)));
+                terms.add(new Literal(new Word(String.format("X%s", information.answerKind.id), true), LiteralType.BASE_CONSTRAINT));
                 terms.add(new Literal(new Word("_", false)));
                 Literal baseLiteral = new Literal(basePredicate, terms);
                 rule = new Rule(baseLiteral, null, true);
@@ -1245,7 +1250,7 @@ public class Word {
                 Word modPredicate = new Word("_mod", false);
                 terms = new ArrayList<>();
                 terms.add(new Literal(information.answerKind));
-                terms.add(new Literal(new Word(String.format("X%s", information.answerKind.id), true)));
+                terms.add(new Literal(new Word(String.format("X%s", information.answerKind.id), true), LiteralType.BASE_CONSTRAINT));
                 Literal modLiteral = new Literal(modPredicate, terms);
                 rule = new Rule(modLiteral, null, true);
                 rules.add(rule);
@@ -1255,7 +1260,50 @@ public class Word {
     }
 
     public List<Rule> GenerateNounConstraintRules(QuestionInformation information) {
+        List<Rule> constraints = new ArrayList<>();
         List<Rule> propertyConstraints = GeneratePropertyConstraints(information);
-        return propertyConstraints;
+        List<Rule> copulaConstraints = GenerateCopulaConstraints();
+        List<Rule> possessiveConstraints = GeneratePossessiveConstraints();
+
+        constraints.addAll(propertyConstraints);
+        constraints.addAll(copulaConstraints);
+        constraints.addAll(possessiveConstraints);
+        return constraints;
+    }
+
+    private List<Rule> GeneratePossessiveConstraints() {
+        List<Rule> rules = new ArrayList<>();
+        Word bePredicate = new Word("_possess", false);
+
+        List<Word> modifiers = GetPossessiveModifiers();
+        for (Word modifier : modifiers) {
+            List<Literal> terms = new ArrayList<>();
+            terms.add(new Literal(modifier));
+            terms.add(new Literal(this));
+            Literal head = new Literal(bePredicate, terms);
+            Rule rule = new Rule(head, null, false);
+            rules.add(rule);
+        }
+
+        return rules;
+    }
+
+    private List<Rule> GenerateCopulaConstraints() {
+        List<Rule> rules = new ArrayList<>();
+        Word bePredicate = new Word("_is", false);
+        Word copula = this.GetToBeCopula();
+        if(copula == null) return new ArrayList<>();
+
+        List<Word> subjects = this.GetSubjects();
+        for(Word subject : subjects) {
+            List<Literal> terms = new ArrayList<>();
+            terms.add(new Literal(subject));
+            terms.add(new Literal(this));
+            Literal head = new Literal(bePredicate, terms);
+            Rule rule = new Rule(head, null, false);
+            rules.add(rule);
+        }
+
+        return rules;
     }
 }

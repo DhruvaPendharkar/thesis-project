@@ -1,7 +1,4 @@
-import javafx.util.Pair;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by dhruv on 10/4/2017.
@@ -34,6 +31,8 @@ public class Question extends Sentence {
     }
 
     private AnswerType GetAnswerType(Word answerKind) {
+        if(answerKind == null) return AnswerType.UNKNOWN;
+
         switch(answerKind.getLemma().toLowerCase()){
             case "year": return AnswerType.YEAR;
             case "time": return AnswerType.TIME;
@@ -84,7 +83,7 @@ public class Question extends Sentence {
             if(word.IsVerb()){
                 eventQueries.addAll(word.GenerateVerbQuestionRules(this.information));
             }
-            else if(word.IsNoun()){
+            else if(word.IsNoun() || word.IsAdjective()){
                 constraints.addAll(word.GenerateNounConstraintRules(this.information));
             }
         }
@@ -102,6 +101,52 @@ public class Question extends Sentence {
                 Rule rule = Rule.ApplyConstraint(eventQuery, combinedConstraint);
                 rules.add(rule);
             }
+        }
+
+        if(rules.size() != 0) return rules;
+        rules.addAll(combinedConstraints);
+
+        return rules;
+    }
+
+    public List<Rule> GenerateAllRules() {
+        TreeSet<Rule> rulesSet = new TreeSet<>(new Comparator<Rule>() {
+            @Override
+            public int compare(Rule rule, Rule anotherRule) {
+                return rule.toString().compareTo(anotherRule.toString());
+            }
+        });
+
+        List<Rule> unconstraintRules = GenerateRules();
+        rulesSet.addAll(unconstraintRules);
+
+        Set<Rule> factConstraintRules = FilterRules(unconstraintRules, LiteralType.CONSTRAINT_QUERY);
+        rulesSet.addAll(factConstraintRules);
+
+        Set<Rule> variableConstraintRules = FilterRules(unconstraintRules, LiteralType.ANSWER_QUERY);
+        rulesSet.addAll(variableConstraintRules);
+
+        Set<Rule> weakConstraintRules = FilterRules(unconstraintRules, LiteralType.BASE_CONSTRAINT);
+        rulesSet.addAll(weakConstraintRules);
+
+        List<Rule> rulesList = new ArrayList<>(rulesSet);
+        Collections.sort(rulesList, new Comparator<Rule>() {
+            @Override
+            public int compare(Rule rule, Rule anotherRule) {
+                int ruleQuality = rule.maxRuleQuality.ordinal();
+                int anotherRuleQuality = anotherRule.maxRuleQuality.ordinal();
+                return Integer.compare(ruleQuality, anotherRuleQuality);
+            }
+        });
+
+        return rulesList;
+    }
+
+    private TreeSet<Rule> FilterRules(List<Rule> inputRules, LiteralType maxLiteralType) {
+        TreeSet<Rule> rules = new TreeSet<>();
+        for(Rule inputRule : inputRules){
+            Rule rule = Rule.FilterRule(inputRule, maxLiteralType);
+            if(rule != null) rules.add(rule);
         }
 
         return rules;

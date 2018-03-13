@@ -1,4 +1,6 @@
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by dhruv on 9/24/2017.
@@ -9,6 +11,7 @@ public class Literal implements Comparable<Literal> {
     private boolean isAtom;
     public boolean isNAF = false;
     public boolean isClassicalNegation = false;
+    public Set<LiteralType> types = new HashSet<>();
 
     public Literal(Word predicate, List<Literal> terms){
         String predicateString = predicate.getLemma();
@@ -17,6 +20,10 @@ public class Literal implements Comparable<Literal> {
         this.predicate = predicateString;
         this.terms = terms;
         this.isAtom = false;
+
+        for(Literal term : terms){
+            this.types.addAll(term.types);
+        }
     }
 
     public Literal(Word atom){
@@ -26,6 +33,26 @@ public class Literal implements Comparable<Literal> {
             this.predicate = String.format("'%s'", this.predicate);
         }
         this.isAtom = true;
+
+        if(atom.isVariable && atom.getWord().startsWith("X")){
+            types.add(LiteralType.ANSWER_QUERY);
+        }
+        else if(atom.isVariable){
+            types.add(LiteralType.CONSTRAINT_QUERY);
+        }
+        else {
+            types.add(LiteralType.FACT);
+        }
+    }
+
+    public Literal(Word atom, LiteralType type){
+        this.predicate = atom.getLemma();
+        if(!atom.isVariable && IsMixedCase(this.predicate) || this.predicate.contains(".") ||
+                this.predicate.contains(",") || IsSASPKeyword(this.predicate)){
+            this.predicate = String.format("'%s'", this.predicate);
+        }
+        this.isAtom = true;
+        types.add(type);
     }
 
     private boolean IsSASPKeyword(String predicate) {
@@ -73,5 +100,12 @@ public class Literal implements Comparable<Literal> {
     @Override
     public int compareTo(Literal o) {
         return this.toString().compareTo(o.toString());
+    }
+
+    public LiteralType GetLiteralType() {
+        if(this.types.contains(LiteralType.BASE_CONSTRAINT)) return LiteralType.BASE_CONSTRAINT;
+        if(this.types.contains(LiteralType.ANSWER_QUERY)) return LiteralType.ANSWER_QUERY;
+        if(this.types.contains(LiteralType.CONSTRAINT_QUERY)) return LiteralType.CONSTRAINT_QUERY;
+        return LiteralType.FACT;
     }
 }

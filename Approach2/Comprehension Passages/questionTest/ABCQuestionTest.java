@@ -4,9 +4,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * Created by dhruv on 3/7/2018.
@@ -30,21 +28,42 @@ public class ABCQuestionTest {
         String content = "What company owns the American_Broadcasting_Company?";
         Question question = new Question(content);
         System.out.println(Sentence.DependenciesToString(question));
-        List<Rule> rules = question.GenerateRules();
-        HashSet<String> ruleString = new HashSet<>();
-        TreeSet<Rule> rulesSet = new TreeSet<>(rules);
-        for(Rule rule : rulesSet){
-            ruleString.add(rule.toString());
-            System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
+        List<Rule> rules = question.GenerateAllRules();
+        LiteralType type = LiteralType.FACT;
+        System.out.println("/*----------------  " + type.toString() + "  ------------------*/");
+        for(Rule rule : rules){
+            if(type != rule.maxRuleQuality) {
+                type = rule.maxRuleQuality;
+                System.out.println("/*----------------  " + type.toString() + "  ------------------*/");
+            }
+            System.out.println(String.format("Assert.assertTrue(rules.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(6, ruleString.size());
+        System.out.print("\n\n");
+        List<String> ruleString = new ArrayList<>();
+        for(Rule rule : rules){
+            System.out.println(String.format("%s.", rule.toString()));
+            ruleString.add(rule.toString());
+        }
+
+        Assert.assertEquals(14, ruleString.size());
+        /*----------------  FACT  ------------------*/
         Assert.assertTrue(ruleString.contains("_mod(company, X1),_property(E1, own, _by, X1),_similar(american_broadcasting_company, O1),event(E1, own, _, O1)"));
         Assert.assertTrue(ruleString.contains("_mod(company, X1),_relation(X1, E1, _clause),event(E1, own, _, _)"));
         Assert.assertTrue(ruleString.contains("_mod(company, X1),_similar(american_broadcasting_company, O1),event(E1, own, X1, O1)"));
         Assert.assertTrue(ruleString.contains("_property(E1, own, _by, X1),_similar(american_broadcasting_company, O1),company(X1, _),event(E1, own, _, O1)"));
         Assert.assertTrue(ruleString.contains("_relation(X1, E1, _clause),company(X1, _),event(E1, own, _, _)"));
         Assert.assertTrue(ruleString.contains("_similar(american_broadcasting_company, O1),company(X1, _),event(E1, own, X1, O1)"));
+        /*----------------  ANSWER_QUERY  ------------------*/
+        Assert.assertTrue(ruleString.contains("_mod(company, X1),_property(E1, own, _by, X1)"));
+        Assert.assertTrue(ruleString.contains("_mod(company, X1),_relation(X1, E1, _clause)"));
+        Assert.assertTrue(ruleString.contains("_mod(company, X1),event(E1, own, X1, O1)"));
+        Assert.assertTrue(ruleString.contains("_property(E1, own, _by, X1),company(X1, _)"));
+        Assert.assertTrue(ruleString.contains("_relation(X1, E1, _clause),company(X1, _)"));
+        Assert.assertTrue(ruleString.contains("company(X1, _),event(E1, own, X1, O1)"));
+        /*----------------  BASE_CONSTRAINT  ------------------*/
+        Assert.assertTrue(ruleString.contains("_mod(company, X1)"));
+        Assert.assertTrue(ruleString.contains("company(X1, _)"));
     }
 
     @Test
@@ -53,21 +72,37 @@ public class ABCQuestionTest {
         String content = "Since what year did ABC stylize abc's logo, as abc ?";
         Question question = new Question(content);
         System.out.println(Sentence.DependenciesToString(question));
-        List<Rule> rules = question.GenerateRules();
-        HashSet<String> ruleString = new HashSet<>();
-        TreeSet<Rule> rulesSet = new TreeSet<>(rules);
-        for(Rule rule : rulesSet){
-            ruleString.add(rule.toString());
+        List<Rule> rules = question.GenerateAllRules();
+        LiteralType type = LiteralType.FACT;
+        System.out.println("/*----------------  " + type.toString() + "  ------------------*/");
+        for(Rule rule : rules){
+            if(type != rule.maxRuleQuality) {
+                type = rule.maxRuleQuality;
+                System.out.println("/*----------------  " + type.toString() + "  ------------------*/");
+            }
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(6, ruleString.size());
-        Assert.assertTrue(ruleString.contains("_property(E2, stylize, _by, S2),_property(E2, stylize, since, X2),_similar(abc, S2),_similar(logo, O2),event(E2, stylize, _, O2),organization(abc),time(T2)"));
-        Assert.assertTrue(ruleString.contains("_property(E2, stylize, _by, S2),_property(E2, stylize, since, X2),_similar(abc, S2),_similar(logo, O2),event(E2, stylize, _, O2),organization(abc),year(T2, X2)"));
-        Assert.assertTrue(ruleString.contains("_property(E2, stylize, since, X2),_relation(S2, E2, _clause),_similar(abc, S2),event(E2, stylize, _, _),organization(abc),time(T2)"));
-        Assert.assertTrue(ruleString.contains("_property(E2, stylize, since, X2),_relation(S2, E2, _clause),_similar(abc, S2),event(E2, stylize, _, _),organization(abc),year(T2, X2)"));
-        Assert.assertTrue(ruleString.contains("_property(E2, stylize, since, X2),_similar(abc, S2),_similar(logo, O2),event(E2, stylize, S2, O2),organization(abc),time(T2)"));
-        Assert.assertTrue(ruleString.contains("_property(E2, stylize, since, X2),_similar(abc, S2),_similar(logo, O2),event(E2, stylize, S2, O2),organization(abc),year(T2, X2)"));
+        System.out.print("\n\n");
+        List<String> ruleString = new ArrayList<>();
+        for(Rule rule : rules){
+            System.out.println(String.format("%s.", rule.toString()));
+            ruleString.add(rule.toString());
+        }
+
+        Assert.assertEquals(8, ruleString.size());
+        /*----------------  FACT  ------------------*/
+        Assert.assertTrue(ruleString.contains("_possess(abc, logo),_property(E2, stylize, _by, S2),_property(E2, stylize, since, X2),_similar(abc, S2),_similar(logo, O2),event(E2, stylize, _, O2),organization(abc),time(T2),year(T2, X2)"));
+        Assert.assertTrue(ruleString.contains("_possess(abc, logo),_property(E2, stylize, since, X2),_relation(S2, E2, _clause),_similar(abc, S2),event(E2, stylize, _, _),organization(abc),time(T2),year(T2, X2)"));
+        Assert.assertTrue(ruleString.contains("_possess(abc, logo),_property(E2, stylize, since, X2),_similar(abc, S2),_similar(logo, O2),event(E2, stylize, S2, O2),organization(abc),time(T2),year(T2, X2)"));
+        /*----------------  CONSTRAINT_QUERY  ------------------*/
+        Assert.assertTrue(ruleString.contains("_property(E2, stylize, _by, S2),_property(E2, stylize, since, X2),_similar(abc, S2),_similar(logo, O2),event(E2, stylize, _, O2),time(T2),year(T2, X2)"));
+        Assert.assertTrue(ruleString.contains("_property(E2, stylize, since, X2),_relation(S2, E2, _clause),_similar(abc, S2),event(E2, stylize, _, _),time(T2),year(T2, X2)"));
+        Assert.assertTrue(ruleString.contains("_property(E2, stylize, since, X2),_similar(abc, S2),_similar(logo, O2),event(E2, stylize, S2, O2),time(T2),year(T2, X2)"));
+        /*----------------  ANSWER_QUERY  ------------------*/
+        Assert.assertTrue(ruleString.contains("_property(E2, stylize, since, X2),time(T2),year(T2, X2)"));
+        /*----------------  BASE_CONSTRAINT  ------------------*/
+        Assert.assertTrue(ruleString.contains("time(T2),year(T2, X2)"));
     }
 
     @Test
@@ -76,60 +111,126 @@ public class ABCQuestionTest {
         String content = "In what borough of New_York_City is ABC headquartered?";
         Question question = new Question(content);
         System.out.println(Sentence.DependenciesToString(question));
-        List<Rule> rules = question.GenerateRules();
-        HashSet<String> ruleString = new HashSet<>();
-        TreeSet<Rule> rulesSet = new TreeSet<>(rules);
-        for(Rule rule : rulesSet){
-            ruleString.add(rule.toString());
+        List<Rule> rules = question.GenerateAllRules();
+        LiteralType type = LiteralType.FACT;
+        System.out.println("/*----------------  " + type.toString() + "  ------------------*/");
+        for(Rule rule : rules){
+            if(type != rule.maxRuleQuality) {
+                type = rule.maxRuleQuality;
+                System.out.println("/*----------------  " + type.toString() + "  ------------------*/");
+            }
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(6, ruleString.size());
+        System.out.print("\n\n");
+        List<String> ruleString = new ArrayList<>();
+        for(Rule rule : rules){
+            System.out.println(String.format("%s.", rule.toString()));
+            ruleString.add(rule.toString());
+        }
+
+        Assert.assertEquals(16, ruleString.size());
+        /*----------------  FACT  ------------------*/
         Assert.assertTrue(ruleString.contains("_mod(borough, X2),_property(E2, borough, of, new_york_city),_property(E2, headquarter, _by, S2),_property(E2, headquarter, in, X2),_similar(abc, S2),event(E2, headquarter, _, O2),organization(abc)"));
         Assert.assertTrue(ruleString.contains("_mod(borough, X2),_property(E2, borough, of, new_york_city),_property(E2, headquarter, in, X2),_relation(S2, E2, _clause),_similar(abc, S2),event(E2, headquarter, _, _),organization(abc)"));
         Assert.assertTrue(ruleString.contains("_mod(borough, X2),_property(E2, borough, of, new_york_city),_property(E2, headquarter, in, X2),_similar(abc, S2),event(E2, headquarter, S2, O2),organization(abc)"));
         Assert.assertTrue(ruleString.contains("_property(E2, borough, of, new_york_city),_property(E2, headquarter, _by, S2),_property(E2, headquarter, in, X2),_similar(abc, S2),borough(X2, _),event(E2, headquarter, _, O2),organization(abc)"));
         Assert.assertTrue(ruleString.contains("_property(E2, borough, of, new_york_city),_property(E2, headquarter, in, X2),_relation(S2, E2, _clause),_similar(abc, S2),borough(X2, _),event(E2, headquarter, _, _),organization(abc)"));
         Assert.assertTrue(ruleString.contains("_property(E2, borough, of, new_york_city),_property(E2, headquarter, in, X2),_similar(abc, S2),borough(X2, _),event(E2, headquarter, S2, O2),organization(abc)"));
+        /*----------------  CONSTRAINT_QUERY  ------------------*/
+        Assert.assertTrue(ruleString.contains("_mod(borough, X2),_property(E2, borough, of, new_york_city),_property(E2, headquarter, _by, S2),_property(E2, headquarter, in, X2),_similar(abc, S2),event(E2, headquarter, _, O2)"));
+        Assert.assertTrue(ruleString.contains("_mod(borough, X2),_property(E2, borough, of, new_york_city),_property(E2, headquarter, in, X2),_relation(S2, E2, _clause),_similar(abc, S2),event(E2, headquarter, _, _)"));
+        Assert.assertTrue(ruleString.contains("_mod(borough, X2),_property(E2, borough, of, new_york_city),_property(E2, headquarter, in, X2),_similar(abc, S2),event(E2, headquarter, S2, O2)"));
+        Assert.assertTrue(ruleString.contains("_property(E2, borough, of, new_york_city),_property(E2, headquarter, _by, S2),_property(E2, headquarter, in, X2),_similar(abc, S2),borough(X2, _),event(E2, headquarter, _, O2)"));
+        Assert.assertTrue(ruleString.contains("_property(E2, borough, of, new_york_city),_property(E2, headquarter, in, X2),_relation(S2, E2, _clause),_similar(abc, S2),borough(X2, _),event(E2, headquarter, _, _)"));
+        Assert.assertTrue(ruleString.contains("_property(E2, borough, of, new_york_city),_property(E2, headquarter, in, X2),_similar(abc, S2),borough(X2, _),event(E2, headquarter, S2, O2)"));
+        /*----------------  ANSWER_QUERY  ------------------*/
+        Assert.assertTrue(ruleString.contains("_mod(borough, X2),_property(E2, headquarter, in, X2)"));
+        Assert.assertTrue(ruleString.contains("_property(E2, headquarter, in, X2),borough(X2, _)"));
+        /*----------------  BASE_CONSTRAINT  ------------------*/
+        Assert.assertTrue(ruleString.contains("_mod(borough, X2)"));
+        Assert.assertTrue(ruleString.contains("borough(X2, _)"));
     }
 
     @Test
     // On what streets is the ABC headquarters located?
     void TestSentenceFour() {
-        String content = "On what streets is the ABC headquarters located?";
+        String content = "On What streets is the ABC's headquarter located?";
         Question question = new Question(content);
         System.out.println(Sentence.DependenciesToString(question));
-        List<Rule> rules = question.GenerateRules();
-        HashSet<String> ruleString = new HashSet<>();
-        TreeSet<Rule> rulesSet = new TreeSet<>(rules);
-        for(Rule rule : rulesSet){
-            ruleString.add(rule.toString());
+        List<Rule> rules = question.GenerateAllRules();
+        LiteralType type = LiteralType.FACT;
+        System.out.println("/*----------------  " + type.toString() + "  ------------------*/");
+        for(Rule rule : rules){
+            if(type != rule.maxRuleQuality) {
+                type = rule.maxRuleQuality;
+                System.out.println("/*----------------  " + type.toString() + "  ------------------*/");
+            }
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(6, ruleString.size());
-        Assert.assertTrue(ruleString.contains("_mod(street, X2),_property(E2, locate, _by, S2),_property(E2, locate, on, X2),_similar(headquarters, S2),event(E2, locate, _, O2),organization(abc)"));
-        Assert.assertTrue(ruleString.contains("_mod(street, X2),_property(E2, locate, on, X2),_relation(S2, E2, _clause),_similar(headquarters, S2),event(E2, locate, _, _),organization(abc)"));
-        Assert.assertTrue(ruleString.contains("_mod(street, X2),_property(E2, locate, on, X2),_similar(headquarters, S2),event(E2, locate, S2, O2),organization(abc)"));
-        Assert.assertTrue(ruleString.contains("_property(E2, locate, _by, S2),_property(E2, locate, on, X2),_similar(headquarters, S2),event(E2, locate, _, O2),organization(abc),street(X2, _)"));
-        Assert.assertTrue(ruleString.contains("_property(E2, locate, on, X2),_relation(S2, E2, _clause),_similar(headquarters, S2),event(E2, locate, _, _),organization(abc),street(X2, _)"));
-        Assert.assertTrue(ruleString.contains("_property(E2, locate, on, X2),_similar(headquarters, S2),event(E2, locate, S2, O2),organization(abc),street(X2, _)"));
+        System.out.print("\n\n");
+        List<String> ruleString = new ArrayList<>();
+        for(Rule rule : rules){
+            System.out.println(String.format("%s.", rule.toString()));
+            ruleString.add(rule.toString());
+        }
+
+        Assert.assertEquals(16, ruleString.size());
+        /*----------------  FACT  ------------------*/
+        Assert.assertTrue(ruleString.contains("_mod(street, X2),_possess(abc, headquarter),_property(E2, located, _by, S2),_property(E2, located, on, X2),_similar(headquarter, S2),event(E2, located, _, O2),organization(abc)"));
+        Assert.assertTrue(ruleString.contains("_mod(street, X2),_possess(abc, headquarter),_property(E2, located, on, X2),_relation(S2, E2, _clause),_similar(headquarter, S2),event(E2, located, _, _),organization(abc)"));
+        Assert.assertTrue(ruleString.contains("_mod(street, X2),_possess(abc, headquarter),_property(E2, located, on, X2),_similar(headquarter, S2),event(E2, located, S2, O2),organization(abc)"));
+        Assert.assertTrue(ruleString.contains("_possess(abc, headquarter),_property(E2, located, _by, S2),_property(E2, located, on, X2),_similar(headquarter, S2),event(E2, located, _, O2),organization(abc),street(X2, _)"));
+        Assert.assertTrue(ruleString.contains("_possess(abc, headquarter),_property(E2, located, on, X2),_relation(S2, E2, _clause),_similar(headquarter, S2),event(E2, located, _, _),organization(abc),street(X2, _)"));
+        Assert.assertTrue(ruleString.contains("_possess(abc, headquarter),_property(E2, located, on, X2),_similar(headquarter, S2),event(E2, located, S2, O2),organization(abc),street(X2, _)"));
+        /*----------------  CONSTRAINT_QUERY  ------------------*/
+        Assert.assertTrue(ruleString.contains("_mod(street, X2),_property(E2, located, _by, S2),_property(E2, located, on, X2),_similar(headquarter, S2),event(E2, located, _, O2)"));
+        Assert.assertTrue(ruleString.contains("_mod(street, X2),_property(E2, located, on, X2),_relation(S2, E2, _clause),_similar(headquarter, S2),event(E2, located, _, _)"));
+        Assert.assertTrue(ruleString.contains("_mod(street, X2),_property(E2, located, on, X2),_similar(headquarter, S2),event(E2, located, S2, O2)"));
+        Assert.assertTrue(ruleString.contains("_property(E2, located, _by, S2),_property(E2, located, on, X2),_similar(headquarter, S2),event(E2, located, _, O2),street(X2, _)"));
+        Assert.assertTrue(ruleString.contains("_property(E2, located, on, X2),_relation(S2, E2, _clause),_similar(headquarter, S2),event(E2, located, _, _),street(X2, _)"));
+        Assert.assertTrue(ruleString.contains("_property(E2, located, on, X2),_similar(headquarter, S2),event(E2, located, S2, O2),street(X2, _)"));
+        /*----------------  ANSWER_QUERY  ------------------*/
+        Assert.assertTrue(ruleString.contains("_mod(street, X2),_property(E2, located, on, X2)"));
+        Assert.assertTrue(ruleString.contains("_property(E2, located, on, X2),street(X2, _)"));
+        /*----------------  BASE_CONSTRAINT  ------------------*/
+        Assert.assertTrue(ruleString.contains("_mod(street, X2)"));
+        Assert.assertTrue(ruleString.contains("street(X2, _)"));
     }
 
     @Test
     // Disney-ABC Television Group is a subsidiary of what division of the Walt Disney Company?
     void TestSentenceFive() {
-        String content = "Disney_ABC Television Group is a subsidiary of what division of The_Walt_Disney_Company?";
+        String content = "Disney_ABC_Television_Group is a subsidiary of what division of The_Walt_Disney_Company?";
         Question question = new Question(content);
         System.out.println(Sentence.DependenciesToString(question));
-        List<Rule> rules = question.GenerateRules();
-        HashSet<String> ruleString = new HashSet<>();
-        TreeSet<Rule> rulesSet = new TreeSet<>(rules);
-        for(Rule rule : rulesSet){
-            ruleString.add(rule.toString());
+        List<Rule> rules = question.GenerateAllRules();
+        LiteralType type = LiteralType.FACT;
+        System.out.println("/*----------------  " + type.toString() + "  ------------------*/");
+        for(Rule rule : rules){
+            if(type != rule.maxRuleQuality) {
+                type = rule.maxRuleQuality;
+                System.out.println("/*----------------  " + type.toString() + "  ------------------*/");
+            }
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(-1, ruleString.size());
+        System.out.print("\n\n");
+        List<String> ruleString = new ArrayList<>();
+        for(Rule rule : rules){
+            System.out.println(String.format("%s.", rule.toString()));
+            ruleString.add(rule.toString());
+        }
+
+        /*----------------  FACT  ------------------*/
+        Assert.assertTrue(ruleString.contains("_is(disney_abc_television_group, subsidiary),_mod(division, X1),_property(E1, subsidiary, of, X1)"));
+        Assert.assertTrue(ruleString.contains("_is(disney_abc_television_group, subsidiary),_property(E1, subsidiary, of, X1),division(X1, _)"));
+        /*----------------  CONSTRAINT_QUERY  ------------------*/
+        Assert.assertTrue(ruleString.contains("_mod(division, X1),_property(E1, subsidiary, of, X1)"));
+        Assert.assertTrue(ruleString.contains("_property(E1, subsidiary, of, X1),division(X1, _)"));
+        /*----------------  BASE_CONSTRAINT  ------------------*/
+        Assert.assertTrue(ruleString.contains("_mod(division, X1)"));
+        Assert.assertTrue(ruleString.contains("division(X1, _)"));
     }
 }
