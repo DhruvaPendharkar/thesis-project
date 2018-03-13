@@ -154,6 +154,7 @@ public class ABCQuestionTest {
 
     @Test
     // On what streets is the ABC headquarters located?
+    // located is regarded as an adjective (JJ) by the POS Tagger
     void TestSentenceFour() {
         String content = "On What streets is the ABC's headquarter located?";
         Question question = new Question(content);
@@ -176,27 +177,16 @@ public class ABCQuestionTest {
             ruleString.add(rule.toString());
         }
 
-        Assert.assertEquals(16, ruleString.size());
+        Assert.assertEquals(6, ruleString.size());
         /*----------------  FACT  ------------------*/
-        Assert.assertTrue(ruleString.contains("_mod(street, X2),_possess(abc, headquarter),_property(E2, located, _by, S2),_property(E2, located, on, X2),_similar(headquarter, S2),event(E2, located, _, O2),organization(abc)"));
-        Assert.assertTrue(ruleString.contains("_mod(street, X2),_possess(abc, headquarter),_property(E2, located, on, X2),_relation(S2, E2, _clause),_similar(headquarter, S2),event(E2, located, _, _),organization(abc)"));
-        Assert.assertTrue(ruleString.contains("_mod(street, X2),_possess(abc, headquarter),_property(E2, located, on, X2),_similar(headquarter, S2),event(E2, located, S2, O2),organization(abc)"));
-        Assert.assertTrue(ruleString.contains("_possess(abc, headquarter),_property(E2, located, _by, S2),_property(E2, located, on, X2),_similar(headquarter, S2),event(E2, located, _, O2),organization(abc),street(X2, _)"));
-        Assert.assertTrue(ruleString.contains("_possess(abc, headquarter),_property(E2, located, on, X2),_relation(S2, E2, _clause),_similar(headquarter, S2),event(E2, located, _, _),organization(abc),street(X2, _)"));
-        Assert.assertTrue(ruleString.contains("_possess(abc, headquarter),_property(E2, located, on, X2),_similar(headquarter, S2),event(E2, located, S2, O2),organization(abc),street(X2, _)"));
+        Assert.assertTrue(ruleString.contains("_mod(street, X),_possess(abc, headquarter),_property(located, on, X),organization(abc)"));
+        Assert.assertTrue(ruleString.contains("_possess(abc, headquarter),_property(located, on, X),organization(abc),street(X, _)"));
         /*----------------  CONSTRAINT_QUERY  ------------------*/
-        Assert.assertTrue(ruleString.contains("_mod(street, X2),_property(E2, located, _by, S2),_property(E2, located, on, X2),_similar(headquarter, S2),event(E2, located, _, O2)"));
-        Assert.assertTrue(ruleString.contains("_mod(street, X2),_property(E2, located, on, X2),_relation(S2, E2, _clause),_similar(headquarter, S2),event(E2, located, _, _)"));
-        Assert.assertTrue(ruleString.contains("_mod(street, X2),_property(E2, located, on, X2),_similar(headquarter, S2),event(E2, located, S2, O2)"));
-        Assert.assertTrue(ruleString.contains("_property(E2, located, _by, S2),_property(E2, located, on, X2),_similar(headquarter, S2),event(E2, located, _, O2),street(X2, _)"));
-        Assert.assertTrue(ruleString.contains("_property(E2, located, on, X2),_relation(S2, E2, _clause),_similar(headquarter, S2),event(E2, located, _, _),street(X2, _)"));
-        Assert.assertTrue(ruleString.contains("_property(E2, located, on, X2),_similar(headquarter, S2),event(E2, located, S2, O2),street(X2, _)"));
-        /*----------------  ANSWER_QUERY  ------------------*/
-        Assert.assertTrue(ruleString.contains("_mod(street, X2),_property(E2, located, on, X2)"));
-        Assert.assertTrue(ruleString.contains("_property(E2, located, on, X2),street(X2, _)"));
+        Assert.assertTrue(ruleString.contains("_mod(street, X),_property(located, on, X)"));
+        Assert.assertTrue(ruleString.contains("_property(located, on, X),street(X, _)"));
         /*----------------  BASE_CONSTRAINT  ------------------*/
-        Assert.assertTrue(ruleString.contains("_mod(street, X2)"));
-        Assert.assertTrue(ruleString.contains("street(X2, _)"));
+        Assert.assertTrue(ruleString.contains("_mod(street, X)"));
+        Assert.assertTrue(ruleString.contains("street(X, _)"));
     }
 
     @Test
