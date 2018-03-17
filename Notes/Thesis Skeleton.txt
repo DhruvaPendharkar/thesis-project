@@ -7,7 +7,7 @@ Chapters :
 		-- Why are probabilistic approaches inefficient
 			-- Justification
 			-- Provability
-		-- Summary of the below chapters
+		-- Structure of the thesis
 			-- Chap4 deals with ASP, Sasp, Clasp and other systems
 			-- Chap5 deals with the General Architecture of the system
 			-- Chap7 deals with NLP techniques for extraction
