@@ -27,6 +27,16 @@ public class Question extends Sentence {
         Word answerKind = GetAnswerKind(questionWord);
         information.answerKind = answerKind;
         information.answerType = GetAnswerType(answerKind);
+
+        StringBuilder builder = new StringBuilder();
+        builder.append("\n\nQuestion Information : \n");
+        String value = information.questionWord == null ? "null":information.questionWord.toString();
+        builder.append("Question Word : " + value + "\n");
+        builder.append("Question Type : " + information.questionType.toString() + "\n");
+        value = information.answerKind == null ? "null":information.answerKind.toString();
+        builder.append("Answer Word : " + value + "\n");
+        builder.append("Answer Type : " + information.answerType.toString() + "\n");
+        System.out.println(builder.toString());
         return information;
     }
 
@@ -96,6 +106,10 @@ public class Question extends Sentence {
             combinedConstraints.add(rule);
         }
 
+        if(finalConstraints.size() == 0) {
+            combinedConstraints.add(allConstraints);
+        }
+
         for(Rule eventQuery : eventQueries){
             for(Rule combinedConstraint : combinedConstraints){
                 Rule rule = Rule.ApplyConstraint(eventQuery, combinedConstraint);
@@ -146,7 +160,7 @@ public class Question extends Sentence {
         TreeSet<Rule> rules = new TreeSet<>();
         for(Rule inputRule : inputRules){
             Rule rule = Rule.FilterRule(inputRule, maxLiteralType);
-            if(rule != null) rules.add(rule);
+            if(rule != null && rule.toString().length() != 0) rules.add(rule);
         }
 
         return rules;

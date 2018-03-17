@@ -183,8 +183,8 @@ public class Word {
 
             bodyList.add(concept);
 
-            if(preposition == null) {
-                preposition = new Word("null", false);
+            if(preposition == null || preposition.getWord().endsWith("mod")) {
+                preposition = new Word("_", false);
             }
 
             bodyList.add(new Literal(preposition));
@@ -1193,6 +1193,12 @@ public class Word {
         return determiners;
     }
 
+    private Word GetPreposition() {
+        Word preposition = null;
+        if(this.relationMap.containsKey("case")) preposition = this.relationMap.get("case").get(0);
+        return preposition;
+    }
+
     public boolean IsQuestionWord() {
         if(this.getPOSTag().startsWith("W")){
             return true;
@@ -1264,11 +1270,55 @@ public class Word {
         List<Rule> propertyConstraints = GeneratePropertyConstraints(information);
         List<Rule> copulaConstraints = GenerateCopulaConstraints();
         List<Rule> possessiveConstraints = GeneratePossessiveConstraints();
+        List<Rule> adjectiveConstraints = GenerateAdjectiveConstraints();
+        List<Rule> adjClauseConstraints = GenerateAdjClauseConstraints(information);
 
         constraints.addAll(propertyConstraints);
         constraints.addAll(copulaConstraints);
         constraints.addAll(possessiveConstraints);
+        constraints.addAll(adjectiveConstraints);
+        constraints.addAll(adjClauseConstraints);
         return constraints;
+    }
+
+    private List<Rule> GenerateAdjClauseConstraints(QuestionInformation information) {
+        List<Rule> rules = new ArrayList<>();
+        Word propertyPredicate = new Word("_property", false);
+
+        List<Word> modifiers = GetAdjectiveClause();
+        for (Word modifier : modifiers) {
+            Word preposition = modifier.GetPreposition();
+            if(preposition == null) return rules;
+            List<Literal> terms = new ArrayList<>();
+            terms.add(new Literal(new Word(String.format("E%s", this.id), true)));
+            terms.add(new Literal(this));
+            terms.add(new Literal(preposition));
+            if(modifier == information.questionWord)
+                terms.add(new Literal(new Word(String.format("X%s", modifier.id), true)));
+            else terms.add(new Literal(modifier));
+            Literal queryEvent = new Literal(propertyPredicate, terms);
+            Rule rule = new Rule(queryEvent, null, true);
+            rules.add(rule);
+        }
+
+        return rules;
+    }
+
+    private List<Rule> GenerateAdjectiveConstraints() {
+        List<Rule> rules = new ArrayList<>();
+        Word adjPredicate = new Word("_mod", false);
+
+        List<Word> modifiers = GetAdjectives();
+        for (Word modifier : modifiers) {
+            List<Literal> terms = new ArrayList<>();
+            terms.add(new Literal(this));
+            terms.add(new Literal(modifier));
+            Literal head = new Literal(adjPredicate, terms);
+            Rule rule = new Rule(head, null, false);
+            rules.add(rule);
+        }
+
+        return rules;
     }
 
     private List<Rule> GeneratePossessiveConstraints() {

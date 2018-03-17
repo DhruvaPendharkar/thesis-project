@@ -87,7 +87,7 @@ public class WarsawStoryTest {
     // he moved to the city with his family when he was seven months old.
     void TestSentenceThree() {
         String content = "Though Chopin was born in the village of Zelazowa_Wola about 60_km from Warsaw, " +
-        "Chopin moved to the city with Chopin's family, when Chopin was seven_months_old.";
+        "Chopin moved to the city with Chopin's family, when Chopin was seven months old.";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
         List<Rule> rules = sentence.GenerateRules();
@@ -116,7 +116,7 @@ public class WarsawStoryTest {
     // Sentence : "Casimir Pulaski, a Polish general and hero of the American Revolutionary War, was born here in 1745"
     void TestSentenceFour() {
         String content = "Casimir_Pulaski, a polish general and hero of the American Revolutionary War, " +
-        "was born in Warsaw in 1745";
+        "was born, in Warsaw, in 1745";
         Sentence sentence = Sentence.ParseSentence(content);
         System.out.println(Sentence.DependenciesToString(sentence));
         List<Rule> rules = sentence.GenerateRules();
@@ -126,12 +126,13 @@ public class WarsawStoryTest {
             System.out.println(rule);
         }
 
-        Assert.assertEquals(12, ruleString.size());
+        Assert.assertEquals(13, ruleString.size());
         Assert.assertTrue(ruleString.contains("time(1745)"));
+        Assert.assertTrue(ruleString.contains("year(1745, 1745)"));
         Assert.assertTrue(ruleString.contains("_mod(war, american)"));
         Assert.assertTrue(ruleString.contains("_mod(war, revolutionary)"));
         Assert.assertTrue(ruleString.contains("_property(2, bear, in, warsaw)"));
-        Assert.assertTrue(ruleString.contains("_property(2, warsaw, in, 1745)"));
+        Assert.assertTrue(ruleString.contains("_property(2, bear, in, 1745)"));
         Assert.assertTrue(ruleString.contains("_property(2, general, of, war)"));
         Assert.assertTrue(ruleString.contains("_is(casimir_pulaski, general)"));
         Assert.assertTrue(ruleString.contains("_is(casimir_pulaski, hero)"));

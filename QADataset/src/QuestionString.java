@@ -7,7 +7,7 @@ import java.io.FileReader;
 public class QuestionString {
 
     public static void main(String[] args){
-        String questionsFilePath = "C:\\Users\\dhruv\\Desktop\\Research\\thesis-material\\Notes\\Questions.txt";
+        String questionsFilePath = "C:\\Users\\dhruv\\Desktop\\Research\\thesis-material\\Notes\\InputQuestion.txt";
         String content = ReadFileContent(questionsFilePath);
         String[] questions = content.split("\n");
         GenerateTestForQuestion(questions);
@@ -18,21 +18,31 @@ public class QuestionString {
                 "    // \n" +
                 "    void TestSentence() {\n" +
                 "        String content = \"%s\";\n" +
-                "        Sentence sentence = Sentence.ParseSentence(content);\n" +
-                "        System.out.println(Sentence.DependenciesToString(sentence));\n" +
-                "        List<Rule> rules = sentence.GenerateRules();\n" +
-                "        HashSet<String> ruleString = new HashSet<>();\n" +
-                "        TreeSet<Rule> rulesSet = new TreeSet<>(rules);\n" +
-                "        for(Rule rule : rulesSet){\n" +
+                "        Question question = new Question(content);\n" +
+                "        System.out.println(Sentence.DependenciesToString(question));\n" +
+                "        List<Rule> rules = question.GenerateAllRules();\n" +
+                "        LiteralType type = LiteralType.FACT;\n" +
+                "        System.out.println(\"/*----------------  \" + type.toString() + \"  ------------------*/\");\n" +
+                "        for(Rule rule : rules){\n" +
+                "            if(type != rule.maxRuleQuality) {\n" +
+                "                type = rule.maxRuleQuality;\n" +
+                "                System.out.println(\"/*----------------  \" + type.toString() + \"  ------------------*/\");\n" +
+                "            }\n" +
+                "            System.out.println(String.format(\"Assert.assertTrue(ruleString.contains(\\\"%s\\\"));\", rule.toString()));\n" +
+                "        }\n" +
+                "\n" +
+                "        System.out.print(\"\\n\\n\");\n" +
+                "        List<String> ruleString = new ArrayList<>();\n" +
+                "        for(Rule rule : rules){\n" +
+                "            System.out.println(String.format(\"%s.\", rule.toString()));\n" +
                 "            ruleString.add(rule.toString());\n" +
-                "            System.out.println(rule.toString());\n" +
                 "        }\n" +
                 "\n" +
                 "        Assert.assertEquals(0, ruleString.size());\n" +
                 "    }";
 
         for(String question : questions){
-            String testString = String.format(testFormat, question);
+            String testString = String.format(testFormat, question, question, question);
             System.out.println(testString);
         }
     }

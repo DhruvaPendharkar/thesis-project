@@ -214,9 +214,12 @@ public class ABCQuestionTest {
         }
 
         /*----------------  FACT  ------------------*/
-        Assert.assertTrue(ruleString.contains("_is(disney_abc_television_group, subsidiary),_mod(division, X1),_property(E1, subsidiary, of, X1)"));
-        Assert.assertTrue(ruleString.contains("_is(disney_abc_television_group, subsidiary),_property(E1, subsidiary, of, X1),division(X1, _)"));
+        Assert.assertTrue(ruleString.contains("_is(disney_abc_television_group, subsidiary),_mod(division, X1),_property(E1, division, of, the_walt_disney_company),_property(E1, subsidiary, of, X1)"));
+        Assert.assertTrue(ruleString.contains("_is(disney_abc_television_group, subsidiary),_property(E1, division, of, the_walt_disney_company),_property(E1, subsidiary, of, X1),division(X1, _)"));
         /*----------------  CONSTRAINT_QUERY  ------------------*/
+        Assert.assertTrue(ruleString.contains("_mod(division, X1),_property(E1, division, of, the_walt_disney_company),_property(E1, subsidiary, of, X1)"));
+        Assert.assertTrue(ruleString.contains("_property(E1, division, of, the_walt_disney_company),_property(E1, subsidiary, of, X1),division(X1, _)"));
+        /*----------------  ANSWER_QUERY  ------------------*/
         Assert.assertTrue(ruleString.contains("_mod(division, X1),_property(E1, subsidiary, of, X1)"));
         Assert.assertTrue(ruleString.contains("_property(E1, subsidiary, of, X1),division(X1, _)"));
         /*----------------  BASE_CONSTRAINT  ------------------*/

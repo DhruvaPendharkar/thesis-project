@@ -7,7 +7,7 @@ A. [Nobel Prize, Nobel Prize, Nobel Prize]
 ---------------
 Q2. What year was Casimir Pulaski born in Warsaw?
 year(1745).
-?- _property(bear, in(warsaw)), _property(warsaw, in(X)), year(X).
+?- _property(bear, in(warsaw)), _property(bear, in(X)), year(X).
 A. [1745, 1745, 1745]
 --> X = 1745
 ---------------

@@ -211,6 +211,7 @@ public class Sentence {
             terms.add(new Literal(date));
             Literal head = new Literal(timeWord, terms);
             rules.add(new Rule(head, null, false));
+            rules.addAll(GenerateRulesForDateParts(date, timeWords));
         }
 
         return new Pair<>(wordList, rules);
