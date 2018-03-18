@@ -48,6 +48,8 @@ Chapters :
 				-- Hypernym rules
 				-- Meronym rules (not implemented)
 				-- Disambiguation rules
+			-- Stanford Core Toolkit
+			-- WordNet Java API
 	6. Development Paradigm and Development Environment
 		-- Paradigm
 			-- Test Driven Development
@@ -55,8 +57,6 @@ Chapters :
 		-- Environment
 			-- Java with IntelliJIdea
 			-- JUnit Test Framework
-			-- Stanford Core Toolkit
-			-- WordNet Java API
 	7. Approach for Knowledge Extraction
 		-- NLP Tools used
 			-- Stanford Dependency Parser
