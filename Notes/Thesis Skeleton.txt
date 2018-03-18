@@ -116,25 +116,29 @@ Chapters :
 					-- Weak exceptions
 				-- Preference Patterns for WSD
 				-- Multiple senses to a concept
-	8. Application in Question Answering and other Applications
+	8. Approach for Query Generation
+		5.4.3 Common Predicates used in Query Generation
+		-- Common rules (_is or similar terms)
+		-- Rules that help answer questions (where, when)
+		-- Questions as queries
+	9. Application in Question Answering and other Applications
 		-- SQuAD Dataset
 		-- Articles from Random Domains (Rough Categorization)
-		-- Questions as queries
 		-- Positives and Negatives
 			-- Able to answer questions from passage
 			-- Able to produce multiple answers
 			-- Not able to answer complex questions
 			-- Verb and Noun similarity not implemented
 		-- Other Applications of Knowlege Representation
-	9. Results and Analysis
+	10. Results and Analysis
 		-- Results about Question Answering
 		-- % Success and % First Choice
-	10. Related Work and Contribution
+	11. Related Work and Contribution
 		-- Other Knowledge Representation systems
 			-- Cyc
 			-- Watson
 			-- Baral Paper
-	11. Conclusions and Future Work
+	12. Conclusions and Future Work
 		-- Conclusions
 			-- System can be improved by adding more knowledge
 			-- Can make use of more and more NLP tools to improve performance
@@ -146,4 +150,4 @@ Chapters :
 			-- Modelling semantic similarity for answering questions
 				ie synonyms, similarity score between words
 			-- Answering cross sentence questions
-	12. Appendix
+	13. Appendix
