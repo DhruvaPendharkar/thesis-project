@@ -129,6 +129,8 @@ Chapters :
 			-- Able to produce multiple answers
 			-- Not able to answer complex questions
 			-- Verb and Noun similarity not implemented
+			-- Not enough automated information about verbs
+			-- Implementation of temporal reasoning
 		-- Other Applications of Knowlege Representation
 	10. Results and Analysis
 		-- Results about Question Answering
