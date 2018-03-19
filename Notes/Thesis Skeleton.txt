@@ -56,7 +56,7 @@ Chapters :
 			-- Steps in TDD
 		-- Environment
 			-- Java with IntelliJIdea
-			-- JUnit Test Framework
+			-- JUnit Testing Framework
 	7. Approach for Knowledge Extraction
 		-- NLP Tools used
 			-- Stanford Dependency Parser
@@ -117,7 +117,9 @@ Chapters :
 				-- Preference Patterns for WSD
 				-- Multiple senses to a concept
 	8. Approach for Query Generation
-		5.4.3 Common Predicates used in Query Generation
+		-- Theories on Question Classification
+		-- Question Classification based on Wh Word
+		-- Common Predicates used in Query Generation
 		-- Common rules (_is or similar terms)
 		-- Rules that help answer questions (where, when)
 		-- Questions as queries
