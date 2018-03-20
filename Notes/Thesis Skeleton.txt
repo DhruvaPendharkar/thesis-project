@@ -71,7 +71,7 @@ Chapters :
 				-- Meronyms
 			-- WordNet Senses
 			-- Different sense classes used in WordNet
-		-- Representation of Knowledge from Story
+	8. Representation of Knowledge from Story
 			-- building semantic graph
 			-- event structure
 			-- property structure
@@ -116,14 +116,14 @@ Chapters :
 					-- Weak exceptions
 				-- Preference Patterns for WSD
 				-- Multiple senses to a concept
-	8. Approach for Query Generation
+	9. Approach for Query Generation
 		-- Theories on Question Classification
 		-- Question Classification based on Wh Word
 		-- Common Predicates used in Query Generation
 		-- Common rules (_is or similar terms)
 		-- Rules that help answer questions (where, when)
 		-- Questions as queries
-	9. Application in Question Answering and other Applications
+	10. Application in Question Answering and other Applications
 		-- SQuAD Dataset
 		-- Articles from Random Domains (Rough Categorization)
 		-- Positives and Negatives
@@ -134,24 +134,25 @@ Chapters :
 			-- Not enough automated information about verbs
 			-- Implementation of temporal reasoning
 		-- Other Applications of Knowlege Representation
-	10. Results and Analysis
+	11. Results and Analysis
 		-- Results about Question Answering
 		-- % Success and % First Choice
-	11. Related Work and Contribution
+	12. Related Work and Contribution
 		-- Other Knowledge Representation systems
 			-- Cyc
 			-- Watson
 			-- Baral Paper
-	12. Conclusions and Future Work
+	13. Conclusions and Future Work
 		-- Conclusions
 			-- System can be improved by adding more knowledge
 			-- Can make use of more and more NLP tools to improve performance
 			-- Can give multiple answers if exists
 			-- Will help in utilizing the vast amount of knowledge in text
 		-- Future Work
+			-- Temporal reasoning
 			-- Adding Rules for more knowledge patterns
 			-- Adding Rules to handle more domains
 			-- Modelling semantic similarity for answering questions
 				ie synonyms, similarity score between words
 			-- Answering cross sentence questions
-	13. Appendix
+	14. Appendix
