@@ -1,0 +1,135 @@
+@Test
+    // 
+    void TestSentence() {
+        String content = "Where do Ctenophora live?";
+        Sentence sentence = Sentence.ParseSentence(content);
+        System.out.println(Sentence.DependenciesToString(sentence));
+        List<Rule> rules = sentence.GenerateRules();
+        HashSet<String> ruleString = new HashSet<>();
+        TreeSet<Rule> rulesSet = new TreeSet<>(rules);
+        for(Rule rule : rulesSet){
+            ruleString.add(rule.toString());
+            System.out.println(rule.toString());
+        }
+
+        Assert.assertEquals(0, ruleString.size());
+    }
+
+@Test
+    // 
+    void TestSentence() {
+        String content = "Where do ctenophora live?";
+        Sentence sentence = Sentence.ParseSentence(content);
+        System.out.println(Sentence.DependenciesToString(sentence));
+        List<Rule> rules = sentence.GenerateRules();
+        HashSet<String> ruleString = new HashSet<>();
+        TreeSet<Rule> rulesSet = new TreeSet<>(rules);
+        for(Rule rule : rulesSet){
+            ruleString.add(rule.toString());
+            System.out.println(rule.toString());
+        }
+
+        Assert.assertEquals(0, ruleString.size());
+    }
+
+@Test
+    // 
+    void TestSentence() {
+        String content = "Where is Kenya located?";
+        Sentence sentence = Sentence.ParseSentence(content);
+        System.out.println(Sentence.DependenciesToString(sentence));
+        List<Rule> rules = sentence.GenerateRules();
+        HashSet<String> ruleString = new HashSet<>();
+        TreeSet<Rule> rulesSet = new TreeSet<>(rules);
+        for(Rule rule : rulesSet){
+            ruleString.add(rule.toString());
+            System.out.println(rule.toString());
+        }
+
+        Assert.assertEquals(0, ruleString.size());
+    }
+
+@Test
+    // 
+    void TestSentence() {
+        String content = "Where does the Rhine begin?";
+        Sentence sentence = Sentence.ParseSentence(content);
+        System.out.println(Sentence.DependenciesToString(sentence));
+        List<Rule> rules = sentence.GenerateRules();
+        HashSet<String> ruleString = new HashSet<>();
+        TreeSet<Rule> rulesSet = new TreeSet<>(rules);
+        for(Rule rule : rulesSet){
+            ruleString.add(rule.toString());
+            System.out.println(rule.toString());
+        }
+
+        Assert.assertEquals(0, ruleString.size());
+    }
+
+@Test
+    // 
+    void TestSentence() {
+        String content = "Where does the Rhine empty?";
+        Sentence sentence = Sentence.ParseSentence(content);
+        System.out.println(Sentence.DependenciesToString(sentence));
+        List<Rule> rules = sentence.GenerateRules();
+        HashSet<String> ruleString = new HashSet<>();
+        TreeSet<Rule> rulesSet = new TreeSet<>(rules);
+        for(Rule rule : rulesSet){
+            ruleString.add(rule.toString());
+            System.out.println(rule.toString());
+        }
+
+        Assert.assertEquals(0, ruleString.size());
+    }
+
+@Test
+    // 
+    void TestSentence() {
+        String content = "Where is the Rhine? ";
+        Sentence sentence = Sentence.ParseSentence(content);
+        System.out.println(Sentence.DependenciesToString(sentence));
+        List<Rule> rules = sentence.GenerateRules();
+        HashSet<String> ruleString = new HashSet<>();
+        TreeSet<Rule> rulesSet = new TreeSet<>(rules);
+        for(Rule rule : rulesSet){
+            ruleString.add(rule.toString());
+            System.out.println(rule.toString());
+        }
+
+        Assert.assertEquals(0, ruleString.size());
+    }
+
+@Test
+    // 
+    void TestSentence() {
+        String content = "Where did Super Bowl 50 take place?";
+        Sentence sentence = Sentence.ParseSentence(content);
+        System.out.println(Sentence.DependenciesToString(sentence));
+        List<Rule> rules = sentence.GenerateRules();
+        HashSet<String> ruleString = new HashSet<>();
+        TreeSet<Rule> rulesSet = new TreeSet<>(rules);
+        for(Rule rule : rulesSet){
+            ruleString.add(rule.toString());
+            System.out.println(rule.toString());
+        }
+
+        Assert.assertEquals(0, ruleString.size());
+    }
+
+@Test
+    // 
+    void TestSentence() {
+        String content = "Where was Super Bowl 50 held?";
+        Sentence sentence = Sentence.ParseSentence(content);
+        System.out.println(Sentence.DependenciesToString(sentence));
+        List<Rule> rules = sentence.GenerateRules();
+        HashSet<String> ruleString = new HashSet<>();
+        TreeSet<Rule> rulesSet = new TreeSet<>(rules);
+        for(Rule rule : rulesSet){
+            ruleString.add(rule.toString());
+            System.out.println(rule.toString());
+        }
+
+        Assert.assertEquals(0, ruleString.size());
+    }
