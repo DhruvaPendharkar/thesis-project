@@ -9,10 +9,10 @@ public class Question extends Sentence {
 
     public Question(String sentence) {
         super(sentence);
-        information = ExtractInformation(this);
+        information = ExtractInformation();
     }
 
-    private QuestionInformation ExtractInformation(Question question) {
+    private QuestionInformation ExtractInformation() {
         QuestionInformation information = new QuestionInformation();
         Word questionWord = null;
         for(Word word : this.wordList){
