@@ -158,6 +158,7 @@ public class Question extends Sentence {
             verb = GetVerb(this.wordList, "die");
             if(verb != null) {
                 Word complement = verb.HasClausalComplement(this.wordList, verb);
+                if(complement == null) return rules;
                 if(Word.IsVerbAndQuestionWordConnected(complement, information.questionWord)){
                     List<Rule> deathRules = Word.GenerateDeathRule(verb, information);
                     rules.addAll(deathRules);

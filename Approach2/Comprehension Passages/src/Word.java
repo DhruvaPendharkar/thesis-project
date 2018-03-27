@@ -1373,7 +1373,7 @@ public class Word {
     }
 
     public static boolean IsVerbAndQuestionWordConnected(Word verb, Word questionWord) {
-        if(verb.relationMap.containsKey("advmod")){
+        if(verb.relationMap != null && verb.relationMap.containsKey("advmod")){
             List<Word> modifiers = verb.relationMap.get("advmod");
             if(modifiers.contains(questionWord)) return true;
         }
