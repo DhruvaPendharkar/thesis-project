@@ -1,3 +1,6 @@
+#include 'CommonRules.lp'.
+#include 'Nikola_Tesla_Q_Code.lp'.
+
 %-------------------------------------------------------%
 %Story%
 %-------------------------------------------------------%
@@ -39,12 +42,6 @@ supply(supply).
 system(system).
 time('10_july_1856').
 time('7_january_1943').
-%%-------------------------------------------------------%%
-%%Rules%%
-%%-------------------------------------------------------%%
-ethnicity(serbian_american).
-ethnicity(P, X) :- _mod(P, X), ethnicity(X).
-ethnicity(P, X) :- _is(P, Y), _mod(Y, X), ethnicity(X).
 %%-------------------------------------------------------%%
 %%Ontology%%
 %%-------------------------------------------------------%%
@@ -277,3 +274,10 @@ visionary(X, noun_person) :- visionary(X),not abnormal_d_person(X),not -visionar
 whole(X, noun_tops) :- artifact(X, noun_tops).
 whole(X, noun_tops) :- natural_object(X, noun_tops).
 whole(X, noun_tops) :- whole(X),not abnormal_d_tops(X),not -whole(X, noun_tops).
+%%-------------------------------------------------------%%
+%%Rules%%
+%%-------------------------------------------------------%%
+ethnicity(serbian_american).
+ethnicity(P, X) :- _mod(P, X), ethnicity(X).
+ethnicity(P, X) :- _is(P, Y), _mod(Y, X), ethnicity(X).
+_similar(tesla, nikola_tesla).

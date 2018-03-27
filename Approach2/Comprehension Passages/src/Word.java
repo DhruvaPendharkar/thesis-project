@@ -1,4 +1,5 @@
 import edu.stanford.nlp.trees.GrammaticalRelation;
+import edu.stanford.nlp.trees.TypedDependency;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
@@ -1217,25 +1218,35 @@ public class Word {
 
     public static List<Rule> GenerateQuestionConstraintRules(QuestionInformation information) {
         List<Rule> rules = new ArrayList<>();
-        if(information.answerKind == null) return rules;
+        if(information.questionType == QuestionType.WHAT && information.answerKind == null) return rules;
 
+        Word yearPredicate = new Word("year", false);
+        Word timePredicate = new Word("time", false);
         switch (information.answerType){
-            case YEAR:
-                Word yearPredicate = new Word("year", false);
-                Word timePredicate = new Word("time", false);
-                Literal timeVariable = new Literal(new Word(String.format("T%s", information.answerKind.id), true),
-                    LiteralType.BASE_CONSTRAINT);
+            case TIME:
+                Literal timeVariable = new Literal(new Word(String.format("X%s", information.questionWord.id), true),
+                        LiteralType.BASE_CONSTRAINT);
                 List<Literal> terms = new ArrayList<>();
+                terms.add(timeVariable);
+                Literal timeLiteral = new Literal(timePredicate, terms);
+                Rule rule = new Rule(timeLiteral, null, true);
+                rules.add(rule);
+                return rules;
+
+            case YEAR:
+                timeVariable = new Literal(new Word(String.format("T%s", information.answerKind.id), true),
+                    LiteralType.BASE_CONSTRAINT);
+                terms = new ArrayList<>();
                 terms.add(timeVariable);
                 terms.add(new Literal(new Word(String.format("X%s", information.answerKind.id), true),
                     LiteralType.BASE_CONSTRAINT));
                 Literal yearLiteral = new Literal(yearPredicate, terms);
-                Rule rule = new Rule(yearLiteral, null, true);
+                rule = new Rule(yearLiteral, null, true);
                 rules.add(rule);
 
                 terms = new ArrayList<>();
                 terms.add(timeVariable);
-                Literal timeLiteral = new Literal(timePredicate, terms);
+                timeLiteral = new Literal(timePredicate, terms);
                 rule = new Rule(timeLiteral, null, true);
                 rules.add(rule);
 
@@ -1359,5 +1370,87 @@ public class Word {
 
     public String GetAnswerID() {
         return String.format("X%s", this.id);
+    }
+
+    public static boolean IsVerbAndQuestionWordConnected(Word verb, Word questionWord) {
+        if(verb.relationMap.containsKey("advmod")){
+            List<Word> modifiers = verb.relationMap.get("advmod");
+            if(modifiers.contains(questionWord)) return true;
+        }
+
+        return false;
+    }
+
+    public static List<Rule> GenerateBirthRule(Word verb, QuestionInformation information) {
+        String subjectFormat = "S%s";
+        String answerFormat = "X%s";
+        Word predicateWord = new Word("_start_date", false);
+        List<Rule> rules = new ArrayList<>();
+        List<Word> subjects = verb.GetSubjects();
+        if(subjects.size() == 0) return rules;
+        Word similarPredicate = new Word("_similar", false);
+
+        for(Word subject : subjects) {
+            List<Literal> terms = new ArrayList<>();
+            terms.add(new Literal(subject));
+            terms.add(new Literal(new Word(String.format(subjectFormat, subject.id), true)));
+            Literal similarLiteral = new Literal(similarPredicate, terms);
+
+            terms = new ArrayList<>();
+            terms.add(new Literal(new Word(String.format(subjectFormat, subject.id), true)));
+            terms.add(new Literal(new Word(String.format(answerFormat, information.questionWord.id), true)));
+            Literal startDateLiteral = new Literal(predicateWord, terms);
+
+            terms = new ArrayList<>();
+            terms.add(startDateLiteral);
+            terms.add(similarLiteral);
+            Rule rule = new Rule(null, terms, false);
+            rules.add(rule);
+        }
+
+        return rules;
+    }
+
+    public static List<Rule> GenerateDeathRule(Word verb, QuestionInformation information) {
+        String subjectFormat = "S%s";
+        String answerFormat = "X%s";
+        Word predicateWord = new Word("_end_date", false);
+        List<Rule> rules = new ArrayList<>();
+        List<Word> subjects = verb.GetSubjects();
+        if(subjects.size() == 0) return rules;
+        Word similarPredicate = new Word("_similar", false);
+
+        for(Word subject : subjects) {
+            List<Literal> terms = new ArrayList<>();
+            terms.add(new Literal(subject));
+            terms.add(new Literal(new Word(String.format(subjectFormat, subject.id), true)));
+            Literal similarLiteral = new Literal(similarPredicate, terms);
+
+            terms = new ArrayList<>();
+            terms.add(new Literal(new Word(String.format(subjectFormat, subject.id), true)));
+            terms.add(new Literal(new Word(String.format(answerFormat, information.questionWord.id), true)));
+            Literal startDateLiteral = new Literal(predicateWord, terms);
+
+            terms = new ArrayList<>();
+            terms.add(startDateLiteral);
+            terms.add(similarLiteral);
+            Rule rule = new Rule(null, terms, false);
+            rules.add(rule);
+        }
+
+        return rules;
+    }
+
+    public Word HasClausalComplement(List<Word> words, Word dependentWord) {
+        for(Word word : words){
+            if(word.relationMap.containsKey("ccomp")){
+                List<Word> clausalComplements = word.relationMap.get("ccomp");
+                for(Word complement : clausalComplements){
+                    if(complement == dependentWord) return word;
+                }
+            }
+        }
+
+        return null;
     }
 }

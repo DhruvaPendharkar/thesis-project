@@ -26,7 +26,7 @@ public class Question extends Sentence {
         information.questionType = GetQuestionType(questionWord);
         Word answerKind = GetAnswerKind(questionWord);
         information.answerKind = answerKind;
-        information.answerType = GetAnswerType(answerKind);
+        information.answerType = GetAnswerType(answerKind, information.questionType);
 
         StringBuilder builder = new StringBuilder();
         builder.append("\n\nQuestion Information : \n");
@@ -40,22 +40,31 @@ public class Question extends Sentence {
         return information;
     }
 
-    private AnswerType GetAnswerType(Word answerKind) {
-        if(answerKind == null) return AnswerType.UNKNOWN;
-
-        switch(answerKind.getLemma().toLowerCase()){
-            case "year": return AnswerType.YEAR;
-            case "time": return AnswerType.TIME;
-            case "day": return AnswerType.DAY;
-            case "month": return AnswerType.MONTH;
+    private AnswerType GetAnswerType(Word answerKind, QuestionType questionType) {
+        if(questionType == QuestionType.WHEN){
+            return AnswerType.TIME;
         }
+        if(questionType == QuestionType.WHAT) {
+            if(answerKind == null) return AnswerType.UNKNOWN;
+            switch (answerKind.getLemma().toLowerCase()) {
+                case "year":
+                    return AnswerType.YEAR;
+                case "time":
+                    return AnswerType.TIME;
+                case "day":
+                    return AnswerType.DAY;
+                case "month":
+                    return AnswerType.MONTH;
+            }
 
-        for(Word word : this.wordList){
-            if(word.IsVerb()){
-                AnswerType type = word.GetAnswerType(answerKind);
-                if(type != AnswerType.UNKNOWN) return type;
+            for (Word word : this.wordList) {
+                if (word.IsVerb()) {
+                    AnswerType type = word.GetAnswerType(answerKind);
+                    if (type != AnswerType.UNKNOWN) return type;
+                }
             }
         }
+
         return AnswerType.UNKNOWN;
     }
 
@@ -117,10 +126,58 @@ public class Question extends Sentence {
             }
         }
 
+        List<Rule> specialRules = GenerateSpecialRules(this.information);
+        for(Rule specialRule : specialRules){
+            for(Rule finalConstraint : finalConstraints){
+                Rule rule = Rule.ApplyConstraint(specialRule, finalConstraint);
+                rules.add(rule);
+            }
+        }
+
         if(rules.size() != 0) return rules;
         rules.addAll(combinedConstraints);
 
         return rules;
+    }
+
+    private List<Rule> GenerateSpecialRules(QuestionInformation information) {
+        List<Rule> rules = new ArrayList<>();
+
+        // Adding special rules for birth date and death date
+        if(information.questionType == QuestionType.WHEN){
+            Word verb = GetVerb(this.wordList, "bear");
+            if(verb != null) {
+                if(Word.IsVerbAndQuestionWordConnected(verb, information.questionWord)){
+                    List<Rule> birthRules = Word.GenerateBirthRule(verb, information);
+                    rules.addAll(birthRules);
+                }
+
+                return rules;
+            }
+
+            verb = GetVerb(this.wordList, "die");
+            if(verb != null) {
+                Word complement = verb.HasClausalComplement(this.wordList, verb);
+                if(Word.IsVerbAndQuestionWordConnected(complement, information.questionWord)){
+                    List<Rule> deathRules = Word.GenerateDeathRule(verb, information);
+                    rules.addAll(deathRules);
+                }
+
+                return rules;
+            }
+        }
+
+        return rules;
+    }
+
+    private Word GetVerb(List<Word> wordList, String verbLemma) {
+        for(Word word : wordList){
+            if(word.getLemma().equalsIgnoreCase(verbLemma)){
+                return word;
+            }
+        }
+
+        return null;
     }
 
     public List<Rule> GenerateAllRules() {
