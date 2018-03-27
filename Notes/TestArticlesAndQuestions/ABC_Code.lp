@@ -1,4 +1,5 @@
 #include 'CommonRules.lp'.
+#include 'ABC_Q_Code.lp'.
 
 %-------------------------------------------------------%
 %Story%
@@ -630,5 +631,7 @@ worker(X, noun_person) :- worker(X),properties_person(X),not -worker(X, noun_per
 %%Custom Rules%%
 %%-------------------------------------------------------%%
 company(disney_abc_television_group).
+%% company(nintendo).
+%% company(microsoft).
 street('west_66th_street', _).
 street(columbus_avenue, _).

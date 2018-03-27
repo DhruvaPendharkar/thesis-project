@@ -18,7 +18,7 @@ public class Sentence {
     public static LexicalizedParser parser;
     public static StanfordCoreNLP pipeline;
 
-    private String sentenceString = "";
+    protected String sentenceString = "";
     private List<TypedDependency> dependencies = null;
     protected Word semanticRoot = null;
     protected List<Word> wordList = new ArrayList<>();

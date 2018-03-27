@@ -143,6 +143,11 @@ public class Question extends Sentence {
         Set<Rule> weakConstraintRules = FilterRules(unconstraintRules, LiteralType.BASE_CONSTRAINT);
         rulesSet.addAll(weakConstraintRules);
 
+        for(Rule rule : rulesSet){
+            String sentence = this.sentenceString.replaceAll("'", "");
+            rule.SetQuery(sentence, this.information);
+        }
+
         List<Rule> rulesList = new ArrayList<>(rulesSet);
         Collections.sort(rulesList, new Comparator<Rule>() {
             @Override

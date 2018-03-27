@@ -1356,4 +1356,8 @@ public class Word {
 
         return rules;
     }
+
+    public String GetAnswerID() {
+        return String.format("X%s", this.id);
+    }
 }

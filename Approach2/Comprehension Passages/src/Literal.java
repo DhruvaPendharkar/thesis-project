@@ -29,7 +29,7 @@ public class Literal implements Comparable<Literal> {
     public Literal(Word atom){
         this.predicate = atom.getLemma();
         if(!atom.isVariable && IsMixedCase(this.predicate) || this.predicate.contains(".") ||
-            this.predicate.contains(",") || IsSASPKeyword(this.predicate)){
+            this.predicate.contains(",") || this.predicate.contains(" ") || IsSASPKeyword(this.predicate)){
             this.predicate = String.format("'%s'", this.predicate);
         }
         this.isAtom = true;

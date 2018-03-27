@@ -132,4 +132,15 @@ public class Rule implements Comparable<Rule> {
         filteredRule.maxRuleQuality = maxLiteralType;
         return filteredRule;
     }
+
+    public void SetQuery(String sentenceString, QuestionInformation information) {
+        if(this.head != null) return;
+        Word predicate = new Word("question", false);
+        List<Literal> terms = new ArrayList<>();
+        terms.add(new Literal(new Word(String.format("%s", sentenceString), false)));
+        terms.add(new Literal(new Word(String.format("%d", this.maxRuleQuality.ordinal() + 1), false)));
+        terms.add(new Literal(new Word(String.format("%s", information.questionWord.GetAnswerID()), true)));
+        Literal queryHead = new Literal(predicate, terms);
+        this.head = queryHead;
+    }
 }
