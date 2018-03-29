@@ -133,16 +133,10 @@ Chapters :
 			-- Verb and Noun similarity not implemented
 			-- Not enough automated information about verbs
 			-- Implementation of temporal reasoning
-		-- Other Applications of Knowlege Representation
-	11. Results and Analysis
-		-- Results about Question Answering
-		-- % Success and % First Choice
-	12. Related Work and Contribution
-		-- Other Knowledge Representation systems
-			-- Cyc
-			-- Watson
-			-- Baral Paper
-	13. Conclusions and Future Work
+		-- Results and Analysis
+			-- Results about Question Answering
+			-- % Success
+	11. Conclusions and Future Work
 		-- Conclusions
 			-- System can be improved by adding more knowledge
 			-- Can make use of more and more NLP tools to improve performance
@@ -155,4 +149,4 @@ Chapters :
 			-- Modelling semantic similarity for answering questions
 				ie synonyms, similarity score between words
 			-- Answering cross sentence questions
-	14. Appendix
+	12. Appendix
