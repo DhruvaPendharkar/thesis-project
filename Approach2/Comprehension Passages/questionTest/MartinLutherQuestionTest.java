@@ -22,7 +22,7 @@ public class MartinLutherQuestionTest {
         Word.eventId = 1;
     }
 
-    @Test
+    //@Test
     // Of what nationality was Martin Luther?
     void TestSentenceOne() {
         String content = "Of what nationality was Martin Luther?";
@@ -88,7 +88,7 @@ public class MartinLutherQuestionTest {
         Assert.assertTrue(ruleString.contains("question('when did martin_luther die ?', 3, X1) :- time(X1)"));
     }
 
-    @Test
+    //@Test
     // What organization's teaching did Luther reject?
     void TestSentenceThree() {
         String content = "What organization's teaching did Luther reject?";
@@ -117,7 +117,7 @@ public class MartinLutherQuestionTest {
         Assert.assertEquals(0, ruleString.size());
     }
 
-    @Test
+    //@Test
     // What did the Church claim could be avoided with money?
     void TestSentenceFour() {
         String content = "What did the Church claim could be avoided with money?";
@@ -146,7 +146,7 @@ public class MartinLutherQuestionTest {
         Assert.assertEquals(0, ruleString.size());
     }
 
-    @Test
+    //@Test
     // What did the Church do when Luther refused to retract his writings?
     void TestSentenceFive() {
         String content = "What did the Church do when Luther refused to retract his writings?";

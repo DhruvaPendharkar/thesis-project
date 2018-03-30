@@ -144,7 +144,7 @@ public class OxygenStoryTest {
         Assert.assertTrue(ruleString.contains("_relation(1, 2, _clcomplement)"));
         Assert.assertTrue(ruleString.contains("event(1, bind, atom, null)"));
         Assert.assertTrue(ruleString.contains("event(2, form, atom, dioxygen)"));
-        Assert.assertTrue(ruleString.contains("event(2, form, null, dioxygen)"));
+        Assert.assertTrue(ruleString.contains("event(2, form, null, gas)"));
         Assert.assertTrue(ruleString.contains("gas(dioxygen)"));
         Assert.assertTrue(ruleString.contains("number(two)"));
     }

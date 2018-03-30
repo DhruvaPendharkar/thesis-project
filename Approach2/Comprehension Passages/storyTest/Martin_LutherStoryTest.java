@@ -43,7 +43,7 @@ public class Martin_LutherStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(14, ruleString.size());
     }
 
     @Test

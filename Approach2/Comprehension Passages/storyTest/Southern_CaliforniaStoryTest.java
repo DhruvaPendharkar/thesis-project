@@ -81,7 +81,7 @@ public class Southern_CaliforniaStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(6, ruleString.size());
     }
 
     @Test
@@ -104,7 +104,7 @@ public class Southern_CaliforniaStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(18, ruleString.size());
     }
 
     @Test
@@ -127,7 +127,7 @@ public class Southern_CaliforniaStoryTest {
             System.out.println(String.format("Assert.assertTrue(ruleString.contains(\"%s\"));", rule.toString()));
         }
 
-        Assert.assertEquals(0, ruleString.size());
+        Assert.assertEquals(10, ruleString.size());
     }
 
     @Test

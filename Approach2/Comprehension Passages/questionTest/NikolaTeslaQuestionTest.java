@@ -22,7 +22,7 @@ public class NikolaTeslaQuestionTest {
         Word.eventId = 1;
     }
 
-    @Test
+    //@Test
     // In what year was Nikola Tesla born?
     void TestSentenceOne() {
         String content = "In what year was Nikola Tesla born?";
@@ -51,7 +51,7 @@ public class NikolaTeslaQuestionTest {
         Assert.assertEquals(0, ruleString.size());
     }
 
-    @Test
+    //@Test
     // What was Nikola Tesla's ethnicity?
     void TestSentenceTwo() {
         String content = "What was Nikola Tesla's ethnicity?";
@@ -80,7 +80,7 @@ public class NikolaTeslaQuestionTest {
         Assert.assertEquals(0, ruleString.size());
     }
 
-    @Test
+    //@Test
     // In what year did Tesla die?
     void TestSentenceThree() {
         String content = "In what year did Tesla die?";
@@ -183,7 +183,7 @@ public class NikolaTeslaQuestionTest {
         Assert.assertTrue(ruleString.contains("question('when did tesla die ?', 3, X1) :- time(X1)"));
     }
 
-    @Test
+    //@Test
     // What is Tesla's home country?
     void TestSentenceSix() {
         String content = "What is Tesla's home country?";
@@ -212,7 +212,7 @@ public class NikolaTeslaQuestionTest {
         Assert.assertEquals(0, ruleString.size());
     }
 
-    @Test
+    //@Test
     // What does AC stand for?
     void TestSentenceSeven() {
         String content = "What does AC stand for?";

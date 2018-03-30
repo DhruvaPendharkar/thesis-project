@@ -196,7 +196,7 @@ public class AmazonRainforestStoryTest {
         Assert.assertTrue(ruleString.contains("_property(1, word, in, name)"));
         Assert.assertTrue(ruleString.contains("event(1, contain, department, word)"));
         Assert.assertTrue(ruleString.contains("event(1, contain, department, word_in_name)"));
-        Assert.assertTrue(ruleString.contains("event(1, contain, null, word)"));
+        Assert.assertTrue(ruleString.contains("event(1, contain, null, amazona)"));
         Assert.assertTrue(ruleString.contains("event(1, contain, state, word)"));
         Assert.assertTrue(ruleString.contains("event(1, contain, state, word_in_name)"));
         Assert.assertTrue(ruleString.contains("number(four)"));
