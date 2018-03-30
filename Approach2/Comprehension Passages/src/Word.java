@@ -729,7 +729,7 @@ public class Word {
             bodyList.add(new Literal(new Word(actionWord.id, false)));
             bodyList.add(new Literal(new Word(actionWord.lemma, false)));
             bodyList.add(new Literal(new Word("null", false)));
-            bodyList.add(new Literal(object));
+            bodyList.add(new Literal(objectAppos));
             Literal head = new Literal(eventWord, bodyList);
             Rule rule = new Rule(head, null, false);
             rules.add(rule);
