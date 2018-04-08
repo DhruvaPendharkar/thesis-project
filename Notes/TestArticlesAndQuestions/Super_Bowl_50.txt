@@ -128,7 +128,7 @@ Q23. What team was the AFC champion?
 A. [Denver Broncos, Denver Broncos, Denver Broncos]
 --> X = denver_broncos
 ---------------
-Q24. What team was the NFC champion?
+Q24. What team was the NFC's champion?
 ?- _possess(nfc, X), team(X).
 ?- _abbreviation(nfc, A), _possess(A, X), team(X).
 A. [Carolina Panthers, Carolina Panthers, Carolina Panthers]

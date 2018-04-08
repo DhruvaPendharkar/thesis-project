@@ -1,3 +1,4 @@
+#include 'CommonRules.lp'.
 %-------------------------------------------------------%
 %Story%
 %-------------------------------------------------------%
@@ -24,20 +25,20 @@ _possess(american_football_conference, denver_broncos).
 _possess(american_football_conference, team).
 _possess(national_football_conference, carolina_panthers).
 _possess(national_football_conference, team).
-_property(champion, of(national_football_league)).
-_property(defeat, by('24_10')).
-_property(emphasize, know).
-_property(emphasize, suspend).
-_property(emphasize, tradition).
-_property(know, as(super_bowl_l)).
-_property(know, with(initiative)).
-_property(name, with(roman_numerals)).
-_property(national_football_league, for('2015_season')).
-_property(play, at(levis_stadium)).
-_property(play, at(santa_clara)).
-_property(play, in(san_francisco_bay_area)).
-_property(play, on('february_7_2016')).
-_property(santa_clara, in(california)).
+_property(10, name, with, roman_numerals).
+_property(13, know, as, super_bowl_l).
+_property(13, know, with, initiative).
+_property(16, play, at, levis_stadium).
+_property(16, play, at, santa_clara).
+_property(16, play, in, san_francisco_bay_area).
+_property(16, play, on, 'february_7_2016').
+_property(16, santa_clara, in, california).
+_property(3, champion, of, national_football_league).
+_property(3, national_football_league, for, '2015_season').
+_property(4, defeat, by, '24_10').
+_property(7, emphasize, null, know).
+_property(7, emphasize, null, suspend).
+_property(7, emphasize, null, tradition).
 _relation(13, 9, _conj).
 _relation(13, tradition, _conj).
 _relation(2, 3, _clcomplement).
@@ -47,10 +48,14 @@ _relation(tradition, 10, _clause).
 anniversary(anniversary).
 california(california).
 champion(champion).
+day('february_7_2016', 7).
+event(1, be, null, null).
 event(10, name, null, super_bowl).
 event(11, have, null, null).
+event(12, be, null, null).
 event(13, know, null, game).
 event(14, feature, logo, 'arabic_numerals_50').
+event(15, be, null, null).
 event(16, play, null, game).
 event(2, be, 'super_bowl_50', null).
 event(3, determine, 'super_bowl_50', champion).
@@ -59,6 +64,7 @@ event(4, defeat, denver_broncos, carolina_panthers).
 event(4, defeat, team, team).
 event(5, earn, afc, third_super_bowl_title).
 event(5, earn, afc, title).
+event(6, be, null, null).
 event(7, emphasize, league, anniversary).
 event(7, emphasize, league, golden_anniversary).
 event(9, suspend, null, game).
@@ -68,6 +74,7 @@ game(game).
 initiative(initiative).
 league(league).
 logo(logo).
+month('february_7_2016', february).
 number('24_10').
 organization(national_football_league).
 organization(nfl).
@@ -80,6 +87,8 @@ time('february_7_2016').
 time(2015).
 title(title).
 tradition(tradition).
+year('february_7_2016', 2016).
+year(2015, 2015).
 %%-------------------------------------------------------%%
 %%Rules%%
 %%-------------------------------------------------------%%

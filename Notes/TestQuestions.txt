@@ -1,0 +1,9 @@
+What day was the game played on?
+event(E1, play, S1, O1), _similar(game, O1), _property(E1, play, on, T), day(T, X1), time(T).
+event(E1, play, S1, O1), _property(E1, play, on, X1), time(X1).
+
+What city did Super Bowl 50 take place in?
+event(E1, _, S1, O1), _similar('super_bowl_50', O1), _property(E1, _, in, X1), city(X1).
+
+What team was the NFC's champion?
+_possess(O, X), _similar(nfc, O), team(X).
