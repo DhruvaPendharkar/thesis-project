@@ -138,9 +138,18 @@ public class Rule implements Comparable<Rule> {
         Word predicate = new Word("question", false);
         List<Literal> terms = new ArrayList<>();
         terms.add(new Literal(new Word(String.format("%s", sentenceString), false)));
-        terms.add(new Literal(new Word(String.format("%d", this.maxRuleQuality.ordinal() + 1), false)));
+        terms.add(new Literal(new Word(String.format("%s", GetConfidenceStringFromValue(this.maxRuleQuality.ordinal() + 1)), false)));
         terms.add(new Literal(new Word(String.format("%s", information.questionWord.GetAnswerID()), true)));
         Literal queryHead = new Literal(predicate, terms);
         this.head = queryHead;
+    }
+
+    private String GetConfidenceStringFromValue(int value){
+        switch(value){
+            case 1: return "certain";
+            case 2: return "likely";
+            case 3: return "possible";
+        }
+        return "guess";
     }
 }
