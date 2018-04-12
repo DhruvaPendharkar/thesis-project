@@ -1,4 +1,5 @@
 #include 'CommonRules.lp'.
+#include 'Super_Bowl_50_Q_Code.lp'.
 %-------------------------------------------------------%
 %Story%
 %-------------------------------------------------------%
@@ -78,6 +79,8 @@ month('february_7_2016', february).
 number('24_10').
 organization(national_football_league).
 organization(nfl).
+organization(afc). 
+organization(american_football_conference).
 santa_clara(santa_clara).
 season(season).
 team(carolina_panthers).
@@ -89,33 +92,15 @@ title(title).
 tradition(tradition).
 year('february_7_2016', 2016).
 year(2015, 2015).
+location(san_francisco_bay_area).
+location(santa_clara).
+location(levis_stadium).
 %%-------------------------------------------------------%%
 %%Rules%%
 %%-------------------------------------------------------%%
-event(E, X, represent, Y) :- _possess(Y, X), team(X).
-event(E, X, represent, Y) :- _possess(A, X), _abbreviation(Y, A), team(X).
-place(X, P, at) :- _property(X, at(P)).
-place(X, P, in) :- _property(X, in(P)).
-time(X, T) :- _property(X, on(T)), time(T).
-time(X, T) :- _property(X, at(T)), time(T).
-time(T) :- year(T).
-
-where(event(E, S, X, O), P, Prep) :- S = null, _is(O1, O), event(E1, _, X, O1), place(X, P, Prep). 
-where(event(E, _, X, O), P, Prep) :- place(X, P, Prep).
-
-when(event(E, S, X, O), P) :- S = null, _is(O1, O), event(E1, _, X, O1), time(X, P). 
-when(event(E, _, X, O), P) :- time(X, P).
-
-_score('24_10').
-_property(play, on(2016)).
-year(2016).
-
 title(title, noun_state).
-event(E, win, X, O) :- event(E1, earn, X, title), title(title, S), S = noun_state.
-event(E, win, X, O) :- event(E1, earn, X1, title), _abbreviation(X1, X), title(title, S), S = noun_state.
-event(E, win, X, O) :- event(E1, earn, X1, title), _possess(X1, X), title(title, S), S = noun_state.
-event(E, win, X, O) :- event(E1, earn, X1, title), _abbreviation(X1, X2), _possess(X2, X), title(title, S), S = noun_state.
-
+event(E, X, represent, Y) :- _possess(Y, X), organization(Y), team(X).
+event(E, win, X, O) :- event(E1, earn, X, title), _similar(O, O1), _mod(title, O1), title(title, S), S = noun_state.
 %%-------------------------------------------------------%%
 %%Ontology%%
 %%-------------------------------------------------------%%

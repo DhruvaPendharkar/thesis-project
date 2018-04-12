@@ -1,0 +1,10 @@
+Q1. Which NFL team represented the AFC at Super Bowl 50?
+Q3. Where was Super Bowl 50 played?
+Q4. What day was the game played on?
+Q5. What is the AFC short for?
+Q6. Who won Super Bowl 50?
+
+
+
+
+where(event(X, S, play, 'super_bowl_50'), P, Prep)
