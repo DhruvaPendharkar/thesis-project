@@ -17,3 +17,16 @@ question('when was nikola_tesla born ?', certain, X2) :- _similar(nikola_tesla, 
 question('when was nikola_tesla born ?', certain, X2) :- _similar(nikola_tesla, S2),event(E2, bear, S2, O2),time(X2).
 question('when was nikola_tesla born ?', possible, X2) :- _start_date(S2, X2),time(X2).
 question('when was nikola_tesla born ?', guess, X2) :- time(X2).
+
+question('which scientist was a futurist?', 4).
+question('which scientist was a futurist?', certain, X1) :- _is(X1, futurist), scientist(X1, _).
+question('which scientist was a futurist?', guess, X1) :- scientist(X1, _).
+
+question('which scientist was a computer engineer?', 5).
+question('which scientist was a computer engineer?', certain, X1) :- _is(X1, engineer), _mod(engineer, computer), scientist(X1, _).
+question('which scientist was a computer engineer?', likely, X1) :- _is(X1, engineer), scientist(X1, _).
+question('which scientist was a computer engineer?', guess, X1) :- scientist(X1, _).
+
+question('which scientist was a politician?', 6).
+question('which scientist was a politician?', certain, X1) :- _is(X1, politician), scientist(X1, _).
+question('which scientist was a politician?', guess, X1) :- scientist(X1, _).

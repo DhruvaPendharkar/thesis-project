@@ -43,3 +43,12 @@ A.[alternating current, alternating current, alternating current]
 ******************
 Results : (6/7)
 ******************
+
+Which scientist was a futurist?
+_is(X1, futurist), scientist(X1, _).
+
+Which scientist was a computer engineer?
+_is(X1, engineer), _mod(engineer, computer), scientist(X1, _).
+
+Which scientist was a politician?
+_is(X1, politician), scientist(X1, _).
