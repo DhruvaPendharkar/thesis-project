@@ -101,6 +101,7 @@ location(levis_stadium).
 title(title, noun_state).
 event(E, X, represent, Y) :- _possess(Y, X), organization(Y), team(X).
 event(E, win, X, O) :- event(E1, earn, X, title), _similar(O, O1), _mod(title, O1), title(title, S), S = noun_state.
+event(E, win, X1, O) :- event(E1, earn, X, title), _similar(X, X1), _similar(O, O1), _mod(title, O1), title(title, S), S = noun_state.
 %%-------------------------------------------------------%%
 %%Ontology%%
 %%-------------------------------------------------------%%
