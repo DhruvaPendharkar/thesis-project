@@ -36,6 +36,8 @@ city(city).
 event(1, bear, null, null).
 event(10, be, null, null).
 event(11, bear, null, casimir_pulaski).
+event(11, bear, null, general).
+event(11, bear, null, hero).
 event(2, be, null, null).
 event(3, achieve, maria_curie, international_recognition).
 event(3, achieve, maria_curie, recognition).

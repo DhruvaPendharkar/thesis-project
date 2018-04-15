@@ -15,13 +15,13 @@ _mod(principle, amenable).
 _mod(problem, computational).
 _mod(step, mathematical).
 _possess(problem, difficulty).
-_property(branch, in(computer_science)).
-_property(branch, of(theory_of_computation)).
-_property(classify, according_to(difficulty)).
-_property(mechanical_application, of(step)).
-_property(relate, to(other)).
-_property(solve, by(computer)).
-_property(solve, by(mechanical_application)).
+_property(1, branch, in, computer_science).
+_property(1, branch, of, theory_of_computation).
+_property(11, solve, _by, computer).
+_property(15, mechanical_application, of, step).
+_property(15, solve, _by, mechanical_application).
+_property(3, classify, according_to, difficulty).
+_property(5, relate, to, other).
 _relation(13, 15, _clcomplement).
 _relation(2, 3, _clause).
 _relation(2, 5, _clause).
@@ -33,15 +33,22 @@ computer(computer).
 computer_science(computer_science).
 difficulty(difficulty).
 equivalent(computer).
+event(1, be, null, null).
+event(10, be, null, null).
 event(11, solve, null, null).
+event(12, be, null, null).
 event(13, state, null, null).
+event(14, be, null, null).
 event(15, solve, null, problem).
 event(2, focus, branch, null).
 event(3, classify, null, computational_problem).
 event(3, classify, null, problem).
 event(4, accord, null, null).
 event(5, relate, null, complexity_classes).
+event(6, be, null, null).
 event(7, understand, null, problem).
+event(8, be, null, null).
+event(9, be, null, null).
 principle(principle).
 principle(task).
 problem(problem).

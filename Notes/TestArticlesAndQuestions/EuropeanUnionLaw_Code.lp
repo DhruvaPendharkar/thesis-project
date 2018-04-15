@@ -13,18 +13,18 @@ _mod(source, main).
 _mod(source, secondary).
 _mod(source, three).
 _mod(state, european_union).
-_property(base, on(treaty)).
-_property(body, of(legislation)).
-_property(body, of(treaty)).
-_property(compose, of(council_of_the_european_union)).
-_property(compose, of(european_parliament)).
-_property(establish, under(treaty)).
-_property(have, on(law)).
-_property(law, of(state)).
-_property(legislature, of(european_union)).
-_property(set, in(treaty)).
-_property(source, of(european_union_law)).
-_property(source, of(primary_law)).
+_property(1, body, of, legislation).
+_property(1, body, of, treaty).
+_property(10, compose, of, council_of_the_european_union).
+_property(10, compose, of, european_parliament).
+_property(10, legislature, of, european_union).
+_property(11, establish, under, treaty).
+_property(13, set, in, treaty).
+_property(2, have, on, law).
+_property(2, law, of, state).
+_property(3, source, of, european_union_law).
+_property(4, source, of, primary_law).
+_property(8, base, on, treaty).
 _relation(objective, 13, _clause).
 _relation(treaty, 5, _clause).
 body(body).
@@ -32,19 +32,24 @@ body(european_union_law).
 body(regulations_and_directives).
 directive(directive).
 european_union(european_union).
+event(1, be, null, null).
 event(10, compose, null, legislature).
 event(11, establish, council_of_the_european_union, null).
 event(12, pursue, null, objective).
 event(13, set, null, null).
 event(2, have, regulations_and_directives, direct_effect).
 event(2, have, regulations_and_directives, indirect_effect).
+event(3, be, null, null).
+event(4, be, null, null).
 event(5, establish, null, european_union).
 event(6, 'include', secondary_source, directive).
 event(6, 'include', secondary_source, regulation).
 event(6, 'include', source, directive).
 event(6, 'include', source, regulation).
+event(7, be, null, null).
 event(8, base, null, directive).
 event(8, base, null, regulation).
+event(9, be, null, null).
 law(law).
 legislation(legislation).
 legislature(legislature).

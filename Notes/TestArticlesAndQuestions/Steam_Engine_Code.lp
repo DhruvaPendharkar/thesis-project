@@ -30,14 +30,14 @@ _mod(pressure, high).
 _mod(source, non_combustion).
 _mod(steam, reduced_pressure).
 _mod(work, mechanical).
-_property(expand, through(piston)).
-_property(expand, through(turbine)).
-_property(heat, in(cycle)).
-_property(operating, at(pressure)).
-_property(pump, into(boiler)).
-_property(separate, from(product)).
-_property(transform, into(steam)).
-_property(transform, within(operating)).
+_property(1, separate, from, product).
+_property(11, heat, in, cycle).
+_property(12, operating, at, pressure).
+_property(12, transform, into, steam).
+_property(12, transform, within, operating).
+_property(13, expand, through, piston).
+_property(13, expand, through, turbine).
+_property(17, pump, into, boiler).
 _relation(11, 12, _conj).
 _relation(15, 13, _clause).
 _relation(6, 7, _clcomplement).
@@ -46,15 +46,22 @@ boiler(boiler).
 combustion(combustion).
 cycle(cycle).
 energy(energy).
+event(1, be, null, null).
+event(10, be, null, null).
 event(11, heat, water, null).
 event(12, transform, water, null).
 event(13, expand, null, null).
+event(14, be, null, null).
 event(15, do, null, work).
+event(16, be, null, null).
 event(17, pump, reduced_pressure_steam, null).
 event(17, pump, steam, null).
+event(3, be, null, null).
+event(4, be, null, null).
 event(5, use, null, source).
 event(6, use, null, null).
 event(7, analyze, null, process).
+event(8, be, null, null).
 fluid(fluid).
 heat(heat).
 piston(piston).

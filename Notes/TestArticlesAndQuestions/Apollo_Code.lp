@@ -26,27 +26,28 @@ _mod(return, safely).
 _mod(spacecraft, three_man).
 _possess(dwight_d_eisenhower, administration).
 _possess(john_f_kennedy, goal).
-_property(administration, as(spacecraft)).
-_property(carry, by(national_aeronautics_and_space_administration)).
-_property(conceive, during(administration)).
-_property(dedicate, by(end)).
-_property(dedicate, to(goal)).
-_property(end, of(1960)).
-_property(flight, of(apollo)).
-_property(follow, by(project_gemini)).
-_property(know, as(project_apollo)).
-_property(landing, on('moon_from_1969_to_1972')).
-_property(man, on(moon)).
-_property(propose, in('may_25_1961')).
-_property(propose, in(address)).
-_property(propose, to(congress)).
-_property(put, in(space)).
-_property(return, to(earth)).
-_relation(10, 11, _conj).
-_relation(5, 6, _clcomplement).
-_relation(9, 5, _clause).
-_relation(goal, 10, _clause).
+_property(1, know, as, project_apollo).
+_property(10, dedicate, _by, end).
+_property(10, dedicate, to, goal).
+_property(10, end, of, 1960).
+_property(11, man, on, moon).
+_property(12, return, to, earth).
+_property(13, propose, in, 'may_25_1961').
+_property(13, propose, in, address).
+_property(13, propose, to, congress).
+_property(15, follow, _by, project_gemini).
+_property(16, flight, of, apollo).
+_property(3, carry, by, national_aeronautics_and_space_administration).
+_property(5, landing, on, 'moon_from_1969_to_1972').
+_property(6, administration, as, spacecraft).
+_property(6, conceive, during, administration).
+_property(8, put, in, space).
+_relation(10, 6, _clause).
+_relation(11, 12, _conj).
+_relation(4, 5, _clcomplement).
+_relation(6, 7, _clcomplement).
 _relation(goal, 11, _clause).
+_relation(goal, 12, _clause).
 _relation(program, 1, _clause).
 _relation(program, 3, _clause).
 _start_date(project_gemini, 1962).
@@ -55,29 +56,36 @@ administration(administration).
 american(american).
 apollo(apollo).
 congress(congress).
+day('may_25_1961', 25).
 earth(earth).
 end(end).
 event(1, know, null, null).
-event(10, land, null, man).
-event(10, land, null, man_on_moon).
-event(11, return, null, he).
-event(12, propose, end, null).
-event(14, follow, null, project_mercury).
+event(10, dedicate, null, apollo).
+event(11, land, null, man).
+event(11, land, null, man_on_moon).
+event(12, return, null, he).
+event(13, propose, end, null).
+event(14, be, null, null).
+event(15, follow, null, project_mercury).
+event(16, be, null, null).
+event(2, be, null, null).
 event(3, carry, null, null).
 event(4, accomplish, national_aeronautics_and_space_administration, null).
-event(5, conceive, null, null).
-event(6, follow, null, one_man_project_mercury).
-event(6, follow, null, project_mercury).
-event(7, put, one_man_project_mercury, american).
-event(7, put, one_man_project_mercury, first_american).
-event(7, put, project_mercury, american).
-event(7, put, project_mercury, first_american).
-event(9, dedicate, null, apollo).
+event(5, landing, null, first_human).
+event(5, landing, null, human).
+event(6, conceive, null, null).
+event(7, follow, null, one_man_project_mercury).
+event(7, follow, null, project_mercury).
+event(8, put, one_man_project_mercury, american).
+event(8, put, one_man_project_mercury, first_american).
+event(8, put, project_mercury, american).
+event(8, put, project_mercury, first_american).
+event(9, be, null, null).
 flight(flight).
 goal(goal).
 human(human).
-landing(landing).
 man(man).
+month('may_25_1961', may).
 moon(moon).
 national_aeronautics_and_space_administration(national_aeronautics_and_space_administration).
 organization(congress).
@@ -94,6 +102,12 @@ time(1960).
 time(1962).
 time(1966).
 time(1968).
+year('may_25_1961', 1961).
+year('moon_from_1969_to_1972', 1969).
+year('moon_from_1969_to_1972', 1972).
+year(1962, 1962).
+year(1966, 1966).
+year(1968, 1968).
 %%-------------------------------------------------------%%
 %%Ontology%%
 %%-------------------------------------------------------%%

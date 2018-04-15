@@ -24,36 +24,36 @@ _mod(tree, rainforest).
 _mod(tree, tropical).
 _possess(planet, rainforest).
 _possess(they, name).
-_property(amazon_basin, of(south_america)).
-_property(amount, in(bolivia)).
-_property(amount, in(ecuador)).
-_property(amount, in(french_guiana)).
-_property(amount, in(guyana)).
-_property(amount, in(suriname)).
-_property(amount, in(venezuela)).
-_property(belong, to(nine_nation)).
-_property(colombia, with('10_percent')).
-_property(colombia, with(amount)).
-_property(comprise, of(tract)).
-_property(contain, with('60_percent')).
-_property(contain, within(brazil)).
-_property(cover, by(rainforest)).
-_property(cover, of('7,000,000_square_kilometre')).
-_property(divide, into('16,000_species')).
-_property(follow, by(peru)).
-_property(follow, with(13)).
-_property(half, of(rainforest)).
-_property(know, as(amazon_jungle)).
-_property(know, as(amazonia)).
-_property(know, in(english)).
-_property(majority, of(forest)).
-_property(most, of(amazon_basin)).
-_property(percent, of(rainforest)).
-_property(rainforest, in(world)).
-_property(rainforest, with(billion)).
-_property(state, in(four_nation)).
-_property(tract, of(tree)).
-_property(word, in(name)).
+_property(1, know, as, amazon_jungle).
+_property(1, know, as, amazonia).
+_property(1, know, in, english).
+_property(10, contain, with, '60_percent').
+_property(10, contain, within, brazil).
+_property(10, majority, of, forest).
+_property(10, percent, of, rainforest).
+_property(11, amount, in, bolivia).
+_property(11, amount, in, ecuador).
+_property(11, amount, in, french_guiana).
+_property(11, amount, in, guyana).
+_property(11, amount, in, suriname).
+_property(11, amount, in, venezuela).
+_property(11, colombia, with, '10_percent').
+_property(11, colombia, with, amount).
+_property(11, follow, by, peru).
+_property(11, follow, with, 13).
+_property(12, state, in, four_nation).
+_property(12, word, in, name).
+_property(13, half, of, rainforest).
+_property(15, comprise, of, tract).
+_property(15, rainforest, in, world).
+_property(15, rainforest, with, billion).
+_property(15, tract, of, tree).
+_property(17, divide, into, '16,000_species').
+_property(3, amazon_basin, of, south_america).
+_property(3, most, of, amazon_basin).
+_property(6, cover, _by, rainforest).
+_property(6, cover, of, '7,000,000_square_kilometre').
+_property(8, belong, to, nine_nation).
 _relation(11, 10, _clcomplement).
 _relation(13, 15, _conj).
 _relation(amazon_rainforest, 1, _clause).
@@ -74,21 +74,24 @@ event(11, follow, colombia, null).
 event(11, follow, percent, null).
 event(12, contain, department, word).
 event(12, contain, department, word_in_name).
-event(12, contain, null, word).
+event(12, contain, null, amazona).
 event(12, contain, state, word).
 event(12, contain, state, word_in_name).
 event(13, represent, amazon, half).
 event(13, represent, amazon, half_of_rainforest).
 event(15, comprise, amazon, null).
 event(17, divide, null, null).
+event(2, be, null, null).
 event(3, cover, forest, most).
 event(3, cover, forest, most_of_amazon_basin).
 event(3, cover, moist_broadleafed_forest, most).
 event(3, cover, moist_broadleafed_forest, most_of_amazon_basin).
 event(4, encompass, basin, square_kilometre).
+event(5, be, null, null).
 event(6, cover, null, square_kilometre).
 event(7, 'include', amazon_rainforest, territory).
 event(8, belong, null, null).
+event(9, be, null, null).
 forest(amazon_rainforest).
 forest(forest).
 guyana(guyana).

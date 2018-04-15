@@ -9,21 +9,21 @@ _mod(population, civilian).
 _mod(portion, substantial).
 _mod(tribe, nomadic).
 _possess(genghis_khan, life).
-_property(accompany, by(massacre)).
-_property(accompany, in(land)).
-_property(come, to(power)).
-_property(conquest, of(most)).
-_property(end, of(life)).
-_property(many, of(tribe)).
-_property(massacre, of(population)).
-_property(most, of(eurasia)).
-_property(occupy, by(end)).
-_property(portion, of(central_asia)).
-_property(portion, of(china)).
-_property(proclaim, as(genghis_khan)).
-_property(raid, of(dynasty)).
-_property(result, in(conquest)).
-_property(tribe, of(northeast_asia)).
+_property(1, come, to, power).
+_property(10, accompany, _by, massacre).
+_property(10, accompany, in, land).
+_property(10, massacre, of, population).
+_property(11, end, of, life).
+_property(11, occupy, by, end).
+_property(11, portion, of, central_asia).
+_property(11, portion, of, china).
+_property(2, many, of, tribe).
+_property(2, tribe, of, northeast_asia).
+_property(5, proclaim, as, genghis_khan).
+_property(7, conquest, of, most).
+_property(7, most, of, eurasia).
+_property(7, result, in, conquest).
+_property(8, raid, of, dynasty).
 _relation(1, 2, _clause).
 _relation(3, 5, _conj).
 _relation(6, 3, _clause).
@@ -44,6 +44,7 @@ event(11, occupy, mongol_empire, substantial_portion).
 event(2, unite, null, many).
 event(2, unite, null, many_of_tribe).
 event(3, found, null, mongol_empire).
+event(4, be, null, null).
 event(5, proclaim, null, null).
 event(6, start, genghis_khan, invasion).
 event(6, start, genghis_khan, mongol_invasion).
@@ -55,6 +56,7 @@ event(8, 'include', invasion, raid_of_dynasty).
 event(8, 'include', mongol_invasion, invasion).
 event(8, 'include', mongol_invasion, raid).
 event(8, 'include', mongol_invasion, raid_of_dynasty).
+event(9, be, null, null).
 genghis_khan(genghis_khan).
 invasion(invasion).
 land(land).

@@ -14,25 +14,25 @@ _mod(role, main).
 _mod(up_to, 100).
 _mod(use, then).
 _possess(chloroplast, role).
-_property(capture, from(sunlight)).
-_property(energy, in(atp)).
-_property(energy, in(molecule)).
-_property(energy, in(nadph)).
-_property(free, from(water)).
-_property(immune_response, in(plant)).
-_property(know, as(calvin_cycle)).
-_property(make, from(carbon_dioxide)).
-_property(make, in(process)).
-_property(number_of_chloroplasts, per(cell)).
-_property(up_to, in(plant)).
-_property(vary, from(1)).
-_property(vary, in(algae)).
+_property(10, immune_response, in, plant).
+_property(11, number_of_chloroplasts, per, cell).
+_property(11, up_to, in, plant).
+_property(11, vary, from, 1).
+_property(11, vary, in, algae).
+_property(3, capture, from, sunlight).
+_property(5, free, from, water).
+_property(6, energy, in, atp).
+_property(6, energy, in, molecule).
+_property(6, energy, in, nadph).
+_property(8, make, from, carbon_dioxide).
+_property(8, make, in, process).
+_property(9, know, as, calvin_cycle).
 _relation(1, 2, _clcomplement).
 _relation(3, 4, _conj).
 _relation(3, 5, _clause).
-_relation(3, store, _conj).
-_relation(6, 7, _clause).
-_relation(process, 8, _clause).
+_relation(3, 6, _conj).
+_relation(7, 8, _clause).
+_relation(process, 9, _clause).
 algae(algae).
 algae(up_to).
 arabidopsis(arabidopsis).
@@ -44,7 +44,13 @@ chloroplast(chloroplast).
 energy(energy).
 event(1, be, main_role, null).
 event(1, be, role, null).
-event(10, vary, number_of_chloroplasts, null).
+event(10, carry, chloroplast, amino_acid_synthesis).
+event(10, carry, chloroplast, fatty_acid_synthesis).
+event(10, carry, chloroplast, immune_response).
+event(10, carry, chloroplast, immune_response_in_plant).
+event(10, carry, chloroplast, like_fatty_acid_synthesis).
+event(10, carry, chloroplast, number_of_functions).
+event(11, vary, number_of_chloroplasts, null).
 event(2, conduct, main_role, photosynthesis).
 event(2, conduct, role, photosynthesis).
 event(3, capture, chlorophyll, null).
@@ -54,17 +60,20 @@ event(4, convert, chlorophyll, null).
 event(4, convert, photosynthetic_pigment, energy).
 event(4, convert, pigment, energy).
 event(5, free, null, oxygen).
-event(6, use, chloroplast, atp).
-event(6, use, chloroplast, nadph).
-event(7, make, null, molecule).
-event(7, make, null, organic_molecule).
-event(8, know, null, null).
-event(9, carry, chloroplast, amino_acid_synthesis).
-event(9, carry, chloroplast, fatty_acid_synthesis).
-event(9, carry, chloroplast, immune_response).
-event(9, carry, chloroplast, immune_response_in_plant).
-event(9, carry, chloroplast, like_fatty_acid_synthesis).
-event(9, carry, chloroplast, number_of_functions).
+event(6, store, chlorophyll, null).
+event(6, store, photosynthetic_pigment, energy).
+event(6, store, photosynthetic_pigment, energy_in_atp).
+event(6, store, photosynthetic_pigment, energy_in_molecule).
+event(6, store, photosynthetic_pigment, energy_in_nadph).
+event(6, store, pigment, energy).
+event(6, store, pigment, energy_in_atp).
+event(6, store, pigment, energy_in_molecule).
+event(6, store, pigment, energy_in_nadph).
+event(7, use, chloroplast, atp).
+event(7, use, chloroplast, nadph).
+event(8, make, null, molecule).
+event(8, make, null, organic_molecule).
+event(9, know, null, null).
 immune_response(immune_response).
 molecule(molecule).
 number(1).
@@ -78,7 +87,6 @@ plant(plant).
 plant(wheat).
 process(process).
 role(role).
-store(store).
 sunlight(sunlight).
 water(water).
 wheat(wheat).
