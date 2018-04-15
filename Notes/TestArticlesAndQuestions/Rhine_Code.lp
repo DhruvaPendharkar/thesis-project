@@ -16,23 +16,25 @@ _mod(empty, eventually).
 _mod(flow, then).
 _mod(people, '1,050,000').
 _mod(river, second_longest).
-_property(begin, in(swiss_canton)).
-_property(city, on(river)).
-_property(cologne, in(germany)).
-_property(cologne, with(population)).
-_property(danube, at('1,230')).
-_property(discharge, of('2,900_m3/s')).
-_property(empty, into(north_sea)).
-_property(flow, through(rhineland)).
-_property(graubünden, in(southeastern_swiss_alps)).
-_property(north_sea, in(netherland)).
-_property(part, of(border)).
-_property(part, of(swiss_german)).
-_property(population, of('1,050,000_people')).
-_property(river, in(central)).
-_property(river, in(western_europe)).
-_property(river, with(discharge)).
-_property(swiss_canton, of(graubünden)).
+_property(2, begin, in, swiss_canton).
+_property(2, graubünden, in, southeastern_swiss_alps).
+_property(2, swiss_canton, of, graubünden).
+_property(3, flow, through, rhineland).
+_property(4, empty, into, north_sea).
+_property(4, north_sea, in, netherland).
+_property(5, part, of, border).
+_property(5, part, of, swiss_german).
+_property(6, city, on, river).
+_property(6, cologne, in, germany).
+_property(6, cologne, with, population).
+_property(6, population, of, '1,050,000_people').
+_property(7, danube, at, '1,230').
+_property(7, discharge, of, '2,900_m3/s').
+_property(7, river, in, central).
+_property(7, river, in, western_europe).
+_property(7, river, with, discharge).
+_relation(5, 3, _conj).
+_relation(5, 4, _conj).
 border(border).
 city(city).
 cologne(biggest_city).
@@ -40,11 +42,16 @@ cologne(city).
 cologne(cologne).
 danube(danube).
 discharge(discharge).
+event(1, be, null, null).
 event(2, begin, rhine, null).
 event(2, begin, river, null).
 event(3, flow, rhine, null).
 event(4, empty, rhine, null).
-form(form).
+event(5, form, rhine, part).
+event(5, form, rhine, part_of_border).
+event(5, form, rhine, part_of_swiss_german).
+event(6, be, null, null).
+event(7, be, null, null).
 germany(germany).
 kilometre(kilometre).
 north_sea(north_sea).

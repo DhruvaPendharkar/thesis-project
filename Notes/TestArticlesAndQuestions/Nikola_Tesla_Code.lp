@@ -20,21 +20,26 @@ _mod(know, best).
 _mod(system, alternating_current).
 _mod(system, modern).
 _possess(nikola_tesla, contribution).
-_property(contribution, to(design)).
-_property(design, of(system)).
-_property(know, for(contribution)).
+_property(2, contribution, to, design).
+_property(2, design, of, system).
+_property(2, know, for, contribution).
 _relation(futurist, 2, _clause).
 _start_date(nikola_tesla, '10_july_1856').
 contribution(contribution).
+day('10_july_1856', 10).
+day('7_january_1943', 7).
 design(design).
 electricity(electricity).
 engineer(engineer).
 engineer(nikola_tesla).
+event(1, be, null, null).
 event(2, know, null, null).
 futurist(futurist).
 futurist(nikola_tesla).
 inventor(inventor).
 inventor(nikola_tesla).
+month('10_july_1856', july).
+month('7_january_1943', january).
 nikola_tesla(nikola_tesla).
 physicist(nikola_tesla).
 physicist(physicist).
@@ -42,6 +47,8 @@ supply(supply).
 system(system).
 time('10_july_1856').
 time('7_january_1943').
+year('10_july_1856', 1856).
+year('7_january_1943', 1943).
 %%-------------------------------------------------------%%
 %%Ontology%%
 %%-------------------------------------------------------%%

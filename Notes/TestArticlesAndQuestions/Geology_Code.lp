@@ -30,18 +30,22 @@ _mod(type, sedimentary).
 _mod(type, three).
 _mod(undergo, also).
 _mod(weather, then).
-_property(concept, in(geology)).
-_property(content, of(rock)).
-_property(crystallize, from(lava)).
-_property(crystallize, from(magma)).
-_property(due, to(heat)).
-_property(due, to(pressure)).
-_property(form, from(magma)).
-_property(redeposit, into(rock)).
-_property(relationship, between(three_type)).
-_property(relationship, of(rock)).
-_property(turn, into(rock)).
-_property(type, of(rock)).
+_property(1, type, of, rock).
+_property(12, due, to, heat).
+_property(12, due, to, pressure).
+_property(12, turn, into, rock).
+_property(13, content, of, rock).
+_property(16, due, to, heat).
+_property(16, due, to, pressure).
+_property(16, turn, into, rock).
+_property(2, concept, in, geology).
+_property(26, type, of, rock).
+_property(3, relationship, between, three_type).
+_property(3, relationship, of, rock).
+_property(30, form, from, magma).
+_property(4, crystallize, from, lava).
+_property(4, crystallize, from, magma).
+_property(9, redeposit, into, rock).
 _relation(16, 18, _conj).
 _relation(16, 21, _conj).
 _relation(16, 22, _clause).
@@ -57,8 +61,9 @@ content(content).
 event(1, have, geology, major_sedimentary_metamorphic_type).
 event(1, have, geology, type).
 event(1, have, geology, type_of_rock).
-event(1, have, null, type).
+event(1, have, null, igneous).
 event(10, lithify, null, null).
+event(11, be, null, null).
 event(12, turn, null, rock).
 event(13, change, heat, content).
 event(13, change, heat, content_of_rock).
@@ -66,19 +71,26 @@ event(13, change, pressure, content).
 event(13, change, pressure, content_of_rock).
 event(14, give, rock, characteristic_fabric).
 event(14, give, rock, fabric).
+event(15, be, null, null).
 event(16, turn, null, rock).
+event(17, be, null, null).
 event(18, weather, null, rock).
 event(19, erode, null, null).
+event(2, be, null, null).
 event(20, deposit, null, null).
 event(21, lithify, null, rock).
 event(22, become, null, null).
+event(23, be, null, null).
 event(24, redeposit, rock, null).
 event(24, redeposit, sedimentary_rock, null).
 event(25, undergo, metamorphic_rock, additional_metamorphism).
 event(25, undergo, metamorphic_rock, metamorphism).
 event(25, undergo, rock, additional_metamorphism).
 event(25, undergo, rock, metamorphism).
+event(26, be, null, null).
+event(27, be, null, null).
 event(28, melt, null, rock).
+event(29, be, null, null).
 event(3, illustrate, geology, magma).
 event(3, illustrate, geology, relationship).
 event(3, illustrate, geology, relationship_between_type).
@@ -86,6 +98,8 @@ event(3, illustrate, geology, relationship_of_rock).
 event(30, form, null, magma).
 event(31, crystallize, igneous_rock, null).
 event(4, crystallize, rock, null).
+event(5, be, null, null).
+event(6, be, null, null).
 event(7, weather, null, rock).
 event(8, erode, null, rock).
 event(9, redeposit, null, rock).

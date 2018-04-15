@@ -27,34 +27,34 @@ _mod(phylum, one).
 _mod(species, various).
 _possess(ctenophora, body).
 _possess(ctenophora, feature).
-_property(adult, of(species)).
-_property(awareness, of(difference)).
-_property(cavity, for(digestion)).
-_property(cavity, for(respiration)).
-_property(cell, on(outside)).
-_property(classify, as(phyla)).
-_property(combine, in(one_phylum)).
-_property(consist, like(cnidarian)).
-_property(consist, of(mass_of_jelly)).
-_property(consist, with(one_layer)).
-_property(group, of(cilium)).
-_property(know, as(comb_jellies)).
-_property(layer, in(cnidarian)).
-_property(layer, of(cell)).
-_property(layer, of(line)).
-_property(layer, of(mass_of_jelly)).
-_property(live, in(marine_waters)).
-_property(meter, in(size)).
-_property(phylum, of(animal)).
-_property(range, from(millimeter)).
-_property(range, to(1)).
-_property(rely, on(flow)).
-_property(rely, through(cavity)).
-_property(swim, by_means_of(cilium)).
-_property(two_cells_deep, in(ctenophore)).
-_property(use, for(swimming)).
-_relation(12, 13, _clause).
-_relation(15, 16, _clcomplement).
+_property(1, know, as, comb_jellies).
+_property(11, layer, in, cnidarian).
+_property(11, layer, of, mass_of_jelly).
+_property(11, two_cells_deep, in, ctenophore).
+_property(13, combine, in, one_phylum).
+_property(14, cavity, for, digestion).
+_property(14, cavity, for, respiration).
+_property(14, rely, on, flow).
+_property(14, rely, through, cavity).
+_property(16, awareness, of, difference).
+_property(17, classify, as, phyla).
+_property(2, phylum, of, animal).
+_property(3, live, in, marine_waters).
+_property(4, group, of, cilium).
+_property(5, use, for, swimming).
+_property(7, swim, by_means_of, cilium).
+_property(8, adult, of, species).
+_property(8, range, from, millimeter).
+_property(8, range, to, 1).
+_property(9, cell, on, outside).
+_property(9, consist, like, cnidarian).
+_property(9, consist, of, mass_of_jelly).
+_property(9, consist, with, one_layer).
+_property(9, layer, of, cell).
+_property(9, layer, of, line).
+_property(meter, in, size).
+_relation(13, 14, _clause).
+_relation(16, 17, _clcomplement).
 _relation(ctenophora, 1, _clause).
 adult(adult).
 animal(animal).
@@ -76,23 +76,30 @@ ctenophore(ctenophore).
 difference(difference).
 digestion(digestion).
 event(1, know, null, null).
-event(12, combine, author, cnidarian).
-event(12, combine, author, ctenophore).
-event(13, rely, group, null).
-event(15, persuade, awareness, author).
-event(15, persuade, awareness, more_recent_author).
-event(15, persuade, increasing_awareness, author).
-event(15, persuade, increasing_awareness, more_recent_author).
-event(16, classify, author, cnidarian).
-event(16, classify, author, ctenophore).
-event(16, classify, more_recent_author, cnidarian).
-event(16, classify, more_recent_author, ctenophore).
+event(10, line, null, null).
+event(11, be, null, null).
+event(12, be, null, null).
+event(13, combine, author, cnidarian).
+event(13, combine, author, ctenophore).
+event(14, rely, group, null).
+event(16, persuade, awareness, author).
+event(16, persuade, awareness, more_recent_author).
+event(16, persuade, increasing_awareness, author).
+event(16, persuade, increasing_awareness, more_recent_author).
+event(17, classify, author, cnidarian).
+event(17, classify, author, ctenophore).
+event(17, classify, more_recent_author, cnidarian).
+event(17, classify, more_recent_author, ctenophore).
+event(2, be, null, null).
 event(3, live, animal, null).
-event(6, swim, animal, null).
-event(6, swim, largest_animal, null).
-event(7, range, adult, null).
-event(8, consist, body, null).
-event(9, line, null, null).
+event(4, be, null, null).
+event(5, use, ctenophora, comb).
+event(5, use, null, group).
+event(6, be, null, null).
+event(7, swim, animal, null).
+event(7, swim, largest_animal, null).
+event(8, range, adult, null).
+event(9, consist, body, null).
 feature(feature).
 flow(flow).
 group(group).
@@ -110,7 +117,6 @@ respiration(respiration).
 size(size).
 species(species).
 swimming(swimming).
-use(use).
 water(water).
 %%-------------------------------------------------------%%
 %%Ontology%%

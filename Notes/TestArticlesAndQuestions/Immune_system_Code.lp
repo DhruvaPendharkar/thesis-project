@@ -16,21 +16,21 @@ _mod(tissue, own).
 _mod(variety, wide).
 _mod(worm, parasitic).
 _possess(organism, tissue).
-_property(cerebrospinal_fluid, in(human)).
-_property(classify, in(species)).
-_property(classify, into(subsystem)).
-_property(detect, from(virus)).
-_property(detect, to(worm)).
-_property(distinguish, from(tissue)).
-_property(innate_immune_system, versus(adaptive_immune_system)).
-_property(know, as(pathogen)).
-_property(protect, against(disease)).
-_property(separate, from(neuroimmune_system)).
-_property(structure, within(organism)).
-_property(subsystem, versus(cell_mediated_immunity)).
-_property(system, of(process)).
-_property(system, of(structure)).
-_property(variety, of(agent)).
+_property(1, structure, within, organism).
+_property(1, system, of, process).
+_property(1, system, of, structure).
+_property(2, protect, against, disease).
+_property(4, detect, from, virus).
+_property(4, detect, to, worm).
+_property(4, variety, of, agent).
+_property(5, know, as, pathogen).
+_property(6, distinguish, from, tissue).
+_property(8, classify, in, species).
+_property(8, classify, into, subsystem).
+_property(8, innate_immune_system, versus, adaptive_immune_system).
+_property(8, subsystem, versus, cell_mediated_immunity).
+_property(9, separate, from, neuroimmune_system).
+_property(cerebrospinal_fluid, in, human).
 _relation(4, 3, _clause).
 _relation(4, 6, _conj).
 _relation(agent, 5, _clause).
@@ -40,6 +40,7 @@ barrier(blood).
 blood(blood).
 brain(brain).
 disease(disease).
+event(1, be, null, null).
 event(10, protect, neuroimmune_system, brain).
 event(2, protect, organism, null).
 event(3, function, null, null).
@@ -48,6 +49,7 @@ event(4, detect, immune_system, variety_of_agent).
 event(4, detect, immune_system, wide_variety).
 event(5, know, null, null).
 event(6, distinguish, immune_system, pathogen).
+event(7, be, null, null).
 event(8, classify, null, immune_system).
 event(9, separate, barrier, immune_system).
 event(9, separate, barrier, peripheral_immune_system).

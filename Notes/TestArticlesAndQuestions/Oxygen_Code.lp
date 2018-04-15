@@ -32,27 +32,28 @@ _mod(trend, global).
 _possess(crust, mass).
 _possess(earth, atmosphere).
 _possess(earth, crust).
-_property(atom, of(oxygen)).
-_property(bind, at(pressure)).
-_property(bind, at(temperature)).
-_property(burning, of(fossil_fuel)).
-_property(chalcogen_group, on(periodic_table)).
-_property(compound, like(oxide)).
-_property(compound, with(element)).
-_property(element, after(helium)).
-_property(element, after(hydrogen)).
-_property(element, as(part)).
-_property(element, by(mass)).
-_property(element, in(crust)).
-_property(element, in(universe)).
-_property(element, of(oxide_compounds)).
-_property(element, with('8_atomic_number')).
-_property(element, with(symbol_o)).
-_property(form, with('formula_o2')).
-_property(half, of(mass)).
-_property(member, of(chalcogen_group)).
-_property(monitoring, of(oxygen_levels)).
-_property(percent, of(atmosphere)).
+_property(1, element, with, '8_atomic_number').
+_property(1, element, with, symbol_o).
+_property(10, burning, of, fossil_fuel).
+_property(10, monitoring, of, oxygen_levels).
+_property(11, element, as, part).
+_property(11, element, by, mass).
+_property(11, element, in, crust).
+_property(11, element, of, oxide_compounds).
+_property(12, half, of, mass).
+_property(2, chalcogen_group, on, periodic_table).
+_property(2, compound, like, oxide).
+_property(2, compound, with, element).
+_property(2, member, of, chalcogen_group).
+_property(6, element, after, helium).
+_property(6, element, after, hydrogen).
+_property(6, element, by, mass).
+_property(6, element, in, universe).
+_property(7, atom, of, oxygen).
+_property(7, bind, at, pressure).
+_property(7, bind, at, temperature).
+_property(8, form, with, 'formula_o2').
+_property(percent, of, atmosphere).
 _relation(7, 8, _clcomplement).
 _relation(element, 12, _clause).
 agent(agent).
@@ -67,15 +68,20 @@ earth(earth).
 element(element).
 element(oxygen).
 element(silicon_dioxide).
+event(1, be, null, null).
 event(10, show, monitoring, global_downward_trend).
 event(10, show, monitoring, trend).
+event(11, be, null, null).
 event(12, make, null, half).
 event(12, make, null, half_of_mass).
+event(2, be, null, null).
+event(3, be, null, null).
 event(5, form, agent, null).
 event(5, form, oxidizing_agent, null).
+event(6, be, null, null).
 event(7, bind, atom, null).
 event(8, form, atom, dioxygen).
-event(8, form, null, dioxygen).
+event(8, form, null, gas).
 event(9, constitute, diatomic_oxygen_gas, null).
 event(9, constitute, oxygen_gas, null).
 gas(dioxygen).

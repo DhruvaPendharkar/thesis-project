@@ -16,28 +16,28 @@ _possess(martin_luther, ninety_five_theses).
 _possess(martin_luther, proposition).
 _possess(martin_luther, refusal).
 _possess(martin_luther, writings).
-_property(demand, of(holy_roman_emperor_charles_v)).
-_property(demand, of(pope_leo_x)).
-_property(diet_of_worms, in(1521)).
-_property(discussion, of(power)).
-_property(discussion, of(usefulness)).
-_property(freedom, from(punishment)).
-_property(german_professor, of(seminal_figure)).
-_property(holy_roman_emperor_charles_v, at(diet_of_worms)).
-_property(pope, as(outlaw)).
-_property(pope_leo_x, in(1520)).
-_property(power, of(indulgence)).
-_property(propose, in(proposition)).
-_property(proposition, of(1517)).
-_property(punishment, for(sin)).
-_property(purchase, with(money)).
-_property(result, by(condemnation)).
-_property(result, by(emperor)).
-_property(result, by(pope)).
-_property(result, in(excommunication)).
-_property(retract, at(demand)).
-_property(seminal_figure, in(protestant_reformation)).
-_property(teaching, of(late_medieval_catholic_church)).
+_property(1, german_professor, of, seminal_figure).
+_property(1, seminal_figure, in, protestant_reformation).
+_property(3, teaching, of, late_medieval_catholic_church).
+_property(6, freedom, from, punishment).
+_property(6, punishment, for, sin).
+_property(6, purchase, with, money).
+_property(7, discussion, of, power).
+_property(7, discussion, of, usefulness).
+_property(7, power, of, indulgence).
+_property(7, propose, in, proposition).
+_property(7, proposition, of, 1517).
+_property(8, demand, of, holy_roman_emperor_charles_v).
+_property(8, demand, of, pope_leo_x).
+_property(8, holy_roman_emperor_charles_v, at, diet_of_worms).
+_property(8, pope_leo_x, in, 1520).
+_property(8, retract, at, demand).
+_property(8, retract, in, 1521).
+_property(9, pope, as, outlaw).
+_property(9, result, by, condemnation).
+_property(9, result, by, emperor).
+_property(9, result, by, pope).
+_property(9, result, in, excommunication).
 _relation(2, 3, _clcomplement).
 _relation(4, 6, _clcomplement).
 _relation(refusal, 8, _clause).
@@ -45,15 +45,19 @@ _start_date(martin_luther, '10_november_1483').
 claim(claim).
 composer(composer).
 condemnation(condemnation).
+day('10_november_1483', 10).
+day('18_february_1546', 18).
 demand(demand).
 discussion(discussion).
 emperor(emperor).
+event(1, be, null, null).
 event(2, come, martin_luther, null).
 event(3, reject, martin_luther, practice).
 event(3, reject, martin_luther, several_teaching).
 event(3, reject, martin_luther, teaching).
 event(3, reject, martin_luther, teaching_of_late_medieval_catholic_church).
 event(4, dispute, martin_luther, claim).
+event(5, be, null, null).
 event(6, purchase, null, freedom).
 event(7, propose, martin_luther, academic_discussion).
 event(7, propose, martin_luther, discussion).
@@ -68,6 +72,8 @@ god(god).
 indulgence(indulgence).
 martin_luther(martin_luther).
 money(money).
+month('10_november_1483', november).
+month('18_february_1546', february).
 outlaw(outlaw).
 pope(pope).
 power(power).
@@ -88,6 +94,11 @@ time(1520).
 time(1521).
 usefulness(usefulness).
 writings(writings).
+year('10_november_1483', 1483).
+year('18_february_1546', 1546).
+year(1517, 1517).
+year(1520, 1520).
+year(1521, 1521).
 %%-------------------------------------------------------%%
 %%Ontology%%
 %%-------------------------------------------------------%%

@@ -30,11 +30,11 @@ _mod(region, geographic).
 _mod(tie, economic).
 _mod(use, also).
 _possess(california, county).
-_property(abbreviate, as(socal)).
-_property(center, for(state_of_california)).
-_property(center, for(united_states)).
-_property(definition, including(county)).
-_property(describe, as(eight_counties)).
+_property(1, abbreviate, as, socal).
+_property(10, definition, including, county).
+_property(12, center, for, state_of_california).
+_property(12, center, for, united_states).
+_property(5, describe, as, eight_counties).
 _relation(southern_california, 1, _clause).
 california(california).
 center(center).
@@ -46,13 +46,18 @@ division(division).
 event(1, abbreviate, null, null).
 event(10, use, null, definition).
 event(11, base, null, null).
+event(12, be, null, null).
+event(2, be, null, null).
 event(3, comprise, geographic_cultural_region, county).
 event(3, comprise, geographic_cultural_region, southernmost_county).
 event(3, comprise, region, county).
 event(3, comprise, region, southernmost_county).
+event(4, be, null, null).
 event(5, describe, null, null).
 event(6, base, null, null).
+event(7, be, null, null).
 event(8, 'include', null, null).
+event(9, be, null, null).
 imperial(county).
 imperial(los_angeles).
 imperial(orange).

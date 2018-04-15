@@ -21,22 +21,22 @@ _possess(norman, descendant).
 _possess(norman, leader).
 _possess(norman, name).
 _possess(norman, rollo).
-_property(assimilate, with(population)).
-_property(culture, of(west_francia)).
-_property(descend, from(denmark_iceland)).
-_property(descend, from(norway)).
-_property(descend, from(pirate)).
-_property(descend, from(raider)).
-_property(descend, under(leader)).
-_property(descendant, through(generation)).
-_property(emerge, in('the_first_half_of_the_10th_century')).
-_property(give, in(century)).
-_property(give, to(normandy)).
-_property(identity, of(norman)).
-_property(king_charles_iii, of(west_francia)).
-_property(merge, with(culture)).
-_property(region, in(france)).
-_property(swear, to(king_charles_iii)).
+_property(10, emerge, in, 'the_first_half_of_the_10th_century').
+_property(10, identity, of, norman).
+_property(2, give, in, century).
+_property(2, give, to, normandy).
+_property(2, region, in, france).
+_property(4, descend, from, denmark_iceland).
+_property(4, descend, from, norway).
+_property(4, descend, from, pirate).
+_property(4, descend, from, raider).
+_property(4, descend, under, leader).
+_property(6, king_charles_iii, of, west_francia).
+_property(6, swear, to, king_charles_iii).
+_property(7, assimilate, with, population).
+_property(9, culture, of, west_francia).
+_property(9, descendant, through, generation).
+_property(9, merge, with, culture).
 _relation(10, 11, _conj).
 _relation(11, 12, _clcomplement).
 _relation(5, 6, _clcomplement).
@@ -47,6 +47,7 @@ _relation(leader, 5, _clause).
 century(century).
 culture(culture).
 descendant(descendant).
+event(1, be, null, null).
 event(10, emerge, distinct_cultural_ethnic_identity, null).
 event(10, emerge, identity, null).
 event(11, continue, cultural_ethnic_identity, null).
@@ -56,6 +57,7 @@ event(12, evolve, cultural_ethnic_identity, succeeding_century).
 event(12, evolve, identity, century).
 event(12, evolve, identity, succeeding_century).
 event(2, give, people, name).
+event(3, be, null, null).
 event(4, descend, norman, null).
 event(5, agree, null, null).
 event(6, swear, null, null).

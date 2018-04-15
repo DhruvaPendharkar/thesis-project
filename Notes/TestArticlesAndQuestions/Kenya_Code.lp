@@ -18,19 +18,19 @@ _mod(terrain, diverse).
 _mod(terrain, expansive).
 _possess(kenya, capital).
 _possess(kenya, territory).
-_property(country, in(africa)).
-_property(ethiopia, to(north)).
-_property(extend, from(lake_victoria)).
-_property(extend, to(lake_turkana)).
-_property(have, in('july_2014')).
-_property(lie, on(equator)).
-_property(member, of(east_african_community)).
-_property(population, of(million_people)).
-_property(somalia, to(north_east)).
-_property(south_east, to(indian_ocean)).
-_property(south_sudan, to(north_west)).
-_property(tanzania, to(south)).
-_property(uganda, to(west)).
+_property(1, country, in, africa).
+_property(1, member, of, east_african_community).
+_property(11, ethiopia, to, north).
+_property(11, somalia, to, north_east).
+_property(11, south_sudan, to, north_west).
+_property(11, tanzania, to, south).
+_property(11, uganda, to, west).
+_property(13, have, in, 'july_2014').
+_property(13, population, of, million_people).
+_property(4, lie, on, equator).
+_property(6, south_east, to, indian_ocean).
+_property(7, extend, from, lake_victoria).
+_property(7, extend, to, lake_turkana).
 _relation(12, 13, _conj).
 _relation(4, 5, _conj).
 _relation(east_african_rift, 6, _clause).
@@ -41,10 +41,13 @@ country(country).
 country(kenya).
 equator(equator).
 ethiopia(ethiopia).
+event(1, be, null, null).
+event(10, be, null, null).
 event(11, border, null, kenya).
 event(12, cover, kenya, square_kilometre).
 event(13, have, kenya, population).
 event(13, have, kenya, population_of_people).
+event(3, be, null, null).
 event(4, lie, territory, null).
 event(5, overlie, territory, east_african_rift).
 event(6, cover, null, diverse_expansive_terrain).
@@ -56,11 +59,13 @@ event(7, extend, diverse_expansive_terrain, null).
 event(7, extend, further_south_east, null).
 event(7, extend, south_east, null).
 event(7, extend, terrain, null).
+event(8, be, null, null).
 indian_ocean(indian_ocean).
 kenya(kenya).
 lake_victoria(lake_victoria).
 member(kenya).
 member(member).
+month('july_2014', july).
 nairobi(capital).
 nairobi(city).
 nairobi(largest_city).
@@ -80,6 +85,7 @@ territory(territory).
 time('july_2014').
 uganda(uganda).
 west(west).
+year('july_2014', 2014).
 %%-------------------------------------------------------%%
 %%Ontology%%
 %%-------------------------------------------------------%%
