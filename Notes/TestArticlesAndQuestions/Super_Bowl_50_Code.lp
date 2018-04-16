@@ -85,7 +85,6 @@ santa_clara(santa_clara).
 season(season).
 team(carolina_panthers).
 team(denver_broncos).
-team(team).
 time('february_7_2016').
 time(2015).
 title(title).
@@ -99,7 +98,7 @@ location(levis_stadium).
 %%Rules%%
 %%-------------------------------------------------------%%
 title(title, noun_state).
-event(E, X, represent, Y) :- _possess(Y, X), organization(Y), team(X).
+event(E, represent, X, Y) :- _possess(Y, X), organization(Y), team(X).
 event(E, win, X, O) :- event(E1, earn, X, title), _similar(O, O1), _mod(title, O1), title(title, S), S = noun_state.
 event(E, win, X1, O) :- event(E1, earn, X, title), _similar(X, X1), _similar(O, O1), _mod(title, O1), title(title, S), S = noun_state.
 %%-------------------------------------------------------%%
