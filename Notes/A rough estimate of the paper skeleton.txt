@@ -1,0 +1,19 @@
+Abstract : 0.5 col <== 0.75 ***DONE***
+Introduction : 1.5 col <== 2.25 col ***DONE***
+System Architecture : 1 col <== 4.5 col ***DONE***
+Knowledge Generation : 4+3 col <== 17 col
+Query Generation System : 4+1 col <== 8 col
+Results : 1.5 col <== 1.5 col ***DONE***
+Related Work (Cyc and Boxer) and Contributions : 1 col <== 1.5 col ***DONE***
+Conclusion : 0.5 col <== 2 col ***DONE***
+
+References :
+Appendix : Include passages, questions
+
+Calculations :
+Actual Content -> 0.75 + 2.25 + 4.5 + 17 + 8 + 1.5 + 1.5 + 2 = 37.5
+Compressed Content -> 18 col
+
+Knowledge Generation 7 Columns
+1. Events and Predicates 4 col <== 10.5 col      ********* 6 col ************
+2. Supplimentary Knowledge Generation 3 <== 7.5 col ********** 4 col *********
